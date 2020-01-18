@@ -4,10 +4,28 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    // Create variable for movement speed
+    public float speed;
+
+
+    private void FixedUpdate()
     {
-        
+        if (Input.GetKey(KeyCode.UpArrow)){
+            transform.Translate(new Vector3(0,0,1) * speed);
+        }
+        if (Input.GetKey(KeyCode.DownArrow))
+        {
+            transform.Translate(new Vector3(0, 0, -1) * speed);
+        }
+        if (Input.GetKey(KeyCode.RightArrow))
+        {
+            transform.Translate(new Vector3(1, 0, 0) * speed);
+        }
+        if (Input.GetKey(KeyCode.LeftArrow))
+        {
+            transform.Translate(new Vector3(-1, 0, 0) * speed);
+        }
+
     }
 
     // Update is called once per frame
