@@ -39,12 +39,15 @@ public class PlayerController : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.C))
         {
-            Instantiate(collectible, new Vector3(0, 1, 0), Quaternion.identity);
-            count--;
+            if (count > 0) 
+            {
+                Instantiate(collectible, new Vector3(transform.position.x, 0.5f, transform.position.z), transform.rotation);
+                count--;
+            }
         }
     }
 
-    void OnTriggerStay(Collider col) 
+    void OnTriggerStay(Collider col)
     {
         if(col.tag == "Collectible" && Input.GetKey(KeyCode.E))
         {
