@@ -7,7 +7,7 @@ public class PlayerController : MonoBehaviour
     // Create variable for movement speed
     public float speed;
     public GameObject collectible;
-    // private int count = 0;
+    private int count = 0;
     // private List<Collider> colliders = new List<Collider>();
 
     private void start()
@@ -40,6 +40,7 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.C))
         {
             Instantiate(collectible, new Vector3(0, 1, 0), Quaternion.identity);
+            count--;
         }
     }
 
@@ -48,6 +49,7 @@ public class PlayerController : MonoBehaviour
         if(col.tag == "Collectible" && Input.GetKey(KeyCode.E))
         {
             Debug.Log("Stay collectible and E");
+            count++;
             Destroy (col.gameObject);
         }
     }
