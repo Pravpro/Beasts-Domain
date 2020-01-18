@@ -56,23 +56,5 @@ public class PlayerController : MonoBehaviour
             Destroy (col.gameObject);
         }
     }
-
-    // void OnTriggerEnter(Collider col)
-    // {
-    //     Debug.Log("Enter");
-    //     if(col.tag == "Collectible")
-    //     {
-    //         Debug.Log("Enter collectible");
-    //         // colliders.add(col);
-    //     }
-    // }
-    // void OnTriggerEnter(Collider col)
-    // {
-    //     Debug.Log("Collision");
-    //     if(col.tag == "Collectible")
-    //     {
-    //         Debug.Log("Exit collectible");
-    //         colliders.remove(col);
-    //     }
-    // }
+    
 }
