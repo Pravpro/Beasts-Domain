@@ -7,12 +7,12 @@ public class PlayerController : MonoBehaviour
     // Create variable for movement speed
     public float speed;
     public GameObject collectible;
-    private int count = 0;
+    private int count = 1;
     // private List<Collider> colliders = new List<Collider>();
 
     private void start()
     {
-
+        
     }
 
     private void FixedUpdate()
