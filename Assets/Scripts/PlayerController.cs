@@ -9,6 +9,16 @@ public class PlayerController : MonoBehaviour
     public GameObject collectible;
     private int count = 1;
     // private List<Collider> colliders = new List<Collider>();
+    private Rigidbody rb;
+    private bool grounded = true;
+    public Vector3 jump;
+    public float jumpSpeed;
+
+    private void Awake()
+    {
+        rb = gameObject.GetComponent<Rigidbody>();
+        jump = new Vector3(0, 1.0f, 0);
+    }
 
     private void start()
     {
@@ -31,6 +41,13 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKey(KeyCode.LeftArrow))
         {
             transform.Translate(new Vector3(-1, 0, 0) * speed);
+        }
+        if (Input.GetKey(KeyCode.Space) && grounded)
+        {
+            Debug.Log("jump");
+            //rb.AddForce(0, 100, 0);
+            rb.velocity += jump * jumpSpeed;
+            grounded = false;
         }
     }
 
@@ -57,4 +74,12 @@ public class PlayerController : MonoBehaviour
         }
     }
     
+    void OnCollisionEnter(Collision col)
+    {
+        if (col.collider.tag == "Ground")
+        {
+            Debug.Log("grounded");
+            grounded = true;
+        }
+    }
 }
