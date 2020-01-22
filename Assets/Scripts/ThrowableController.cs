@@ -21,8 +21,8 @@ public class ThrowableController : MonoBehaviour
     {
         if (other.name != "Player")
         {
-            Debug.Log("collision detected, delete the object");
+            Debug.Log("collision detected, delete the object: " + other.name);
             Destroy(gameObject);
-        }  
+        }
     }
 }
