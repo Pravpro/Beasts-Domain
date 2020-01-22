@@ -7,12 +7,16 @@ public class PlayerController : MonoBehaviour
     // Create variable for movement speed
     public float speed;
     public GameObject collectible;
+    public Vector3 jump;
+    public float jumpSpeed;
+    public float turnSpeed;
+
     private int count = 1;
     // private List<Collider> colliders = new List<Collider>();
     private Rigidbody rb;
     private bool grounded = true;
-    public Vector3 jump;
-    public float jumpSpeed;
+    Vector3 m_Movement;
+    Quaternion m_Rotation = Quaternion.identity;
 
     private void Awake()
     {
@@ -20,28 +24,23 @@ public class PlayerController : MonoBehaviour
         jump = new Vector3(0, 1.0f, 0);
     }
 
-    private void start()
-    {
-        
-    }
-
     private void FixedUpdate()
     {
-        if (Input.GetKey(KeyCode.UpArrow)){
-            transform.Translate(new Vector3(0,0,1) * speed);
-        }
-        if (Input.GetKey(KeyCode.DownArrow))
-        {
-            transform.Translate(new Vector3(0, 0, -1) * speed);
-        }
-        if (Input.GetKey(KeyCode.RightArrow))
-        {
-            transform.Translate(new Vector3(1, 0, 0) * speed);
-        }
-        if (Input.GetKey(KeyCode.LeftArrow))
-        {
-            transform.Translate(new Vector3(-1, 0, 0) * speed);
-        }
+        // Movement according to WASD or arrow keys
+        float horizontal = Input.GetAxis("Horizontal");
+        float vertical = Input.GetAxis("Vertical");
+
+        m_Movement.Set(horizontal, 0f, vertical);
+        m_Movement.Normalize();
+
+        // Rotate the player according to desired rotation
+        Vector3 desiredForward = Vector3.RotateTowards(transform.forward, m_Movement, turnSpeed * Time.deltaTime, 0f);
+        m_Rotation = Quaternion.LookRotation(desiredForward);
+
+        // Moving according to arrow keys or WASD
+        rb.MovePosition(rb.position + m_Movement * speed);
+        rb.MoveRotation(m_Rotation);
+
         if (Input.GetKey(KeyCode.Space) && grounded)
         {
             Debug.Log("jump");
