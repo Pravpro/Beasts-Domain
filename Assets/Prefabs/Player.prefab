@@ -128,12 +128,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f08ac684986d0247b109ba3a3beb220, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 0.1
+  walkSpeed: 0
+  runSpeed: 0
+  jumpSpeed: 6
+  turnSpeed: 12
   collectible: {fileID: 8565374217990493686, guid: 97c0d234422412944b07db9edc85ccf7,
     type: 3}
   jump: {x: 0, y: 0, z: 0}
-  jumpSpeed: 6
-  turnSpeed: 12
 --- !u!54 &9206296177471051254
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -144,7 +145,7 @@ Rigidbody:
   serializedVersion: 2
   m_Mass: 1
   m_Drag: 0
-  m_AngularDrag: 0.05
+  m_AngularDrag: 0
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0

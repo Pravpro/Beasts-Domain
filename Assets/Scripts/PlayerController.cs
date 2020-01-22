@@ -14,7 +14,7 @@ public class PlayerController : MonoBehaviour
     private Rigidbody rb;
     private bool grounded = true;
     Vector3 m_Movement;
-    Quaternion m_Rotation = Quaternion.identity;
+    Quaternion m_Rotation, lastRotation = Quaternion.identity;
 
     private void Awake()
     {
@@ -33,7 +33,16 @@ public class PlayerController : MonoBehaviour
 
         // Rotate the player according to desired rotation
         Vector3 desiredForward = Vector3.RotateTowards(transform.forward, m_Movement, turnSpeed * Time.deltaTime, 0f);
-        m_Rotation = Quaternion.LookRotation(desiredForward);
+        // Prevent Player from turning due to collsions
+        if (m_Movement.magnitude == 0)
+        {
+            m_Rotation = lastRotation;
+        }
+        else
+        {
+            m_Rotation = Quaternion.LookRotation(desiredForward);
+            lastRotation = m_Rotation;
+        }
         
         // Code for Running
         if (Input.GetKey(KeyCode.LeftControl) || Input.GetKey(KeyCode.RightControl))
