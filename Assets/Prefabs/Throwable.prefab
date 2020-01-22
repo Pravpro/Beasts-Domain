@@ -139,3 +139,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   force: 500
   up_velocity: 0.5
+  player: {fileID: 9206296177471051248, guid: 35b58b46bca88334daef10b3a5c81c42, type: 3}
