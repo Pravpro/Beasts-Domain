@@ -24,6 +24,8 @@ public class ThrowRock : MonoBehaviour
             GameObject m_rock = Instantiate(throwObject, 
                                             transform.position, 
                                             transform.rotation) as GameObject;
+            m_rock.name = "flyingRock";
+            
             Rigidbody m_rid = m_rock.GetComponent<Rigidbody>();
             m_rid.AddForce((player.transform.forward + Vector3.up * up_velocity) * force);
         }
