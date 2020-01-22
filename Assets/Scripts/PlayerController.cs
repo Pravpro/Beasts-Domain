@@ -5,11 +5,9 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     // Create variable for movement speed
-    public float speed;
+    public float walkSpeed, runSpeed, jumpSpeed, turnSpeed;
     public GameObject collectible;
     public Vector3 jump;
-    public float jumpSpeed;
-    public float turnSpeed;
 
     private int count = 1;
     // private List<Collider> colliders = new List<Collider>();
@@ -36,9 +34,17 @@ public class PlayerController : MonoBehaviour
         // Rotate the player according to desired rotation
         Vector3 desiredForward = Vector3.RotateTowards(transform.forward, m_Movement, turnSpeed * Time.deltaTime, 0f);
         m_Rotation = Quaternion.LookRotation(desiredForward);
-
-        // Moving according to arrow keys or WASD
-        rb.MovePosition(rb.position + m_Movement * speed);
+        
+        // Code for Running
+        if (Input.GetKey(KeyCode.LeftControl) || Input.GetKey(KeyCode.RightControl))
+        {
+            rb.MovePosition(rb.position + m_Movement * runSpeed);
+        }
+        // Else walk
+        else
+        {
+            rb.MovePosition(rb.position + m_Movement * walkSpeed);
+        }
         rb.MoveRotation(m_Rotation);
 
         if (Input.GetKey(KeyCode.Space) && grounded)
@@ -48,6 +54,8 @@ public class PlayerController : MonoBehaviour
             rb.velocity += jump * jumpSpeed;
             grounded = false;
         }
+
+        
     }
 
     // Update is called once per frame
