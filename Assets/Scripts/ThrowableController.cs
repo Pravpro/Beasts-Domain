@@ -19,7 +19,7 @@ public class ThrowableController : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        if (other.name != "Player")
+        if (other.name != "Player" && other.name != "MonsterViewArea")
         {
             Debug.Log("collision detected, delete the object: " + other.name);
             Destroy(gameObject);
