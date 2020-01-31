@@ -4,15 +4,14 @@ using UnityEngine;
 
 public class ThrowRock : MonoBehaviour
 {
-    public GameObject throwObject;
-    public GameObject player;
+    public GameObject throwObject, player, launchArc;
     public float force = 500.0f;
     public float up_velocity = 0.5f;
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
-
+        launchArc.SetActive(false);
     }
 
     // Update is called once per frame
@@ -20,10 +19,11 @@ public class ThrowRock : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.V) )
         {
-
+            launchArc.SetActive(true);
         }
         if (Input.GetKeyUp(KeyCode.V))
         {
+            launchArc.SetActive(false);
             Debug.Log("throwing the rock");
             GameObject m_rock = Instantiate(throwObject,
                                             transform.position,

@@ -25,7 +25,7 @@ public class LaunchArcMesh : MonoBehaviour
     // When the value inside the inspector of this class changes, run this code
     void OnValidate()
     {
-        // Check if lr is not null and that game is playing
+        // Check if mesh is not null and that game is playing
         if (mesh != null && Application.isPlaying)
         {
             MakeArcMesh(CalculateArcArray());
