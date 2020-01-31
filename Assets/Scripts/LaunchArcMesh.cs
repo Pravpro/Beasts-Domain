@@ -25,7 +25,7 @@ public class LaunchArcMesh : MonoBehaviour
     // When the value inside the inspector of this class changes, run this code
     void OnValidate()
     {
-        // Check if mesh is not null and that game is playing
+        // Check if lr is not null and that game is playing
         if (mesh != null && Application.isPlaying)
         {
             MakeArcMesh(CalculateArcArray());
@@ -36,6 +36,14 @@ public class LaunchArcMesh : MonoBehaviour
     void Start()
     {
         MakeArcMesh(CalculateArcArray());
+    }
+
+    void FixedUpdate()
+    {
+        if (Input.GetKeyUp(KeyCode.V))
+        {
+            Destroy(gameObject);
+        }
     }
 
     // Populate LineRenderer with appropriate settings
