@@ -1,15 +1,17 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEditor;
 
 public class AIController : MonoBehaviour
 {
     // public variables
     public GameObject player;
-    public float viewAngle = 45.0f;
-    public float viewRadius = 10.0f;
+    // public float viewAngle = 45.0f;
+    // public float viewRadius = 10.0f;
     public float turningSpeed = 20.0f;
     public float movingSpeed  = 1.0f;
+    public bool playerInSight = false;
     // private variables
     private bool m_playerTargeted = false;
     private Vector3 m_movement;
@@ -49,17 +51,17 @@ public class AIController : MonoBehaviour
 
         // 2. move to the target position only if the player is in the viewArea.
         //    boss ignores rocks when locked on to player
-        playerPos = player.transform.position;
-
-        // get the rotation and translate vector to player
-        Vector3 playerPosCopy = new Vector3(playerPos.x, 0, playerPos.z);
-        Vector3 location = transform.position;
-        playerDir = playerPosCopy - location;
-        playerDir.y = 0;
-        playerDir.Normalize();
-
-        if (Vector3.Angle(transform.forward, playerDir) < viewAngle)
+        
+        Debug.Log(playerInSight);
+        if (playerInSight)
         {
+            playerPos = player.transform.position;
+            // get the rotation and translate vector to player
+            Vector3 playerPosCopy = new Vector3(playerPos.x, 0, playerPos.z);
+            Vector3 location = transform.position;
+            playerDir = playerPosCopy - location;
+            playerDir.y = 0;
+            playerDir.Normalize();
             //Debug.Log("Im here");
             m_targetedDir = transform.forward;
             qRotate = Quaternion.LookRotation(playerDir);
