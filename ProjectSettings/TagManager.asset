@@ -7,6 +7,7 @@ TagManager:
   - Collectible
   - Monster
   - Ground
+  - Trigger
   layers:
   - Default
   - TransparentFX
