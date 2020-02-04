@@ -11,6 +11,7 @@ public class AIController : MonoBehaviour
     // public float viewRadius = 10.0f;
     public float turningSpeed = 20.0f;
     public float movingSpeed  = 1.0f;
+    public int hp = 2;
     public bool playerInSight = false;
     // private variables
     private bool m_playerTargeted = false;
@@ -21,9 +22,13 @@ public class AIController : MonoBehaviour
     private Quaternion m_Rotation = Quaternion.identity;
     private Vector3 playerPos, playerDir;
 
+    private PlayerController playerScript;
+
     void Start()
     {
         m_targetedDir = transform.forward;
+        player = GameObject.FindGameObjectWithTag("Player");
+        playerScript = player.GetComponent<PlayerController>();
     }
 
     // Update is called once per frame
@@ -34,6 +39,10 @@ public class AIController : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if (hp <= 0) 
+        {
+            return;
+        }
         // 1. rotation
         Quaternion qRotate;
         // turn the boss to the rock hit direction
@@ -52,7 +61,7 @@ public class AIController : MonoBehaviour
         // 2. move to the target position only if the player is in the viewArea.
         //    boss ignores rocks when locked on to player
         
-        Debug.Log(playerInSight);
+        // Debug.Log(playerInSight);
         if (playerInSight)
         {
             playerPos = player.transform.position;
@@ -83,9 +92,29 @@ public class AIController : MonoBehaviour
 
             Debug.Log("Monster: the object " + other.name + " is in the target." + other.name + " position: " + targetedPos);
         }
-        if (other.tag == "Player")
+        // if (other.tag == "Player")
+        // {
+        //     playerScript.hp -= 1;
+        //     if (playerScript.hp <= 0)
+        //     {
+        //         Debug.Log("Player Dies");
+        //     }
+        // }
+    }
+
+    void OnCollisionEnter(Collision col)
+    {
+        if (col.collider.tag == "Player")
         {
-            Debug.Log("You lose");
+            if (playerScript.hp > 0)
+            {
+                playerScript.hp -= 1;
+                Debug.Log("Player lose health to " + playerScript.hp);
+            }
+            if (playerScript.hp <= 0)
+            {
+                Debug.Log("Player Dies");
+            }
         }
     }
 }
