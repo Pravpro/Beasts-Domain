@@ -35,8 +35,10 @@ public class TriggerController : MonoBehaviour
         if (col.tag == "Monster" && this.triggered)
         {
             if (script.hp > 0)
+            {
                 script.hp -= 1;
-            Debug.Log("monster lose health to " + script.hp);
+                Debug.Log("monster lose health to " + script.hp);
+            }
             if (script.hp <= 0)
                 Debug.Log("Monster dies!");
         }
