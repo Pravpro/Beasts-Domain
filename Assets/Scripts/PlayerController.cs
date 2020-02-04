@@ -8,6 +8,7 @@ public class PlayerController : MonoBehaviour
     public float walkSpeed, runSpeed, jumpSpeed, turnSpeed;
     public GameObject collectible;
     public Vector3 jump;
+    public int hp;
 
     private int count = 1;
     // private List<Collider> colliders = new List<Collider>();
@@ -20,10 +21,16 @@ public class PlayerController : MonoBehaviour
     {
         rb = gameObject.GetComponent<Rigidbody>();
         jump = new Vector3(0, 1.0f, 0);
+        hp = 2;
     }
 
     private void FixedUpdate()
     {
+        if (hp <= 0)
+        {
+            //Debug.Log("Player hp below 0");
+            return;
+        }
         // Movement according to WASD or arrow keys
         float horizontal = Input.GetAxis("Horizontal");
         float vertical = Input.GetAxis("Vertical");
@@ -89,7 +96,7 @@ public class PlayerController : MonoBehaviour
             Destroy (col.gameObject);
         }
     }
-    
+
     void OnCollisionEnter(Collision col)
     {
         if (col.collider.tag == "Ground")
