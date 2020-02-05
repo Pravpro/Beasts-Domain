@@ -35,7 +35,7 @@ public class LaunchArcMesh : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        velocity = 5;
+        velocity = 6;
         angle = 45;
         MakeArcMesh(CalculateArcArray());
     }
@@ -44,17 +44,17 @@ public class LaunchArcMesh : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.U))
         {
-            if (angle < 90)
+            if (velocity < 9)
             {
-                velocity += 0.2f;
+                velocity += 0.15f;
                 MakeArcMesh(CalculateArcArray());
             }
         }
         if (Input.GetKey(KeyCode.I))
         {
-            if (angle > 10)
+            if (velocity > 4)
             {
-                velocity -= 0.2f;
+                velocity -= 0.15f;
                 MakeArcMesh(CalculateArcArray());
             }
         }
