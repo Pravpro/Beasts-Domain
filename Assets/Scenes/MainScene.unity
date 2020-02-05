@@ -152,6 +152,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 355292361}
+  rotationSpeed: 1
+  smoothTuring: 0.5
+  fixedRange_y: {x: 10, y: 55}
 --- !u!81 &13337471
 AudioListener:
   m_ObjectHideFlags: 0
@@ -735,7 +738,7 @@ GameObject:
   - component: {fileID: 609670917}
   m_Layer: 0
   m_Name: Logs
-  m_TagString: Untagged
+  m_TagString: Movable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1734,6 +1737,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: log3,0
       objectReference: {fileID: 0}
+    - target: {fileID: 1936575209353555579, guid: b17014ee3401bde458ec16e16c7bdf74,
+        type: 3}
+      propertyPath: m_TagString
+      value: Movable
+      objectReference: {fileID: 0}
     - target: {fileID: 3223241686780894312, guid: b17014ee3401bde458ec16e16c7bdf74,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1788,6 +1796,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7620642464590722932, guid: b17014ee3401bde458ec16e16c7bdf74,
+        type: 3}
+      propertyPath: m_TagString
+      value: Movable
+      objectReference: {fileID: 0}
+    - target: {fileID: 7620642464735177380, guid: b17014ee3401bde458ec16e16c7bdf74,
+        type: 3}
+      propertyPath: m_TagString
+      value: Movable
+      objectReference: {fileID: 0}
+    - target: {fileID: 7620642466177346589, guid: b17014ee3401bde458ec16e16c7bdf74,
+        type: 3}
+      propertyPath: m_TagString
+      value: Movable
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b17014ee3401bde458ec16e16c7bdf74, type: 3}

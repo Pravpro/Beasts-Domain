@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     // Create variable for movement speed
-    public float walkSpeed, runSpeed, jumpSpeed, turnSpeed;
+    public float walkSpeed, runSpeed, jumpSpeed, turnSpeed, pushForce;
     public GameObject collectible;
     public Vector3 jump;
     public int hp;
@@ -16,6 +16,8 @@ public class PlayerController : MonoBehaviour
     private bool grounded = true;
     Vector3 m_Movement;
     Quaternion m_Rotation, lastRotation = Quaternion.identity;
+
+    private bool pushing = false;
 
     private void Awake()
     {
@@ -31,12 +33,18 @@ public class PlayerController : MonoBehaviour
             //Debug.Log("Player hp below 0");
             return;
         }
-        // Movement according to WASD or arrow keys
+        // Movement according to WASD
         float horizontal = Input.GetAxis("Horizontal");
         float vertical = Input.GetAxis("Vertical");
 
         m_Movement.Set(horizontal, 0f, vertical);
         m_Movement.Normalize();
+
+        // get the movement to be respective to camera
+        m_Movement = Camera.main.transform.TransformDirection(m_Movement);
+        m_Movement.y = 0.0f;
+
+
 
         // Rotate the player according to desired rotation
         Vector3 desiredForward = Vector3.RotateTowards(transform.forward, m_Movement, turnSpeed * Time.deltaTime, 0f);
@@ -52,7 +60,7 @@ public class PlayerController : MonoBehaviour
         }
         
         // Code for Running
-        if (Input.GetKey(KeyCode.LeftControl) || Input.GetKey(KeyCode.RightControl))
+        if (Input.GetButton("Run") )
         {
             rb.MovePosition(rb.position + m_Movement * runSpeed);
         }
@@ -63,7 +71,7 @@ public class PlayerController : MonoBehaviour
         }
         rb.MoveRotation(m_Rotation);
 
-        if (Input.GetKey(KeyCode.Space) && grounded)
+        if (Input.GetButton("Jump") && grounded)
         {
             Debug.Log("jump");
             //rb.AddForce(0, 100, 0);
@@ -85,6 +93,12 @@ public class PlayerController : MonoBehaviour
                 count--;
             }
         }
+
+        if (Input.GetButtonDown("Push"))
+            pushing = true;
+        if (Input.GetButtonUp("Push"))
+            pushing = false;
+
     }
 
     void OnTriggerStay(Collider col)
@@ -104,5 +118,46 @@ public class PlayerController : MonoBehaviour
             Debug.Log("grounded");
             grounded = true;
         }
+
+        // push on command
+        if (pushing && (col.collider.tag == "Movable") )
+            col.gameObject.GetComponent<Rigidbody>().isKinematic = false;
+
+        if (!pushing && (col.collider.tag == "Movable") )
+            col.gameObject.GetComponent<Rigidbody>().isKinematic = true;
     }
+
+    void OnCollisionStay(Collision col)
+    {
+        if (col.collider.tag == "Movable")
+        {
+            if (Input.GetButtonDown("Push"))
+            {
+                pushing = true;
+                col.gameObject.GetComponent<Rigidbody>().isKinematic = false;
+            }
+            if (Input.GetButtonUp("Push"))
+            {
+                pushing = false;
+                col.gameObject.GetComponent<Rigidbody>().isKinematic = true;
+            }
+
+            if (pushing)
+                col.gameObject.GetComponent<Rigidbody>().AddForce(transform.forward * pushForce);
+        }   
+    }
+
+    void OnCollisionExit(Collision col)
+    {
+        if (col.collider.tag == "Movable")
+        {
+            // stop any residual force that might cause object move
+            col.gameObject.GetComponent<Rigidbody>().Sleep();
+
+            // allow monster to move around objects
+            col.gameObject.GetComponent<Rigidbody>().isKinematic = false;
+        }
+        
+    }
+    
 }

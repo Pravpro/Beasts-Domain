@@ -18,7 +18,7 @@ public class ThrowRock : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.V) )
+        if (Input.GetButtonDown("Throw") )
         {
             Debug.Log("throwing the rock");
             GameObject m_rock = Instantiate(throwObject, 

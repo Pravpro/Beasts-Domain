@@ -8,6 +8,7 @@ TagManager:
   - Monster
   - Ground
   - Trigger
+  - Movable
   layers:
   - Default
   - TransparentFX
