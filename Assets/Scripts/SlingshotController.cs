@@ -6,7 +6,6 @@ public class SlingshotController : MonoBehaviour
 {
     public GameObject throwObject, player;
     public LaunchArcMesh launchArc;
-    public int angleAdd;
     GameObject arc = null;
 
 

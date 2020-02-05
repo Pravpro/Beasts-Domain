@@ -46,7 +46,7 @@ public class LaunchArcMesh : MonoBehaviour
         {
             if (angle < 90)
             {
-                velocity += 0.5f;
+                velocity += 0.2f;
                 MakeArcMesh(CalculateArcArray());
             }
         }
@@ -54,7 +54,7 @@ public class LaunchArcMesh : MonoBehaviour
         {
             if (angle > 10)
             {
-                velocity -= 0.5f;
+                velocity -= 0.2f;
                 MakeArcMesh(CalculateArcArray());
             }
         }
