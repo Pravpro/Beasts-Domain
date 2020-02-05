@@ -39,7 +39,7 @@ public class AIController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (hp <= 0) 
+        if (hp <= 0 || playerScript.hp <= 0) 
         {
             return;
         }
