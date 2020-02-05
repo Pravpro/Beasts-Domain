@@ -1287,7 +1287,7 @@ PrefabInstance:
         type: 3}
       propertyPath: launchArc
       value: 
-      objectReference: {fileID: 1078298360161562592, guid: f71b3b8d1a50f2f4c8fe83cf41d59966,
+      objectReference: {fileID: 1078298360161562596, guid: f71b3b8d1a50f2f4c8fe83cf41d59966,
         type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 35b58b46bca88334daef10b3a5c81c42, type: 3}
