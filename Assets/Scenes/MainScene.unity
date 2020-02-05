@@ -1826,6 +1826,11 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 656689781930056799, guid: 35b58b46bca88334daef10b3a5c81c42,
+        type: 3}
+      propertyPath: m_Name
+      value: slingshot
+      objectReference: {fileID: 0}
     - target: {fileID: 6863263593777762232, guid: 35b58b46bca88334daef10b3a5c81c42,
         type: 3}
       propertyPath: m_Enabled
@@ -1901,5 +1906,36 @@ PrefabInstance:
       propertyPath: runSpeed
       value: 0.1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 9206296177749392549, guid: 35b58b46bca88334daef10b3a5c81c42,
+        type: 3}
+      propertyPath: launchArc
+      value: 
+      objectReference: {fileID: 1078298360161562596, guid: f71b3b8d1a50f2f4c8fe83cf41d59966,
+        type: 3}
+    m_RemovedComponents:
+    - {fileID: 9206296177749392549, guid: 35b58b46bca88334daef10b3a5c81c42, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 35b58b46bca88334daef10b3a5c81c42, type: 3}
+--- !u!1 &9206296177713215369 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 656689781930056799, guid: 35b58b46bca88334daef10b3a5c81c42,
+    type: 3}
+  m_PrefabInstance: {fileID: 9206296177713215368}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &9206296177713215370
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9206296177713215369}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a6d3faaa3806ece4ba37f0f2e2a41be8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  throwObject: {fileID: 7490987963249429685, guid: dbf27584ebd7f48e28c486b76a3edea5,
+    type: 3}
+  player: {fileID: 355292361}
+  launchArc: {fileID: 1078298360161562596, guid: f71b3b8d1a50f2f4c8fe83cf41d59966,
+    type: 3}
+  angleAdd: 0
