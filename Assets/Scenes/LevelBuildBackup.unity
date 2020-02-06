@@ -4512,6 +4512,41 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e903f3fbcc0942742af9339ccc1e4475, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1568476999 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 100000, guid: a3446ec93a9109a4f87bbf19ca979d0c,
+    type: 3}
+  m_PrefabInstance: {fileID: 2025746649}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &1568477003
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1568476999}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 0.97, z: 0.98}
+  m_Center: {x: -0.49942374, y: 0.5112521, z: 0.46558294}
+--- !u!54 &1568477004
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1568476999}
+  serializedVersion: 2
+  m_Mass: 6
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &1573412843 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100000, guid: 7f4f7d31b4a52934bad10741a0a1f0b9,
@@ -5244,9 +5279,13 @@ PrefabInstance:
       propertyPath: m_Name
       value: Rock_Block_1x1x1
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: a3446ec93a9109a4f87bbf19ca979d0c, type: 3}
+      propertyPath: m_TagString
+      value: Movable
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: a3446ec93a9109a4f87bbf19ca979d0c, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -11.945209
+      value: -12.43
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: a3446ec93a9109a4f87bbf19ca979d0c, type: 3}
       propertyPath: m_LocalPosition.y
@@ -5254,23 +5293,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: a3446ec93a9109a4f87bbf19ca979d0c, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 19.14
-      objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: a3446ec93a9109a4f87bbf19ca979d0c, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0.7071068
-      objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: a3446ec93a9109a4f87bbf19ca979d0c, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: a3446ec93a9109a4f87bbf19ca979d0c, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: a3446ec93a9109a4f87bbf19ca979d0c, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.7071068
+      value: 16.06
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: a3446ec93a9109a4f87bbf19ca979d0c, type: 3}
       propertyPath: m_RootOrder
@@ -5299,6 +5322,18 @@ PrefabInstance:
     - target: {fileID: 400000, guid: a3446ec93a9109a4f87bbf19ca979d0c, type: 3}
       propertyPath: m_LocalScale.z
       value: 3.2173038
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: a3446ec93a9109a4f87bbf19ca979d0c, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: a3446ec93a9109a4f87bbf19ca979d0c, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: a3446ec93a9109a4f87bbf19ca979d0c, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a3446ec93a9109a4f87bbf19ca979d0c, type: 3}
@@ -5736,6 +5771,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: log3,0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1936575209353555579, guid: b17014ee3401bde458ec16e16c7bdf74,
+        type: 3}
+      propertyPath: m_TagString
+      value: Movable
       objectReference: {fileID: 0}
     - target: {fileID: 3223241686780894312, guid: b17014ee3401bde458ec16e16c7bdf74,
         type: 3}
