@@ -60,7 +60,7 @@ public class TriggerController : MonoBehaviour
 
     void OnTriggerEnter(Collider col)
     {
-        if (col.name == "flyingRock" && !this.triggered)
+        if (col.tag == "Throwable" && !this.triggered)
         {
             this.trigger();
         }

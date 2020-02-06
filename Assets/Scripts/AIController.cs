@@ -83,7 +83,7 @@ public class AIController : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        if (other.name == "flyingRock")
+        if (other.tag == "Throwable")
         {
             Vector3 targetedPos = other.gameObject.transform.position;
             m_targetedDir = targetedPos - transform.position;
