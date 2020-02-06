@@ -50,11 +50,11 @@ public class TriggerController : MonoBehaviour
 
     void modifySize(float coeff)
     {
-        Vector3 pos = transform.position;
-        pos.y *= coeff;
-        transform.position = pos;
+        // Vector3 pos = transform.position;
+        // pos.y *= coeff;
+        // transform.position = pos;
         Vector3 scale = transform.localScale;
-        scale.y = pos.y * 2;
+        scale.y *= coeff;
         transform.localScale = scale;
     }
 
