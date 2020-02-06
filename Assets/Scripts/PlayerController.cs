@@ -6,7 +6,6 @@ public class PlayerController : MonoBehaviour
 {
     // Create variable for movement speed
     public float walkSpeed, runSpeed, jumpSpeed, turnSpeed, pushForce;
-    public GameObject collectible;
     public Vector3 jump;
     public int hp;
 
