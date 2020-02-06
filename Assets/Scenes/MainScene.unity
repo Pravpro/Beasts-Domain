@@ -1148,7 +1148,7 @@ MonoBehaviour:
   player: {fileID: 355292361}
   turningSpeed: 30
   movingSpeed: 2
-  hp: 2
+  hp: 3
   playerInSight: 0
 --- !u!54 &1298055602
 Rigidbody:
