@@ -5,9 +5,13 @@ using UnityEngine;
 public class TreeController : MonoBehaviour
 {
     // Start is called before the first frame update
+    public GameObject log;
+    private Mesh mesh;
+    private Bounds bounds;
     void Start()
     {
-        
+        mesh = gameObject.GetComponent<MeshFilter>().mesh;
+        bounds = mesh.bounds;
     }
 
     // Update is called once per frame
@@ -20,7 +24,8 @@ public class TreeController : MonoBehaviour
     {
         if (other.tag == "Monster")
         {
-            //Instantiate(log, new Vector3(transform.position.x, 0.5f, transform.position.z), transform.rotation);
+            Debug.Log(bounds.max.y);
+            Instantiate(log, new Vector3(transform.position.x, bounds.max.y, transform.position.z), transform.rotation);
             Destroy(gameObject);
         }
     }

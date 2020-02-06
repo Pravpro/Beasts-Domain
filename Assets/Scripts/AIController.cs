@@ -26,6 +26,7 @@ public class AIController : MonoBehaviour
 
     void Start()
     {
+        rb = gameObject.GetComponent<Rigidbody>();
         m_targetedDir = transform.forward;
         player = GameObject.FindGameObjectWithTag("Player");
         playerScript = player.GetComponent<PlayerController>();
@@ -41,6 +42,7 @@ public class AIController : MonoBehaviour
     {
         if (hp <= 0 || playerScript.hp <= 0) 
         {
+            rb.constraints = RigidbodyConstraints.FreezeAll;
             return;
         }
         // 1. rotation
