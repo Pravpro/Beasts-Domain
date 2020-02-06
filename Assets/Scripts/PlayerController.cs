@@ -85,14 +85,14 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.C))
-        {
-            if (count > 0) 
-            {
-                Instantiate(collectible, new Vector3(transform.position.x, 0.5f, transform.position.z), transform.rotation);
-                count--;
-            }
-        }
+        // if (Input.GetKeyDown(KeyCode.C))
+        // {
+        //     if (count > 0) 
+        //     {
+        //         Instantiate(collectible, new Vector3(transform.position.x, 0.5f, transform.position.z), transform.rotation);
+        //         count--;
+        //     }
+        // }
 
         if (Input.GetButtonDown("Push"))
             pushing = true;
