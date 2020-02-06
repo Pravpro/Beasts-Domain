@@ -16,6 +16,8 @@ public class CameraController : MonoBehaviour
 
     private Vector3 m_rotation;
 
+    private bool m_throwing = false;
+
 
     // Start is called before the first frame update
     void Start()
@@ -24,9 +26,13 @@ public class CameraController : MonoBehaviour
         m_origOffset = offset;
     }
 
-    void FixedUpdate()
+    void Update()
     {
+        if (Input.GetButtonDown("Throw") )
+            m_throwing = true;
 
+        if (Input.GetButtonUp("Throw") )
+            m_throwing = false;
     }
 
     void LateUpdate()
@@ -62,7 +68,7 @@ public class CameraController : MonoBehaviour
     void UpdateCameraRotation()
     {
         float horizontal = Input.GetAxis("HorizontalTurn"); 
-        float vertical   = Input.GetAxis("VerticalTurn");
+        float vertical   = (m_throwing) ? 0.0f : Input.GetAxis("VerticalTurn");
         Vector3 projected = Vector3.ProjectOnPlane(transform.forward, Vector3.up);
 
         float angle = Mathf.Atan(-transform.forward.y / projected.magnitude);
@@ -97,7 +103,7 @@ public class CameraController : MonoBehaviour
         else 
         {
             // if rotation exceeds the view range, do not rotate, only follow the player positionzw
-            transform.position = Vector3.Slerp(transform.position, player.transform.position + offset, smoothTuring);
+            transform.position = player.transform.position + offset;
             transform.LookAt(player.transform.position);  
         }  
     }

@@ -12,7 +12,7 @@ public class SlingshotController : MonoBehaviour
     private void Update()
     {
         // Activate slingshot
-        if (Input.GetKeyDown(KeyCode.V))
+        if (Input.GetButtonDown("Throw"))
         {
             // Create the Launch Arc
             arc = Instantiate(launchArc.gameObject,
@@ -27,7 +27,7 @@ public class SlingshotController : MonoBehaviour
         }
 
         // Release Slinghot
-        if (Input.GetKeyUp(KeyCode.V))
+        if (Input.GetButtonUp("Throw"))
         {
             // Create the throwable object
             GameObject m_rock = Instantiate(throwObject,
