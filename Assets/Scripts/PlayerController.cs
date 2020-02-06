@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
@@ -29,6 +30,7 @@ public class PlayerController : MonoBehaviour
     {
         if (hp <= 0)
         {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name); // "TitleScreen"
             //Debug.Log("Player hp below 0");
             return;
         }
