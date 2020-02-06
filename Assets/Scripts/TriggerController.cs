@@ -7,7 +7,7 @@ public class TriggerController : MonoBehaviour
     public bool triggered = false;
     public int resetTime = 500;
     private int resetTimer = -1;
-    public float triggerCoeff = 1.5f;
+    public float triggerCoeff = 3f;
     private AIController script;
     private GameObject monster;
     // Start is called before the first frame update
