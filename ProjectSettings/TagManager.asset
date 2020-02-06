@@ -9,6 +9,7 @@ TagManager:
   - Ground
   - Trigger
   - Movable
+  - Throwable
   layers:
   - Default
   - TransparentFX
