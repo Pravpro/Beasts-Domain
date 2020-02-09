@@ -37,8 +37,10 @@ public class SlingshotController : MonoBehaviour
 
             // Add the launch arc forces to the throwable
             LaunchArcMesh arcScript = arc.GetComponent<LaunchArcMesh>();
-            m_rb.AddForce(Quaternion.AngleAxis(arcScript.angle, arc.transform.right) * arc.transform.up * arcScript.velocity, ForceMode.Impulse);
-            
+            //m_rb.AddForce(Quaternion.AngleAxis(arcScript.angle, arc.transform.right) * arc.transform.up * arcScript.velocity, ForceMode.Impulse);
+
+            m_rb.AddForce(player.transform.forward * arcScript.velocity * 3, ForceMode.Impulse);
+
             // Destroy Arc when slingsot launched
             Destroy(arc);
         }

@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class ThrowableController : MonoBehaviour
 {
+    public int destroyDelay = 5;
     // Start is called before the first frame update
     void Start()
     {
@@ -12,12 +13,20 @@ public class ThrowableController : MonoBehaviour
         
     }
 
-    void OnTriggerEnter(Collider other)
+    void OnCollisionEnter(Collision col)
     {
-        if (other.name != "Player" && other.name != "MonsterViewArea")
+        if (col.collider.name != "Player" && col.collider.name != "MonsterViewArea")
         {
-            Debug.Log("collision detected, delete the object: " + other.name);
-            Destroy(gameObject);
+            Debug.Log("collision detected with: " + col.collider.name + "... will destroy rock in 5 seconds");
+            StartCoroutine(DestroyThrowable());
         }
+    }
+
+    // Called to destroy rock
+    IEnumerator DestroyThrowable()
+    {
+        //Makes function wait for 5 seconds before resuming
+        yield return new WaitForSeconds(destroyDelay);
+        Destroy(gameObject);
     }
 }

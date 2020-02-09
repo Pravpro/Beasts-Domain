@@ -6,7 +6,7 @@ public class CameraController : MonoBehaviour
 {
     public GameObject player;
     public float rotationSpeed = 5.0f;
-    public float smoothTuring = 0.5f;
+    public float smoothTuring = 20f;
 
     // min Rnage, max Range
     public Vector2 fixedRange_y = new Vector2(10.0f, 55.0f);
@@ -35,6 +35,7 @@ public class CameraController : MonoBehaviour
             m_throwing = false;
     }
 
+    // LateUpdate is called once per frame after everything has ben processed in Update
     void LateUpdate()
     {
         UpdateCameraRotation();
@@ -64,7 +65,6 @@ public class CameraController : MonoBehaviour
         offset = rotAngle_x * offset;
     }
 
-    // LateUpdate is called once per frame after everything has ben processed in Update
     void UpdateCameraRotation()
     {
         float horizontal = Input.GetAxis("HorizontalTurn"); 

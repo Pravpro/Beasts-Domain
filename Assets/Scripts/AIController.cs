@@ -83,30 +83,24 @@ public class AIController : MonoBehaviour
         //Debug.Log(angle);
     }
 
-    void OnTriggerEnter(Collider other)
-    {
-        if (other.tag == "Throwable")
+    //void OnCollisionEnter(Collider other)
+    //{
+        
+    //}
+
+    void OnCollisionEnter(Collision col)
+    {   
+        
+        if (col.collider.tag == "Throwable")
         {
-            Vector3 targetedPos = other.gameObject.transform.position;
+            Vector3 targetedPos = col.collider.gameObject.transform.position;
             m_targetedDir = targetedPos - transform.position;
             // ignore the (up) y direction
             m_targetedDir.y = 0;
 
-            Debug.Log("Monster: the object " + other.name + " is in the target." + other.name + " position: " + targetedPos);
+            Debug.Log("Monster: the object " + col.collider.name + " is in the target." + col.collider.name + " position: " + targetedPos);
         }
-        // if (other.tag == "Player")
-        // {
-        //     playerScript.hp -= 1;
-        //     if (playerScript.hp <= 0)
-        //     {
-        //         Debug.Log("Player Dies");
-        //     }
-        // }
-    }
-
-    void OnCollisionEnter(Collision col)
-    {
-        if (col.collider.tag == "Player")
+        else if (col.collider.tag == "Player")
         {
             if (playerScript.hp > 0)
             {
