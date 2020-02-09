@@ -22,6 +22,7 @@ public class CameraController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        // distance from player to the camera
         offset       = transform.position - player.transform.position;
         m_origOffset = offset;
     }
@@ -68,34 +69,47 @@ public class CameraController : MonoBehaviour
     void UpdateCameraRotation()
     {
         float horizontal = Input.GetAxis("HorizontalTurn"); 
-        float vertical   = (m_throwing) ? 0.0f : Input.GetAxis("VerticalTurn");
-        Vector3 projected = Vector3.ProjectOnPlane(transform.forward, Vector3.up);
+        float vertical   = (m_throwing) ? 0.0f : -Input.GetAxis("VerticalTurn");
 
+        // to calculate the vertical angle between player and camera, project the camera forward to the player.forwward 
+        // we currently assume player.forward = Vector3.forward
+        Vector3 projected = Vector3.ProjectOnPlane(transform.forward, Vector3.up /* normal vector */);
+
+        // calculate the angle for vertical axis
         float angle = Mathf.Atan(-transform.forward.y / projected.magnitude);
 
-        // Debug.Log(angle + ", min: " + -10f * Mathf.Deg2Rad + ", max: " + 75f * Mathf.Deg2Rad);
-
+        // fix the angle for vertical axis -- upper range
         if (angle <= fixedRange_y[0] * Mathf.Deg2Rad)
             vertical = Mathf.Clamp(vertical, -0.9f, 0.0f);
 
+        // fix the angle for vertical axis -- lower range
         if (angle >= fixedRange_y[1] * Mathf.Deg2Rad)
             vertical = Mathf.Clamp(vertical, 0.0f, 0.9f);
 
-        // Debug.Log(vertical); 
         horizontal *= rotationSpeed;
         vertical   *= rotationSpeed;
 
         Quaternion rotAngle_x = Quaternion.AngleAxis(horizontal, Vector3.up);
+
+        // forward axis -- always facing player
+        // up axis      -- currently assume Vector3.up
+        // known forwad axis, up axis use right hand rule to compute right axis for vertical rotation using cross product
         Vector3         right = Vector3.Cross(transform.forward, Vector3.up);
         Quaternion rotAngle_y = Quaternion.AngleAxis(  vertical, right);
 
+        // combine horizontal and vertical rotation
         Quaternion rotAngle = rotAngle_y * rotAngle_x;
     
+        // spherical ratation for camera centered at player 
+        // offset is the fixed distance from player to camera
         Vector3 m_newPos = player.transform.position + rotAngle * offset;
 
         if (rotAngle != Quaternion.identity) 
         {         
+            // smooth interpolation between current position and new position
             transform.position = Vector3.Slerp(transform.position, m_newPos, smoothTuring);
+
+            // always look at player
             transform.LookAt(player.transform.position);  
 
             offset = rotAngle * offset;
