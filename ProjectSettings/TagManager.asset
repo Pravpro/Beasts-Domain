@@ -7,6 +7,9 @@ TagManager:
   - Collectible
   - Monster
   - Ground
+  - Trigger
+  - Movable
+  - Throwable
   layers:
   - Default
   - TransparentFX

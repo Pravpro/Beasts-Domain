@@ -4,11 +4,6 @@ using UnityEngine;
 
 public class ThrowableController : MonoBehaviour
 {
-    public float force = 500.0f;
-    public float up_velocity = 0.5f;
-
-    
-
     // Start is called before the first frame update
     void Start()
     {
@@ -19,7 +14,7 @@ public class ThrowableController : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        if (other.name != "Player")
+        if (other.name != "Player" && other.name != "MonsterViewArea")
         {
             Debug.Log("collision detected, delete the object: " + other.name);
             Destroy(gameObject);
