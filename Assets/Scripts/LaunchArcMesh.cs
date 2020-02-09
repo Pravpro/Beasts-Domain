@@ -42,7 +42,9 @@ public class LaunchArcMesh : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (Input.GetKey(KeyCode.U))
+
+        // further
+        if (Input.GetAxis("VerticalTurn") > 0.0f)
         {
             if (velocity < 9)
             {
@@ -50,7 +52,8 @@ public class LaunchArcMesh : MonoBehaviour
                 MakeArcMesh(CalculateArcArray());
             }
         }
-        if (Input.GetKey(KeyCode.I))
+        // get closer
+        if (Input.GetAxis("VerticalTurn") < 0.0f)
         {
             if (velocity > 4)
             {

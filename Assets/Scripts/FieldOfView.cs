@@ -32,7 +32,7 @@ public class FieldOfView : MonoBehaviour
     void ComputeFOV()
     {
         origin = obj.transform.position;
-        origin.y = 0.1f;
+        origin.y -= 1f;
         int rayCount = 60;
         float angle = GetAngleFromVector(obj.transform.forward) + fov / 2f;
         float angleIncrement = fov / rayCount;

@@ -1,12 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
     // Create variable for movement speed
     public float walkSpeed, runSpeed, jumpSpeed, turnSpeed, pushForce;
-    public GameObject collectible;
     public Vector3 jump;
     public int hp;
 
@@ -30,6 +30,7 @@ public class PlayerController : MonoBehaviour
     {
         if (hp <= 0)
         {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name); // "TitleScreen"
             //Debug.Log("Player hp below 0");
             return;
         }
