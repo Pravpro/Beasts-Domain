@@ -35,33 +35,33 @@ public class LaunchArcMesh : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        velocity = 6;
-        angle = 45;
+        velocity = 20;
+        angle = 30;
         MakeArcMesh(CalculateArcArray());
     }
 
     void FixedUpdate()
     {
 
-        // further
+        // Aim according to angle controlled by right stick or arrow keys
         if (Input.GetAxis("VerticalTurn") > 0.0f)
         {
-            if (velocity < 9)
+            if (angle < 80)
             {
-                velocity += 0.15f;
+                angle += Input.GetAxis("VerticalTurn");
                 MakeArcMesh(CalculateArcArray());
             }
         }
         // get closer
         if (Input.GetAxis("VerticalTurn") < 0.0f)
         {
-            if (velocity > 4)
+            if (angle > 10)
             {
-                velocity -= 0.15f;
+                angle += Input.GetAxis("VerticalTurn");
                 MakeArcMesh(CalculateArcArray());
             }
         }
-        
+
     }
 
     // Populate LineRenderer with appropriate settings
