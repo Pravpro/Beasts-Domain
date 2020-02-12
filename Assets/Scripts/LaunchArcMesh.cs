@@ -36,7 +36,7 @@ public class LaunchArcMesh : MonoBehaviour
     void Start()
     {
         velocity = 20;
-        angle = 30;
+        angle = 20;
         MakeArcMesh(CalculateArcArray());
     }
 
@@ -55,7 +55,7 @@ public class LaunchArcMesh : MonoBehaviour
         // get closer
         if (Input.GetAxis("VerticalTurn") < 0.0f)
         {
-            if (angle > 10)
+            if (angle > 5)
             {
                 angle += Input.GetAxis("VerticalTurn");
                 MakeArcMesh(CalculateArcArray());
