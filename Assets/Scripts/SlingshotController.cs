@@ -6,20 +6,32 @@ public class SlingshotController : MonoBehaviour
 {
     public GameObject throwObject, player;
     public LaunchArcMesh launchArc;
-    GameObject arc = null;
 
+    GameObject arc = null;
+    Animator playerAnimator;
+
+
+    private void Start()
+    {
+        playerAnimator = player.GetComponent<Animator>();
+    }
 
     private void Update()
     {
         // Activate slingshot
         if (Input.GetButtonDown("Throw"))
         {
+            // Start aiming animation
+            playerAnimator.SetBool("IsAiming", true);
+            Debug.Log("Aiming");
+
             // Create the Launch Arc
             arc = Instantiate(launchArc.gameObject,
                               transform.position,
                               player.transform.rotation) as GameObject;
         }
-        // Make arc follow slingshot
+        
+        // Make arc follow with slingshot when active
         if (arc != null)
         {
             arc.transform.position = transform.position;
@@ -29,6 +41,9 @@ public class SlingshotController : MonoBehaviour
         // Release Slinghot
         if (Input.GetButtonUp("Throw"))
         {
+            // Stop Aiming animaton
+            playerAnimator.SetBool("IsAiming", false);
+
             // Create the throwable object
             GameObject m_rock = Instantiate(throwObject,
                                             transform.position,

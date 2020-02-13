@@ -16,11 +16,13 @@ public class PlayerController : MonoBehaviour
     private bool grounded = true;
     Vector3 m_Movement;
     Quaternion m_Rotation, lastRotation = Quaternion.identity;
+    Animator m_Animator;
 
     private bool pushing = false;
 
     private void Awake()
     {
+        m_Animator = GetComponent<Animator>();
         rb = gameObject.GetComponent<Rigidbody>();
         jump = new Vector3(0, 1.0f, 0);
         hp = 2;
@@ -41,14 +43,19 @@ public class PlayerController : MonoBehaviour
         m_Movement.Set(horizontal, 0f, vertical);
         m_Movement.Normalize();
 
-        // get the movement to be respective to camera
+        // Get the movement to be respective to camera
         m_Movement = Camera.main.transform.TransformDirection(m_Movement);
         m_Movement.y = 0.0f;
 
-
+        // Set IsWalking bool according to movement
+        bool hasHorizontalInput = !Mathf.Approximately(horizontal, 0f);
+        bool hasVerticalInput = !Mathf.Approximately(vertical, 0f);
+        bool isWalking = hasHorizontalInput || hasVerticalInput;
+        
 
         // Rotate the player according to desired rotation
         Vector3 desiredForward = Vector3.RotateTowards(transform.forward, m_Movement, turnSpeed * Time.deltaTime, 0f);
+        
         // Prevent Player from turning due to collsions
         if (m_Movement.magnitude == 0)
         {
@@ -63,11 +70,14 @@ public class PlayerController : MonoBehaviour
         // Code for Running
         if (Input.GetButton("Run") )
         {
+            m_Animator.SetBool("IsRunning", true);
             rb.MovePosition(rb.position + m_Movement * runSpeed);
         }
         // Else walk
         else
         {
+            m_Animator.SetBool("IsRunning", false);
+            m_Animator.SetBool("IsWalking", true);
             rb.MovePosition(rb.position + m_Movement * walkSpeed);
         }
         rb.MoveRotation(m_Rotation);
