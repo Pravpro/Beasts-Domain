@@ -13,7 +13,6 @@ public class AIController : MonoBehaviour
     public bool playerInSight = false;
     // private variables
     private Vector3 m_targetedDir;
-    // Start is called before the first frame update
     private Rigidbody rb;
     private Vector3 playerPos, playerDir;
 
