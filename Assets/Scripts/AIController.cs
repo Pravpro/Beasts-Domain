@@ -7,19 +7,14 @@ public class AIController : MonoBehaviour
 {
     // public variables
     public GameObject player;
-    // public float viewAngle = 45.0f;
-    // public float viewRadius = 10.0f;
     public float turningSpeed = 20.0f;
     public float movingSpeed  = 1.0f;
     public int hp = 2;
     public bool playerInSight = false;
     // private variables
-    private bool m_playerTargeted = false;
-    private Vector3 m_movement;
     private Vector3 m_targetedDir;
     // Start is called before the first frame update
     private Rigidbody rb;
-    private Quaternion m_Rotation = Quaternion.identity;
     private Vector3 playerPos, playerDir;
 
     private PlayerController playerScript;
@@ -32,17 +27,11 @@ public class AIController : MonoBehaviour
         playerScript = player.GetComponent<PlayerController>();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
     private void FixedUpdate()
     {
-        if (hp <= 0 || playerScript.hp <= 0) 
+        if (hp <= 0 || playerScript.hp <= 0)
         {
-            rb.constraints = RigidbodyConstraints.FreezeAll;
+            rb.isKinematic = false;
             return;
         }
         // 1. rotation
@@ -62,8 +51,6 @@ public class AIController : MonoBehaviour
 
         // 2. move to the target position only if the player is in the viewArea.
         //    boss ignores rocks when locked on to player
-        
-        // Debug.Log(playerInSight);
         if (playerInSight)
         {
             playerPos = player.transform.position;
@@ -71,22 +58,15 @@ public class AIController : MonoBehaviour
             Vector3 playerPosCopy = new Vector3(playerPos.x, 0, playerPos.z);
             Vector3 location = transform.position;
             playerDir = playerPosCopy - location;
-            playerDir.y = 0;
+            playerDir.y = transform.forward.y;
             playerDir.Normalize();
-            //Debug.Log("Im here");
             m_targetedDir = transform.forward;
             qRotate = Quaternion.LookRotation(playerDir);
             transform.rotation = Quaternion.RotateTowards(transform.rotation, qRotate, Time.deltaTime * turningSpeed);
             //transform.position += movingSpeed * transform.forward;
             transform.position = Vector3.MoveTowards(transform.position, playerPosCopy, Time.deltaTime * movingSpeed);
         }
-        //Debug.Log(angle);
     }
-
-    //void OnCollisionEnter(Collider other)
-    //{
-        
-    //}
 
     void OnCollisionEnter(Collision col)
     {   
