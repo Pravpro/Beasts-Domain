@@ -6,7 +6,8 @@ public class FieldOfView : MonoBehaviour
 {
     public float fov;
     public float viewDistance;
-    public GameObject obj;
+    public int rayCount;
+    public GameObject monster;
 
     private Mesh mesh;
     private Vector3 origin;
@@ -16,8 +17,8 @@ public class FieldOfView : MonoBehaviour
     {
         mesh = new Mesh();
         GetComponent<MeshFilter>().mesh = mesh;
-        obj = GameObject.FindGameObjectWithTag("Monster");
-        script = obj.GetComponent<AIController>();
+        monster = GameObject.FindGameObjectWithTag("Monster");
+        script = monster.GetComponent<AIController>();
         ComputeFOV();
         //GetComponent<MeshCollider>().sharedMesh = mesh;
         //gameObject.AddComponent<MeshCollider>();
@@ -31,10 +32,9 @@ public class FieldOfView : MonoBehaviour
 
     void ComputeFOV()
     {
-        origin = obj.transform.position;
+        origin = monster.transform.position;
         origin.y -= 1f;
-        int rayCount = 60;
-        float angle = GetAngleFromVector(obj.transform.forward) + fov / 2f;
+        float angle = GetAngleFromVector(monster.transform.forward) + fov / 2f;
         float angleIncrement = fov / rayCount;
 
         Vector3[] vertices = new Vector3[rayCount + 2];
