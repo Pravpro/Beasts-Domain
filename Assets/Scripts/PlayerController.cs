@@ -7,20 +7,18 @@ public class PlayerController : MonoBehaviour
 {
     // Create variable for movement speed
     public float walkSpeed, runSpeed, jumpSpeed, turnSpeed, pushForce;
-    public Vector3 jump;
     public int hp;
 
     private int count = 1;
     // private List<Collider> colliders = new List<Collider>();
     private Rigidbody rb;
     private bool grounded = true;
-    Vector3 m_Movement;
+    Vector3 m_Movement, jump;
     Quaternion m_Rotation, lastRotation = Quaternion.identity;
     Animator m_Animator;
-
     private bool pushing = false;
 
-    private void Awake()
+    private void Start()
     {
         m_Animator = GetComponent<Animator>();
         rb = gameObject.GetComponent<Rigidbody>();
@@ -33,13 +31,12 @@ public class PlayerController : MonoBehaviour
         if (hp <= 0)
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().name); // "TitleScreen"
-            //Debug.Log("Player hp below 0");
             return;
         }
+
         // Movement according to WASD
         float horizontal = Input.GetAxis("Horizontal");
         float vertical = Input.GetAxis("Vertical");
-
         m_Movement.Set(horizontal, 0f, vertical);
         m_Movement.Normalize();
 
@@ -47,14 +44,11 @@ public class PlayerController : MonoBehaviour
         m_Movement = Camera.main.transform.TransformDirection(m_Movement);
         m_Movement.y = 0.0f;
 
-        
-
-
         // Set IsWalking bool according to movement
         bool hasHorizontalInput = !Mathf.Approximately(horizontal, 0f);
         bool hasVerticalInput = !Mathf.Approximately(vertical, 0f);
-        bool isWalking = hasHorizontalInput || hasVerticalInput;
-        m_Animator.SetBool("IsWalking", isWalking);
+        bool isMoving = hasHorizontalInput || hasVerticalInput;
+        m_Animator.SetBool("IsWalking", isMoving);
 
         // Rotate the player according to desired rotation
         Vector3 desiredForward = Vector3.RotateTowards(transform.forward, m_Movement, turnSpeed * Time.deltaTime, 0f);
@@ -71,7 +65,7 @@ public class PlayerController : MonoBehaviour
         }
 
         // Code for Running and walking
-        if (isWalking)
+        if (isMoving)
         {
             if (Input.GetButton("Run"))
             {
@@ -81,18 +75,14 @@ public class PlayerController : MonoBehaviour
             // Else walk
             else
             {
-                Debug.Log("Is Walking");
                 m_Animator.SetBool("IsRunning", false);
                 rb.MovePosition(rb.position + m_Movement * walkSpeed);
             }
         }
-
         rb.MoveRotation(m_Rotation);
 
-        if (Input.GetButton("Jump") && grounded)
+        if (Input.GetButtonDown("Jump") && grounded)
         {
-            Debug.Log("jump");
-            //rb.AddForce(0, 100, 0);
             rb.velocity += jump * jumpSpeed;
             grounded = false;
         }
@@ -100,68 +90,38 @@ public class PlayerController : MonoBehaviour
         
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        // if (Input.GetKeyDown(KeyCode.C))
-        // {
-        //     if (count > 0) 
-        //     {
-        //         Instantiate(collectible, new Vector3(transform.position.x, 0.5f, transform.position.z), transform.rotation);
-        //         count--;
-        //     }
-        // }
-
-        if (Input.GetButtonDown("Push"))
-            pushing = true;
-        if (Input.GetButtonUp("Push"))
-            pushing = false;
-
-    }
-
-    void OnTriggerStay(Collider col)
-    {
-        if(col.tag == "Collectible" && Input.GetKey(KeyCode.E))
-        {
-            Debug.Log("Stay collectible and E");
-            count++;
-            Destroy (col.gameObject);
-        }
-    }
 
     void OnCollisionEnter(Collision col)
     {
         if (col.collider.tag == "Ground")
         {
-            Debug.Log("grounded");
             grounded = true;
         }
 
-        // push on command
-        if (pushing && (col.collider.tag == "Movable") )
-            col.gameObject.GetComponent<Rigidbody>().isKinematic = false;
-
-        if (!pushing && (col.collider.tag == "Movable") )
-            col.gameObject.GetComponent<Rigidbody>().isKinematic = true;
+        // Avoid unwaned moving of a movable object
+        if (col.collider.tag == "Movable")
+        {
+            Rigidbody rbMovable = col.gameObject.GetComponent<Rigidbody>();
+            rbMovable.isKinematic = true;
+        }
     }
 
     void OnCollisionStay(Collision col)
     {
+        // Logic for moving objects
         if (col.collider.tag == "Movable")
         {
-            if (Input.GetButtonDown("Push"))
+            Rigidbody rbMovable = col.gameObject.GetComponent<Rigidbody>();
+            if (Input.GetButton("Push"))
             {
-                pushing = true;
-                col.gameObject.GetComponent<Rigidbody>().isKinematic = false;
+                rbMovable.isKinematic = false;
+                rbMovable.AddForce(transform.forward * pushForce);
             }
             if (Input.GetButtonUp("Push"))
             {
-                pushing = false;
-                col.gameObject.GetComponent<Rigidbody>().isKinematic = true;
+                rbMovable.isKinematic = true;
             }
-
-            if (pushing)
-                col.gameObject.GetComponent<Rigidbody>().AddForce(transform.forward * pushForce);
+                
         }   
     }
 
@@ -169,11 +129,13 @@ public class PlayerController : MonoBehaviour
     {
         if (col.collider.tag == "Movable")
         {
+            Rigidbody rbMovable = col.gameObject.GetComponent<Rigidbody>();
+            
             // stop any residual force that might cause object move
-            col.gameObject.GetComponent<Rigidbody>().Sleep();
+            rbMovable.Sleep();
 
             // allow monster to move around objects
-            col.gameObject.GetComponent<Rigidbody>().isKinematic = false;
+            rbMovable.isKinematic = false;
         }
         
     }
