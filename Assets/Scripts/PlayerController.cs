@@ -47,11 +47,14 @@ public class PlayerController : MonoBehaviour
         m_Movement = Camera.main.transform.TransformDirection(m_Movement);
         m_Movement.y = 0.0f;
 
+        
+
+
         // Set IsWalking bool according to movement
         bool hasHorizontalInput = !Mathf.Approximately(horizontal, 0f);
         bool hasVerticalInput = !Mathf.Approximately(vertical, 0f);
         bool isWalking = hasHorizontalInput || hasVerticalInput;
-        
+        m_Animator.SetBool("IsWalking", isWalking);
 
         // Rotate the player according to desired rotation
         Vector3 desiredForward = Vector3.RotateTowards(transform.forward, m_Movement, turnSpeed * Time.deltaTime, 0f);
@@ -66,20 +69,24 @@ public class PlayerController : MonoBehaviour
             m_Rotation = Quaternion.LookRotation(desiredForward);
             lastRotation = m_Rotation;
         }
-        
-        // Code for Running
-        if (Input.GetButton("Run") )
+
+        // Code for Running and walking
+        if (isWalking)
         {
-            m_Animator.SetBool("IsRunning", true);
-            rb.MovePosition(rb.position + m_Movement * runSpeed);
+            if (Input.GetButton("Run"))
+            {
+                m_Animator.SetBool("IsRunning", true);
+                rb.MovePosition(rb.position + m_Movement * runSpeed);
+            }
+            // Else walk
+            else
+            {
+                Debug.Log("Is Walking");
+                m_Animator.SetBool("IsRunning", false);
+                rb.MovePosition(rb.position + m_Movement * walkSpeed);
+            }
         }
-        // Else walk
-        else
-        {
-            m_Animator.SetBool("IsRunning", false);
-            m_Animator.SetBool("IsWalking", true);
-            rb.MovePosition(rb.position + m_Movement * walkSpeed);
-        }
+
         rb.MoveRotation(m_Rotation);
 
         if (Input.GetButton("Jump") && grounded)

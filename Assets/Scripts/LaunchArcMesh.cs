@@ -48,7 +48,7 @@ public class LaunchArcMesh : MonoBehaviour
         {
             if (angle < 80)
             {
-                angle += Input.GetAxis("VerticalTurn");
+                angle += Input.GetAxis("VerticalTurn") * 0.5f;
                 MakeArcMesh(CalculateArcArray());
             }
         }
@@ -57,7 +57,7 @@ public class LaunchArcMesh : MonoBehaviour
         {
             if (angle > 5)
             {
-                angle += Input.GetAxis("VerticalTurn");
+                angle += Input.GetAxis("VerticalTurn") * 0.5f;
                 MakeArcMesh(CalculateArcArray());
             }
         }
