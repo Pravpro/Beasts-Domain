@@ -5,9 +5,9 @@ using UnityEngine;
 public class TriggerController : MonoBehaviour
 {
     public bool triggered = false;
-    public int resetTime = 500;
-    private int resetTimer = -1;
+    public int resetTime = 10;
     public float triggerCoeff = 3f;
+
     private AIController script;
     private GameObject monster;
     // Start is called before the first frame update
@@ -17,38 +17,25 @@ public class TriggerController : MonoBehaviour
         script = monster.GetComponent<AIController>();
     }
 
-    // Update is called once per frame
-    void Update()
+    IEnumerator TimedUntrigger()
     {
-        
+        yield return new WaitForSeconds(resetTime);
+        Untrigger();
     }
 
-    void FixedUpdate()
+    void Trigger() 
     {
-        if (this.resetTimer >= 0)
-        {
-            this.resetTimer -= 1;
-        }
-        if (this.resetTimer == 0)
-        {
-            untrigger();
-        }
-    }
-
-    void trigger() 
-    {
-        this.resetTimer = resetTime;
         this.triggered = true;
-        this.modifySize(this.triggerCoeff);
+        this.ModifySize(this.triggerCoeff);
     }
 
-    void untrigger()
+    void Untrigger()
     {
         this.triggered = false;
-        this.modifySize(1/this.triggerCoeff);
+        this.ModifySize(1/this.triggerCoeff);
     }
 
-    void modifySize(float coeff)
+    void ModifySize(float coeff)
     {
         // Vector3 pos = transform.position;
         // pos.y *= coeff;
@@ -62,7 +49,8 @@ public class TriggerController : MonoBehaviour
     {
         if (col.tag == "Throwable" && !this.triggered)
         {
-            this.trigger();
+            this.Trigger();
+            StartCoroutine(TimedUntrigger());
         }
         if (col.tag == "Monster" && this.triggered)
         {
