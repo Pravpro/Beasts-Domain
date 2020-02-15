@@ -13,7 +13,7 @@ public class mainmenu : MonoBehaviour
     private Vector3 offset;
     private Vector3 startPos;
     private Transform arrowTrans;
-    private bool isStart;
+
     void Start()
     {
         Button startBtn = startButton.GetComponent<Button>();
@@ -24,34 +24,29 @@ public class mainmenu : MonoBehaviour
         offset     = quitBtn.GetComponent<Transform>().position - startBtn.GetComponent<Transform>().position ;
 
 		// startBtn.onClick.AddListener(startOnClick);
-
         // quitBtn.onClick.AddListener(quitOnClick);
-
-        isStart = true;
     }
 
     void Update()
     {
-        float vertical = -Input.GetAxis("VerticalTurn");
+        float vertical = -Input.GetAxis("Vertical");
         
         if (Input.GetButtonDown("Submit"))
         {
-            if (isStart) 
+            if (arrowTrans.position == startPos)
                 startOnClick();
             else
                 quitOnClick();
         }
+
+        // move the arrow accordingly
         if (vertical < 0.0f && arrowTrans.position == startPos)
-        {
             arrowTrans.position = startPos + offset;
-            isStart = false;
-        }
         else if (vertical > 0.0f && arrowTrans.position == startPos + offset)
-        {
-            arrowTrans.position = startPos;
-            isStart = true;
-        }        
+            arrowTrans.position = startPos;  
+
     }
+
     void startOnClick()
     {
         SceneManager.LoadScene("Scenes/LevelBuildBackup");
