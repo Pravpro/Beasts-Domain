@@ -14,17 +14,10 @@ public class TreeController : MonoBehaviour
         bounds = mesh.bounds;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     void OnTriggerEnter(Collider other)
     {
         if (other.tag == "Monster")
         {
-            Debug.Log(bounds.max.y);
             Instantiate(log, new Vector3(transform.position.x, bounds.max.y, transform.position.z), transform.rotation);
             Destroy(gameObject);
         }
