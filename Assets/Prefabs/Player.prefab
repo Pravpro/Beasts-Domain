@@ -17,6 +17,7 @@ MonoBehaviour:
   player: {fileID: 9206296177471051248}
   launchArc: {fileID: 1078298360161562596, guid: f71b3b8d1a50f2f4c8fe83cf41d59966,
     type: 3}
+  aimCam: {fileID: 0}
 --- !u!1 &9206296177471051248
 GameObject:
   m_ObjectHideFlags: 0
@@ -32,6 +33,7 @@ GameObject:
   - component: {fileID: 9206296177471051254}
   - component: {fileID: 9206296177471051255}
   - component: {fileID: 9206296177471051249}
+  - component: {fileID: 843555468}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -116,8 +118,7 @@ MonoBehaviour:
   runSpeed: 0.1
   jumpSpeed: 6
   turnSpeed: 12
-  pushForce: 1
-  jump: {x: 0, y: 0, z: 0}
+  pushForce: 10
   hp: 0
 --- !u!54 &9206296177471051254
 Rigidbody:
@@ -245,6 +246,25 @@ CapsuleCollider:
   m_Height: 0.073221646
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!95 &843555468
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9206296177471051248}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 803d58d3da97c8c44a4804e7b8374358, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1001 &8855025006904271
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -285,12 +305,12 @@ PrefabInstance:
     - target: {fileID: 6640786120457154864, guid: 2347fe245a975f84ab1fec5fe5afebd8,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.03
+      value: 0.036
       objectReference: {fileID: 0}
     - target: {fileID: 6640786120457154864, guid: 2347fe245a975f84ab1fec5fe5afebd8,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 0.003
       objectReference: {fileID: 0}
     - target: {fileID: 6640786120457154864, guid: 2347fe245a975f84ab1fec5fe5afebd8,
         type: 3}
