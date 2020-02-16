@@ -2,24 +2,27 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using Cinemachine;
 
 public class PlayerController : MonoBehaviour
 {
     // Create variable for movement speed
     public float walkSpeed, runSpeed, jumpSpeed, turnSpeed, pushForce;
     public int hp;
+    public CinemachineBrain CB;
 
     private int count = 1;
     // private List<Collider> colliders = new List<Collider>();
     private Rigidbody rb;
     private bool grounded = true;
-    Vector3 m_Movement, jump;
+    Vector3 m_Movement, jump, desiredForward, prevCamForward;
     Quaternion m_Rotation, lastRotation = Quaternion.identity;
     Animator m_Animator;
     private bool pushing = false;
 
     private void Start()
     {
+
         m_Animator = GetComponent<Animator>();
         rb = gameObject.GetComponent<Rigidbody>();
         jump = new Vector3(0, 1.0f, 0);
@@ -28,6 +31,8 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
+        
+
         if (hp <= 0)
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().name); // "TitleScreen"
@@ -38,11 +43,12 @@ public class PlayerController : MonoBehaviour
         float horizontal = Input.GetAxis("Horizontal");
         float vertical = Input.GetAxis("Vertical");
         m_Movement.Set(horizontal, 0f, vertical);
-        m_Movement.Normalize();
+        //m_Movement.Normalize();
 
         // Get the movement to be respective to camera
         m_Movement = Camera.main.transform.TransformDirection(m_Movement);
-        m_Movement.y = 0.0f;
+        m_Movement.y = 0f;
+        m_Movement.Normalize();
 
         // Set IsWalking bool according to movement
         bool hasHorizontalInput = !Mathf.Approximately(horizontal, 0f);
@@ -50,18 +56,31 @@ public class PlayerController : MonoBehaviour
         bool isMoving = hasHorizontalInput || hasVerticalInput;
         m_Animator.SetBool("IsWalking", isMoving);
 
-        // Rotate the player according to desired rotation
-        Vector3 desiredForward = Vector3.RotateTowards(transform.forward, m_Movement, turnSpeed * Time.deltaTime, 0f);
-        
-        // Prevent Player from turning due to collsions
-        if (m_Movement.magnitude == 0)
+        // Condtions for Rotating
+        if (CB.ActiveVirtualCamera.LiveChildOrSelf.Name == "CM_AimCam")
         {
-            m_Rotation = lastRotation;
+            Vector3 camforward = Camera.main.transform.forward;
+            camforward.y = 0f;
+            // Check if aim camera has rotated/moved
+            if (prevCamForward != camforward)
+            {
+                desiredForward = Vector3.RotateTowards(transform.forward, camforward, turnSpeed * Time.deltaTime, 0f);
+                m_Rotation = Quaternion.LookRotation(desiredForward);
+                lastRotation = m_Rotation;
+                prevCamForward = camforward;
+            }
+            else m_Rotation = lastRotation;
         }
         else
         {
-            m_Rotation = Quaternion.LookRotation(desiredForward);
-            lastRotation = m_Rotation;
+            // Prevent Player from turning due to collisions
+            if (m_Movement.magnitude != 0)
+            {
+                desiredForward = Vector3.RotateTowards(transform.forward, m_Movement, turnSpeed * Time.deltaTime, 0f);
+                m_Rotation = Quaternion.LookRotation(desiredForward);
+                lastRotation = m_Rotation;
+            }
+            else m_Rotation = lastRotation;
         }
 
         // Code for Running and walking

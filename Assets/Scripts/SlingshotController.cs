@@ -7,13 +7,15 @@ using Cinemachine;
 public class SlingshotController : MonoBehaviour
 {
     public GameObject throwObject, player;
+    public int throwVelocity;
     public LaunchArcMesh launchArc;
     public CinemachineBrain CB;
     public Camera aimCam;
     public Image crosshair;
 
-    GameObject arc = null;
+    //GameObject arc = null;
     Animator playerAnimator;
+    Vector3 targetVector;
 
     private void Start()
     {
@@ -23,6 +25,7 @@ public class SlingshotController : MonoBehaviour
 
     private void Update()
     {
+        // Activate crosshair for aiming
         if (CB.ActiveVirtualCamera.LiveChildOrSelf.Name == "CM_AimCam")
             crosshair.enabled = true;
         else crosshair.enabled = false;
@@ -31,31 +34,32 @@ public class SlingshotController : MonoBehaviour
         if (Input.GetButtonDown("Throw"))
         {
             playerAnimator.SetBool("IsAiming", true);
-            // Create the Launch Arc
-            arc = Instantiate(launchArc.gameObject,
-                              transform.position,
-                              player.transform.rotation) as GameObject;
+            //arc = Instantiate(launchArc.gameObject,
+            //                  transform.position,
+            //                  player.transform.rotation) as GameObject;
             
         }
         // Make arc follow slingshot
-        if (arc != null)
+        //if (arc != null)
+        //{
+            
+
+        //    //player.transform.forward = Camera.current.transform.forward;
+        //    arc.transform.position = transform.position;
+        //    arc.transform.rotation = player.transform.rotation;
+        //}
+
+        // Release Slinghot
+        if (Input.GetButtonUp("Throw"))
         {
             // Raycast from aimcam
             RaycastHit hit;
             if (Physics.Raycast(aimCam.transform.position, aimCam.transform.forward, out hit))
             {
                 //Debug.Log(hit.transform.name);
+                targetVector = hit.point - transform.position;
+                targetVector.Normalize();
             }
-
-            //player.transform.forward = Camera.current.transform.forward;
-            arc.transform.position = transform.position;
-            arc.transform.rotation = player.transform.rotation;
-        }
-
-        // Release Slinghot
-        if (Input.GetButtonUp("Throw"))
-        {
-            playerAnimator.SetBool("IsAiming", false);
 
             // Create the throwable object
             GameObject m_rock = Instantiate(throwObject,
@@ -64,11 +68,13 @@ public class SlingshotController : MonoBehaviour
             Rigidbody m_rb = m_rock.GetComponent<Rigidbody>();
 
             // Add the launch arc forces to the throwable
-            LaunchArcMesh arcScript = arc.GetComponent<LaunchArcMesh>();
-            m_rb.AddForce(Quaternion.AngleAxis(90-arcScript.angle, arc.transform.right) * arc.transform.up * arcScript.velocity, ForceMode.Impulse);
+            //LaunchArcMesh arcScript = arc.GetComponent<LaunchArcMesh>();
+            //m_rb.AddForce(Quaternion.AngleAxis(90-arcScript.angle, arc.transform.right) * arc.transform.up * arcScript.velocity, ForceMode.Impulse);
+            m_rb.AddForce(targetVector * throwVelocity, ForceMode.Impulse);
 
-            // Destroy Arc when slingsot launched
-            Destroy(arc);
+            playerAnimator.SetBool("IsAiming", false);
+
+            //Destroy(arc);
         }
     }
 
