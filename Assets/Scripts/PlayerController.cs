@@ -7,7 +7,7 @@ using Cinemachine;
 public class PlayerController : MonoBehaviour
 {
     // Create variable for movement speed
-    public float walkSpeed, runSpeed, jumpSpeed, turnSpeed, pushForce;
+    public float walkSpeed, runSpeed, jumpSpeed, turnSpeed;
     public int hp;
     public CinemachineBrain CB;
 
@@ -86,10 +86,13 @@ public class PlayerController : MonoBehaviour
         // Code for Running and walking
         if (isMoving)
         {
-            if (Input.GetButton("Run"))
+            if (Input.GetButton("Run") )
             {
                 m_Animator.SetBool("IsRunning", true);
-                rb.MovePosition(rb.position + m_Movement * runSpeed);
+                
+                // hacky way of making push same speed while running and walking
+                rb.MovePosition(rb.position + m_Movement * (pushing ? walkSpeed 
+                                                                    : runSpeed) );
             }
             // Else walk
             else
@@ -133,12 +136,20 @@ public class PlayerController : MonoBehaviour
             Rigidbody rbMovable = col.gameObject.GetComponent<Rigidbody>();
             if (Input.GetButton("Push"))
             {
+                pushing = true;
                 rbMovable.isKinematic = false;
-                rbMovable.AddForce(transform.forward * pushForce);
+
+                // get the contact point of player with the movable object to look at.
+                Vector3 targetPos = col.GetContact(0).point; 
+                // set y same height as player ** might have issues with hills?
+                targetPos.y = transform.position.y;
+
+                transform.LookAt(targetPos);
             }
             if (Input.GetButtonUp("Push"))
             {
                 rbMovable.isKinematic = true;
+                pushing = false;
             }
                 
         }   
@@ -155,6 +166,9 @@ public class PlayerController : MonoBehaviour
 
             // allow monster to move around objects
             rbMovable.isKinematic = false;
+
+            // make sure pushing has been reset properly
+            pushing = false;
         }
         
     }
