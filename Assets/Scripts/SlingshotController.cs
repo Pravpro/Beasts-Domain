@@ -24,12 +24,7 @@ public class SlingshotController : MonoBehaviour
     }
 
     private void Update()
-    {
-        // Activate crosshair for aiming
-        if (CB.ActiveVirtualCamera.LiveChildOrSelf.Name == "CM_AimCam")
-            crosshair.enabled = true;
-        else crosshair.enabled = false;
-
+    { 
         // Activate slingshot
         if (Input.GetButtonDown("Throw"))
         {
@@ -39,18 +34,8 @@ public class SlingshotController : MonoBehaviour
             //                  player.transform.rotation) as GameObject;
             
         }
-        // Make arc follow slingshot
-        //if (arc != null)
-        //{
-            
 
-        //    //player.transform.forward = Camera.current.transform.forward;
-        //    arc.transform.position = transform.position;
-        //    arc.transform.rotation = player.transform.rotation;
-        //}
-
-        // Release Slinghot
-        if (Input.GetButtonUp("Throw"))
+        if (CB.ActiveVirtualCamera.LiveChildOrSelf.Name == "CM_AimCam")
         {
             // Raycast from aimcam
             RaycastHit hit;
@@ -60,7 +45,23 @@ public class SlingshotController : MonoBehaviour
                 targetVector = hit.point - transform.position;
                 targetVector.Normalize();
             }
+            crosshair.enabled = true;
+        }
+        else crosshair.enabled = false;
 
+        // Make arc follow slingshot
+        //if (arc != null)
+        //{
+
+
+        //    //player.transform.forward = Camera.current.transform.forward;
+        //    arc.transform.position = transform.position;
+        //    arc.transform.rotation = player.transform.rotation;
+        //}
+
+        // Release Slinghot
+        if (Input.GetButtonUp("Throw"))
+        {
             // Create the throwable object
             GameObject m_rock = Instantiate(throwObject,
                                             transform.position,
