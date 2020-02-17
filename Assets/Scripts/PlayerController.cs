@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using Cinemachine;
+using Rewired;
 
 public class PlayerController : MonoBehaviour
 {
@@ -10,6 +11,11 @@ public class PlayerController : MonoBehaviour
     public float walkSpeed, runSpeed, jumpSpeed, turnSpeed;
     public int hp;
     public CinemachineBrain CB;
+
+    // player id for reference Rewired input
+    // we only have one player id will always = 0
+    private int m_playerID = 0;
+    private Player m_playerInput;
 
     private int count = 1;
     // private List<Collider> colliders = new List<Collider>();
@@ -22,6 +28,8 @@ public class PlayerController : MonoBehaviour
 
     private void Start()
     {
+        // to access input using rewired
+        m_playerInput = ReInput.players.GetPlayer(m_playerID);
 
         m_Animator = GetComponent<Animator>();
         rb = gameObject.GetComponent<Rigidbody>();
@@ -40,8 +48,8 @@ public class PlayerController : MonoBehaviour
         }
 
         // Movement according to WASD
-        float horizontal = Input.GetAxis("Horizontal");
-        float vertical = Input.GetAxis("Vertical");
+        float horizontal = m_playerInput.GetAxis("Horizontal");
+        float vertical   = m_playerInput.GetAxis("Vertical");
         m_Movement.Set(horizontal, 0f, vertical);
         //m_Movement.Normalize();
 
@@ -86,7 +94,7 @@ public class PlayerController : MonoBehaviour
         // Code for Running and walking
         if (isMoving)
         {
-            if (Input.GetButton("Run") )
+            if (m_playerInput.GetButton("Run") )
             {
                 m_Animator.SetBool("IsRunning", true);
                 
@@ -103,7 +111,7 @@ public class PlayerController : MonoBehaviour
         }
         rb.MoveRotation(m_Rotation);
 
-        if (Input.GetButtonDown("Jump") && grounded)
+        if (m_playerInput.GetButtonDown("Jump") && grounded)
         {
             rb.velocity += jump * jumpSpeed;
             grounded = false;
@@ -134,7 +142,7 @@ public class PlayerController : MonoBehaviour
         if (col.collider.tag == "Movable")
         {
             Rigidbody rbMovable = col.gameObject.GetComponent<Rigidbody>();
-            if (Input.GetButton("Push"))
+            if (m_playerInput.GetButton("Push"))
             {
                 pushing = true;
                 rbMovable.isKinematic = false;
@@ -146,7 +154,7 @@ public class PlayerController : MonoBehaviour
 
                 transform.LookAt(targetPos);
             }
-            if (Input.GetButtonUp("Push"))
+            if (m_playerInput.GetButtonUp("Push"))
             {
                 rbMovable.isKinematic = true;
                 pushing = false;

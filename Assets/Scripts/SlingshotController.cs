@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using Cinemachine;
+using Rewired;
 
 public class SlingshotController : MonoBehaviour
 {
@@ -17,16 +18,21 @@ public class SlingshotController : MonoBehaviour
     Animator playerAnimator;
     Vector3 targetVector;
 
+    // Rewired Input for throwing slingshot
+    private int m_playerID = 0;
+    private Player m_playerInput;
+
     private void Start()
     {
         crosshair.enabled = false;
         playerAnimator = player.GetComponent<Animator>();
+        m_playerInput = ReInput.players.GetPlayer(m_playerID);
     }
 
     private void Update()
     { 
         // Activate slingshot
-        if (Input.GetButtonDown("Throw"))
+        if (m_playerInput.GetButtonDown("Throw"))
         {
             playerAnimator.SetBool("IsAiming", true);
             //arc = Instantiate(launchArc.gameObject,
@@ -51,7 +57,7 @@ public class SlingshotController : MonoBehaviour
             crosshair.enabled = true;
 
             // Release Slinghot
-            if (Input.GetButtonUp("Throw"))
+            if (m_playerInput.GetButtonUp("Throw"))
             {
                 // Create the throwable object
                 GameObject m_rock = Instantiate(throwObject,
@@ -71,7 +77,7 @@ public class SlingshotController : MonoBehaviour
         }
         else crosshair.enabled = false;
 
-        if (Input.GetButtonUp("Throw"))
+        if (m_playerInput.GetButtonUp("Throw"))
         {
             playerAnimator.SetBool("IsAiming", false);
         }

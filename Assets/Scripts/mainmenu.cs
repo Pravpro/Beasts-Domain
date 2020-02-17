@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine.UI;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using Rewired;
 public class mainmenu : MonoBehaviour
 {
 
@@ -14,8 +15,14 @@ public class mainmenu : MonoBehaviour
     private Vector3 startPos;
     private Transform arrowTrans;
 
+    // input from rewired
+    private int m_playerID = 0;
+    private Player m_playerInput;
+
     void Start()
     {
+        m_playerInput = ReInput.players.GetPlayer(m_playerID);
+
         Button startBtn = startButton.GetComponent<Button>();
         Button quitBtn  = quitButton.GetComponent<Button>();
 
@@ -29,9 +36,9 @@ public class mainmenu : MonoBehaviour
 
     void Update()
     {
-        float vertical = -Input.GetAxis("Vertical");
+        float vertical = m_playerInput.GetAxis("Vertical");
         
-        if (Input.GetButtonDown("Submit"))
+        if (m_playerInput.GetButtonDown("Submit"))
         {
             if (arrowTrans.position == startPos)
                 startOnClick();
