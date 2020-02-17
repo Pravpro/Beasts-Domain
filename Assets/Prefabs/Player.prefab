@@ -15,9 +15,12 @@ MonoBehaviour:
   throwObject: {fileID: 7490987963249429685, guid: dbf27584ebd7f48e28c486b76a3edea5,
     type: 3}
   player: {fileID: 9206296177471051248}
+  throwVelocity: 40
   launchArc: {fileID: 1078298360161562596, guid: f71b3b8d1a50f2f4c8fe83cf41d59966,
     type: 3}
+  CB: {fileID: 0}
   aimCam: {fileID: 0}
+  crosshair: {fileID: 0}
 --- !u!1 &9206296177471051248
 GameObject:
   m_ObjectHideFlags: 0
@@ -118,8 +121,8 @@ MonoBehaviour:
   runSpeed: 0.1
   jumpSpeed: 6
   turnSpeed: 12
-  pushForce: 10
   hp: 0
+  CB: {fileID: 0}
 --- !u!54 &9206296177471051254
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -242,7 +245,7 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.025
+  m_Radius: 0.02
   m_Height: 0.073221646
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ThrowableController : MonoBehaviour
 {
-    public int destroyDelay = 5;
+    public float destroyDelay = 5;
 
     Rigidbody m_rb;
 
@@ -18,17 +18,9 @@ public class ThrowableController : MonoBehaviour
     {
         if (col.collider.name != "Player")
         {
-            Debug.Log("collision detected with: " + col.collider.name + "... will destroy rock in 5 seconds");
+            Debug.Log("collision detected with: " + col.collider.name);
             m_rb.useGravity = true;
-            StartCoroutine(DestroyThrowable());
+            Destroy(gameObject, destroyDelay);
         }
-    }
-
-    // Called to destroy rock
-    IEnumerator DestroyThrowable()
-    {
-        //Makes function wait for 5 seconds before resuming
-        yield return new WaitForSeconds(destroyDelay);
-        Destroy(gameObject);
     }
 }

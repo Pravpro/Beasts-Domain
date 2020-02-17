@@ -39,15 +39,42 @@ public class SlingshotController : MonoBehaviour
         {
             // Raycast from aimcam
             RaycastHit hit;
+            Debug.DrawRay(aimCam.transform.position, aimCam.transform.forward * 80, Color.red);
+            Debug.Log(Physics.Raycast(aimCam.transform.position, aimCam.transform.forward));
             if (Physics.Raycast(aimCam.transform.position, aimCam.transform.forward, out hit))
             {
                 //Debug.Log(hit.transform.name);
                 targetVector = hit.point - transform.position;
+                Debug.DrawLine(transform.position, hit.point, Color.green);
                 targetVector.Normalize();
             }
             crosshair.enabled = true;
+
+            // Release Slinghot
+            if (Input.GetButtonUp("Throw"))
+            {
+                // Create the throwable object
+                GameObject m_rock = Instantiate(throwObject,
+                                                transform.position,
+                                                player.transform.rotation) as GameObject;
+                Rigidbody m_rb = m_rock.GetComponent<Rigidbody>();
+
+                // Add the launch arc forces to the throwable
+                //LaunchArcMesh arcScript = arc.GetComponent<LaunchArcMesh>();
+                //m_rb.AddForce(Quaternion.AngleAxis(90-arcScript.angle, arc.transform.right) * arc.transform.up * arcScript.velocity, ForceMode.Impulse);
+                m_rb.AddForce(targetVector * throwVelocity, ForceMode.VelocityChange);
+
+                playerAnimator.SetBool("IsAiming", false);
+
+                //Destroy(arc);
+            }
         }
         else crosshair.enabled = false;
+
+        if (Input.GetButtonUp("Throw"))
+        {
+            playerAnimator.SetBool("IsAiming", false);
+        }
 
         // Make arc follow slingshot
         //if (arc != null)
@@ -59,24 +86,7 @@ public class SlingshotController : MonoBehaviour
         //    arc.transform.rotation = player.transform.rotation;
         //}
 
-        // Release Slinghot
-        if (Input.GetButtonUp("Throw"))
-        {
-            // Create the throwable object
-            GameObject m_rock = Instantiate(throwObject,
-                                            transform.position,
-                                            player.transform.rotation) as GameObject;
-            Rigidbody m_rb = m_rock.GetComponent<Rigidbody>();
-
-            // Add the launch arc forces to the throwable
-            //LaunchArcMesh arcScript = arc.GetComponent<LaunchArcMesh>();
-            //m_rb.AddForce(Quaternion.AngleAxis(90-arcScript.angle, arc.transform.right) * arc.transform.up * arcScript.velocity, ForceMode.Impulse);
-            m_rb.AddForce(targetVector * throwVelocity, ForceMode.Impulse);
-
-            playerAnimator.SetBool("IsAiming", false);
-
-            //Destroy(arc);
-        }
+        
     }
 
 }
