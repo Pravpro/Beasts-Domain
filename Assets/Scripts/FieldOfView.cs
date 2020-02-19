@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class FieldOfView : MonoBehaviour
 {
-    public float fov;
-    public float fovVertical;
-    public float viewDistance;
+    public float fov = 120f;
+    public float fovVertical = 50f;
+    public float viewDistance = 15f;
     // this is actually number of triangles
-    public int rayCount;
-    public int fovCount;
+    public int rayCount = 40;
+    public int fovCount = 5;
     public GameObject monster;
 
     private Mesh mesh;
@@ -40,49 +40,57 @@ public class FieldOfView : MonoBehaviour
         Vector3 up = monster.transform.up;
         
         origin = monster.transform.position;
-        origin.y -= 1f;
-        float angleHoriz = - fov / 2f;
+        //origin.y -= 1f;
+        
         float angleIncHoriz = fov / rayCount;
-
         float angleVert = - fovVertical / 2f;
         float angleIncVert = fovVertical / fovCount;
 
-        Vector3[] vertices = new Vector3[rayCount + 2];
+        Vector3[] vertices = new Vector3[1 + (rayCount + 1) * fovCount];
         Vector2[] uv = new Vector2[vertices.Length];
-        int[] triangles = new int[rayCount * 3];
+        int[] triangles = new int[rayCount * 3 * fovCount];
 
         vertices[0] = origin;
 
         int vertexIdx = 1;
         int triangleIdx = 0;
         script.playerInSight = false;
-        for (int i = 0; i <= rayCount; i++)
+        for (int j = 0; j < fovCount; j++)
         {
-            Vector3 vertex; 
-            RaycastHit hitInfo; 
-            bool raycastHit = Physics.Raycast(origin, GetVectorFromAngle(forward, up, angleHoriz), out hitInfo, viewDistance);
+            float angleHoriz = - fov / 2f;
+            Vector3 curForward, curUp;
+            curForward = Quaternion.AngleAxis(angleVert, right) * forward;
+            curUp = Quaternion.AngleAxis(angleVert, right) * up;
 
-            if (raycastHit){
-                // hit
-                vertex = hitInfo.point;
-                if (hitInfo.collider.tag == "Player")
-                    script.playerInSight = true;
-            }
-            else {
-                // no hit
-                vertex = origin + GetVectorFromAngle(forward, up, angleHoriz) * viewDistance;
-            }
-
-            vertices[vertexIdx] = vertex;
-            if (i > 0) 
+            for (int i = 0; i <= rayCount; i++)
             {
-                triangles[triangleIdx + 0] = 0;
-                triangles[triangleIdx + 1] = vertexIdx - 1;
-                triangles[triangleIdx + 2] = vertexIdx;
-                triangleIdx += 3;
+                Vector3 vertex; 
+                RaycastHit hitInfo; 
+                bool raycastHit = Physics.Raycast(origin, GetVectorFromAngle(curForward, curUp, angleHoriz), out hitInfo, viewDistance);
+
+                if (raycastHit){
+                    // hit
+                    vertex = hitInfo.point;
+                    if (hitInfo.collider.tag == "Player")
+                        script.playerInSight = true;
+                }
+                else {
+                    // no hit
+                    vertex = origin + GetVectorFromAngle(curForward, curUp, angleHoriz) * viewDistance;
+                }
+
+                vertices[vertexIdx] = vertex;
+                if (i > 0) 
+                {
+                    triangles[triangleIdx + 0] = 0;
+                    triangles[triangleIdx + 1] = vertexIdx - 1;
+                    triangles[triangleIdx + 2] = vertexIdx;
+                    triangleIdx += 3;
+                }
+                vertexIdx++;
+                angleHoriz += angleIncHoriz;
             }
-            vertexIdx++;
-            angleHoriz += angleIncHoriz;
+            angleVert += angleIncVert;
         }
 
         mesh.vertices = vertices;
