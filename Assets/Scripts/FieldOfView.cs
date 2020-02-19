@@ -5,8 +5,11 @@ using UnityEngine;
 public class FieldOfView : MonoBehaviour
 {
     public float fov;
+    public float fovVertical;
     public float viewDistance;
+    // this is actually number of triangles
     public int rayCount;
+    public int fovCount;
     public GameObject monster;
 
     private Mesh mesh;
@@ -32,10 +35,17 @@ public class FieldOfView : MonoBehaviour
 
     void ComputeFOV()
     {
+        Vector3 forward = monster.transform.forward;
+        Vector3 right = monster.transform.right;
+        Vector3 up = monster.transform.up;
+        
         origin = monster.transform.position;
         origin.y -= 1f;
-        float angle = GetAngleFromVector(monster.transform.forward) + fov / 2f;
-        float angleIncrement = fov / rayCount;
+        float angleHoriz = - fov / 2f;
+        float angleIncHoriz = fov / rayCount;
+
+        float angleVert = - fovVertical / 2f;
+        float angleIncVert = fovVertical / fovCount;
 
         Vector3[] vertices = new Vector3[rayCount + 2];
         Vector2[] uv = new Vector2[vertices.Length];
@@ -50,7 +60,7 @@ public class FieldOfView : MonoBehaviour
         {
             Vector3 vertex; 
             RaycastHit hitInfo; 
-            bool raycastHit = Physics.Raycast(origin, GetVectorFromAngle(angle), out hitInfo, viewDistance);
+            bool raycastHit = Physics.Raycast(origin, GetVectorFromAngle(forward, up, angleHoriz), out hitInfo, viewDistance);
 
             if (raycastHit){
                 // hit
@@ -60,7 +70,7 @@ public class FieldOfView : MonoBehaviour
             }
             else {
                 // no hit
-                vertex = origin + GetVectorFromAngle(angle) * viewDistance;
+                vertex = origin + GetVectorFromAngle(forward, up, angleHoriz) * viewDistance;
             }
 
             vertices[vertexIdx] = vertex;
@@ -72,7 +82,7 @@ public class FieldOfView : MonoBehaviour
                 triangleIdx += 3;
             }
             vertexIdx++;
-            angle -= angleIncrement;
+            angleHoriz += angleIncHoriz;
         }
 
         mesh.vertices = vertices;
@@ -82,10 +92,11 @@ public class FieldOfView : MonoBehaviour
         mesh.RecalculateBounds();
     }
 
-    public Vector3 GetVectorFromAngle(float angle)
+    public Vector3 GetVectorFromAngle(Vector3 forward, Vector3 up, float angle)
     {
-        float angleRad = angle * (Mathf.PI / 180f);
-        return new Vector3(Mathf.Cos(angleRad), 0, Mathf.Sin(angleRad));
+        // float angleRad = angle * (Mathf.PI / 180f);
+        // return new Vector3(Mathf.Cos(angleRad), 0, Mathf.Sin(angleRad));
+        return Quaternion.AngleAxis(angle, up) * forward;
     }
 
     public float GetAngleFromVector(Vector3 dir)
