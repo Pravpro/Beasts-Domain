@@ -1297,7 +1297,7 @@ PrefabInstance:
     - target: {fileID: 7405921560749070738, guid: 124763a81d4090e40af2157b5d6f9b66,
         type: 3}
       propertyPath: rayCount
-      value: 60
+      value: 40
       objectReference: {fileID: 0}
     - target: {fileID: 7405921560749070739, guid: 124763a81d4090e40af2157b5d6f9b66,
         type: 3}
@@ -1528,7 +1528,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 382882444}
-  m_LocalRotation: {x: 0.14483848, y: -0.0027490207, z: 0.00040238976, w: 0.98945147}
+  m_LocalRotation: {x: 0.14483897, y: -0.0027490216, z: 0.00040239067, w: 0.9894514}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -2211,7 +2211,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 80
+  m_Constraints: 0
   m_CollisionDetection: 0
 --- !u!1 &523466636
 GameObject:
@@ -4196,7 +4196,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1044896107}
-  m_LocalRotation: {x: 0.12688893, y: -0.0027611903, z: 0.00035320804, w: 0.991913}
+  m_LocalRotation: {x: 0.12688881, y: -0.0027611924, z: 0.00035320758, w: 0.9919131}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
