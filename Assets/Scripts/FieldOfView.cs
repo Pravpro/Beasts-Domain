@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class FieldOfView : MonoBehaviour
 {
-    public float fov = 120f;
-    public float fovVertical = 50f;
+    public float fovHoriz = 120f;
+    public float fovVert = 50f;
     public float viewDistance = 15f;
     // this is actually number of triangles
     public int rayCount = 40;
@@ -42,9 +42,9 @@ public class FieldOfView : MonoBehaviour
         origin = monster.transform.position;
         //origin.y -= 1f;
         
-        float angleIncHoriz = fov / rayCount;
-        float angleVert = - fovVertical / 2f;
-        float angleIncVert = fovVertical / fovCount;
+        float angleIncHoriz = fovHoriz / rayCount;
+        float angleVert = - fovVert / 2f;
+        float angleIncVert = fovVert / fovCount;
 
         Vector3[] vertices = new Vector3[1 + (rayCount + 1) * fovCount];
         Vector2[] uv = new Vector2[vertices.Length];
@@ -57,7 +57,7 @@ public class FieldOfView : MonoBehaviour
         script.playerInSight = false;
         for (int j = 0; j < fovCount; j++)
         {
-            float angleHoriz = - fov / 2f;
+            float angleHoriz = - fovHoriz / 2f;
             Vector3 curForward, curUp;
             curForward = Quaternion.AngleAxis(angleVert, right) * forward;
             curUp = Quaternion.AngleAxis(angleVert, right) * up;
