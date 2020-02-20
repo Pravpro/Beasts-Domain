@@ -11,16 +11,20 @@ public class AIController : MonoBehaviour
     public float movingSpeed  = 1.0f;
     public int hp = 2;
     public bool playerInSight = false;
+    public GameObject target;
     // private variables
     private Vector3 m_targetedDir;
     private Rigidbody rb;
     private Vector3 playerPos, playerDir;
 
     private PlayerController playerScript;
+    private UnityEngine.AI.NavMeshAgent agent;
 
     void Start()
     {
         rb = gameObject.GetComponent<Rigidbody>();
+        Debug.Log("Monster size:" + GetComponent<MeshRenderer>().bounds.size);
+        agent = GetComponent<UnityEngine.AI.NavMeshAgent>();
         m_targetedDir = transform.forward;
         player = GameObject.FindGameObjectWithTag("Player");
         playerScript = player.GetComponent<PlayerController>();
@@ -33,6 +37,7 @@ public class AIController : MonoBehaviour
             rb.isKinematic = false;
             return;
         }
+        agent.SetDestination(target.transform.position);
         // 1. rotation
         Quaternion qRotate;
         // turn the boss to the rock hit direction
