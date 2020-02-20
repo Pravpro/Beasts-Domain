@@ -25,6 +25,7 @@ public class AIController : MonoBehaviour
         rb = gameObject.GetComponent<Rigidbody>();
         Debug.Log("Monster size:" + GetComponent<MeshRenderer>().bounds.size);
         agent = GetComponent<UnityEngine.AI.NavMeshAgent>();
+        agent.updateUpAxis = false;
         m_targetedDir = transform.forward;
         player = GameObject.FindGameObjectWithTag("Player");
         playerScript = player.GetComponent<PlayerController>();
@@ -32,12 +33,23 @@ public class AIController : MonoBehaviour
 
     private void FixedUpdate()
     {
+        float theta = Vector3.Angle(Vector3.up, transform.up) * Mathf.Deg2Rad;
+        if (theta > 0)
+        {
+            Vector3 side = Vector3.Cross(transform.up, Vector3.up);
+            Vector3 upHillDir = Quaternion.AngleAxis(90, side) * transform.up;
+            Vector3 force = rb.mass * 10f * Mathf.Sin(theta) * upHillDir.normalized;
+            // Debug.Log("Up: " + transform.up + " Force: " + force);
+            rb.AddForce(force);
+        }
+
         if (hp <= 0 || playerScript.hp <= 0)
         {
             rb.isKinematic = false;
             return;
         }
-        agent.SetDestination(target.transform.position);
+        if (target)
+            agent.SetDestination(target.transform.position);
         // 1. rotation
         Quaternion qRotate;
         // turn the boss to the rock hit direction
