@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Cinemachine;
+using Rewired;
 
 public class StateCamController : MonoBehaviour
 {
@@ -10,11 +11,20 @@ public class StateCamController : MonoBehaviour
     CinemachineStateDrivenCamera SDCam;
     AxisState prevYAxis;
     bool transition;
+
+    // player id for reference Rewired input
+    // we only have one player id will always = 0
+    private int m_playerID = 0;
+    private Player m_playerInput;
+
     // Start is called before the first frame update
     void Start()
     {
         SDCam = GetComponent<CinemachineStateDrivenCamera>();
         prevYAxis = thirdPerson.m_YAxis;
+
+        // to access input using rewired
+        m_playerInput = ReInput.players.GetPlayer(m_playerID);
     }
 
     // Update is called once per frame
@@ -31,9 +41,7 @@ public class StateCamController : MonoBehaviour
             }
             prevYAxis = thirdPerson.m_YAxis;
 
-            // Reset logic
-            //if (Input.GetButtonDown("Reset"))
-            if(Input.GetKeyDown(KeyCode.R))
+            if (m_playerInput.GetButtonDown("Reset"))
             {
                 StartCoroutine(ResetCam());
                 
