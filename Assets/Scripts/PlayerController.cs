@@ -10,7 +10,7 @@ public class PlayerController : MonoBehaviour
     // Create variable for movement speed
     public float walkSpeed, runSpeed, jumpSpeed, turnSpeed;
     public int hp;
-    public CinemachineBrain CB;
+    public CinemachineStateDrivenCamera SDCam;
 
     // player id for reference Rewired input
     // we only have one player id will always = 0
@@ -25,12 +25,12 @@ public class PlayerController : MonoBehaviour
     Quaternion m_Rotation, lastRotation = Quaternion.identity;
     Animator m_Animator;
     private bool pushing = false;
+    private ICinemachineCamera thirdPersonCam;
 
     private void Start()
     {
         // to access input using rewired
         m_playerInput = ReInput.players.GetPlayer(m_playerID);
-
         m_Animator = GetComponent<Animator>();
         rb = gameObject.GetComponent<Rigidbody>();
         jump = new Vector3(0, 1.0f, 0);
@@ -65,10 +65,13 @@ public class PlayerController : MonoBehaviour
         m_Animator.SetBool("IsWalking", isMoving);
 
         // Condtions for Rotating
-        if (CB.ActiveVirtualCamera.LiveChildOrSelf.Name == "CM_AimCam")
+        if (SDCam.LiveChildOrSelf.Name == "CM_AimCam")
         {
+            // Freeze Y position of Third Person cam
+            
             Vector3 camforward = Camera.main.transform.forward;
             camforward.y = 0f;
+            
             // Check if aim camera has rotated/moved
             if (prevCamForward != camforward)
             {
