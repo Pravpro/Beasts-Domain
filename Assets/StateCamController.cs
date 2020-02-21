@@ -8,13 +8,13 @@ public class StateCamController : MonoBehaviour
     public CinemachineFreeLook thirdPerson;
 
     CinemachineStateDrivenCamera SDCam;
-    AxisState fixYAxis;
+    AxisState prevYAxis;
     bool transition;
     // Start is called before the first frame update
     void Start()
     {
         SDCam = GetComponent<CinemachineStateDrivenCamera>();
-        fixYAxis = thirdPerson.m_YAxis;
+        prevYAxis = thirdPerson.m_YAxis;
     }
 
     // Update is called once per frame
@@ -22,19 +22,33 @@ public class StateCamController : MonoBehaviour
     {
         if (SDCam.IsLiveChild((ICinemachineCamera)thirdPerson))
         {
+            // Check if CM_ThirdPerson camera just became active
             if (transition == true)
             {
                 transition = false;
-                thirdPerson.m_YAxis = fixYAxis;
+                thirdPerson.m_YAxis = prevYAxis;
 
             }
-            fixYAxis = thirdPerson.m_YAxis;
+            prevYAxis = thirdPerson.m_YAxis;
+
+            // Reset logic
+            //if (Input.GetButtonDown("Reset"))
+            if(Input.GetKeyDown(KeyCode.R))
+            {
+                StartCoroutine(ResetCam());
+                
+            }
         }
-        else
-        {
-            transition = true;
-            //Debug.Log(thirdPerson.m_YAxis.Value);
-            //thirdPerson.m_YAxis.Value = fixYAxis.Value;
-        }
+        else transition = true;
+    }
+    
+    IEnumerator ResetCam()
+    {
+        thirdPerson.m_RecenterToTargetHeading.m_enabled = true;
+
+        float waitTime = thirdPerson.m_RecenterToTargetHeading.m_RecenteringTime + thirdPerson.m_RecenterToTargetHeading.m_RecenterWaitTime;
+        yield return new WaitForSeconds(waitTime);
+
+        thirdPerson.m_RecenterToTargetHeading.m_enabled = false;
     }
 }
