@@ -9,7 +9,6 @@ public class AIController : MonoBehaviour
     //Audio design
     public AudioClip Death;
     public AudioSource Respawn;
-    public AudioMixerGroup Player;
     
     // public variables
     public GameObject player;
