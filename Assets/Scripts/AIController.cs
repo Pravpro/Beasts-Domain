@@ -9,7 +9,11 @@ public class AIController : MonoBehaviour
     //Audio design
     public AudioClip Death;
     public AudioSource Respawn;
-    
+
+    public AudioSource choir;
+    public AudioSource roar1;
+    public AudioSource fight1;
+
     // public variables
     public GameObject player;
     public float turningSpeed = 20.0f;
@@ -86,6 +90,11 @@ public class AIController : MonoBehaviour
             transform.rotation = Quaternion.RotateTowards(transform.rotation, qRotate, Time.deltaTime * turningSpeed);
             //transform.position += movingSpeed * transform.forward;
             transform.position = Vector3.MoveTowards(transform.position, playerPosCopy, Time.deltaTime * movingSpeed);
+
+            //BeastRoar1 fight starts
+            choir.Stop();
+            roar1.Play();
+            fight1.PlayDelayed(2.5f);
         }
     }
 

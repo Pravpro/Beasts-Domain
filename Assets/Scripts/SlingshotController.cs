@@ -21,6 +21,8 @@ public class SlingshotController : MonoBehaviour
     public AudioSource Slingshot;
     public AudioMixerGroup output;
 
+    public AudioSource ready;
+
     //GameObject arc = null;
     Animator playerAnimator;
     Vector3 targetVector;
@@ -47,6 +49,7 @@ public class SlingshotController : MonoBehaviour
             //                  player.transform.rotation) as GameObject;
             Slingshot.clip = Hold;
             Slingshot.PlayOneShot(Hold, 1f);
+            ready.PlayDelayed(1.2f);
         }
 
         if (CB.ActiveVirtualCamera.LiveChildOrSelf.Name == "CM_AimCam")

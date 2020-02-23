@@ -29,10 +29,15 @@ public class PlayerController : MonoBehaviour
     private ICinemachineCamera thirdPersonCam;
 
     //Audio design
+
+    //public AudioSource choir;
+
     public AudioClip[] Jumps;
     public AudioClip Landing;
     public AudioSource Jumping;
     public AudioMixerGroup output;
+
+    
 
     private void Start()
     {
