@@ -26,12 +26,13 @@ public class AIController : MonoBehaviour
             if (m_playerInSight == value) return;
             else
             {
-                if (!m_playerInSight)
+                if (!m_playerInSight && !m_roarPlayed)
                 {
                     //BeastRoar1 fight starts
                     choir.Stop();
                     roar1.Play();
                     fight1.PlayDelayed(2.5f);
+                    m_roarPlayed = true;
                 }
                 m_playerInSight = value;
             }
@@ -39,6 +40,7 @@ public class AIController : MonoBehaviour
     }
 
     private bool m_playerInSight = false;
+    private bool m_roarPlayed = false;
     public GameObject target;
     // private variables
     private Vector3 m_targetedDir;
