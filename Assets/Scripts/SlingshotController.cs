@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
 using UnityEngine.UI;
 using Cinemachine;
 using Rewired;
@@ -13,6 +14,12 @@ public class SlingshotController : MonoBehaviour
     public CinemachineBrain CB;
     public Camera aimCam;
     public Image crosshair;
+
+    //Audio Design 
+    public AudioClip Hold;
+    public AudioClip Release;
+    public AudioSource Slingshot;
+    public AudioMixerGroup output;
 
     //GameObject arc = null;
     Animator playerAnimator;
@@ -38,7 +45,8 @@ public class SlingshotController : MonoBehaviour
             //arc = Instantiate(launchArc.gameObject,
             //                  transform.position,
             //                  player.transform.rotation) as GameObject;
-            
+            Slingshot.clip = Hold;
+            Slingshot.PlayOneShot(Hold, 1f);
         }
 
         if (CB.ActiveVirtualCamera.LiveChildOrSelf.Name == "CM_AimCam")
@@ -64,6 +72,9 @@ public class SlingshotController : MonoBehaviour
                                                 transform.position,
                                                 player.transform.rotation) as GameObject;
                 Rigidbody m_rb = m_rock.GetComponent<Rigidbody>();
+                Slingshot.clip = Release;
+                Slingshot.PlayOneShot(Release, 1f);
+                Slingshot.outputAudioMixerGroup = output;
 
                 // Add the launch arc forces to the throwable
                 //LaunchArcMesh arcScript = arc.GetComponent<LaunchArcMesh>();
