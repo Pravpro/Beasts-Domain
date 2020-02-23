@@ -43,6 +43,10 @@ public class PlayerController : MonoBehaviour
     {
         // to access input using rewired
         m_playerInput = ReInput.players.GetPlayer(m_playerID);
+        
+        // reset the input to use rewired
+        CinemachineCore.GetInputAxis = ReInput.players.GetPlayer(m_playerID).GetAxis;
+
         m_Animator = GetComponent<Animator>();
         rb = gameObject.GetComponent<Rigidbody>();
         jump = new Vector3(0, 1.0f, 0);

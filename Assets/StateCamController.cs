@@ -23,8 +23,13 @@ public class StateCamController : MonoBehaviour
         SDCam = GetComponent<CinemachineStateDrivenCamera>();
         prevYAxis = thirdPerson.m_YAxis;
 
+        // set the input to use rewired
+        CinemachineCore.GetInputAxis = ReInput.players.GetPlayer(m_playerID).GetAxis;
+
         // to access input using rewired
         m_playerInput = ReInput.players.GetPlayer(m_playerID);
+
+       
     }
 
     // Update is called once per frame
