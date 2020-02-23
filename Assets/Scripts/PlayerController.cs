@@ -129,6 +129,7 @@ public class PlayerController : MonoBehaviour
             Jumping.clip = Jumps[randomClip];
             Jumping.outputAudioMixerGroup = output;
             Jumping.PlayOneShot(Jumps[randomClip], 0.15f);
+            Jumping.pitch = Random.Range(0.9f, 1.0f);
         }
 
         
