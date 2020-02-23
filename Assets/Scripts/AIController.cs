@@ -1,10 +1,16 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
 using UnityEditor;
 
 public class AIController : MonoBehaviour
 {
+    //Audio design
+    public AudioClip Death;
+    public AudioSource Respawn;
+    public AudioMixerGroup Player;
+    
     // public variables
     public GameObject player;
     public float turningSpeed = 20.0f;
@@ -106,6 +112,8 @@ public class AIController : MonoBehaviour
             if (playerScript.hp <= 0)
             {
                 Debug.Log("Player Dies");
+                Respawn.clip = Death;
+                Respawn.PlayOneShot(Death, 0.5f);
             }
         }
     }
