@@ -54,7 +54,7 @@ public class FieldOfView : MonoBehaviour
 
         int vertexIdx = 1;
         int triangleIdx = 0;
-        script.playerInSight = false;
+        bool playerInSight = false;
         for (int j = 0; j < fovCount; j++)
         {
             float angleHoriz = - fovHoriz / 2f;
@@ -72,7 +72,7 @@ public class FieldOfView : MonoBehaviour
                     // hit
                     vertex = hitInfo.point;
                     if (hitInfo.collider.tag == "Player")
-                        script.playerInSight = true;
+                        playerInSight = true;
                 }
                 else {
                     // no hit
@@ -92,6 +92,7 @@ public class FieldOfView : MonoBehaviour
             }
             angleVert += angleIncVert;
         }
+        script.playerInSight = playerInSight;
 
         mesh.vertices = vertices;
         mesh.uv = uv;

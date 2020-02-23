@@ -19,7 +19,26 @@ public class AIController : MonoBehaviour
     public float turningSpeed = 20.0f;
     public float movingSpeed  = 1.0f;
     public int hp = 2;
-    public bool playerInSight = false;
+    public bool playerInSight
+    {
+        get {return m_playerInSight;}
+        set {
+            if (m_playerInSight == value) return;
+            else
+            {
+                if (!m_playerInSight)
+                {
+                    //BeastRoar1 fight starts
+                    choir.Stop();
+                    roar1.Play();
+                    fight1.PlayDelayed(2.5f);
+                }
+                m_playerInSight = value;
+            }
+        }
+    }
+
+    private bool m_playerInSight = false;
     public GameObject target;
     // private variables
     private Vector3 m_targetedDir;
@@ -76,7 +95,7 @@ public class AIController : MonoBehaviour
 
         // 2. move to the target position only if the player is in the viewArea.
         //    boss ignores rocks when locked on to player
-        if (playerInSight)
+        if (m_playerInSight)
         {
             playerPos = player.transform.position;
             // get the rotation and translate vector to player
@@ -90,17 +109,11 @@ public class AIController : MonoBehaviour
             transform.rotation = Quaternion.RotateTowards(transform.rotation, qRotate, Time.deltaTime * turningSpeed);
             //transform.position += movingSpeed * transform.forward;
             transform.position = Vector3.MoveTowards(transform.position, playerPosCopy, Time.deltaTime * movingSpeed);
-
-            //BeastRoar1 fight starts
-            choir.Stop();
-            roar1.Play();
-            fight1.PlayDelayed(2.5f);
         }
     }
 
     void OnCollisionEnter(Collision col)
-    {   
-        
+    {
         if (col.collider.tag == "Throwable")
         {
             Vector3 targetedPos = col.collider.gameObject.transform.position;
