@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
 using UnityEngine.SceneManagement;
 using Cinemachine;
 using Rewired;
@@ -26,6 +27,12 @@ public class PlayerController : MonoBehaviour
     Animator m_Animator;
     private bool pushing = false;
     private ICinemachineCamera thirdPersonCam;
+
+    //Audio design
+    public AudioClip[] Jumps;
+    public AudioClip Landing;
+    public AudioSource Jumping;
+    public AudioMixerGroup output;
 
     private void Start()
     {
@@ -118,6 +125,10 @@ public class PlayerController : MonoBehaviour
         {
             rb.velocity += jump * jumpSpeed;
             grounded = false;
+            int randomClip = Random.Range(0, Jumps.Length);
+            Jumping.clip = Jumps[randomClip];
+            Jumping.outputAudioMixerGroup = output;
+            Jumping.PlayOneShot(Jumps[randomClip], 0.15f);
         }
 
         
@@ -129,6 +140,8 @@ public class PlayerController : MonoBehaviour
         if (col.collider.tag == "Ground")
         {
             grounded = true;
+            Jumping.clip = Landing;
+            Jumping.PlayOneShot(Landing, 1.2f);
         }
 
         // Avoid unwaned moving of a movable object
