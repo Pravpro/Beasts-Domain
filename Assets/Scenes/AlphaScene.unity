@@ -1394,7 +1394,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 382882444}
-  m_LocalRotation: {x: 0.43694305, y: 0.55596596, z: -0.4370074, w: 0.5558842}
+  m_LocalRotation: {x: 0.4369431, y: 0.5559659, z: -0.43700746, w: 0.5558841}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -2466,7 +2466,7 @@ MonoBehaviour:
     m_DecelTime: 0.1
     m_InputAxisName: HorizontalTurn
     m_InputAxisValue: 0
-    m_InvertAxis: 1
+    m_InvertAxis: 0
   m_LegacyRadius: 3.4028235e+38
   m_LegacyHeightOffset: 3.4028235e+38
   m_LegacyHeadingBias: 3.4028235e+38
@@ -2599,7 +2599,7 @@ MonoBehaviour:
     m_DecelTime: 0.1
     m_InputAxisName: HorizontalTurn
     m_InputAxisValue: 0
-    m_InvertAxis: 1
+    m_InvertAxis: 0
   m_Heading:
     m_HeadingDefinition: 2
     m_VelocityFilterStrength: 4
@@ -3413,7 +3413,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1044896107}
-  m_LocalRotation: {x: 0.42680076, y: 0.56379175, z: -0.42686227, w: 0.5637097}
+  m_LocalRotation: {x: 0.4268008, y: 0.56379175, z: -0.4268623, w: 0.5637097}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -6702,7 +6702,7 @@ MonoBehaviour:
     m_DecelTime: 0.1
     m_InputAxisName: HorizontalTurn
     m_InputAxisValue: 0
-    m_InvertAxis: 1
+    m_InvertAxis: 0
   m_LegacyRadius: 3.4028235e+38
   m_LegacyHeightOffset: 3.4028235e+38
   m_LegacyHeadingBias: 3.4028235e+38
@@ -6973,7 +6973,7 @@ MonoBehaviour:
     m_DecelTime: 0.1
     m_InputAxisName: HorizontalTurn
     m_InputAxisValue: 0
-    m_InvertAxis: 1
+    m_InvertAxis: 0
   m_LegacyRadius: 3.4028235e+38
   m_LegacyHeightOffset: 3.4028235e+38
   m_LegacyHeadingBias: 3.4028235e+38
