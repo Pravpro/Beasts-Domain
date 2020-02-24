@@ -224,8 +224,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 13337469}
-  m_LocalRotation: {x: 0.097619295, y: 0.700336, z: -0.097619295, w: 0.700336}
-  m_LocalPosition: {x: -97.7121, y: 4.4162345, z: 25.86}
+  m_LocalRotation: {x: 0.44640443, y: 0.5483822, z: -0.44640443, w: 0.5483823}
+  m_LocalPosition: {x: -94.00809, y: 13.700044, z: 25.86}
   m_LocalScale: {x: 30, y: 30, z: 30}
   m_Children: []
   m_Father: {fileID: 0}
@@ -1107,7 +1107,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_BindingMode: 4
-  m_FollowOffset: {x: 0, y: 2.5302343, z: -6.0021014}
+  m_FollowOffset: {x: 0, y: 11.814044, z: -2.2980886}
   m_XDamping: 1
   m_YDamping: 1
   m_ZDamping: 1
@@ -1126,12 +1126,12 @@ MonoBehaviour:
     m_LegacyVelocityFilterStrength: -1
   m_XAxis:
     Value: 90
-    m_MaxSpeed: 300
+    m_MaxSpeed: 225
     m_AccelTime: 0.1
     m_DecelTime: 0.1
     m_InputAxisName: HorizontalTurn
     m_InputAxisValue: 0
-    m_InvertAxis: 1
+    m_InvertAxis: 0
   m_LegacyRadius: 3.4028235e+38
   m_LegacyHeightOffset: 3.4028235e+38
   m_LegacyHeadingBias: 3.4028235e+38
@@ -1298,7 +1298,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_BindingMode: 4
-  m_FollowOffset: {x: 0, y: 2.5302343, z: -6.0021014}
+  m_FollowOffset: {x: 0, y: 11.814044, z: -2.2980886}
   m_XDamping: 1
   m_YDamping: 1
   m_ZDamping: 1
@@ -1317,12 +1317,12 @@ MonoBehaviour:
     m_LegacyVelocityFilterStrength: -1
   m_XAxis:
     Value: 90
-    m_MaxSpeed: 300
+    m_MaxSpeed: 225
     m_AccelTime: 0.1
     m_DecelTime: 0.1
     m_InputAxisName: HorizontalTurn
     m_InputAxisValue: 0
-    m_InvertAxis: 1
+    m_InvertAxis: 0
   m_LegacyRadius: 3.4028235e+38
   m_LegacyHeightOffset: 3.4028235e+38
   m_LegacyHeadingBias: 3.4028235e+38
@@ -1394,7 +1394,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 382882444}
-  m_LocalRotation: {x: 0.09685592, y: 0.70044196, z: -0.09685592, w: 0.70044196}
+  m_LocalRotation: {x: 0.43694305, y: 0.55596596, z: -0.4370074, w: 0.5558842}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -2135,7 +2135,7 @@ MonoBehaviour:
   m_LookAt: {fileID: 0}
   m_Follow: {fileID: 0}
   m_Lens:
-    FieldOfView: 20
+    FieldOfView: 21
     OrthographicSize: 10
     NearClipPlane: 0.1
     FarClipPlane: 5000
@@ -2148,7 +2148,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 541544343}
-  m_LocalRotation: {x: 0.102920465, y: 0.66212267, z: -0.09252614, w: 0.7365052}
+  m_LocalRotation: {x: 0.105572246, y: -0.69996524, z: 0.105814934, w: 0.6983598}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -2416,7 +2416,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4044717213e31446939f7bd49c896ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_TrackedObjectOffset: {x: -0.4, y: 0.71, z: 0}
+  m_TrackedObjectOffset: {x: -0.1, y: 1, z: 0}
   m_LookaheadTime: 0
   m_LookaheadSmoothing: 10
   m_HorizontalDamping: 0
@@ -2442,7 +2442,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_BindingMode: 4
-  m_FollowOffset: {x: 0, y: 1.63, z: -3}
+  m_FollowOffset: {x: 0, y: 2.1623178, z: -3.6175425}
   m_XDamping: 0.2
   m_YDamping: 0.2
   m_ZDamping: 0.2
@@ -2452,7 +2452,7 @@ MonoBehaviour:
   m_Heading:
     m_HeadingDefinition: 2
     m_VelocityFilterStrength: 4
-    m_HeadingBias: 0
+    m_HeadingBias: -10
   m_RecenterToTargetHeading:
     m_enabled: 0
     m_RecenterWaitTime: 1
@@ -2460,7 +2460,7 @@ MonoBehaviour:
     m_LegacyHeadingDefinition: -1
     m_LegacyVelocityFilterStrength: -1
   m_XAxis:
-    Value: 90
+    Value: 270
     m_MaxSpeed: 300
     m_AccelTime: 0.1
     m_DecelTime: 0.1
@@ -2579,13 +2579,13 @@ MonoBehaviour:
   m_Follow: {fileID: 843555474}
   m_CommonLens: 1
   m_Lens:
-    FieldOfView: 20
+    FieldOfView: 21
     OrthographicSize: 10
     NearClipPlane: 0.1
     FarClipPlane: 5000
     Dutch: 0
   m_YAxis:
-    Value: 1
+    Value: 0.84
     m_MaxSpeed: 1.5
     m_AccelTime: 0.1
     m_DecelTime: 0.1
@@ -2593,7 +2593,7 @@ MonoBehaviour:
     m_InputAxisValue: 0
     m_InvertAxis: 1
   m_XAxis:
-    Value: 90
+    Value: 270
     m_MaxSpeed: 300
     m_AccelTime: 0.1
     m_DecelTime: 0.1
@@ -2603,7 +2603,7 @@ MonoBehaviour:
   m_Heading:
     m_HeadingDefinition: 2
     m_VelocityFilterStrength: 4
-    m_HeadingBias: 0
+    m_HeadingBias: -10
   m_RecenterToTargetHeading:
     m_enabled: 0
     m_RecenterWaitTime: 1
@@ -2613,12 +2613,12 @@ MonoBehaviour:
   m_BindingMode: 4
   m_SplineCurvature: 0
   m_Orbits:
-  - m_Height: 1.63
-    m_Radius: 3
-  - m_Height: 1.06
-    m_Radius: 3.1
-  - m_Height: -0.16
-    m_Radius: 2.9
+  - m_Height: 2.3
+    m_Radius: 3.5
+  - m_Height: 1.3
+    m_Radius: 3.8
+  - m_Height: -1
+    m_Radius: 3.4
   m_LegacyHeadingBias: 3.4028235e+38
   m_Rigs:
   - {fileID: 1742991079}
@@ -2632,7 +2632,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 807353626}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -94.71, y: 3.516, z: 25.86}
+  m_LocalPosition: {x: -88.147415, y: 4.048318, z: 26.48818}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1742991080}
@@ -3413,7 +3413,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1044896107}
-  m_LocalRotation: {x: 0.08414983, y: 0.7020818, z: -0.08414983, w: 0.7020818}
+  m_LocalRotation: {x: 0.42680076, y: 0.56379175, z: -0.42686227, w: 0.5637097}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -3855,7 +3855,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_BindingMode: 4
-  m_FollowOffset: {x: 0, y: 2.5302343, z: -6.0021014}
+  m_FollowOffset: {x: 0, y: 11.814044, z: -2.2980886}
   m_XDamping: 1
   m_YDamping: 1
   m_ZDamping: 1
@@ -3874,12 +3874,12 @@ MonoBehaviour:
     m_LegacyVelocityFilterStrength: -1
   m_XAxis:
     Value: 90
-    m_MaxSpeed: 300
+    m_MaxSpeed: 225
     m_AccelTime: 0.1
     m_DecelTime: 0.1
     m_InputAxisName: HorizontalTurn
     m_InputAxisValue: 0
-    m_InvertAxis: 1
+    m_InvertAxis: 0
   m_LegacyRadius: 3.4028235e+38
   m_LegacyHeightOffset: 3.4028235e+38
   m_LegacyHeadingBias: 3.4028235e+38
@@ -4322,7 +4322,7 @@ MonoBehaviour:
   m_LookAt: {fileID: 0}
   m_Follow: {fileID: 0}
   m_Lens:
-    FieldOfView: 20
+    FieldOfView: 21
     OrthographicSize: 10
     NearClipPlane: 0.1
     FarClipPlane: 5000
@@ -4335,7 +4335,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1227806441}
-  m_LocalRotation: {x: 0.11187851, y: 0.6609473, z: -0.10057946, w: 0.7351978}
+  m_LocalRotation: {x: 0.120541744, y: -0.69753206, z: 0.12081886, w: 0.6959322}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -5839,7 +5839,7 @@ MonoBehaviour:
   m_LookAt: {fileID: 0}
   m_Follow: {fileID: 0}
   m_Lens:
-    FieldOfView: 20
+    FieldOfView: 21
     OrthographicSize: 10
     NearClipPlane: 0.1
     FarClipPlane: 5000
@@ -5852,7 +5852,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1742991078}
-  m_LocalRotation: {x: 0.123951316, y: 0.65920424, z: -0.11143299, w: 0.73325884}
+  m_LocalRotation: {x: 0.12996438, y: -0.6958303, z: 0.13026315, w: 0.6942342}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -6652,7 +6652,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4044717213e31446939f7bd49c896ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_TrackedObjectOffset: {x: -0.4, y: 0.63, z: 0}
+  m_TrackedObjectOffset: {x: -0.1, y: 0.83, z: 0}
   m_LookaheadTime: 0
   m_LookaheadSmoothing: 10
   m_HorizontalDamping: 0.1
@@ -6678,7 +6678,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_BindingMode: 4
-  m_FollowOffset: {x: 0, y: 1.63, z: -3}
+  m_FollowOffset: {x: 0, y: 2.1623178, z: -3.6175425}
   m_XDamping: 0.2
   m_YDamping: 0.2
   m_ZDamping: 0.2
@@ -6688,7 +6688,7 @@ MonoBehaviour:
   m_Heading:
     m_HeadingDefinition: 2
     m_VelocityFilterStrength: 4
-    m_HeadingBias: 0
+    m_HeadingBias: -10
   m_RecenterToTargetHeading:
     m_enabled: 0
     m_RecenterWaitTime: 1
@@ -6696,7 +6696,7 @@ MonoBehaviour:
     m_LegacyHeadingDefinition: -1
     m_LegacyVelocityFilterStrength: -1
   m_XAxis:
-    Value: 90
+    Value: 270
     m_MaxSpeed: 300
     m_AccelTime: 0.1
     m_DecelTime: 0.1
@@ -6923,7 +6923,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4044717213e31446939f7bd49c896ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_TrackedObjectOffset: {x: -0.4, y: 0.52, z: 0}
+  m_TrackedObjectOffset: {x: -0.1, y: 0.72, z: 0}
   m_LookaheadTime: 0
   m_LookaheadSmoothing: 10
   m_HorizontalDamping: 0.1
@@ -6949,7 +6949,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_BindingMode: 4
-  m_FollowOffset: {x: 0, y: 1.63, z: -3}
+  m_FollowOffset: {x: 0, y: 2.1623178, z: -3.6175425}
   m_XDamping: 0.2
   m_YDamping: 0.2
   m_ZDamping: 0.2
@@ -6959,7 +6959,7 @@ MonoBehaviour:
   m_Heading:
     m_HeadingDefinition: 2
     m_VelocityFilterStrength: 4
-    m_HeadingBias: 0
+    m_HeadingBias: -10
   m_RecenterToTargetHeading:
     m_enabled: 0
     m_RecenterWaitTime: 1
@@ -6967,7 +6967,7 @@ MonoBehaviour:
     m_LegacyHeadingDefinition: -1
     m_LegacyVelocityFilterStrength: -1
   m_XAxis:
-    Value: 90
+    Value: 270
     m_MaxSpeed: 300
     m_AccelTime: 0.1
     m_DecelTime: 0.1
@@ -7045,7 +7045,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1970806824}
-  m_LocalRotation: {x: 0.10956404, y: 0.6985669, z: -0.10956404, w: 0.6985669}
+  m_LocalRotation: {x: 0.44696957, y: 0.5479349, z: -0.44703412, w: 0.5478559}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -7098,8 +7098,8 @@ MonoBehaviour:
     FarClipPlane: 5000
     Dutch: 0
   m_YAxis:
-    Value: 0.53
-    m_MaxSpeed: 2
+    Value: 0.97
+    m_MaxSpeed: 1
     m_AccelTime: 0.2
     m_DecelTime: 0.1
     m_InputAxisName: VerticalTurn
@@ -7107,12 +7107,12 @@ MonoBehaviour:
     m_InvertAxis: 1
   m_XAxis:
     Value: 90
-    m_MaxSpeed: 300
+    m_MaxSpeed: 225
     m_AccelTime: 0.1
     m_DecelTime: 0.1
     m_InputAxisName: HorizontalTurn
     m_InputAxisValue: 0
-    m_InvertAxis: 1
+    m_InvertAxis: 0
   m_Heading:
     m_HeadingDefinition: 2
     m_VelocityFilterStrength: 4
@@ -7124,14 +7124,14 @@ MonoBehaviour:
     m_LegacyHeadingDefinition: -1
     m_LegacyVelocityFilterStrength: -1
   m_BindingMode: 4
-  m_SplineCurvature: 0.6
+  m_SplineCurvature: 0.71
   m_Orbits:
-  - m_Height: 11
+  - m_Height: 12
     m_Radius: 2
   - m_Height: 2
-    m_Radius: 6
-  - m_Height: -1
-    m_Radius: 1.2
+    m_Radius: 7
+  - m_Height: -1.5
+    m_Radius: 3
   m_LegacyHeadingBias: 3.4028235e+38
   m_Rigs:
   - {fileID: 1970806825}
@@ -7145,7 +7145,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1993504315}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -97.7121, y: 4.4162345, z: 25.86}
+  m_LocalPosition: {x: -94.00809, y: 13.700044, z: 25.86}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1970806826}
