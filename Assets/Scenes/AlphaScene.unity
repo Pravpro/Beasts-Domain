@@ -224,7 +224,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 13337469}
-  m_LocalRotation: {x: 0.09761983, y: 0.7003359, z: -0.09761983, w: 0.7003359}
+  m_LocalRotation: {x: 0.097619295, y: 0.700336, z: -0.097619295, w: 0.700336}
   m_LocalPosition: {x: -97.7121, y: 4.4162345, z: 25.86}
   m_LocalScale: {x: 30, y: 30, z: 30}
   m_Children: []
@@ -1394,7 +1394,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 382882444}
-  m_LocalRotation: {x: 0.09685608, y: 0.70044196, z: -0.09685608, w: 0.70044196}
+  m_LocalRotation: {x: 0.09685578, y: 0.700442, z: -0.09685578, w: 0.700442}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -3413,7 +3413,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1044896107}
-  m_LocalRotation: {x: 0.08414982, y: 0.7020818, z: -0.08414982, w: 0.7020818}
+  m_LocalRotation: {x: 0.08414997, y: 0.7020818, z: -0.08414997, w: 0.7020818}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -7917,7 +7917,7 @@ MonoBehaviour:
         _elementType: 0
         _elementIdentifierId: 3
         _axisRange: 0
-        _invert: 1
+        _invert: 0
         _axisContribution: 0
         _keyboardKeyCode: 0
         _modifierKey1: 0
@@ -8023,7 +8023,7 @@ MonoBehaviour:
         _elementType: 0
         _elementIdentifierId: 3
         _axisRange: 0
-        _invert: 1
+        _invert: 0
         _axisContribution: 0
         _keyboardKeyCode: 0
         _modifierKey1: 0
@@ -8129,7 +8129,7 @@ MonoBehaviour:
         _elementType: 0
         _elementIdentifierId: 3
         _axisRange: 0
-        _invert: 1
+        _invert: 0
         _axisContribution: 0
         _keyboardKeyCode: 0
         _modifierKey1: 0
