@@ -3413,7 +3413,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1044896107}
-  m_LocalRotation: {x: 0.044106442, y: 0.70569205, z: -0.044101182, w: 0.705768}
+  m_LocalRotation: {x: 0.044106495, y: 0.70569205, z: -0.044101235, w: 0.705768}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -6407,6 +6407,16 @@ PrefabInstance:
       propertyPath: choir
       value: 
       objectReference: {fileID: 843555470}
+    - target: {fileID: 9206296177471051253, guid: 35b58b46bca88334daef10b3a5c81c42,
+        type: 3}
+      propertyPath: crouchSpeed
+      value: 0.03
+      objectReference: {fileID: 0}
+    - target: {fileID: 9206296177471051253, guid: 35b58b46bca88334daef10b3a5c81c42,
+        type: 3}
+      propertyPath: hp
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 9206296177471051255, guid: 35b58b46bca88334daef10b3a5c81c42,
         type: 3}
       propertyPath: BypassListenerEffects

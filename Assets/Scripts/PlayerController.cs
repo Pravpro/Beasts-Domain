@@ -48,8 +48,6 @@ public class PlayerController : MonoBehaviour
         m_Animator = GetComponent<Animator>();
         rb = gameObject.GetComponent<Rigidbody>();
         jump = new Vector3(0, 1.0f, 0);
-        hp = 2;
-        crouchSpeed = 0.03f;
     }
 
     private void FixedUpdate()
