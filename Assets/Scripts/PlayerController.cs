@@ -9,7 +9,7 @@ using Rewired;
 public class PlayerController : MonoBehaviour
 {
     // Create variable for movement speed
-    public float walkSpeed, runSpeed, jumpSpeed, turnSpeed;
+    public float walkSpeed, runSpeed, jumpSpeed, turnSpeed, crouchSpeed;
     public int hp;
     public CinemachineStateDrivenCamera SDCam;
 
@@ -17,15 +17,13 @@ public class PlayerController : MonoBehaviour
     // we only have one player id will always = 0
     private int m_playerID = 0;
     private Player m_playerInput;
-
     private int count = 1;
     // private List<Collider> colliders = new List<Collider>();
     private Rigidbody rb;
-    private bool grounded = true;
     Vector3 m_Movement, jump, desiredForward, prevCamForward;
     Quaternion m_Rotation, lastRotation = Quaternion.identity;
     Animator m_Animator;
-    private bool pushing = false;
+    private bool isMoving, pushing, grounded, walking, running, crouching = false;
     private ICinemachineCamera thirdPersonCam;
 
     //Audio design
@@ -51,11 +49,16 @@ public class PlayerController : MonoBehaviour
         rb = gameObject.GetComponent<Rigidbody>();
         jump = new Vector3(0, 1.0f, 0);
         hp = 2;
+        crouchSpeed = 0.03f;
     }
 
     private void FixedUpdate()
     {
-        
+        // Set Animator bools
+        m_Animator.SetBool("IsMoving", isMoving);
+        m_Animator.SetBool("IsWalking", walking);
+        m_Animator.SetBool("IsRunning", running);
+        m_Animator.SetBool("IsCrouching", crouching); 
 
         if (hp <= 0)
         {
@@ -67,7 +70,6 @@ public class PlayerController : MonoBehaviour
         float horizontal = m_playerInput.GetAxis("Horizontal");
         float vertical   = m_playerInput.GetAxis("Vertical");
         m_Movement.Set(horizontal, 0f, vertical);
-        //m_Movement.Normalize();
 
         // Get the movement to be respective to camera
         m_Movement = Camera.main.transform.TransformDirection(m_Movement);
@@ -77,14 +79,12 @@ public class PlayerController : MonoBehaviour
         // Set IsWalking bool according to movement
         bool hasHorizontalInput = !Mathf.Approximately(horizontal, 0f);
         bool hasVerticalInput = !Mathf.Approximately(vertical, 0f);
-        bool isMoving = hasHorizontalInput || hasVerticalInput;
-        m_Animator.SetBool("IsWalking", isMoving);
+        isMoving = hasHorizontalInput || hasVerticalInput;
 
-        // Condtions for Rotating
+        // Conditions for Rotating
         if (SDCam.LiveChildOrSelf.Name == "CM_AimCam")
         {
-            // Freeze Y position of Third Person cam
-            
+
             Vector3 camforward = Camera.main.transform.forward;
             camforward.y = 0f;
             
@@ -113,18 +113,19 @@ public class PlayerController : MonoBehaviour
         // Code for Running and walking
         if (isMoving)
         {
-            if (m_playerInput.GetButton("Run") )
+            if (running)
             {
-                m_Animator.SetBool("IsRunning", true);
-                
                 // hacky way of making push same speed while running and walking
                 rb.MovePosition(rb.position + m_Movement * (pushing ? walkSpeed 
                                                                     : runSpeed) );
             }
+            if (crouching)
+            {
+                rb.MovePosition(rb.position + m_Movement * crouchSpeed);
+            }
             // Else walk
             else
             {
-                m_Animator.SetBool("IsRunning", false);
                 rb.MovePosition(rb.position + m_Movement * walkSpeed);
             }
         }
@@ -140,6 +141,18 @@ public class PlayerController : MonoBehaviour
             Jumping.PlayOneShot(Jumps[randomClip], 0.15f);
             Jumping.pitch = Random.Range(0.9f, 1.0f);
         }
+
+        // Crouch and Run Logic (Cannot do both at the same time)
+        if (m_playerInput.GetButtonDown("Crouch"))
+        {
+            crouching = crouching ^ true;
+        }
+        
+        if (!crouching)
+        {
+            running = m_playerInput.GetButton("Run");
+        }
+        else running = false;
 
         
     }
