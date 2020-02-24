@@ -26,6 +26,10 @@ public class PlayerController : MonoBehaviour
     private bool isMoving, pushing, grounded, walking, running, crouching = false;
     private ICinemachineCamera thirdPersonCam;
 
+
+    ParticleSystem spellArea;
+    GameObject AimArea;
+
     //Audio design
 
     //public AudioSource choir;
@@ -48,6 +52,11 @@ public class PlayerController : MonoBehaviour
         m_Animator = GetComponent<Animator>();
         rb = gameObject.GetComponent<Rigidbody>();
         jump = new Vector3(0, 1.0f, 0);
+
+        spellArea = GameObject.Find("SpellArea").GetComponent<ParticleSystem>();
+        AimArea = GameObject.Find("SpellArea/AimArea");
+        // set to false at beginning
+        AimArea.SetActive(false);
     }
 
     private void FixedUpdate()
@@ -152,7 +161,34 @@ public class PlayerController : MonoBehaviour
         }
         else running = false;
 
-        
+
+        // some distance front of player
+        Vector3 spellAreaPosition = this.transform.position;
+        spellAreaPosition.y = 1.0f; /* hardcoded again.. a bit above ground... */
+
+        if (m_playerInput.GetButtonDown("Spell"))
+        {
+            // activate aiming for spell area
+            AimArea.SetActive(true);
+        }
+
+        // TODO: should probably only allow spell after monster get some damage
+        if (m_playerInput.GetButton("Spell"))
+        {
+            // get aiming area position respective to player position
+            spellArea.transform.position = spellAreaPosition + this.transform.forward * 10.0f /* TODO: hardcoded distance */; 
+        }
+
+        if (m_playerInput.GetButtonUp("Spell"))
+        {
+            // activate the area
+            var spellAreaEmission = spellArea.emission;
+            spellAreaEmission.enabled = true;
+            spellArea.Play();
+
+            // deactivate aiming for spell area
+            AimArea.SetActive(false);
+        }
     }
 
 
