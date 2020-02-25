@@ -39,6 +39,8 @@ public class PlayerController : MonoBehaviour
     public AudioSource Jumping;
     public AudioMixerGroup output;
 
+    public AudioSource spellSound;
+
     
 
     private void Start()
@@ -185,6 +187,10 @@ public class PlayerController : MonoBehaviour
             var spellAreaEmission = spellArea.emission;
             spellAreaEmission.enabled = true;
             spellArea.Play();
+
+            //audio test
+            spellSound.pitch = Random.Range(0.9f, 1.3f);
+            spellSound.Play();
 
             // deactivate aiming for spell area
             AimArea.SetActive(false);

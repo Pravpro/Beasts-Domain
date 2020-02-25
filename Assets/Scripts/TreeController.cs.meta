@@ -3,7 +3,10 @@ guid: e903f3fbcc0942742af9339ccc1e4475
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - log: {instanceID: 0}
+  - treeFall: {fileID: 8300000, guid: 0e20349afaadc144f913949f31bd93b7, type: 3}
+  - treeNoise: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
