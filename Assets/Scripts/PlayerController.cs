@@ -31,9 +31,6 @@ public class PlayerController : MonoBehaviour
     GameObject AimArea;
 
     //Audio design
-
-    //public AudioSource choir;
-
     public AudioClip[] Jumps;
     public AudioClip Landing;
     public AudioSource Jumping;
@@ -65,7 +62,6 @@ public class PlayerController : MonoBehaviour
     {
         // Set Animator bools
         m_Animator.SetBool("IsMoving", isMoving);
-        m_Animator.SetBool("IsWalking", walking);
         m_Animator.SetBool("IsRunning", running);
         m_Animator.SetBool("IsCrouching", crouching); 
 
