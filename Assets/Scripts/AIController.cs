@@ -135,6 +135,12 @@ public class AIController : MonoBehaviour
             return;
         }
 
+        // ADRIAN LOOK HERE!!!! :)
+        if (Time.time == 25)
+        {
+
+        }
+
         // 1. rotation
         Quaternion qRotate;
         // turn the boss to the rock hit direction
