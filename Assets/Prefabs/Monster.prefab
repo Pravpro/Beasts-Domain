@@ -95,12 +95,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Death: {fileID: 8300000, guid: 98067a162e11891468263cb81364deae, type: 3}
   Respawn: {fileID: 6346451721298342684}
-  Player: {fileID: 0}
+  choir: {fileID: 0}
+  roar1: {fileID: 0}
+  fight1: {fileID: 0}
   player: {fileID: 0}
   turningSpeed: 20
   movingSpeed: 1
   hp: 2
-  playerInSight: 0
   target: {fileID: 0}
 --- !u!64 &-2625637854013436290
 MeshCollider:
