@@ -23,6 +23,8 @@ public class AIController : MonoBehaviour
     public AudioSource roar1;
     public AudioSource fight1;
     public AudioSource strings;
+    public AudioMixerSnapshot IntroMoodboard;
+    public AudioMixerSnapshot IntroStrings;
 
     // public variables
     public GameObject player;
@@ -100,7 +102,8 @@ public class AIController : MonoBehaviour
         lineRenderer = GetComponent<LineRenderer>();
         lineRenderer.positionCount = 2;
 
-        strings.PlayDelayed(28.0f);
+        IntroMoodboard.TransitionTo(0.0f);
+        strings.PlayDelayed(27.0f);
         strings.loop = true;
     }
 
@@ -138,7 +141,7 @@ public class AIController : MonoBehaviour
         // ADRIAN LOOK HERE!!!! :)
         if (Time.time == 25)
         {
-
+            IntroStrings.TransitionTo(5f);
         }
 
         // 1. rotation

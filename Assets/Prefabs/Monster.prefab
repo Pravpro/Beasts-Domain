@@ -107,6 +107,9 @@ MonoBehaviour:
   roar1: {fileID: 496040789}
   fight1: {fileID: 496040788}
   strings: {fileID: 7662356015815701336}
+  IntroMoodboard: {fileID: 24500006, guid: b12a37322bc5b8444879a1c72e83a533, type: 2}
+  IntroStrings: {fileID: -2019386721928641525, guid: b12a37322bc5b8444879a1c72e83a533,
+    type: 2}
   player: {fileID: 0}
   turningSpeed: 1
   movingSpeed: 5.5
