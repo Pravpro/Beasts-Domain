@@ -62,14 +62,14 @@ public class HealthSystem : MonoBehaviour
         if (m_playerInput.GetButtonDown("Pause") && !isLoaded("PauseMenu") )
         {
             Time.timeScale = 0.0f;
-            SceneManager.LoadScene("PauseMenu", LoadSceneMode.Additive);
+            // SceneManager.LoadScene("PauseMenu", LoadSceneMode.Additive);
             
         }
 
         if (m_playerInput.GetButtonDown("Pause") && isLoaded("PauseMenu"))
         {
-            SceneManager.UnloadSceneAsync("PauseMenu");
-            Time.timeScale = 1.0f;
+            // SceneManager.UnloadSceneAsync("PauseMenu");
+            // Time.timeScale = 1.0f;
         }
     }
 
