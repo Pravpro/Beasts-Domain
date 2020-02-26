@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Audio;
@@ -352,7 +352,7 @@ public class AIController : MonoBehaviour
 
     bool ReachedChargeDest()
     {
-        return DistanceTo(target.vector, true) < 2f;
+        return DistanceTo(target.vector, true) < 3f;
     }
 
     bool ReachedWanderDest()
