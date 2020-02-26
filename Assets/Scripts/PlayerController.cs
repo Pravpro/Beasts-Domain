@@ -41,14 +41,11 @@ public class PlayerController : MonoBehaviour
     public AudioClip[] Jumps;
     public AudioClip Landing;
     public AudioSource Jumping;
+    public AudioSource spellSound;
     public AudioMixerGroup output;
 
-    public AudioSource spellSound;
-
-    
-
     private void Start()
-    {
+    {  
         // to access input using rewired
         m_playerInput = ReInput.players.GetPlayer(m_playerID);
 
