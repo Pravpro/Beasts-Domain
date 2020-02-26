@@ -277,5 +277,10 @@ public class PlayerController : MonoBehaviour
         }
         
     }
+
+    public bool IsMoving()
+    {
+        return isMoving;
+    }
     
 }
