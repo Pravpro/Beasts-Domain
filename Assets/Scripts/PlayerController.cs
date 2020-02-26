@@ -35,7 +35,7 @@ public class PlayerController : MonoBehaviour
     GameObject AimArea;
 
     public int spellWaitTime;
-    private bool waitForSpell = false;
+    private Coroutine WaitNextSpellCoroutine;
 
     //Audio design
     public AudioClip[] Jumps;
@@ -146,15 +146,16 @@ public class PlayerController : MonoBehaviour
         rb.MoveRotation(m_Rotation);
 
         if (stamina < maxStamina && !running) stamina++;
-        if (stamina == 0) recoverStamia = true;
+        if (stamina <= 0)
         {
             Stamina.Play();
+            recoverStamia = true;
         }
 
-        // some buffer for recovering, set to half of the max stamina
+        // some buffer for recovering, set to half point of stamina
         // player is required to recover to that point for using stamina for running.
-        // TODO: change to other way like time buffer (?)
-        if (recoverStamia && stamina > maxStamina / 2) recoverStamia = false;
+        // TODO: change to other way like wait time (?)
+        if (recoverStamia && stamina >= maxStamina / 2) recoverStamia = false;
 
         if (m_playerInput.GetButtonDown("Jump") && grounded)
         {
@@ -180,7 +181,7 @@ public class PlayerController : MonoBehaviour
         else running = false;
 
 
-        if (!waitForSpell)
+        if (WaitNextSpellCoroutine == null)
         {
             // some distance front of player
             Vector3 spellAreaPosition = this.transform.position + this.transform.forward * 10f;
@@ -193,12 +194,11 @@ public class PlayerController : MonoBehaviour
             // TODO: should probably only allow spell after monster get some damage
             if (m_playerInput.GetButton("Spell"))
             {
+                spellArea.transform.position = spellAreaPosition;
                 // ray cast to the ground
                 RaycastHit hit;
                 if (Physics.Raycast(spellAreaPosition + Vector3.up * 5f, Vector3.down, out hit, 80.0f /*max distance */) )
                 {
-                    spellArea.transform.position = spellAreaPosition;
-
                     if (hit.collider.tag == "Ground")
                         spellArea.transform.position = hit.point + Vector3.up * 1.0f; /* a little above ground */
                 }
@@ -212,14 +212,14 @@ public class PlayerController : MonoBehaviour
                 spellArea.Play();
 
                 //audio test
-                spellSound.pitch = Random.Range(0.9f, 1.3f);
-                spellSound.Play();
+                // spellSound.pitch = Random.Range(0.9f, 1.3f);
+                // spellSound.Play();
 
                 // deactivate aiming for spell area
                 AimArea.SetActive(false);
 
                 // wait time before next available spell
-                StartCoroutine(WaitNextSpell() );
+                WaitNextSpellCoroutine = StartCoroutine(WaitNextSpell() );
             }
 
         }
@@ -228,9 +228,8 @@ public class PlayerController : MonoBehaviour
 
     IEnumerator WaitNextSpell()
     {
-        waitForSpell = true;
         yield return new WaitForSeconds(spellWaitTime);
-        waitForSpell = false;
+        WaitNextSpellCoroutine = null;
     }
 
     void OnCollisionEnter(Collision col)
@@ -305,5 +304,5 @@ public class PlayerController : MonoBehaviour
     {
         return isMoving;
     }
-    
+
 }

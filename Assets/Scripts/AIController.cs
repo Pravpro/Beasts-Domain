@@ -33,6 +33,10 @@ public class AIController : MonoBehaviour
     public float movingSpeed  = 1.0f;
     public int maxHp = 2;
     public int hp = 2;
+
+    // give some buffer time for player to get next damange
+    private Coroutine damageCoroutine;
+
     public bool playerInSight
     {
         get {return m_playerInSight;}
@@ -254,14 +258,24 @@ public class AIController : MonoBehaviour
         }
         else if (col.collider.tag == "Player")
         {
-            if (playerScript.hp > 0)
+            if (playerScript.hp > 0 && damageCoroutine == null)
             {
                 playerScript.hp -= 1;
                 Debug.Log("Player lose health to " + playerScript.hp);
-                damage.clip = Hurt;
-                damage.PlayOneShot(Hurt, 0.5f);
-                damage.pitch = Random.Range(0.9f, 1.1f);
+
+                // avoid getting both hurt sound and dead sound when hp = 0
+                // check the updated hp
+                if (playerScript.hp > 0)
+                {   
+                    damage.clip = Hurt;
+                    damage.PlayOneShot(Hurt, 0.5f);
+                    damage.pitch = Random.Range(0.9f, 1.1f);
+                }
+                
+                // give some buffer
+                damageCoroutine = StartCoroutine(NextDamageWaitTime() );
             }
+
             if (playerScript.hp <= 0)
             {
                 Debug.Log("Player Dies");
@@ -269,6 +283,12 @@ public class AIController : MonoBehaviour
                 damage.PlayOneShot(Death, 0.5f);
             }
         }
+    }
+
+    IEnumerator NextDamageWaitTime()
+    {
+        yield return new WaitForSeconds(3 /* wait time for player next damage */);
+        damageCoroutine = null;
     }
 
     void MoveToRandomPos()
