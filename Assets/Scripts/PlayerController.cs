@@ -252,6 +252,12 @@ public class PlayerController : MonoBehaviour
 
             // make sure pushing has been reset properly
             pushing = false;
+
+            // if the pushing object is boulder, we set the isKinematic to true
+            // not allow monster to move.
+            if (col.gameObject.name.Contains("Boulder") ||
+                col.gameObject.name.Contains("boulder") )
+                rbMovable.isKinematic = true;
         }
         
     }

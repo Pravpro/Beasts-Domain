@@ -391,7 +391,7 @@ GameObject:
   - component: {fileID: 7620642464590722930}
   m_Layer: 0
   m_Name: Body
-  m_TagString: Untagged
+  m_TagString: Movable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -436,7 +436,7 @@ GameObject:
   - component: {fileID: 7620642464735177378}
   m_Layer: 0
   m_Name: BrokenBranch
-  m_TagString: Untagged
+  m_TagString: Movable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
