@@ -224,8 +224,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 13337469}
-  m_LocalRotation: {x: 0.05688297, y: 0.7048151, z: -0.05688297, w: 0.70481515}
-  m_LocalPosition: {x: -98.71, y: 3.8860002, z: 25.86}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 30, y: 30, z: 30}
   m_Children: []
   m_Father: {fileID: 0}
@@ -1394,7 +1394,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 382882444}
-  m_LocalRotation: {x: 0.05688568, y: 0.70477796, z: -0.056879748, w: 0.70485234}
+  m_LocalRotation: {x: 0.056885332, y: 0.70477796, z: -0.0568794, w: 0.70485234}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -8068,11 +8068,11 @@ MonoBehaviour:
     m_VirtualCamera: {fileID: 1993504316}
     m_ActivateAfter: 0
     m_MinDuration: 0
-  - m_FullHash: -2010423537
+  - m_FullHash: -409901381
     m_VirtualCamera: {fileID: 1993504316}
     m_ActivateAfter: 0
     m_MinDuration: 0
-  - m_FullHash: 256545655
+  - m_FullHash: 2069122584
     m_VirtualCamera: {fileID: 1993504316}
     m_ActivateAfter: 0
     m_MinDuration: 0
@@ -8183,7 +8183,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1044896107}
-  m_LocalRotation: {x: 0.044106577, y: 0.70569205, z: -0.044101316, w: 0.705768}
+  m_LocalRotation: {x: 0.0441066, y: 0.70569205, z: -0.04410134, w: 0.705768}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -10957,6 +10957,21 @@ PrefabInstance:
       propertyPath: SDCam
       value: 
       objectReference: {fileID: 1037459151}
+    - target: {fileID: 9206296177471051253, guid: 35b58b46bca88334daef10b3a5c81c42,
+        type: 3}
+      propertyPath: runSpeed
+      value: 0.11
+      objectReference: {fileID: 0}
+    - target: {fileID: 9206296177471051253, guid: 35b58b46bca88334daef10b3a5c81c42,
+        type: 3}
+      propertyPath: walkSpeed
+      value: 0.09
+      objectReference: {fileID: 0}
+    - target: {fileID: 9206296177471051253, guid: 35b58b46bca88334daef10b3a5c81c42,
+        type: 3}
+      propertyPath: crouchSpeed
+      value: 0.04
+      objectReference: {fileID: 0}
     - target: {fileID: 9206296177713215370, guid: 35b58b46bca88334daef10b3a5c81c42,
         type: 3}
       propertyPath: CB
