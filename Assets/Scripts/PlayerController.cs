@@ -13,7 +13,7 @@ public class PlayerController : MonoBehaviour
 
     public int hp, stamina;
     private int maxStamina; //maxHp;
-    public bool recoverStamia = false;
+    private bool recoverStamia = false;
     
     public CinemachineStateDrivenCamera SDCam;
 
@@ -33,6 +33,9 @@ public class PlayerController : MonoBehaviour
 
     ParticleSystem spellArea;
     GameObject AimArea;
+
+    public int spellWaitTime;
+    private bool waitForSpell = false;
 
     //Audio design
     public AudioClip[] Jumps;
@@ -176,39 +179,58 @@ public class PlayerController : MonoBehaviour
         else running = false;
 
 
-        // some distance front of player
-        Vector3 spellAreaPosition = this.transform.position;
-        spellAreaPosition.y = 1.0f; /* hardcoded again.. a bit above ground... */
-
-        if (m_playerInput.GetButtonDown("Spell"))
+        if (!waitForSpell)
         {
-            // activate aiming for spell area
-            AimArea.SetActive(true);
+            // some distance front of player
+            Vector3 spellAreaPosition = this.transform.position + this.transform.forward * 10f;
+            if (m_playerInput.GetButtonDown("Spell"))
+            {
+                spellArea.transform.position = spellAreaPosition;
+                AimArea.SetActive(true);
+            }
+
+            // TODO: should probably only allow spell after monster get some damage
+            if (m_playerInput.GetButton("Spell"))
+            {
+                // ray cast to the ground
+                RaycastHit hit;
+                if (Physics.Raycast(spellAreaPosition + Vector3.up * 5f, Vector3.down, out hit, 80.0f /*max distance */) )
+                {
+                    spellArea.transform.position = spellAreaPosition;
+
+                    if (hit.collider.tag == "Ground")
+                        spellArea.transform.position = hit.point + Vector3.up * 1.0f; /* a little above ground */
+                }
+            }
+
+            if (m_playerInput.GetButtonUp("Spell"))
+            {
+                // activate the area
+                var spellAreaEmission = spellArea.emission;
+                spellAreaEmission.enabled = true;
+                spellArea.Play();
+
+                //audio test
+                spellSound.pitch = Random.Range(0.9f, 1.3f);
+                spellSound.Play();
+
+                // deactivate aiming for spell area
+                AimArea.SetActive(false);
+
+                // wait time before next available spell
+                StartCoroutine(WaitNextSpell() );
+            }
+
         }
 
-        // TODO: should probably only allow spell after monster get some damage
-        if (m_playerInput.GetButton("Spell"))
-        {
-            // get aiming area position respective to player position
-            spellArea.transform.position = spellAreaPosition + this.transform.forward * 10.0f /* TODO: hardcoded distance */; 
-        }
-
-        if (m_playerInput.GetButtonUp("Spell"))
-        {
-            // activate the area
-            var spellAreaEmission = spellArea.emission;
-            spellAreaEmission.enabled = true;
-            spellArea.Play();
-
-            //audio test
-            spellSound.pitch = Random.Range(0.9f, 1.3f);
-            spellSound.Play();
-
-            // deactivate aiming for spell area
-            AimArea.SetActive(false);
-        }
     }
 
+    IEnumerator WaitNextSpell()
+    {
+        waitForSpell = true;
+        yield return new WaitForSeconds(spellWaitTime);
+        waitForSpell = false;
+    }
 
     void OnCollisionEnter(Collision col)
     {

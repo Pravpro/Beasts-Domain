@@ -38,7 +38,7 @@ public class HealthSystem : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        if (playerScript.hp == 0)
+        if (healthUI.value == 0)
         {
             var color = blackScreen.color;
             // alpha for color fade out
