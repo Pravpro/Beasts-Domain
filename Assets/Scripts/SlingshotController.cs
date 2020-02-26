@@ -10,7 +10,6 @@ public class SlingshotController : MonoBehaviour
 {
     public GameObject throwObject, player;
     public int throwVelocity;
-    public LaunchArcMesh launchArc;
     public CinemachineBrain CB;
     public Camera aimCam;
     public Image crosshair;
@@ -22,8 +21,7 @@ public class SlingshotController : MonoBehaviour
     public AudioMixerGroup output;
 
     public AudioSource ready;
-
-    //GameObject arc = null;
+    
     Animator playerAnimator;
     Vector3 targetVector;
 
@@ -44,9 +42,6 @@ public class SlingshotController : MonoBehaviour
         if (m_playerInput.GetButtonDown("Throw"))
         {
             playerAnimator.SetBool("IsAiming", true);
-            //arc = Instantiate(launchArc.gameObject,
-            //                  transform.position,
-            //                  player.transform.rotation) as GameObject;
             Slingshot.clip = Hold;
             Slingshot.PlayOneShot(Hold, 1f);
             ready.PlayDelayed(1.2f);
@@ -60,7 +55,6 @@ public class SlingshotController : MonoBehaviour
             Debug.Log(Physics.Raycast(aimCam.transform.position, aimCam.transform.forward));
             if (Physics.Raycast(aimCam.transform.position, aimCam.transform.forward, out hit))
             {
-                //Debug.Log(hit.transform.name);
                 targetVector = hit.point - transform.position;
                 Debug.DrawLine(transform.position, hit.point, Color.green);
                 targetVector.Normalize();
@@ -80,13 +74,9 @@ public class SlingshotController : MonoBehaviour
                 Slingshot.outputAudioMixerGroup = output;
 
                 // Add the launch arc forces to the throwable
-                //LaunchArcMesh arcScript = arc.GetComponent<LaunchArcMesh>();
-                //m_rb.AddForce(Quaternion.AngleAxis(90-arcScript.angle, arc.transform.right) * arc.transform.up * arcScript.velocity, ForceMode.Impulse);
                 m_rb.AddForce(targetVector * throwVelocity, ForceMode.VelocityChange);
 
                 playerAnimator.SetBool("IsAiming", false);
-
-                //Destroy(arc);
             }
         }
         else crosshair.enabled = false;
@@ -95,16 +85,6 @@ public class SlingshotController : MonoBehaviour
         {
             playerAnimator.SetBool("IsAiming", false);
         }
-
-        // Make arc follow slingshot
-        //if (arc != null)
-        //{
-
-
-        //    //player.transform.forward = Camera.current.transform.forward;
-        //    arc.transform.position = transform.position;
-        //    arc.transform.rotation = player.transform.rotation;
-        //}
 
         
     }

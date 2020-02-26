@@ -25,9 +25,8 @@ public class ThrowableController : MonoBehaviour
             Rock.clip = Hit[randomClip];
             Rock.PlayOneShot(Hit[randomClip], 1f);
             Rock.pitch = Random.Range(0.4f, 1.4f);
-            Debug.Log("collision detected with: " + col.collider.name);
-            m_rb.useGravity = true;
-            Destroy(gameObject, destroyDelay);
+
+            Destroy(gameObject);
         }
     }
 }
