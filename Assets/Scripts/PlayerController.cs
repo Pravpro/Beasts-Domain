@@ -42,6 +42,7 @@ public class PlayerController : MonoBehaviour
     public AudioClip Landing;
     public AudioSource Jumping;
     public AudioSource spellSound;
+    public AudioSource Stamina;
     public AudioMixerGroup output;
 
     private void Start()
@@ -146,6 +147,9 @@ public class PlayerController : MonoBehaviour
 
         if (stamina < maxStamina && !running) stamina++;
         if (stamina == 0) recoverStamia = true;
+        {
+            Stamina.Play();
+        }
 
         // some buffer for recovering, set to half of the max stamina
         // player is required to recover to that point for using stamina for running.

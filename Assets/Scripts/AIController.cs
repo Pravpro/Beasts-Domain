@@ -18,7 +18,8 @@ public class AIController : MonoBehaviour
 {
     //Audio design
     public AudioClip Death;
-    public AudioSource Respawn;
+    public AudioClip Hurt;
+    public AudioSource damage;
     public AudioSource choir;
     public AudioSource roar1;
     public AudioSource fight1;
@@ -257,12 +258,15 @@ public class AIController : MonoBehaviour
             {
                 playerScript.hp -= 1;
                 Debug.Log("Player lose health to " + playerScript.hp);
+                damage.clip = Hurt;
+                damage.PlayOneShot(Hurt, 0.5f);
+                damage.pitch = Random.Range(0.9f, 1.1f);
             }
             if (playerScript.hp <= 0)
             {
                 Debug.Log("Player Dies");
-                Respawn.clip = Death;
-                Respawn.PlayOneShot(Death, 0.5f);
+                damage.clip = Death;
+                damage.PlayOneShot(Death, 0.5f);
             }
         }
     }

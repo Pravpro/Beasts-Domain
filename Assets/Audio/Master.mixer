@@ -85,6 +85,19 @@ AudioMixerEffectController:
   m_SendTarget: {fileID: 0}
   m_EnableWetMix: 0
   m_Bypass: 0
+--- !u!245 &-2019386721928641525
+AudioMixerSnapshotController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: IntroStrings
+  m_AudioMixer: {fileID: 24100000}
+  m_SnapshotID: 04615da8ce0601d41bcb80e6be36f828
+  m_FloatValues:
+    0e5d7f3e5c2601d4ebef0135b9264d2d: -80
+    8d523cafe5a752a46805083ed60b1f20: -20.09816
+  m_TransitionOverrides: {}
 --- !u!243 &-1957139070176323428
 AudioMixerGroupController:
   m_ObjectHideFlags: 0
@@ -150,6 +163,7 @@ AudioMixerController:
   m_MasterGroup: {fileID: 24300002}
   m_Snapshots:
   - {fileID: 24500006}
+  - {fileID: -2019386721928641525}
   m_StartSnapshot: {fileID: 24500006}
   m_SuspendThreshold: -80
   m_EnableSuspend: 1
@@ -211,12 +225,12 @@ AudioMixerSnapshotController:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Intro
+  m_Name: IntroMoodboard
   m_AudioMixer: {fileID: 24100000}
   m_SnapshotID: ef5a8a1c9cb4f6147a20b937c53ea462
   m_FloatValues:
     0e5d7f3e5c2601d4ebef0135b9264d2d: -10.345207
-    8d523cafe5a752a46805083ed60b1f20: -0.0024418756
+    8d523cafe5a752a46805083ed60b1f20: -80
   m_TransitionOverrides: {}
 --- !u!243 &312817399248102967
 AudioMixerGroupController:
