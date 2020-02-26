@@ -10,7 +10,11 @@ public class PlayerController : MonoBehaviour
 {
     // Create variable for movement speed
     public float walkSpeed, runSpeed, jumpSpeed, turnSpeed, crouchSpeed;
-    public int hp;
+
+    public int hp, stamina;
+    private int maxStamina; //maxHp;
+    public bool recoverStamia = false;
+    
     public CinemachineStateDrivenCamera SDCam;
 
     // player id for reference Rewired input
@@ -44,6 +48,8 @@ public class PlayerController : MonoBehaviour
     {
         // to access input using rewired
         m_playerInput = ReInput.players.GetPlayer(m_playerID);
+
+        maxStamina = stamina;
         
         // reset the input to use rewired
         CinemachineCore.GetInputAxis = ReInput.players.GetPlayer(m_playerID).GetAxis;
@@ -62,12 +68,11 @@ public class PlayerController : MonoBehaviour
     {
         // Set Animator bools
         m_Animator.SetBool("IsMoving", isMoving);
-        m_Animator.SetBool("IsRunning", running);
+        m_Animator.SetBool("IsRunning", recoverStamia ? false : running); // not allow running if recovering stamina
         m_Animator.SetBool("IsCrouching", crouching); 
 
         if (hp <= 0)
         {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name); // "TitleScreen"
             return;
         }
 
@@ -118,11 +123,12 @@ public class PlayerController : MonoBehaviour
         // Code for Running and walking
         if (isMoving)
         {
-            if (running)
+            if (running && !recoverStamia)
             {
                 // hacky way of making push same speed while running and walking
                 rb.MovePosition(rb.position + m_Movement * (pushing ? walkSpeed 
                                                                     : runSpeed) );
+                stamina--;
             }
             if (crouching)
             {
@@ -133,8 +139,18 @@ public class PlayerController : MonoBehaviour
             {
                 rb.MovePosition(rb.position + m_Movement * walkSpeed);
             }
+
+            
         }
         rb.MoveRotation(m_Rotation);
+
+        if (stamina < maxStamina && !running) stamina++;
+        if (stamina == 0) recoverStamia = true;
+
+        // some buffer for recovering, set to half of the max stamina
+        // player is required to recover to that point for using stamina for running.
+        // TODO: change to other way like time buffer (?)
+        if (recoverStamia && stamina > maxStamina / 2) recoverStamia = false;
 
         if (m_playerInput.GetButtonDown("Jump") && grounded)
         {

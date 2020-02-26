@@ -56,7 +56,7 @@ public class mainmenu : MonoBehaviour
 
     void startOnClick()
     {
-        SceneManager.LoadScene("Scenes/LevelBuildBackup");
+        SceneManager.LoadScene("Scenes/AlphaScene");
     }
 
     void quitOnClick()
