@@ -19,10 +19,10 @@ public class AIController : MonoBehaviour
     //Audio design
     public AudioClip Death;
     public AudioSource Respawn;
-
     public AudioSource choir;
     public AudioSource roar1;
     public AudioSource fight1;
+    public AudioSource strings;
 
     // public variables
     public GameObject player;
@@ -41,6 +41,7 @@ public class AIController : MonoBehaviour
                 {
                     //BeastRoar1 fight starts
                     choir.Stop();
+                    strings.Stop();
                     roar1.Play();
                     fight1.PlayDelayed(2.5f);
                     m_roarPlayed = true;
@@ -98,6 +99,9 @@ public class AIController : MonoBehaviour
 
         lineRenderer = GetComponent<LineRenderer>();
         lineRenderer.positionCount = 2;
+
+        strings.PlayDelayed(28.0f);
+        strings.loop = true;
     }
 
     void Update()
