@@ -9,6 +9,12 @@ EditorBuildSettings:
     path: Assets/Scenes/TitleScreen.unity
     guid: 5733602be3064314898c285b90d94528
   - enabled: 1
-    path: Assets/Scenes/LevelBuildBackup.unity
-    guid: 5fc17a1cadafd03459a944cfdd29b3bf
+    path: Assets/Scenes/AlphaScene.unity
+    guid: 2fd0486774dfbb74da22f200b24bc504
+  - enabled: 1
+    path: Assets/Scenes/PauseMenu.unity
+    guid: 970b235d0f3faab45973cf6a57907dd6
+  - enabled: 1
+    path: Assets/Scenes/ArtScene.unity
+    guid: 95ca9ebecd95b5546b8eb30e46bfe21f
   m_configObjects: {}
