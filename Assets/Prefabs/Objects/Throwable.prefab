@@ -123,6 +123,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e9c37ad54aa248019c5795d7f6882cd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Hit:
+  - {fileID: 8300000, guid: 76c37cbc4fecc4b4ab66f1c999bc7add, type: 3}
+  - {fileID: 8300000, guid: e06411748a135264da022b7124bdd82a, type: 3}
+  Rock: {fileID: -6306612579769807833}
   slingshot: {fileID: 1688415965222344963, guid: 2347fe245a975f84ab1fec5fe5afebd8,
     type: 3}
 --- !u!82 &-6306612579769807833
@@ -139,7 +143,7 @@ AudioSource:
   m_audioClip: {fileID: 8300000, guid: e06411748a135264da022b7124bdd82a, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
-  m_Pitch: 1.0730604
+  m_Pitch: 0.52147305
   Loop: 0
   Mute: 0
   Spatialize: 0

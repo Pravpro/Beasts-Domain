@@ -96,8 +96,8 @@ public class SlingshotController : MonoBehaviour
     {
         int randomClip = Random.Range(0, Hit.Length);
         Rock.clip = Hit[randomClip];
-        Rock.PlayOneShot(Hit[randomClip], 1f);
         Rock.pitch = Random.Range(0.4f, 1.4f);
+        Rock.Play();
     }
 
 }
