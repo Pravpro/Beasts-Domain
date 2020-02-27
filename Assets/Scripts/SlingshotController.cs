@@ -19,7 +19,10 @@ public class SlingshotController : MonoBehaviour
     public AudioClip Release;
     public AudioSource Slingshot;
     public AudioMixerGroup output;
-
+     // Rock hit
+    public AudioClip[] Hit;
+    public AudioSource Rock;
+     // Ready
     public AudioSource ready;
     
     Animator playerAnimator;
@@ -87,6 +90,14 @@ public class SlingshotController : MonoBehaviour
         }
 
         
+    }
+
+    public void playProjectileCollisionSound()
+    {
+        int randomClip = Random.Range(0, Hit.Length);
+        Rock.clip = Hit[randomClip];
+        Rock.PlayOneShot(Hit[randomClip], 1f);
+        Rock.pitch = Random.Range(0.4f, 1.4f);
     }
 
 }
