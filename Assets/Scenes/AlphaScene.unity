@@ -224,8 +224,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 13337469}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: 0.056882393, y: 0.70481515, z: -0.056882393, w: 0.7048152}
+  m_LocalPosition: {x: -98.71, y: 3.8860002, z: 25.86}
   m_LocalScale: {x: 30, y: 30, z: 30}
   m_Children: []
   m_Father: {fileID: 0}
@@ -1733,7 +1733,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 382882444}
-  m_LocalRotation: {x: 0.056882415, y: 0.7048152, z: -0.056882486, w: 0.70481515}
+  m_LocalRotation: {x: 0.056882333, y: 0.7048152, z: -0.056882404, w: 0.70481515}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -8549,7 +8549,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1044896107}
-  m_LocalRotation: {x: 0.044106573, y: 0.70569205, z: -0.044101313, w: 0.705768}
+  m_LocalRotation: {x: 0.044106517, y: 0.70569205, z: -0.044101257, w: 0.705768}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -14130,6 +14130,11 @@ PrefabInstance:
       propertyPath: SDCam
       value: 
       objectReference: {fileID: 1037459151}
+    - target: {fileID: 1311964250415205058, guid: 35b58b46bca88334daef10b3a5c81c42,
+        type: 3}
+      propertyPath: Spell
+      value: 
+      objectReference: {fileID: 8300000, guid: 5a13ac1f1998748f48f927f500253222, type: 3}
     - target: {fileID: 1311964250415205059, guid: 35b58b46bca88334daef10b3a5c81c42,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -14210,6 +14215,16 @@ PrefabInstance:
       propertyPath: Rock
       value: 
       objectReference: {fileID: 7668754453324945917}
+    - target: {fileID: 1780811104807924946, guid: 35b58b46bca88334daef10b3a5c81c42,
+        type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 5a13ac1f1998748f48f927f500253222, type: 3}
+    - target: {fileID: 1780811104807924946, guid: 35b58b46bca88334daef10b3a5c81c42,
+        type: 3}
+      propertyPath: m_Volume
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7923622919743733158, guid: 35b58b46bca88334daef10b3a5c81c42,
         type: 3}
       propertyPath: healthUI

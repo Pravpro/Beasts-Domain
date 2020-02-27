@@ -40,6 +40,7 @@ public class PlayerController : MonoBehaviour
     //Audio design
     public AudioClip[] Jumps;
     public AudioClip Landing;
+    public AudioClip Spell;
     public AudioSource Jumping;
     public AudioSource spellSound;
     public AudioSource Stamina;
@@ -212,8 +213,8 @@ public class PlayerController : MonoBehaviour
                 spellArea.Play();
 
                 //audio test
-                // spellSound.pitch = Random.Range(0.9f, 1.3f);
-                // spellSound.Play();
+                spellSound.pitch = Random.Range(0.9f, 1.3f);
+                spellSound.Play();
 
                 // deactivate aiming for spell area
                 AimArea.SetActive(false);
