@@ -240,7 +240,7 @@ public class PlayerController : MonoBehaviour
         {
             grounded = true;
             Jumping.clip = Landing;
-            Jumping.PlayOneShot(Landing, 1.2f);
+            Jumping.PlayOneShot(Landing, 1f);
         }
 
         // Avoid unwaned moving of a movable object
