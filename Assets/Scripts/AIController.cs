@@ -142,7 +142,7 @@ public class AIController : MonoBehaviour
         // ADRIAN LOOK HERE!!!! :)
         if (Time.time - scenLoadTime == 25f)
         {
-            IntroStrings.TransitionTo(5f);
+            
         }
 
         // 1. rotation
