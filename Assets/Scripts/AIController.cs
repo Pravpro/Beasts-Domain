@@ -285,6 +285,7 @@ public class AIController : MonoBehaviour
     IEnumerator playerInvincible()
     {
         yield return StartCoroutine(playerScript.waitNextDamage(3)  );
+        playerScript.stamina = playerScript.maxStamina;
         damageCoroutine = null;
     }
 
