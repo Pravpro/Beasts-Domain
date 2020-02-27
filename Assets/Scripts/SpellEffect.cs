@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class SpellEffect : MonoBehaviour
 {
@@ -19,6 +20,8 @@ public class SpellEffect : MonoBehaviour
     private bool monsterTrapped = false;
     private bool startDisappear = false;
     private float currAlpha;
+
+     private Coroutine waitTillLoadScene = null;
     
     
     // Start is called before the first frame update
@@ -58,7 +61,7 @@ public class SpellEffect : MonoBehaviour
             disappearEffect.Play();
 
             setTransparent();
-            currAlpha = disappearEffect.main.duration * 30f;
+            currAlpha = disappearEffect.main.duration * 20f;
             startDisappear = true;
 
             // music can be added heare
@@ -69,7 +72,7 @@ public class SpellEffect : MonoBehaviour
         if (startDisappear)
         {            
             Color newColor = m_renderer.material.color;
-            newColor.a     = currAlpha / (disappearEffect.main.duration * 30f);
+            newColor.a     = currAlpha / (disappearEffect.main.duration * 20f);
 
             // always stick with monster
             disappearEffect.transform.position = monster.transform.position;
@@ -82,13 +85,8 @@ public class SpellEffect : MonoBehaviour
         if (m_renderer.material.color.a <= 0.0f)
         {
             monster.GetComponent<Renderer>().enabled = false;
-
-            // wait for few minutes
-
         
-            // show the UIs for the game win
-
-            // Do something...
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name); // "TitleScreen"
 
         }
     }
@@ -112,4 +110,9 @@ public class SpellEffect : MonoBehaviour
         m_renderer.material.renderQueue = (int) UnityEngine.Rendering.RenderQueue.Transparent;
     }
 
+    IEnumerator WaitTillLoad()
+    {
+        yield return new WaitForSeconds(1);
+        waitTillLoadScene = null;
+    }
 }
