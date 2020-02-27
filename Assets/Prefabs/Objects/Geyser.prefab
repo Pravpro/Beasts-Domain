@@ -107,7 +107,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   triggered: 0
-  resetTime: 500
+  resetTime: 10
   triggerCoeff: 3
 --- !u!54 &3559483679017615111
 Rigidbody:
