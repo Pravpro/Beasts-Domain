@@ -34,6 +34,7 @@ public class PlayerController : MonoBehaviour
     GameObject AimArea;
     public int spellWaitTime;
     private Coroutine WaitNextSpellCoroutine;
+    private bool activateSpell = false;
 
     // player damage time
 
@@ -69,7 +70,7 @@ public class PlayerController : MonoBehaviour
     private void FixedUpdate()
     {
         // Set Animator bools
-        m_Animator.SetBool("IsMoving", isMoving);
+        m_Animator.SetBool("IsMoving", activateSpell ? false : isMoving);
         m_Animator.SetBool("IsRunning", recoverStamia ? false : running); // not allow running if recovering stamina
         m_Animator.SetBool("IsCrouching", crouching); 
 
@@ -123,7 +124,7 @@ public class PlayerController : MonoBehaviour
         }
 
         // Code for Running and walking
-        if (isMoving)
+        if (isMoving && !activateSpell)
         {
             if (running && !recoverStamia)
             {
@@ -156,7 +157,7 @@ public class PlayerController : MonoBehaviour
         // some buffer for recovering, set to half point of stamina
         // player is required to recover to that point for using stamina for running.
         // TODO: change to other way like wait time (?)
-        if (recoverStamia && stamina >= maxStamina / 2) recoverStamia = false;
+        if (recoverStamia && stamina >= maxStamina / 4) recoverStamia = false;
 
         if (m_playerInput.GetButtonDown("Jump") && grounded)
         {
@@ -190,6 +191,7 @@ public class PlayerController : MonoBehaviour
             {
                 spellArea.transform.position = spellAreaPosition;
                 AimArea.SetActive(true);
+                activateSpell = true;
             }
 
             // TODO: should probably only allow spell after monster get some damage
@@ -221,6 +223,7 @@ public class PlayerController : MonoBehaviour
 
                 // wait time before next available spell
                 WaitNextSpellCoroutine = StartCoroutine(WaitNextSpell() );
+                activateSpell = false;
             }
         }
     }
