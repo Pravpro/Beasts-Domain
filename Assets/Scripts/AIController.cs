@@ -300,6 +300,7 @@ public class AIController : MonoBehaviour
                 Debug.Log("Player Dies");
                 damage.clip = Death;
                 damage.PlayOneShot(Death, 0.5f);
+                IntroMoodboard.TransitionTo(2f);
             }
         }
 
