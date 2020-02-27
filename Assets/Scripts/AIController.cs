@@ -268,7 +268,7 @@ public class AIController : MonoBehaviour
                 if (playerScript.hp > 0)
                 {   
                     damage.clip = Hurt;
-                    damage.PlayOneShot(Hurt, 0.5f);
+                    damage.PlayOneShot(Hurt, 0.2f);
                     damage.pitch = Random.Range(0.9f, 1.1f);
                 }
                 
