@@ -65,6 +65,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 0bd124c637a512348a15e14ce4581dc6, type: 3}
   - {fileID: 8300000, guid: 7e14fd1ce1a7cf440b3fb49fb2a97402, type: 3}
   Landing: {fileID: 8300000, guid: a2db89066a1b9bd41a5996686b05b262, type: 3}
+  Spell: {fileID: 0}
   Jumping: {fileID: 7923622919743733155}
   spellSound: {fileID: 1780811104807924946}
   Stamina: {fileID: 5845232323444141615}
@@ -519,21 +520,6 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 1311964250415205063}
-    - target: {fileID: 1688415965222344963, guid: 2347fe245a975f84ab1fec5fe5afebd8,
-        type: 3}
-      propertyPath: CB
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 1688415965222344963, guid: 2347fe245a975f84ab1fec5fe5afebd8,
-        type: 3}
-      propertyPath: aimCam
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 1688415965222344963, guid: 2347fe245a975f84ab1fec5fe5afebd8,
-        type: 3}
-      propertyPath: crosshair
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 3790511999763225718, guid: 2347fe245a975f84ab1fec5fe5afebd8,
         type: 3}
       propertyPath: m_LocalPosition.x

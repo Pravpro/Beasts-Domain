@@ -72,6 +72,9 @@ public class SlingshotController : MonoBehaviour
                                                 transform.position,
                                                 player.transform.rotation) as GameObject;
                 Rigidbody m_rb = m_rock.GetComponent<Rigidbody>();
+                ThrowableController m_rockScript = m_rock.GetComponent<ThrowableController>();
+                m_rockScript.slingshotScript = this;
+
                 Slingshot.clip = Release;
                 Slingshot.PlayOneShot(Release, 1f);
                 Slingshot.outputAudioMixerGroup = output;
