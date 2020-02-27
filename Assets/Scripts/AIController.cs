@@ -26,6 +26,7 @@ public class AIController : MonoBehaviour
     public AudioSource strings;
     public AudioMixerSnapshot IntroMoodboard;
     public AudioMixerSnapshot IntroStrings;
+    public AudioMixerSnapshot BossFight1;
 
     // public variables
     public GameObject player;
@@ -196,6 +197,7 @@ public class AIController : MonoBehaviour
                 choir.Stop();
                 strings.Stop();
                 roar1.Play();
+                BossFight1.TransitionTo(4f);
                 fight1.PlayDelayed(2.5f);
                 m_roarPlayed = true;
             }
