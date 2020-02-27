@@ -13,6 +13,7 @@ public class SlingshotController : MonoBehaviour
     public CinemachineBrain CB;
     public Camera aimCam;
     public Image crosshair;
+    public float throwDelay;
 
     //Audio Design 
     public AudioClip Hold;
@@ -27,6 +28,7 @@ public class SlingshotController : MonoBehaviour
     
     Animator playerAnimator;
     Vector3 targetVector;
+    float nextThrowTime = 0f;
 
     // Rewired Input for throwing slingshot
     private int m_playerID = 0;
@@ -41,13 +43,22 @@ public class SlingshotController : MonoBehaviour
 
     private void Update()
     { 
-        // Activate slingshot
-        if (m_playerInput.GetButtonDown("Throw"))
+        if(nextThrowTime <= Time.time)
         {
-            playerAnimator.SetBool("IsAiming", true);
-            Slingshot.clip = Hold;
-            Slingshot.PlayOneShot(Hold, 1f);
-            ready.PlayDelayed(1.2f);
+            // Activate slingshot
+            if (m_playerInput.GetButtonDown("Throw"))
+            {
+                playerAnimator.SetBool("IsAiming", true);
+                Slingshot.clip = Hold;
+                Slingshot.PlayOneShot(Hold, 1f);
+                ready.PlayDelayed(1.2f);
+            }
+
+            if (m_playerInput.GetButtonUp("Throw"))
+            {
+                playerAnimator.SetBool("IsAiming", false);
+                nextThrowTime = Time.time + throwDelay;
+            }
         }
 
         if (CB.ActiveVirtualCamera.LiveChildOrSelf.Name == "CM_AimCam")
@@ -87,10 +98,7 @@ public class SlingshotController : MonoBehaviour
         }
         else crosshair.enabled = false;
 
-        if (m_playerInput.GetButtonUp("Throw"))
-        {
-            playerAnimator.SetBool("IsAiming", false);
-        }
+        
 
         
     }

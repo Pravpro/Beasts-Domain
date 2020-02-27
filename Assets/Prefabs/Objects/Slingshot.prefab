@@ -60,7 +60,7 @@ AudioSource:
   MaxDistance: 500
   Pan2D: 0
   rolloffMode: 0
-  BypassEffects: 0
+  BypassEffects: 1
   BypassListenerEffects: 0
   BypassReverbZones: 0
   rolloffCustomCurve:
@@ -248,6 +248,7 @@ MonoBehaviour:
   CB: {fileID: 0}
   aimCam: {fileID: 0}
   crosshair: {fileID: 0}
+  throwDelay: 1
   Hold: {fileID: 8300000, guid: 67fb7425e3f22475398db38cf02e6323, type: 3}
   Release: {fileID: 8300000, guid: a68cb3d90f65e8146ac2454b55af0aa3, type: 3}
   Slingshot: {fileID: 7542720990226630869}
