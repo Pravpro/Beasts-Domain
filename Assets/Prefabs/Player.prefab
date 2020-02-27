@@ -59,6 +59,7 @@ MonoBehaviour:
   crouchSpeed: 0.04
   hp: 2
   stamina: 100
+  maxStamina: 0
   SDCam: {fileID: 0}
   spellWaitTime: 20
   Jumps:
@@ -69,7 +70,7 @@ MonoBehaviour:
   Jumping: {fileID: 7923622919743733155}
   spellSound: {fileID: 1780811104807924946}
   Stamina: {fileID: 5845232323444141615}
-  output: {fileID: -7952378368151392856, guid: b12a37322bc5b8444879a1c72e83a533, type: 2}
+  output: {fileID: 1948688527111795787, guid: b12a37322bc5b8444879a1c72e83a533, type: 2}
 --- !u!54 &1311964250415205057
 Rigidbody:
   m_ObjectHideFlags: 0
