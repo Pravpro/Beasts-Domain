@@ -46,8 +46,9 @@ public class SpellEffect : MonoBehaviour
             // ignore both y axis
             monsterPosition.y = 0;
             spellPosition.y   = 0;
+            startDisappear = false;
 
-            if (Vector3.Distance(monsterPosition, spellPosition) < 2.5f)
+            if (Vector3.Distance(monsterPosition, spellPosition) < 2.0f)
                 monsterTrapped = true;
         }
 
@@ -57,8 +58,10 @@ public class SpellEffect : MonoBehaviour
             disappearEffect.Play();
 
             setTransparent();
-            currAlpha = disappearEffect.main.duration * 50f;
+            currAlpha = disappearEffect.main.duration * 30f;
             startDisappear = true;
+
+            // music can be added heare
 
         }
 
@@ -66,8 +69,11 @@ public class SpellEffect : MonoBehaviour
         if (startDisappear)
         {            
             Color newColor = m_renderer.material.color;
-            newColor.a     = currAlpha / (disappearEffect.main.duration * 50f);
+            newColor.a     = currAlpha / (disappearEffect.main.duration * 30f);
 
+            // always stick with monster
+            disappearEffect.transform.position = monster.transform.position;
+            
             m_renderer.material.color = Color.Lerp(m_renderer.material.color, newColor, Time.deltaTime);
             currAlpha--;
         }

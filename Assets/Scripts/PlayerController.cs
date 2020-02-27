@@ -12,7 +12,7 @@ public class PlayerController : MonoBehaviour
     public float walkSpeed, runSpeed, jumpSpeed, turnSpeed, crouchSpeed;
 
     public int hp, stamina;
-    private int maxStamina; //maxHp;
+    public int maxStamina; //maxHp;
     private bool recoverStamia = false;
     
     public CinemachineStateDrivenCamera SDCam;
@@ -185,7 +185,7 @@ public class PlayerController : MonoBehaviour
         else running = false;
 
 
-        if (WaitNextSpellCoroutine == null)
+        if (WaitNextSpellCoroutine == null && !GameObject.Find("Monster").GetComponent<AIController>().playerInSight)
         {
             // some distance front of player
             Vector3 spellAreaPosition = this.transform.position + this.transform.forward * 10f;

@@ -57,7 +57,6 @@ public class SlingshotController : MonoBehaviour
             if (m_playerInput.GetButtonUp("Throw"))
             {
                 playerAnimator.SetBool("IsAiming", false);
-                nextThrowTime = Time.time + throwDelay;
             }
         }
 
@@ -94,6 +93,7 @@ public class SlingshotController : MonoBehaviour
                 m_rb.AddForce(targetVector * throwVelocity, ForceMode.VelocityChange);
 
                 playerAnimator.SetBool("IsAiming", false);
+                nextThrowTime = Time.time + throwDelay;
             }
         }
         else crosshair.enabled = false;
