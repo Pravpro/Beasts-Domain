@@ -1,5 +1,19 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!64 &1569398164
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4411082119243630514}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 1
+  m_CookingOptions: 14
+  m_Mesh: {fileID: 4300000, guid: ed05e6f8eaeb2124aa5a15a305b35924, type: 3}
 --- !u!65 &4411082120844236916
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -9,7 +23,7 @@ BoxCollider:
   m_GameObject: {fileID: 4411082119243630514}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Size: {x: 3.1012492, y: 3.072737, z: 1.1203213}
   m_Center: {x: -1.4991765, y: -1.4902877, z: 0.50321996}
@@ -92,6 +106,20 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.25000247, y: 1.0000011, z: 3.0000014}
   m_Center: {x: -0.12499814, y: 0.50000054, z: 1.4999993}
+--- !u!64 &1806442178
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4411082119603993656}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 0
+  m_CookingOptions: 14
+  m_Mesh: {fileID: 4300000, guid: ed05e6f8eaeb2124aa5a15a305b35924, type: 3}
 --- !u!65 &4411082120346910939
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -101,7 +129,7 @@ BoxCollider:
   m_GameObject: {fileID: 4411082119603993656}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Size: {x: 3.1012492, y: 3.072737, z: 1.1203213}
   m_Center: {x: -1.4991765, y: -1.4902877, z: 0.50321996}
@@ -116,7 +144,7 @@ GameObject:
   - component: {fileID: 4411082119655831183}
   m_Layer: 0
   m_Name: Logs
-  m_TagString: Untagged
+  m_TagString: Movable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -261,6 +289,20 @@ Transform:
   m_Father: {fileID: 4411082121112817711}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!64 &290349630
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4411082119785013915}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 0
+  m_CookingOptions: 14
+  m_Mesh: {fileID: 4300000, guid: ed05e6f8eaeb2124aa5a15a305b35924, type: 3}
 --- !u!65 &4411082120464154290
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -270,7 +312,7 @@ BoxCollider:
   m_GameObject: {fileID: 4411082119785013915}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Size: {x: 3.1012497, y: 3.0727375, z: 1.1203215}
   m_Center: {x: -1.4991765, y: -1.4902878, z: 0.5032201}
@@ -515,6 +557,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4411082120045809658}
+  - component: {fileID: 302987685}
   m_Layer: 0
   m_Name: Trees
   m_TagString: Untagged
@@ -530,7 +573,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4411082120045809637}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: -0.9, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4411082119824033397}
@@ -539,6 +582,117 @@ Transform:
   m_Father: {fileID: 4411082121112817711}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!82 &302987685
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4411082120045809637}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 20657509805438966, guid: b12a37322bc5b8444879a1c72e83a533,
+    type: 2}
+  m_audioClip: {fileID: 8300000, guid: 0e20349afaadc144f913949f31bd93b7, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+--- !u!64 &597290094
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4411082120080810485}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 0
+  m_CookingOptions: 14
+  m_Mesh: {fileID: 4300000, guid: ed05e6f8eaeb2124aa5a15a305b35924, type: 3}
 --- !u!65 &4411082120650437393
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -548,10 +702,24 @@ BoxCollider:
   m_GameObject: {fileID: 4411082120080810485}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Size: {x: 3.1012497, y: 3.0727375, z: 1.1203215}
   m_Center: {x: -1.4991765, y: -1.4902878, z: 0.5032201}
+--- !u!64 &562202049
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4411082120105482452}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 1
+  m_CookingOptions: 14
+  m_Mesh: {fileID: 4300000, guid: ed05e6f8eaeb2124aa5a15a305b35924, type: 3}
 --- !u!65 &4411082120441095505
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -561,10 +729,24 @@ BoxCollider:
   m_GameObject: {fileID: 4411082120105482452}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Size: {x: 3.1012497, y: 3.0727375, z: 1.1203215}
   m_Center: {x: -1.4991765, y: -1.4902878, z: 0.5032201}
+--- !u!64 &849822117
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4411082120175245643}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 1
+  m_CookingOptions: 14
+  m_Mesh: {fileID: 4300000, guid: 2d3f517df17f7694b883733ae04f0ec7, type: 3}
 --- !u!65 &4411082119622697914
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -574,7 +756,7 @@ BoxCollider:
   m_GameObject: {fileID: 4411082120175245643}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Size: {x: 4.11409, y: 4.1003275, z: 4.1086717}
   m_Center: {x: -1.9994144, y: -2.0075617, z: 2.0061042}
@@ -658,6 +840,20 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 14
   m_Mesh: {fileID: 4300000, guid: 7f4f7d31b4a52934bad10741a0a1f0b9, type: 3}
+--- !u!64 &280872379
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4411082120440780670}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 0
+  m_CookingOptions: 14
+  m_Mesh: {fileID: 4300000, guid: ed05e6f8eaeb2124aa5a15a305b35924, type: 3}
 --- !u!65 &4411082120122778964
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -667,7 +863,7 @@ BoxCollider:
   m_GameObject: {fileID: 4411082120440780670}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Size: {x: 3.1012497, y: 3.0727375, z: 1.1203215}
   m_Center: {x: -1.4991765, y: -1.4902878, z: 0.5032201}
@@ -914,7 +1110,7 @@ GameObject:
   - component: {fileID: 4411082120894203845}
   m_Layer: 0
   m_Name: Boulders
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1041,6 +1237,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4411082121112817711}
+  - component: {fileID: 5468073933241658018}
+  - component: {fileID: -3772370839651298070}
   m_Layer: 0
   m_Name: AlphaLevel
   m_TagString: Untagged
@@ -1069,6 +1267,116 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5468073933241658018
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4411082121112817710}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 34e9f855c64b82244ad9a1c90d2dd8da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Fall: {fileID: 8300000, guid: 0e20349afaadc144f913949f31bd93b7, type: 3}
+  Tree: {fileID: -3772370839651298070}
+--- !u!82 &-3772370839651298070
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4411082121112817710}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 0e20349afaadc144f913949f31bd93b7, type: 3}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &4411082121118525285
 GameObject:
   m_ObjectHideFlags: 0
@@ -1195,6 +1503,20 @@ Transform:
   m_Father: {fileID: 4411082121112817711}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!64 &1315490652
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4411082121232714761}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 0
+  m_CookingOptions: 14
+  m_Mesh: {fileID: 4300000, guid: ed05e6f8eaeb2124aa5a15a305b35924, type: 3}
 --- !u!65 &4411082120019120598
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1204,7 +1526,7 @@ BoxCollider:
   m_GameObject: {fileID: 4411082121232714761}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Size: {x: 3.1012497, y: 3.0727375, z: 1.1203215}
   m_Center: {x: -1.4991765, y: -1.4902878, z: 0.5032201}
@@ -1280,6 +1602,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 761862437618306339, guid: 90717f7fd64f1cb43b68b0c38276ce60,
+        type: 3}
+      propertyPath: m_IsKinematic
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 90717f7fd64f1cb43b68b0c38276ce60, type: 3}
 --- !u!4 &4411082121209646035 stripped
@@ -1300,6 +1627,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tree (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 4952937580194241288, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
+        type: 3}
+      propertyPath: treeAudioScript
+      value: 
+      objectReference: {fileID: 5468073933241658018}
     - target: {fileID: 4952937580194627983, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1375,6 +1707,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tree (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 4952937580194241288, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
+        type: 3}
+      propertyPath: treeAudioScript
+      value: 
+      objectReference: {fileID: 5468073933241658018}
     - target: {fileID: 4952937580194627983, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1450,6 +1787,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tree (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 4952937580194241288, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
+        type: 3}
+      propertyPath: treeAudioScript
+      value: 
+      objectReference: {fileID: 5468073933241658018}
     - target: {fileID: 4952937580194627983, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1525,6 +1867,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tree (7)
       objectReference: {fileID: 0}
+    - target: {fileID: 4952937580194241288, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
+        type: 3}
+      propertyPath: treeAudioScript
+      value: 
+      objectReference: {fileID: 5468073933241658018}
     - target: {fileID: 4952937580194627983, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1600,6 +1947,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tree
       objectReference: {fileID: 0}
+    - target: {fileID: 4952937580194241288, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
+        type: 3}
+      propertyPath: treeAudioScript
+      value: 
+      objectReference: {fileID: 5468073933241658018}
     - target: {fileID: 4952937580194627983, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1765,6 +2117,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tree (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 4952937580194241288, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
+        type: 3}
+      propertyPath: treeAudioScript
+      value: 
+      objectReference: {fileID: 5468073933241658018}
     - target: {fileID: 4952937580194627983, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1840,6 +2197,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tree (12)
       objectReference: {fileID: 0}
+    - target: {fileID: 4952937580194241288, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
+        type: 3}
+      propertyPath: treeAudioScript
+      value: 
+      objectReference: {fileID: 5468073933241658018}
     - target: {fileID: 4952937580194627983, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1915,6 +2277,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tree (6)
       objectReference: {fileID: 0}
+    - target: {fileID: 4952937580194241288, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
+        type: 3}
+      propertyPath: treeAudioScript
+      value: 
+      objectReference: {fileID: 5468073933241658018}
     - target: {fileID: 4952937580194627983, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1990,6 +2357,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tree (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 4952937580194241288, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
+        type: 3}
+      propertyPath: treeAudioScript
+      value: 
+      objectReference: {fileID: 5468073933241658018}
     - target: {fileID: 4952937580194627983, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2065,6 +2437,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tree (16)
       objectReference: {fileID: 0}
+    - target: {fileID: 4952937580194241288, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
+        type: 3}
+      propertyPath: treeAudioScript
+      value: 
+      objectReference: {fileID: 5468073933241658018}
     - target: {fileID: 4952937580194627983, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2140,6 +2517,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tree (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 4952937580194241288, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
+        type: 3}
+      propertyPath: treeAudioScript
+      value: 
+      objectReference: {fileID: 5468073933241658018}
     - target: {fileID: 4952937580194627983, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2215,6 +2597,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tree (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 4952937580194241288, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
+        type: 3}
+      propertyPath: treeAudioScript
+      value: 
+      objectReference: {fileID: 5468073933241658018}
     - target: {fileID: 4952937580194627983, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2290,6 +2677,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tree (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 4952937580194241288, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
+        type: 3}
+      propertyPath: treeAudioScript
+      value: 
+      objectReference: {fileID: 5468073933241658018}
     - target: {fileID: 4952937580194627983, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2365,6 +2757,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tree (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 4952937580194241288, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
+        type: 3}
+      propertyPath: treeAudioScript
+      value: 
+      objectReference: {fileID: 5468073933241658018}
     - target: {fileID: 4952937580194627983, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2440,6 +2837,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tree (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 4952937580194241288, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
+        type: 3}
+      propertyPath: treeAudioScript
+      value: 
+      objectReference: {fileID: 5468073933241658018}
     - target: {fileID: 4952937580194627983, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2515,6 +2917,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tree
       objectReference: {fileID: 0}
+    - target: {fileID: 4952937580194241288, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
+        type: 3}
+      propertyPath: treeAudioScript
+      value: 
+      objectReference: {fileID: 5468073933241658018}
     - target: {fileID: 4952937580194627983, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2590,6 +2997,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tree
       objectReference: {fileID: 0}
+    - target: {fileID: 4952937580194241288, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
+        type: 3}
+      propertyPath: treeAudioScript
+      value: 
+      objectReference: {fileID: 5468073933241658018}
     - target: {fileID: 4952937580194627983, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2663,6 +3075,18 @@ PrefabInstance:
     - target: {fileID: 100000, guid: ed05e6f8eaeb2124aa5a15a305b35924, type: 3}
       propertyPath: m_Name
       value: Top_Mid
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: ed05e6f8eaeb2124aa5a15a305b35924, type: 3}
+      propertyPath: m_TagString
+      value: Ground
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: ed05e6f8eaeb2124aa5a15a305b35924, type: 3}
+      propertyPath: m_NavMeshLayer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: ed05e6f8eaeb2124aa5a15a305b35924, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: ed05e6f8eaeb2124aa5a15a305b35924, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2750,6 +3174,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tree (8)
       objectReference: {fileID: 0}
+    - target: {fileID: 4952937580194241288, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
+        type: 3}
+      propertyPath: treeAudioScript
+      value: 
+      objectReference: {fileID: 5468073933241658018}
     - target: {fileID: 4952937580194627983, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2825,6 +3254,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tree
       objectReference: {fileID: 0}
+    - target: {fileID: 4952937580194241288, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
+        type: 3}
+      propertyPath: treeAudioScript
+      value: 
+      objectReference: {fileID: 5468073933241658018}
     - target: {fileID: 4952937580194627983, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2900,6 +3334,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tree (9)
       objectReference: {fileID: 0}
+    - target: {fileID: 4952937580194241288, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
+        type: 3}
+      propertyPath: treeAudioScript
+      value: 
+      objectReference: {fileID: 5468073933241658018}
     - target: {fileID: 4952937580194627983, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -3126,15 +3565,15 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 24864aa65caaf4746b81eecf28be42ee, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e316150c83ef91243a9dca111d013c8e, type: 3}
---- !u!1 &4411082119288867104 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 100000, guid: e316150c83ef91243a9dca111d013c8e,
-    type: 3}
-  m_PrefabInstance: {fileID: 4411082119288967040}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &4411082119289099520 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400000, guid: e316150c83ef91243a9dca111d013c8e,
+    type: 3}
+  m_PrefabInstance: {fileID: 4411082119288967040}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &4411082119288867104 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 100000, guid: e316150c83ef91243a9dca111d013c8e,
     type: 3}
   m_PrefabInstance: {fileID: 4411082119288967040}
   m_PrefabAsset: {fileID: 0}
@@ -3150,6 +3589,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tree (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 4952937580194241288, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
+        type: 3}
+      propertyPath: treeAudioScript
+      value: 
+      objectReference: {fileID: 5468073933241658018}
     - target: {fileID: 4952937580194627983, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -3225,6 +3669,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tree (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 4952937580194241288, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
+        type: 3}
+      propertyPath: treeAudioScript
+      value: 
+      objectReference: {fileID: 5468073933241658018}
     - target: {fileID: 4952937580194627983, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -3300,6 +3749,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tree (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 4952937580194241288, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
+        type: 3}
+      propertyPath: treeAudioScript
+      value: 
+      objectReference: {fileID: 5468073933241658018}
     - target: {fileID: 4952937580194627983, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -3375,6 +3829,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tree (5)
       objectReference: {fileID: 0}
+    - target: {fileID: 4952937580194241288, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
+        type: 3}
+      propertyPath: treeAudioScript
+      value: 
+      objectReference: {fileID: 5468073933241658018}
     - target: {fileID: 4952937580194627983, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -3450,6 +3909,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tree (7)
       objectReference: {fileID: 0}
+    - target: {fileID: 4952937580194241288, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
+        type: 3}
+      propertyPath: treeAudioScript
+      value: 
+      objectReference: {fileID: 5468073933241658018}
     - target: {fileID: 4952937580194627983, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -3525,6 +3989,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tree (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 4952937580194241288, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
+        type: 3}
+      propertyPath: treeAudioScript
+      value: 
+      objectReference: {fileID: 5468073933241658018}
     - target: {fileID: 4952937580194627983, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -3600,6 +4069,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tree (5)
       objectReference: {fileID: 0}
+    - target: {fileID: 4952937580194241288, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
+        type: 3}
+      propertyPath: treeAudioScript
+      value: 
+      objectReference: {fileID: 5468073933241658018}
     - target: {fileID: 4952937580194627983, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -3825,6 +4299,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 761862437618306339, guid: 90717f7fd64f1cb43b68b0c38276ce60,
+        type: 3}
+      propertyPath: m_IsKinematic
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 90717f7fd64f1cb43b68b0c38276ce60, type: 3}
 --- !u!4 &4009859569592791951 stripped
@@ -3845,6 +4324,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tree (6)
       objectReference: {fileID: 0}
+    - target: {fileID: 4952937580194241288, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
+        type: 3}
+      propertyPath: treeAudioScript
+      value: 
+      objectReference: {fileID: 5468073933241658018}
     - target: {fileID: 4952937580194627983, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -3920,6 +4404,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tree (5)
       objectReference: {fileID: 0}
+    - target: {fileID: 4952937580194241288, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
+        type: 3}
+      propertyPath: treeAudioScript
+      value: 
+      objectReference: {fileID: 5468073933241658018}
     - target: {fileID: 4952937580194627983, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -3995,6 +4484,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tree (15)
       objectReference: {fileID: 0}
+    - target: {fileID: 4952937580194241288, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
+        type: 3}
+      propertyPath: treeAudioScript
+      value: 
+      objectReference: {fileID: 5468073933241658018}
     - target: {fileID: 4952937580194627983, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -4070,6 +4564,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tree (9)
       objectReference: {fileID: 0}
+    - target: {fileID: 4952937580194241288, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
+        type: 3}
+      propertyPath: treeAudioScript
+      value: 
+      objectReference: {fileID: 5468073933241658018}
     - target: {fileID: 4952937580194627983, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -4145,6 +4644,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tree (7)
       objectReference: {fileID: 0}
+    - target: {fileID: 4952937580194241288, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
+        type: 3}
+      propertyPath: treeAudioScript
+      value: 
+      objectReference: {fileID: 5468073933241658018}
     - target: {fileID: 4952937580194627983, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -4220,6 +4724,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tree (8)
       objectReference: {fileID: 0}
+    - target: {fileID: 4952937580194241288, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
+        type: 3}
+      propertyPath: treeAudioScript
+      value: 
+      objectReference: {fileID: 5468073933241658018}
     - target: {fileID: 4952937580194627983, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -4295,6 +4804,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tree (6)
       objectReference: {fileID: 0}
+    - target: {fileID: 4952937580194241288, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
+        type: 3}
+      propertyPath: treeAudioScript
+      value: 
+      objectReference: {fileID: 5468073933241658018}
     - target: {fileID: 4952937580194627983, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -4370,6 +4884,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tree
       objectReference: {fileID: 0}
+    - target: {fileID: 4952937580194241288, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
+        type: 3}
+      propertyPath: treeAudioScript
+      value: 
+      objectReference: {fileID: 5468073933241658018}
     - target: {fileID: 4952937580194627983, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -4445,6 +4964,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tree
       objectReference: {fileID: 0}
+    - target: {fileID: 4952937580194241288, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
+        type: 3}
+      propertyPath: treeAudioScript
+      value: 
+      objectReference: {fileID: 5468073933241658018}
     - target: {fileID: 4952937580194627983, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -4520,6 +5044,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tree
       objectReference: {fileID: 0}
+    - target: {fileID: 4952937580194241288, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
+        type: 3}
+      propertyPath: treeAudioScript
+      value: 
+      objectReference: {fileID: 5468073933241658018}
     - target: {fileID: 4952937580194627983, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -4593,6 +5122,18 @@ PrefabInstance:
     - target: {fileID: 100000, guid: ed05e6f8eaeb2124aa5a15a305b35924, type: 3}
       propertyPath: m_Name
       value: Mid_North
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: ed05e6f8eaeb2124aa5a15a305b35924, type: 3}
+      propertyPath: m_TagString
+      value: Ground
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: ed05e6f8eaeb2124aa5a15a305b35924, type: 3}
+      propertyPath: m_NavMeshLayer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: ed05e6f8eaeb2124aa5a15a305b35924, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: ed05e6f8eaeb2124aa5a15a305b35924, type: 3}
       propertyPath: m_LocalPosition.x
@@ -4680,6 +5221,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tree (15)
       objectReference: {fileID: 0}
+    - target: {fileID: 4952937580194241288, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
+        type: 3}
+      propertyPath: treeAudioScript
+      value: 
+      objectReference: {fileID: 5468073933241658018}
     - target: {fileID: 4952937580194627983, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -4755,6 +5301,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tree (14)
       objectReference: {fileID: 0}
+    - target: {fileID: 4952937580194241288, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
+        type: 3}
+      propertyPath: treeAudioScript
+      value: 
+      objectReference: {fileID: 5468073933241658018}
     - target: {fileID: 4952937580194627983, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -4830,6 +5381,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tree (6)
       objectReference: {fileID: 0}
+    - target: {fileID: 4952937580194241288, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
+        type: 3}
+      propertyPath: treeAudioScript
+      value: 
+      objectReference: {fileID: 5468073933241658018}
     - target: {fileID: 4952937580194627983, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -4905,6 +5461,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tree (6)
       objectReference: {fileID: 0}
+    - target: {fileID: 4952937580194241288, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
+        type: 3}
+      propertyPath: treeAudioScript
+      value: 
+      objectReference: {fileID: 5468073933241658018}
     - target: {fileID: 4952937580194627983, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -4980,6 +5541,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tree (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 4952937580194241288, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
+        type: 3}
+      propertyPath: treeAudioScript
+      value: 
+      objectReference: {fileID: 5468073933241658018}
     - target: {fileID: 4952937580194627983, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -5055,6 +5621,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tree (11)
       objectReference: {fileID: 0}
+    - target: {fileID: 4952937580194241288, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
+        type: 3}
+      propertyPath: treeAudioScript
+      value: 
+      objectReference: {fileID: 5468073933241658018}
     - target: {fileID: 4952937580194627983, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -5130,6 +5701,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tree (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 4952937580194241288, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
+        type: 3}
+      propertyPath: treeAudioScript
+      value: 
+      objectReference: {fileID: 5468073933241658018}
     - target: {fileID: 4952937580194627983, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -5205,6 +5781,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tree (8)
       objectReference: {fileID: 0}
+    - target: {fileID: 4952937580194241288, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
+        type: 3}
+      propertyPath: treeAudioScript
+      value: 
+      objectReference: {fileID: 5468073933241658018}
     - target: {fileID: 4952937580194627983, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -5280,6 +5861,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tree
       objectReference: {fileID: 0}
+    - target: {fileID: 4952937580194241288, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
+        type: 3}
+      propertyPath: treeAudioScript
+      value: 
+      objectReference: {fileID: 5468073933241658018}
     - target: {fileID: 4952937580194627983, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -5355,6 +5941,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tree (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 4952937580194241288, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
+        type: 3}
+      propertyPath: treeAudioScript
+      value: 
+      objectReference: {fileID: 5468073933241658018}
     - target: {fileID: 4952937580194627983, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -5515,6 +6106,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tree (7)
       objectReference: {fileID: 0}
+    - target: {fileID: 4952937580194241288, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
+        type: 3}
+      propertyPath: treeAudioScript
+      value: 
+      objectReference: {fileID: 5468073933241658018}
     - target: {fileID: 4952937580194627983, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -5590,6 +6186,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tree (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 4952937580194241288, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
+        type: 3}
+      propertyPath: treeAudioScript
+      value: 
+      objectReference: {fileID: 5468073933241658018}
     - target: {fileID: 4952937580194627983, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -5665,6 +6266,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tree (10)
       objectReference: {fileID: 0}
+    - target: {fileID: 4952937580194241288, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
+        type: 3}
+      propertyPath: treeAudioScript
+      value: 
+      objectReference: {fileID: 5468073933241658018}
     - target: {fileID: 4952937580194627983, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -5740,6 +6346,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tree (17)
       objectReference: {fileID: 0}
+    - target: {fileID: 4952937580194241288, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
+        type: 3}
+      propertyPath: treeAudioScript
+      value: 
+      objectReference: {fileID: 5468073933241658018}
     - target: {fileID: 4952937580194627983, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -5813,6 +6424,18 @@ PrefabInstance:
     - target: {fileID: 100000, guid: ed05e6f8eaeb2124aa5a15a305b35924, type: 3}
       propertyPath: m_Name
       value: Mid_South
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: ed05e6f8eaeb2124aa5a15a305b35924, type: 3}
+      propertyPath: m_TagString
+      value: Ground
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: ed05e6f8eaeb2124aa5a15a305b35924, type: 3}
+      propertyPath: m_NavMeshLayer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: ed05e6f8eaeb2124aa5a15a305b35924, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: ed05e6f8eaeb2124aa5a15a305b35924, type: 3}
       propertyPath: m_LocalPosition.x
@@ -5900,6 +6523,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tree (9)
       objectReference: {fileID: 0}
+    - target: {fileID: 4952937580194241288, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
+        type: 3}
+      propertyPath: treeAudioScript
+      value: 
+      objectReference: {fileID: 5468073933241658018}
     - target: {fileID: 4952937580194627983, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -5975,6 +6603,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tree (6)
       objectReference: {fileID: 0}
+    - target: {fileID: 4952937580194241288, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
+        type: 3}
+      propertyPath: treeAudioScript
+      value: 
+      objectReference: {fileID: 5468073933241658018}
     - target: {fileID: 4952937580194627983, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -6050,6 +6683,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tree
       objectReference: {fileID: 0}
+    - target: {fileID: 4952937580194241288, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
+        type: 3}
+      propertyPath: treeAudioScript
+      value: 
+      objectReference: {fileID: 5468073933241658018}
     - target: {fileID: 4952937580194627983, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -6125,6 +6763,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tree (9)
       objectReference: {fileID: 0}
+    - target: {fileID: 4952937580194241288, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
+        type: 3}
+      propertyPath: treeAudioScript
+      value: 
+      objectReference: {fileID: 5468073933241658018}
     - target: {fileID: 4952937580194627983, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -6200,6 +6843,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tree (11)
       objectReference: {fileID: 0}
+    - target: {fileID: 4952937580194241288, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
+        type: 3}
+      propertyPath: treeAudioScript
+      value: 
+      objectReference: {fileID: 5468073933241658018}
     - target: {fileID: 4952937580194627983, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -6275,6 +6923,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tree
       objectReference: {fileID: 0}
+    - target: {fileID: 4952937580194241288, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
+        type: 3}
+      propertyPath: treeAudioScript
+      value: 
+      objectReference: {fileID: 5468073933241658018}
     - target: {fileID: 4952937580194627983, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -6350,6 +7003,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tree (12)
       objectReference: {fileID: 0}
+    - target: {fileID: 4952937580194241288, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
+        type: 3}
+      propertyPath: treeAudioScript
+      value: 
+      objectReference: {fileID: 5468073933241658018}
     - target: {fileID: 4952937580194627983, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -6425,6 +7083,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tree (5)
       objectReference: {fileID: 0}
+    - target: {fileID: 4952937580194241288, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
+        type: 3}
+      propertyPath: treeAudioScript
+      value: 
+      objectReference: {fileID: 5468073933241658018}
     - target: {fileID: 4952937580194627983, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -6560,6 +7223,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 761862437618306339, guid: 90717f7fd64f1cb43b68b0c38276ce60,
+        type: 3}
+      propertyPath: m_IsKinematic
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 90717f7fd64f1cb43b68b0c38276ce60, type: 3}
 --- !u!4 &4009859570329522957 stripped
@@ -6580,6 +7248,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tree (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 4952937580194241288, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
+        type: 3}
+      propertyPath: treeAudioScript
+      value: 
+      objectReference: {fileID: 5468073933241658018}
     - target: {fileID: 4952937580194627983, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -6655,6 +7328,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tree (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 4952937580194241288, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
+        type: 3}
+      propertyPath: treeAudioScript
+      value: 
+      objectReference: {fileID: 5468073933241658018}
     - target: {fileID: 4952937580194627983, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -6730,6 +7408,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tree (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 4952937580194241288, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
+        type: 3}
+      propertyPath: treeAudioScript
+      value: 
+      objectReference: {fileID: 5468073933241658018}
     - target: {fileID: 4952937580194627983, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -6805,6 +7488,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tree (14)
       objectReference: {fileID: 0}
+    - target: {fileID: 4952937580194241288, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
+        type: 3}
+      propertyPath: treeAudioScript
+      value: 
+      objectReference: {fileID: 5468073933241658018}
     - target: {fileID: 4952937580194627983, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -6880,6 +7568,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tree (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 4952937580194241288, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
+        type: 3}
+      propertyPath: treeAudioScript
+      value: 
+      objectReference: {fileID: 5468073933241658018}
     - target: {fileID: 4952937580194627983, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -6953,6 +7646,14 @@ PrefabInstance:
     - target: {fileID: 100000, guid: ed05e6f8eaeb2124aa5a15a305b35924, type: 3}
       propertyPath: m_Name
       value: Mid_Ground1
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: ed05e6f8eaeb2124aa5a15a305b35924, type: 3}
+      propertyPath: m_TagString
+      value: Ground
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: ed05e6f8eaeb2124aa5a15a305b35924, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: ed05e6f8eaeb2124aa5a15a305b35924, type: 3}
       propertyPath: m_LocalPosition.x
@@ -7040,6 +7741,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tree (5)
       objectReference: {fileID: 0}
+    - target: {fileID: 4952937580194241288, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
+        type: 3}
+      propertyPath: treeAudioScript
+      value: 
+      objectReference: {fileID: 5468073933241658018}
     - target: {fileID: 4952937580194627983, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -7115,6 +7821,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tree
       objectReference: {fileID: 0}
+    - target: {fileID: 4952937580194241288, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
+        type: 3}
+      propertyPath: treeAudioScript
+      value: 
+      objectReference: {fileID: 5468073933241658018}
     - target: {fileID: 4952937580194627983, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -7190,6 +7901,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tree (11)
       objectReference: {fileID: 0}
+    - target: {fileID: 4952937580194241288, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
+        type: 3}
+      propertyPath: treeAudioScript
+      value: 
+      objectReference: {fileID: 5468073933241658018}
     - target: {fileID: 4952937580194627983, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -7265,6 +7981,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tree (12)
       objectReference: {fileID: 0}
+    - target: {fileID: 4952937580194241288, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
+        type: 3}
+      propertyPath: treeAudioScript
+      value: 
+      objectReference: {fileID: 5468073933241658018}
     - target: {fileID: 4952937580194627983, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -7340,6 +8061,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tree
       objectReference: {fileID: 0}
+    - target: {fileID: 4952937580194241288, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
+        type: 3}
+      propertyPath: treeAudioScript
+      value: 
+      objectReference: {fileID: 5468073933241658018}
     - target: {fileID: 4952937580194627983, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -7415,6 +8141,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tree (10)
       objectReference: {fileID: 0}
+    - target: {fileID: 4952937580194241288, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
+        type: 3}
+      propertyPath: treeAudioScript
+      value: 
+      objectReference: {fileID: 5468073933241658018}
     - target: {fileID: 4952937580194627983, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -7490,6 +8221,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tree (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 4952937580194241288, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
+        type: 3}
+      propertyPath: treeAudioScript
+      value: 
+      objectReference: {fileID: 5468073933241658018}
     - target: {fileID: 4952937580194627983, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -7565,6 +8301,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tree (9)
       objectReference: {fileID: 0}
+    - target: {fileID: 4952937580194241288, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
+        type: 3}
+      propertyPath: treeAudioScript
+      value: 
+      objectReference: {fileID: 5468073933241658018}
     - target: {fileID: 4952937580194627983, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -7640,6 +8381,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tree (8)
       objectReference: {fileID: 0}
+    - target: {fileID: 4952937580194241288, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
+        type: 3}
+      propertyPath: treeAudioScript
+      value: 
+      objectReference: {fileID: 5468073933241658018}
     - target: {fileID: 4952937580194627983, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -7776,15 +8522,15 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 24864aa65caaf4746b81eecf28be42ee, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e316150c83ef91243a9dca111d013c8e, type: 3}
---- !u!4 &4411082119848089267 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 400000, guid: e316150c83ef91243a9dca111d013c8e,
-    type: 3}
-  m_PrefabInstance: {fileID: 4411082119847693363}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &4411082119847660179 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100000, guid: e316150c83ef91243a9dca111d013c8e,
+    type: 3}
+  m_PrefabInstance: {fileID: 4411082119847693363}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &4411082119848089267 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 400000, guid: e316150c83ef91243a9dca111d013c8e,
     type: 3}
   m_PrefabInstance: {fileID: 4411082119847693363}
   m_PrefabAsset: {fileID: 0}
@@ -7800,6 +8546,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tree (13)
       objectReference: {fileID: 0}
+    - target: {fileID: 4952937580194241288, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
+        type: 3}
+      propertyPath: treeAudioScript
+      value: 
+      objectReference: {fileID: 5468073933241658018}
     - target: {fileID: 4952937580194627983, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -7875,6 +8626,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tree (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 4952937580194241288, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
+        type: 3}
+      propertyPath: treeAudioScript
+      value: 
+      objectReference: {fileID: 5468073933241658018}
     - target: {fileID: 4952937580194627983, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -7950,6 +8706,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tree (7)
       objectReference: {fileID: 0}
+    - target: {fileID: 4952937580194241288, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
+        type: 3}
+      propertyPath: treeAudioScript
+      value: 
+      objectReference: {fileID: 5468073933241658018}
     - target: {fileID: 4952937580194627983, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -8025,6 +8786,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tree (6)
       objectReference: {fileID: 0}
+    - target: {fileID: 4952937580194241288, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
+        type: 3}
+      propertyPath: treeAudioScript
+      value: 
+      objectReference: {fileID: 5468073933241658018}
     - target: {fileID: 4952937580194627983, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -8100,6 +8866,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tree (6)
       objectReference: {fileID: 0}
+    - target: {fileID: 4952937580194241288, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
+        type: 3}
+      propertyPath: treeAudioScript
+      value: 
+      objectReference: {fileID: 5468073933241658018}
     - target: {fileID: 4952937580194627983, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -8175,6 +8946,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tree (9)
       objectReference: {fileID: 0}
+    - target: {fileID: 4952937580194241288, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
+        type: 3}
+      propertyPath: treeAudioScript
+      value: 
+      objectReference: {fileID: 5468073933241658018}
     - target: {fileID: 4952937580194627983, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -8250,6 +9026,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tree (5)
       objectReference: {fileID: 0}
+    - target: {fileID: 4952937580194241288, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
+        type: 3}
+      propertyPath: treeAudioScript
+      value: 
+      objectReference: {fileID: 5468073933241658018}
     - target: {fileID: 4952937580194627983, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -8325,6 +9106,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tree (12)
       objectReference: {fileID: 0}
+    - target: {fileID: 4952937580194241288, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
+        type: 3}
+      propertyPath: treeAudioScript
+      value: 
+      objectReference: {fileID: 5468073933241658018}
     - target: {fileID: 4952937580194627983, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -8400,6 +9186,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tree (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 4952937580194241288, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
+        type: 3}
+      propertyPath: treeAudioScript
+      value: 
+      objectReference: {fileID: 5468073933241658018}
     - target: {fileID: 4952937580194627983, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -8475,6 +9266,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tree (8)
       objectReference: {fileID: 0}
+    - target: {fileID: 4952937580194241288, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
+        type: 3}
+      propertyPath: treeAudioScript
+      value: 
+      objectReference: {fileID: 5468073933241658018}
     - target: {fileID: 4952937580194627983, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -8550,6 +9346,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tree (14)
       objectReference: {fileID: 0}
+    - target: {fileID: 4952937580194241288, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
+        type: 3}
+      propertyPath: treeAudioScript
+      value: 
+      objectReference: {fileID: 5468073933241658018}
     - target: {fileID: 4952937580194627983, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -8625,6 +9426,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tree (11)
       objectReference: {fileID: 0}
+    - target: {fileID: 4952937580194241288, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
+        type: 3}
+      propertyPath: treeAudioScript
+      value: 
+      objectReference: {fileID: 5468073933241658018}
     - target: {fileID: 4952937580194627983, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -8700,6 +9506,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tree (8)
       objectReference: {fileID: 0}
+    - target: {fileID: 4952937580194241288, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
+        type: 3}
+      propertyPath: treeAudioScript
+      value: 
+      objectReference: {fileID: 5468073933241658018}
     - target: {fileID: 4952937580194627983, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -8775,6 +9586,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tree (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 4952937580194241288, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
+        type: 3}
+      propertyPath: treeAudioScript
+      value: 
+      objectReference: {fileID: 5468073933241658018}
     - target: {fileID: 4952937580194627983, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -8848,6 +9664,14 @@ PrefabInstance:
     - target: {fileID: 100000, guid: ed05e6f8eaeb2124aa5a15a305b35924, type: 3}
       propertyPath: m_Name
       value: Low_Ground
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: ed05e6f8eaeb2124aa5a15a305b35924, type: 3}
+      propertyPath: m_TagString
+      value: Ground
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: ed05e6f8eaeb2124aa5a15a305b35924, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: ed05e6f8eaeb2124aa5a15a305b35924, type: 3}
       propertyPath: m_LocalPosition.x
@@ -8935,6 +9759,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tree
       objectReference: {fileID: 0}
+    - target: {fileID: 4952937580194241288, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
+        type: 3}
+      propertyPath: treeAudioScript
+      value: 
+      objectReference: {fileID: 5468073933241658018}
     - target: {fileID: 4952937580194627983, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -9010,6 +9839,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tree (7)
       objectReference: {fileID: 0}
+    - target: {fileID: 4952937580194241288, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
+        type: 3}
+      propertyPath: treeAudioScript
+      value: 
+      objectReference: {fileID: 5468073933241658018}
     - target: {fileID: 4952937580194627983, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -9084,6 +9918,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: Top_Right
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: ed05e6f8eaeb2124aa5a15a305b35924, type: 3}
+      propertyPath: m_TagString
+      value: Ground
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: ed05e6f8eaeb2124aa5a15a305b35924, type: 3}
+      propertyPath: m_NavMeshLayer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: ed05e6f8eaeb2124aa5a15a305b35924, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: ed05e6f8eaeb2124aa5a15a305b35924, type: 3}
       propertyPath: m_LocalPosition.x
       value: 36.3
@@ -9146,15 +9992,15 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 7951e56768980904a86eab050f42f15d, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ed05e6f8eaeb2124aa5a15a305b35924, type: 3}
---- !u!4 &4411082120105116916 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 400000, guid: ed05e6f8eaeb2124aa5a15a305b35924,
-    type: 3}
-  m_PrefabInstance: {fileID: 4411082120105516660}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &4411082120105482452 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100000, guid: ed05e6f8eaeb2124aa5a15a305b35924,
+    type: 3}
+  m_PrefabInstance: {fileID: 4411082120105516660}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &4411082120105116916 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 400000, guid: ed05e6f8eaeb2124aa5a15a305b35924,
     type: 3}
   m_PrefabInstance: {fileID: 4411082120105516660}
   m_PrefabAsset: {fileID: 0}
@@ -9170,6 +10016,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tree
       objectReference: {fileID: 0}
+    - target: {fileID: 4952937580194241288, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
+        type: 3}
+      propertyPath: treeAudioScript
+      value: 
+      objectReference: {fileID: 5468073933241658018}
     - target: {fileID: 4952937580194627983, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -9245,6 +10096,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tree (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 4952937580194241288, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
+        type: 3}
+      propertyPath: treeAudioScript
+      value: 
+      objectReference: {fileID: 5468073933241658018}
     - target: {fileID: 4952937580194627983, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -9320,6 +10176,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tree (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 4952937580194241288, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
+        type: 3}
+      propertyPath: treeAudioScript
+      value: 
+      objectReference: {fileID: 5468073933241658018}
     - target: {fileID: 4952937580194627983, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -9395,6 +10256,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tree (15)
       objectReference: {fileID: 0}
+    - target: {fileID: 4952937580194241288, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
+        type: 3}
+      propertyPath: treeAudioScript
+      value: 
+      objectReference: {fileID: 5468073933241658018}
     - target: {fileID: 4952937580194627983, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -9469,6 +10335,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: Top_Left
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 2d3f517df17f7694b883733ae04f0ec7, type: 3}
+      propertyPath: m_TagString
+      value: Ground
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 2d3f517df17f7694b883733ae04f0ec7, type: 3}
+      propertyPath: m_NavMeshLayer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 2d3f517df17f7694b883733ae04f0ec7, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 2d3f517df17f7694b883733ae04f0ec7, type: 3}
       propertyPath: m_LocalPosition.x
       value: -56.6
@@ -9531,15 +10409,15 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 7951e56768980904a86eab050f42f15d, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2d3f517df17f7694b883733ae04f0ec7, type: 3}
---- !u!4 &4411082120174814571 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 400000, guid: 2d3f517df17f7694b883733ae04f0ec7,
-    type: 3}
-  m_PrefabInstance: {fileID: 4411082120175214571}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &4411082120175245643 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100000, guid: 2d3f517df17f7694b883733ae04f0ec7,
+    type: 3}
+  m_PrefabInstance: {fileID: 4411082120175214571}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &4411082120174814571 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 400000, guid: 2d3f517df17f7694b883733ae04f0ec7,
     type: 3}
   m_PrefabInstance: {fileID: 4411082120175214571}
   m_PrefabAsset: {fileID: 0}
@@ -9555,6 +10433,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tree (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 4952937580194241288, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
+        type: 3}
+      propertyPath: treeAudioScript
+      value: 
+      objectReference: {fileID: 5468073933241658018}
     - target: {fileID: 4952937580194627983, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -9630,6 +10513,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tree (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 4952937580194241288, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
+        type: 3}
+      propertyPath: treeAudioScript
+      value: 
+      objectReference: {fileID: 5468073933241658018}
     - target: {fileID: 4952937580194627983, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -9705,6 +10593,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tree (9)
       objectReference: {fileID: 0}
+    - target: {fileID: 4952937580194241288, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
+        type: 3}
+      propertyPath: treeAudioScript
+      value: 
+      objectReference: {fileID: 5468073933241658018}
     - target: {fileID: 4952937580194627983, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -9780,6 +10673,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tree (5)
       objectReference: {fileID: 0}
+    - target: {fileID: 4952937580194241288, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
+        type: 3}
+      propertyPath: treeAudioScript
+      value: 
+      objectReference: {fileID: 5468073933241658018}
     - target: {fileID: 4952937580194627983, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -9855,6 +10753,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tree (9)
       objectReference: {fileID: 0}
+    - target: {fileID: 4952937580194241288, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
+        type: 3}
+      propertyPath: treeAudioScript
+      value: 
+      objectReference: {fileID: 5468073933241658018}
     - target: {fileID: 4952937580194627983, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -9930,6 +10833,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tree (7)
       objectReference: {fileID: 0}
+    - target: {fileID: 4952937580194241288, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
+        type: 3}
+      propertyPath: treeAudioScript
+      value: 
+      objectReference: {fileID: 5468073933241658018}
     - target: {fileID: 4952937580194627983, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -10005,6 +10913,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tree (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 4952937580194241288, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
+        type: 3}
+      propertyPath: treeAudioScript
+      value: 
+      objectReference: {fileID: 5468073933241658018}
     - target: {fileID: 4952937580194627983, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -10080,6 +10993,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tree (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 4952937580194241288, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
+        type: 3}
+      propertyPath: treeAudioScript
+      value: 
+      objectReference: {fileID: 5468073933241658018}
     - target: {fileID: 4952937580194627983, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -10155,6 +11073,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tree (13)
       objectReference: {fileID: 0}
+    - target: {fileID: 4952937580194241288, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
+        type: 3}
+      propertyPath: treeAudioScript
+      value: 
+      objectReference: {fileID: 5468073933241658018}
     - target: {fileID: 4952937580194627983, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -10230,6 +11153,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tree (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 4952937580194241288, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
+        type: 3}
+      propertyPath: treeAudioScript
+      value: 
+      objectReference: {fileID: 5468073933241658018}
     - target: {fileID: 4952937580194627983, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -10305,6 +11233,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tree (11)
       objectReference: {fileID: 0}
+    - target: {fileID: 4952937580194241288, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
+        type: 3}
+      propertyPath: treeAudioScript
+      value: 
+      objectReference: {fileID: 5468073933241658018}
     - target: {fileID: 4952937580194627983, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -10440,6 +11373,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 761862437618306339, guid: 90717f7fd64f1cb43b68b0c38276ce60,
+        type: 3}
+      propertyPath: m_IsKinematic
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 90717f7fd64f1cb43b68b0c38276ce60, type: 3}
 --- !u!4 &4009859570863093359 stripped
@@ -10520,6 +11458,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 761862437618306339, guid: 90717f7fd64f1cb43b68b0c38276ce60,
+        type: 3}
+      propertyPath: m_IsKinematic
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 90717f7fd64f1cb43b68b0c38276ce60, type: 3}
 --- !u!4 &4009859570867573199 stripped
@@ -10540,6 +11483,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tree (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 4952937580194241288, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
+        type: 3}
+      propertyPath: treeAudioScript
+      value: 
+      objectReference: {fileID: 5468073933241658018}
     - target: {fileID: 4952937580194627983, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -10615,6 +11563,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tree (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 4952937580194241288, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
+        type: 3}
+      propertyPath: treeAudioScript
+      value: 
+      objectReference: {fileID: 5468073933241658018}
     - target: {fileID: 4952937580194627983, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -10690,6 +11643,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tree (7)
       objectReference: {fileID: 0}
+    - target: {fileID: 4952937580194241288, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
+        type: 3}
+      propertyPath: treeAudioScript
+      value: 
+      objectReference: {fileID: 5468073933241658018}
     - target: {fileID: 4952937580194627983, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -10765,6 +11723,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tree (10)
       objectReference: {fileID: 0}
+    - target: {fileID: 4952937580194241288, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
+        type: 3}
+      propertyPath: treeAudioScript
+      value: 
+      objectReference: {fileID: 5468073933241658018}
     - target: {fileID: 4952937580194627983, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -10840,6 +11803,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tree (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 4952937580194241288, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
+        type: 3}
+      propertyPath: treeAudioScript
+      value: 
+      objectReference: {fileID: 5468073933241658018}
     - target: {fileID: 4952937580194627983, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -10915,6 +11883,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tree (11)
       objectReference: {fileID: 0}
+    - target: {fileID: 4952937580194241288, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
+        type: 3}
+      propertyPath: treeAudioScript
+      value: 
+      objectReference: {fileID: 5468073933241658018}
     - target: {fileID: 4952937580194627983, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -10990,6 +11963,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tree (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 4952937580194241288, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
+        type: 3}
+      propertyPath: treeAudioScript
+      value: 
+      objectReference: {fileID: 5468073933241658018}
     - target: {fileID: 4952937580194627983, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -11065,6 +12043,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tree (10)
       objectReference: {fileID: 0}
+    - target: {fileID: 4952937580194241288, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
+        type: 3}
+      propertyPath: treeAudioScript
+      value: 
+      objectReference: {fileID: 5468073933241658018}
     - target: {fileID: 4952937580194627983, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -11140,6 +12123,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tree (10)
       objectReference: {fileID: 0}
+    - target: {fileID: 4952937580194241288, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
+        type: 3}
+      propertyPath: treeAudioScript
+      value: 
+      objectReference: {fileID: 5468073933241658018}
     - target: {fileID: 4952937580194627983, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -11215,6 +12203,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tree (13)
       objectReference: {fileID: 0}
+    - target: {fileID: 4952937580194241288, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
+        type: 3}
+      propertyPath: treeAudioScript
+      value: 
+      objectReference: {fileID: 5468073933241658018}
     - target: {fileID: 4952937580194627983, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -11290,6 +12283,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tree (8)
       objectReference: {fileID: 0}
+    - target: {fileID: 4952937580194241288, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
+        type: 3}
+      propertyPath: treeAudioScript
+      value: 
+      objectReference: {fileID: 5468073933241658018}
     - target: {fileID: 4952937580194627983, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -11365,6 +12363,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tree (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 4952937580194241288, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
+        type: 3}
+      propertyPath: treeAudioScript
+      value: 
+      objectReference: {fileID: 5468073933241658018}
     - target: {fileID: 4952937580194627983, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -11440,6 +12443,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tree (8)
       objectReference: {fileID: 0}
+    - target: {fileID: 4952937580194241288, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
+        type: 3}
+      propertyPath: treeAudioScript
+      value: 
+      objectReference: {fileID: 5468073933241658018}
     - target: {fileID: 4952937580194627983, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -11517,6 +12525,10 @@ PrefabInstance:
     - target: {fileID: 100000, guid: 7f4f7d31b4a52934bad10741a0a1f0b9, type: 3}
       propertyPath: m_TagString
       value: Ground
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 7f4f7d31b4a52934bad10741a0a1f0b9, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 7f4f7d31b4a52934bad10741a0a1f0b9, type: 3}
       propertyPath: m_LocalPosition.x
@@ -11604,6 +12616,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tree (8)
       objectReference: {fileID: 0}
+    - target: {fileID: 4952937580194241288, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
+        type: 3}
+      propertyPath: treeAudioScript
+      value: 
+      objectReference: {fileID: 5468073933241658018}
     - target: {fileID: 4952937580194627983, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -11679,6 +12696,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tree (9)
       objectReference: {fileID: 0}
+    - target: {fileID: 4952937580194241288, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
+        type: 3}
+      propertyPath: treeAudioScript
+      value: 
+      objectReference: {fileID: 5468073933241658018}
     - target: {fileID: 4952937580194627983, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -11754,6 +12776,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tree (6)
       objectReference: {fileID: 0}
+    - target: {fileID: 4952937580194241288, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
+        type: 3}
+      propertyPath: treeAudioScript
+      value: 
+      objectReference: {fileID: 5468073933241658018}
     - target: {fileID: 4952937580194627983, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -11829,6 +12856,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tree (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 4952937580194241288, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
+        type: 3}
+      propertyPath: treeAudioScript
+      value: 
+      objectReference: {fileID: 5468073933241658018}
     - target: {fileID: 4952937580194627983, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -11904,6 +12936,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tree (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 4952937580194241288, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
+        type: 3}
+      propertyPath: treeAudioScript
+      value: 
+      objectReference: {fileID: 5468073933241658018}
     - target: {fileID: 4952937580194627983, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -11979,6 +13016,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tree (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 4952937580194241288, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
+        type: 3}
+      propertyPath: treeAudioScript
+      value: 
+      objectReference: {fileID: 5468073933241658018}
     - target: {fileID: 4952937580194627983, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -12054,6 +13096,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tree (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 4952937580194241288, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
+        type: 3}
+      propertyPath: treeAudioScript
+      value: 
+      objectReference: {fileID: 5468073933241658018}
     - target: {fileID: 4952937580194627983, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -12129,6 +13176,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tree
       objectReference: {fileID: 0}
+    - target: {fileID: 4952937580194241288, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
+        type: 3}
+      propertyPath: treeAudioScript
+      value: 
+      objectReference: {fileID: 5468073933241658018}
     - target: {fileID: 4952937580194627983, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -12203,6 +13255,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Top_Ledge
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: ed05e6f8eaeb2124aa5a15a305b35924, type: 3}
+      propertyPath: m_TagString
+      value: Ground
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: ed05e6f8eaeb2124aa5a15a305b35924, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: ed05e6f8eaeb2124aa5a15a305b35924, type: 3}
       propertyPath: m_LocalPosition.x
       value: 39.4
@@ -12265,15 +13325,15 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 7951e56768980904a86eab050f42f15d, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ed05e6f8eaeb2124aa5a15a305b35924, type: 3}
---- !u!4 &4411082120440875870 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 400000, guid: ed05e6f8eaeb2124aa5a15a305b35924,
-    type: 3}
-  m_PrefabInstance: {fileID: 4411082120440746462}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &4411082120440780670 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100000, guid: ed05e6f8eaeb2124aa5a15a305b35924,
+    type: 3}
+  m_PrefabInstance: {fileID: 4411082120440746462}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &4411082120440875870 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 400000, guid: ed05e6f8eaeb2124aa5a15a305b35924,
     type: 3}
   m_PrefabInstance: {fileID: 4411082120440746462}
   m_PrefabAsset: {fileID: 0}
@@ -12289,6 +13349,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tree (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 4952937580194241288, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
+        type: 3}
+      propertyPath: treeAudioScript
+      value: 
+      objectReference: {fileID: 5468073933241658018}
     - target: {fileID: 4952937580194627983, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -12364,6 +13429,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tree (7)
       objectReference: {fileID: 0}
+    - target: {fileID: 4952937580194241288, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
+        type: 3}
+      propertyPath: treeAudioScript
+      value: 
+      objectReference: {fileID: 5468073933241658018}
     - target: {fileID: 4952937580194627983, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -12439,6 +13509,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tree (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 4952937580194241288, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
+        type: 3}
+      propertyPath: treeAudioScript
+      value: 
+      objectReference: {fileID: 5468073933241658018}
     - target: {fileID: 4952937580194627983, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -12514,6 +13589,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tree (12)
       objectReference: {fileID: 0}
+    - target: {fileID: 4952937580194241288, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
+        type: 3}
+      propertyPath: treeAudioScript
+      value: 
+      objectReference: {fileID: 5468073933241658018}
     - target: {fileID: 4952937580194627983, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -12589,6 +13669,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tree (8)
       objectReference: {fileID: 0}
+    - target: {fileID: 4952937580194241288, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
+        type: 3}
+      propertyPath: treeAudioScript
+      value: 
+      objectReference: {fileID: 5468073933241658018}
     - target: {fileID: 4952937580194627983, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -12725,15 +13810,15 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 24864aa65caaf4746b81eecf28be42ee, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3961bbd7fea08d645887f75a447e1628, type: 3}
---- !u!1 &4411082120503543225 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 100000, guid: 3961bbd7fea08d645887f75a447e1628,
-    type: 3}
-  m_PrefabInstance: {fileID: 4411082120503575321}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &4411082120503974297 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400000, guid: 3961bbd7fea08d645887f75a447e1628,
+    type: 3}
+  m_PrefabInstance: {fileID: 4411082120503575321}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &4411082120503543225 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 100000, guid: 3961bbd7fea08d645887f75a447e1628,
     type: 3}
   m_PrefabInstance: {fileID: 4411082120503575321}
   m_PrefabAsset: {fileID: 0}
@@ -12749,6 +13834,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tree (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 4952937580194241288, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
+        type: 3}
+      propertyPath: treeAudioScript
+      value: 
+      objectReference: {fileID: 5468073933241658018}
     - target: {fileID: 4952937580194627983, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -12824,6 +13914,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tree (13)
       objectReference: {fileID: 0}
+    - target: {fileID: 4952937580194241288, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
+        type: 3}
+      propertyPath: treeAudioScript
+      value: 
+      objectReference: {fileID: 5468073933241658018}
     - target: {fileID: 4952937580194627983, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -12899,6 +13994,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tree (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 4952937580194241288, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
+        type: 3}
+      propertyPath: treeAudioScript
+      value: 
+      objectReference: {fileID: 5468073933241658018}
     - target: {fileID: 4952937580194627983, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -12974,6 +14074,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tree
       objectReference: {fileID: 0}
+    - target: {fileID: 4952937580194241288, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
+        type: 3}
+      propertyPath: treeAudioScript
+      value: 
+      objectReference: {fileID: 5468073933241658018}
     - target: {fileID: 4952937580194627983, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -13049,6 +14154,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tree (16)
       objectReference: {fileID: 0}
+    - target: {fileID: 4952937580194241288, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
+        type: 3}
+      propertyPath: treeAudioScript
+      value: 
+      objectReference: {fileID: 5468073933241658018}
     - target: {fileID: 4952937580194627983, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -13124,6 +14234,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tree (9)
       objectReference: {fileID: 0}
+    - target: {fileID: 4952937580194241288, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
+        type: 3}
+      propertyPath: treeAudioScript
+      value: 
+      objectReference: {fileID: 5468073933241658018}
     - target: {fileID: 4952937580194627983, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -13199,6 +14314,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tree (18)
       objectReference: {fileID: 0}
+    - target: {fileID: 4952937580194241288, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
+        type: 3}
+      propertyPath: treeAudioScript
+      value: 
+      objectReference: {fileID: 5468073933241658018}
     - target: {fileID: 4952937580194627983, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -13274,6 +14394,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tree (7)
       objectReference: {fileID: 0}
+    - target: {fileID: 4952937580194241288, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
+        type: 3}
+      propertyPath: treeAudioScript
+      value: 
+      objectReference: {fileID: 5468073933241658018}
     - target: {fileID: 4952937580194627983, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -13349,6 +14474,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tree (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 4952937580194241288, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
+        type: 3}
+      propertyPath: treeAudioScript
+      value: 
+      objectReference: {fileID: 5468073933241658018}
     - target: {fileID: 4952937580194627983, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -13424,6 +14554,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tree (14)
       objectReference: {fileID: 0}
+    - target: {fileID: 4952937580194241288, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
+        type: 3}
+      propertyPath: treeAudioScript
+      value: 
+      objectReference: {fileID: 5468073933241658018}
     - target: {fileID: 4952937580194627983, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -13499,6 +14634,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tree (6)
       objectReference: {fileID: 0}
+    - target: {fileID: 4952937580194241288, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
+        type: 3}
+      propertyPath: treeAudioScript
+      value: 
+      objectReference: {fileID: 5468073933241658018}
     - target: {fileID: 4952937580194627983, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -13574,6 +14714,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tree
       objectReference: {fileID: 0}
+    - target: {fileID: 4952937580194241288, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
+        type: 3}
+      propertyPath: treeAudioScript
+      value: 
+      objectReference: {fileID: 5468073933241658018}
     - target: {fileID: 4952937580194627983, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -13649,6 +14794,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tree (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 4952937580194241288, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
+        type: 3}
+      propertyPath: treeAudioScript
+      value: 
+      objectReference: {fileID: 5468073933241658018}
     - target: {fileID: 4952937580194627983, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -13724,6 +14874,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tree (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 4952937580194241288, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
+        type: 3}
+      propertyPath: treeAudioScript
+      value: 
+      objectReference: {fileID: 5468073933241658018}
     - target: {fileID: 4952937580194627983, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -13799,6 +14954,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tree (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 4952937580194241288, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
+        type: 3}
+      propertyPath: treeAudioScript
+      value: 
+      objectReference: {fileID: 5468073933241658018}
     - target: {fileID: 4952937580194627983, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -13874,6 +15034,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tree (5)
       objectReference: {fileID: 0}
+    - target: {fileID: 4952937580194241288, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
+        type: 3}
+      propertyPath: treeAudioScript
+      value: 
+      objectReference: {fileID: 5468073933241658018}
     - target: {fileID: 4952937580194627983, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -13949,6 +15114,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tree (5)
       objectReference: {fileID: 0}
+    - target: {fileID: 4952937580194241288, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
+        type: 3}
+      propertyPath: treeAudioScript
+      value: 
+      objectReference: {fileID: 5468073933241658018}
     - target: {fileID: 4952937580194627983, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -14024,6 +15194,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tree (6)
       objectReference: {fileID: 0}
+    - target: {fileID: 4952937580194241288, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
+        type: 3}
+      propertyPath: treeAudioScript
+      value: 
+      objectReference: {fileID: 5468073933241658018}
     - target: {fileID: 4952937580194627983, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -14099,6 +15274,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tree (10)
       objectReference: {fileID: 0}
+    - target: {fileID: 4952937580194241288, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
+        type: 3}
+      propertyPath: treeAudioScript
+      value: 
+      objectReference: {fileID: 5468073933241658018}
     - target: {fileID: 4952937580194627983, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -14174,6 +15354,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tree (10)
       objectReference: {fileID: 0}
+    - target: {fileID: 4952937580194241288, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
+        type: 3}
+      propertyPath: treeAudioScript
+      value: 
+      objectReference: {fileID: 5468073933241658018}
     - target: {fileID: 4952937580194627983, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -14249,6 +15434,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tree (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 4952937580194241288, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
+        type: 3}
+      propertyPath: treeAudioScript
+      value: 
+      objectReference: {fileID: 5468073933241658018}
     - target: {fileID: 4952937580194627983, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -14324,6 +15514,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tree (7)
       objectReference: {fileID: 0}
+    - target: {fileID: 4952937580194241288, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
+        type: 3}
+      propertyPath: treeAudioScript
+      value: 
+      objectReference: {fileID: 5468073933241658018}
     - target: {fileID: 4952937580194627983, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -14399,6 +15594,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tree (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 4952937580194241288, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
+        type: 3}
+      propertyPath: treeAudioScript
+      value: 
+      objectReference: {fileID: 5468073933241658018}
     - target: {fileID: 4952937580194627983, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -14474,6 +15674,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tree
       objectReference: {fileID: 0}
+    - target: {fileID: 4952937580194241288, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
+        type: 3}
+      propertyPath: treeAudioScript
+      value: 
+      objectReference: {fileID: 5468073933241658018}
     - target: {fileID: 4952937580194627983, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -14549,6 +15754,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tree (15)
       objectReference: {fileID: 0}
+    - target: {fileID: 4952937580194241288, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
+        type: 3}
+      propertyPath: treeAudioScript
+      value: 
+      objectReference: {fileID: 5468073933241658018}
     - target: {fileID: 4952937580194627983, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -14624,6 +15834,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tree (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 4952937580194241288, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
+        type: 3}
+      propertyPath: treeAudioScript
+      value: 
+      objectReference: {fileID: 5468073933241658018}
     - target: {fileID: 4952937580194627983, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -14759,6 +15974,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 761862437618306339, guid: 90717f7fd64f1cb43b68b0c38276ce60,
+        type: 3}
+      propertyPath: m_IsKinematic
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 90717f7fd64f1cb43b68b0c38276ce60, type: 3}
 --- !u!4 &4009859570512138399 stripped
@@ -14869,6 +16089,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tree (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 4952937580194241288, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
+        type: 3}
+      propertyPath: treeAudioScript
+      value: 
+      objectReference: {fileID: 5468073933241658018}
     - target: {fileID: 4952937580194627983, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -14944,6 +16169,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tree (7)
       objectReference: {fileID: 0}
+    - target: {fileID: 4952937580194241288, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
+        type: 3}
+      propertyPath: treeAudioScript
+      value: 
+      objectReference: {fileID: 5468073933241658018}
     - target: {fileID: 4952937580194627983, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -15019,6 +16249,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tree (10)
       objectReference: {fileID: 0}
+    - target: {fileID: 4952937580194241288, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
+        type: 3}
+      propertyPath: treeAudioScript
+      value: 
+      objectReference: {fileID: 5468073933241658018}
     - target: {fileID: 4952937580194627983, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -15094,6 +16329,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tree (11)
       objectReference: {fileID: 0}
+    - target: {fileID: 4952937580194241288, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
+        type: 3}
+      propertyPath: treeAudioScript
+      value: 
+      objectReference: {fileID: 5468073933241658018}
     - target: {fileID: 4952937580194627983, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -15254,6 +16494,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tree (19)
       objectReference: {fileID: 0}
+    - target: {fileID: 4952937580194241288, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
+        type: 3}
+      propertyPath: treeAudioScript
+      value: 
+      objectReference: {fileID: 5468073933241658018}
     - target: {fileID: 4952937580194627983, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -15329,6 +16574,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tree (7)
       objectReference: {fileID: 0}
+    - target: {fileID: 4952937580194241288, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
+        type: 3}
+      propertyPath: treeAudioScript
+      value: 
+      objectReference: {fileID: 5468073933241658018}
     - target: {fileID: 4952937580194627983, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -15404,6 +16654,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tree (13)
       objectReference: {fileID: 0}
+    - target: {fileID: 4952937580194241288, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
+        type: 3}
+      propertyPath: treeAudioScript
+      value: 
+      objectReference: {fileID: 5468073933241658018}
     - target: {fileID: 4952937580194627983, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -15479,6 +16734,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tree (5)
       objectReference: {fileID: 0}
+    - target: {fileID: 4952937580194241288, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
+        type: 3}
+      propertyPath: treeAudioScript
+      value: 
+      objectReference: {fileID: 5468073933241658018}
     - target: {fileID: 4952937580194627983, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -15554,6 +16814,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tree (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 4952937580194241288, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
+        type: 3}
+      propertyPath: treeAudioScript
+      value: 
+      objectReference: {fileID: 5468073933241658018}
     - target: {fileID: 4952937580194627983, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -15629,6 +16894,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tree (8)
       objectReference: {fileID: 0}
+    - target: {fileID: 4952937580194241288, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
+        type: 3}
+      propertyPath: treeAudioScript
+      value: 
+      objectReference: {fileID: 5468073933241658018}
     - target: {fileID: 4952937580194627983, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -15704,6 +16974,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tree (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 4952937580194241288, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
+        type: 3}
+      propertyPath: treeAudioScript
+      value: 
+      objectReference: {fileID: 5468073933241658018}
     - target: {fileID: 4952937580194627983, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -15779,6 +17054,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tree (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 4952937580194241288, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
+        type: 3}
+      propertyPath: treeAudioScript
+      value: 
+      objectReference: {fileID: 5468073933241658018}
     - target: {fileID: 4952937580194627983, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -15915,15 +17195,15 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 24864aa65caaf4746b81eecf28be42ee, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e316150c83ef91243a9dca111d013c8e, type: 3}
---- !u!4 &4411082120879038076 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 400000, guid: e316150c83ef91243a9dca111d013c8e,
-    type: 3}
-  m_PrefabInstance: {fileID: 4411082120879162620}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &4411082120879260252 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100000, guid: e316150c83ef91243a9dca111d013c8e,
+    type: 3}
+  m_PrefabInstance: {fileID: 4411082120879162620}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &4411082120879038076 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 400000, guid: e316150c83ef91243a9dca111d013c8e,
     type: 3}
   m_PrefabInstance: {fileID: 4411082120879162620}
   m_PrefabAsset: {fileID: 0}
@@ -15939,6 +17219,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tree
       objectReference: {fileID: 0}
+    - target: {fileID: 4952937580194241288, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
+        type: 3}
+      propertyPath: treeAudioScript
+      value: 
+      objectReference: {fileID: 5468073933241658018}
     - target: {fileID: 4952937580194627983, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -16014,6 +17299,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tree
       objectReference: {fileID: 0}
+    - target: {fileID: 4952937580194241288, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
+        type: 3}
+      propertyPath: treeAudioScript
+      value: 
+      objectReference: {fileID: 5468073933241658018}
     - target: {fileID: 4952937580194627983, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -16089,6 +17379,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tree (5)
       objectReference: {fileID: 0}
+    - target: {fileID: 4952937580194241288, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
+        type: 3}
+      propertyPath: treeAudioScript
+      value: 
+      objectReference: {fileID: 5468073933241658018}
     - target: {fileID: 4952937580194627983, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -16164,6 +17459,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tree (8)
       objectReference: {fileID: 0}
+    - target: {fileID: 4952937580194241288, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
+        type: 3}
+      propertyPath: treeAudioScript
+      value: 
+      objectReference: {fileID: 5468073933241658018}
     - target: {fileID: 4952937580194627983, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -16239,6 +17539,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tree (16)
       objectReference: {fileID: 0}
+    - target: {fileID: 4952937580194241288, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
+        type: 3}
+      propertyPath: treeAudioScript
+      value: 
+      objectReference: {fileID: 5468073933241658018}
     - target: {fileID: 4952937580194627983, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -16314,6 +17619,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tree (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 4952937580194241288, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
+        type: 3}
+      propertyPath: treeAudioScript
+      value: 
+      objectReference: {fileID: 5468073933241658018}
     - target: {fileID: 4952937580194627983, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -16389,6 +17699,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tree (5)
       objectReference: {fileID: 0}
+    - target: {fileID: 4952937580194241288, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
+        type: 3}
+      propertyPath: treeAudioScript
+      value: 
+      objectReference: {fileID: 5468073933241658018}
     - target: {fileID: 4952937580194627983, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -16464,6 +17779,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tree (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 4952937580194241288, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
+        type: 3}
+      propertyPath: treeAudioScript
+      value: 
+      objectReference: {fileID: 5468073933241658018}
     - target: {fileID: 4952937580194627983, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -16539,6 +17859,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tree
       objectReference: {fileID: 0}
+    - target: {fileID: 4952937580194241288, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
+        type: 3}
+      propertyPath: treeAudioScript
+      value: 
+      objectReference: {fileID: 5468073933241658018}
     - target: {fileID: 4952937580194627983, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -16614,6 +17939,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tree (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 4952937580194241288, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
+        type: 3}
+      propertyPath: treeAudioScript
+      value: 
+      objectReference: {fileID: 5468073933241658018}
     - target: {fileID: 4952937580194627983, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -16689,6 +18019,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tree (10)
       objectReference: {fileID: 0}
+    - target: {fileID: 4952937580194241288, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
+        type: 3}
+      propertyPath: treeAudioScript
+      value: 
+      objectReference: {fileID: 5468073933241658018}
     - target: {fileID: 4952937580194627983, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -16764,6 +18099,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tree (9)
       objectReference: {fileID: 0}
+    - target: {fileID: 4952937580194241288, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
+        type: 3}
+      propertyPath: treeAudioScript
+      value: 
+      objectReference: {fileID: 5468073933241658018}
     - target: {fileID: 4952937580194627983, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -16839,6 +18179,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tree (8)
       objectReference: {fileID: 0}
+    - target: {fileID: 4952937580194241288, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
+        type: 3}
+      propertyPath: treeAudioScript
+      value: 
+      objectReference: {fileID: 5468073933241658018}
     - target: {fileID: 4952937580194627983, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -16914,6 +18259,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tree (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 4952937580194241288, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
+        type: 3}
+      propertyPath: treeAudioScript
+      value: 
+      objectReference: {fileID: 5468073933241658018}
     - target: {fileID: 4952937580194627983, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -16989,6 +18339,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tree (17)
       objectReference: {fileID: 0}
+    - target: {fileID: 4952937580194241288, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
+        type: 3}
+      propertyPath: treeAudioScript
+      value: 
+      objectReference: {fileID: 5468073933241658018}
     - target: {fileID: 4952937580194627983, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -17124,6 +18479,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 761862437618306339, guid: 90717f7fd64f1cb43b68b0c38276ce60,
+        type: 3}
+      propertyPath: m_IsKinematic
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 90717f7fd64f1cb43b68b0c38276ce60, type: 3}
 --- !u!4 &4009859571242900580 stripped
@@ -17144,6 +18504,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tree (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 4952937580194241288, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
+        type: 3}
+      propertyPath: treeAudioScript
+      value: 
+      objectReference: {fileID: 5468073933241658018}
     - target: {fileID: 4952937580194627983, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -17219,6 +18584,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tree (15)
       objectReference: {fileID: 0}
+    - target: {fileID: 4952937580194241288, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
+        type: 3}
+      propertyPath: treeAudioScript
+      value: 
+      objectReference: {fileID: 5468073933241658018}
     - target: {fileID: 4952937580194627983, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -17294,6 +18664,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tree (7)
       objectReference: {fileID: 0}
+    - target: {fileID: 4952937580194241288, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
+        type: 3}
+      propertyPath: treeAudioScript
+      value: 
+      objectReference: {fileID: 5468073933241658018}
     - target: {fileID: 4952937580194627983, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -17369,6 +18744,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tree (18)
       objectReference: {fileID: 0}
+    - target: {fileID: 4952937580194241288, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
+        type: 3}
+      propertyPath: treeAudioScript
+      value: 
+      objectReference: {fileID: 5468073933241658018}
     - target: {fileID: 4952937580194627983, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -17444,6 +18824,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tree (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 4952937580194241288, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
+        type: 3}
+      propertyPath: treeAudioScript
+      value: 
+      objectReference: {fileID: 5468073933241658018}
     - target: {fileID: 4952937580194627983, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -17579,6 +18964,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 761862437618306339, guid: 90717f7fd64f1cb43b68b0c38276ce60,
+        type: 3}
+      propertyPath: m_IsKinematic
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 90717f7fd64f1cb43b68b0c38276ce60, type: 3}
 --- !u!4 &4009859571152182299 stripped
@@ -17689,6 +19079,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tree (13)
       objectReference: {fileID: 0}
+    - target: {fileID: 4952937580194241288, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
+        type: 3}
+      propertyPath: treeAudioScript
+      value: 
+      objectReference: {fileID: 5468073933241658018}
     - target: {fileID: 4952937580194627983, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -17764,6 +19159,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tree (5)
       objectReference: {fileID: 0}
+    - target: {fileID: 4952937580194241288, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
+        type: 3}
+      propertyPath: treeAudioScript
+      value: 
+      objectReference: {fileID: 5468073933241658018}
     - target: {fileID: 4952937580194627983, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -17839,6 +19239,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tree (6)
       objectReference: {fileID: 0}
+    - target: {fileID: 4952937580194241288, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
+        type: 3}
+      propertyPath: treeAudioScript
+      value: 
+      objectReference: {fileID: 5468073933241658018}
     - target: {fileID: 4952937580194627983, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -17914,6 +19319,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tree (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 4952937580194241288, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
+        type: 3}
+      propertyPath: treeAudioScript
+      value: 
+      objectReference: {fileID: 5468073933241658018}
     - target: {fileID: 4952937580194627983, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -17989,6 +19399,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tree (6)
       objectReference: {fileID: 0}
+    - target: {fileID: 4952937580194241288, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
+        type: 3}
+      propertyPath: treeAudioScript
+      value: 
+      objectReference: {fileID: 5468073933241658018}
     - target: {fileID: 4952937580194627983, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -18064,6 +19479,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tree (10)
       objectReference: {fileID: 0}
+    - target: {fileID: 4952937580194241288, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
+        type: 3}
+      propertyPath: treeAudioScript
+      value: 
+      objectReference: {fileID: 5468073933241658018}
     - target: {fileID: 4952937580194627983, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -18139,6 +19559,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tree (6)
       objectReference: {fileID: 0}
+    - target: {fileID: 4952937580194241288, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
+        type: 3}
+      propertyPath: treeAudioScript
+      value: 
+      objectReference: {fileID: 5468073933241658018}
     - target: {fileID: 4952937580194627983, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -18214,6 +19639,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tree (14)
       objectReference: {fileID: 0}
+    - target: {fileID: 4952937580194241288, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
+        type: 3}
+      propertyPath: treeAudioScript
+      value: 
+      objectReference: {fileID: 5468073933241658018}
     - target: {fileID: 4952937580194627983, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -18289,6 +19719,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tree (5)
       objectReference: {fileID: 0}
+    - target: {fileID: 4952937580194241288, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
+        type: 3}
+      propertyPath: treeAudioScript
+      value: 
+      objectReference: {fileID: 5468073933241658018}
     - target: {fileID: 4952937580194627983, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -18364,6 +19799,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tree (12)
       objectReference: {fileID: 0}
+    - target: {fileID: 4952937580194241288, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
+        type: 3}
+      propertyPath: treeAudioScript
+      value: 
+      objectReference: {fileID: 5468073933241658018}
     - target: {fileID: 4952937580194627983, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -18437,6 +19877,14 @@ PrefabInstance:
     - target: {fileID: 100000, guid: ed05e6f8eaeb2124aa5a15a305b35924, type: 3}
       propertyPath: m_Name
       value: Mid_Ground2
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: ed05e6f8eaeb2124aa5a15a305b35924, type: 3}
+      propertyPath: m_TagString
+      value: Ground
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: ed05e6f8eaeb2124aa5a15a305b35924, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: ed05e6f8eaeb2124aa5a15a305b35924, type: 3}
       propertyPath: m_LocalPosition.x
@@ -18584,6 +20032,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5690667265162537206, guid: b17014ee3401bde458ec16e16c7bdf74,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.0168
+      objectReference: {fileID: 0}
+    - target: {fileID: 7620642466177346588, guid: b17014ee3401bde458ec16e16c7bdf74,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.0101
+      objectReference: {fileID: 0}
+    - target: {fileID: 7620642466177346589, guid: b17014ee3401bde458ec16e16c7bdf74,
+        type: 3}
+      propertyPath: m_TagString
+      value: Movable
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b17014ee3401bde458ec16e16c7bdf74, type: 3}
 --- !u!4 &8668860970712623885 stripped
@@ -18604,6 +20067,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tree
       objectReference: {fileID: 0}
+    - target: {fileID: 4952937580194241288, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
+        type: 3}
+      propertyPath: treeAudioScript
+      value: 
+      objectReference: {fileID: 5468073933241658018}
     - target: {fileID: 4952937580194627983, guid: 0fa34aa1f03bec84a9cc3a831ea59a43,
         type: 3}
       propertyPath: m_LocalPosition.x

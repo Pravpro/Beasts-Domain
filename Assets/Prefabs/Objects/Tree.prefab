@@ -106,14 +106,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4952937580194209199}
-  m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071068}
+  m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
   m_LocalPosition: {x: -29.845207, y: -1.7, z: 6.1400003}
   m_LocalScale: {x: 1, y: 1, z: 2}
   m_Children:
   - {fileID: 4952937580194627981}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -90.00001, y: 0, z: 0}
 --- !u!33 &4952937580193333679
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -187,6 +187,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   log: {fileID: 1936575209353555579, guid: b17014ee3401bde458ec16e16c7bdf74, type: 3}
+  treeAudioScript: {fileID: 5468073933241658018, guid: f598ebca06ddaad4595a531b51303b24,
+    type: 3}
   Tree: {fileID: 300895418115783898}
   Fall: {fileID: 8300000, guid: 0e20349afaadc144f913949f31bd93b7, type: 3}
 --- !u!82 &300895418115783898
