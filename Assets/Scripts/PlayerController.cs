@@ -183,7 +183,7 @@ public class PlayerController : MonoBehaviour
         else running = false;
 
 
-        if (WaitNextSpellCoroutine == null && !GameObject.Find("Monster").GetComponent<AIController>().playerInSight)
+        if (WaitNextSpellCoroutine == null)
         {
             // some distance front of player
             Vector3 spellAreaPosition = this.transform.position + this.transform.forward * 10f;
@@ -209,20 +209,25 @@ public class PlayerController : MonoBehaviour
 
             if (m_playerInput.GetButtonUp("Spell"))
             {
-                // activate the area
-                var spellAreaEmission = spellArea.emission;
-                spellAreaEmission.enabled = true;
-                spellArea.Play();
-
-                //audio test
-                spellSound.pitch = Random.Range(0.9f, 1.3f);
-                spellSound.Play();
-
                 // deactivate aiming for spell area
                 AimArea.SetActive(false);
 
-                // wait time before next available spell
-                WaitNextSpellCoroutine = StartCoroutine(WaitNextSpell() );
+                // activate the area
+                if (!GameObject.Find("Monster").GetComponent<AIController>().playerInSight)
+                {
+                    var spellAreaEmission = spellArea.emission;
+                    spellAreaEmission.enabled = true;
+                    spellArea.Play();
+
+                    //audio test
+                    spellSound.pitch = Random.Range(0.9f, 1.3f);
+                    spellSound.Play();
+
+                    // wait time before next available spell
+                    WaitNextSpellCoroutine = StartCoroutine(WaitNextSpell() );
+                    
+                }
+            
                 activateSpell = false;
             }
         }
