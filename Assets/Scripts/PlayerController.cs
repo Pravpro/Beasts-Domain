@@ -10,11 +10,11 @@ public class PlayerController : MonoBehaviour
 {
     // Create variable for movement speed
     public float walkSpeed, runSpeed, jumpSpeed, turnSpeed, crouchSpeed;
-
     public int hp, stamina;
     public int maxStamina; //maxHp;
     private bool recoverStamia = false;
-    
+    public Animator m_Animator;
+
     public CinemachineStateDrivenCamera SDCam;
 
     // player id for reference Rewired input
@@ -26,7 +26,6 @@ public class PlayerController : MonoBehaviour
     private Rigidbody rb;
     Vector3 m_Movement, jump, desiredForward, prevCamForward;
     Quaternion m_Rotation, lastRotation = Quaternion.identity;
-    Animator m_Animator;
     private bool isMoving, pushing, grounded, walking, running, crouching = false;
     private ICinemachineCamera thirdPersonCam;
 
@@ -59,7 +58,7 @@ public class PlayerController : MonoBehaviour
         // reset the input to use rewired
         CinemachineCore.GetInputAxis = ReInput.players.GetPlayer(m_playerID).GetAxis;
 
-        m_Animator = GetComponent<Animator>();
+        //m_Animator = GetComponent<Animator>();
         rb = gameObject.GetComponent<Rigidbody>();
         jump = new Vector3(0, 1.0f, 0);
 
