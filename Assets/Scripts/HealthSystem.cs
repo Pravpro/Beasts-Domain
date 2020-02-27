@@ -15,6 +15,7 @@ public class HealthSystem : MonoBehaviour
     private Player m_playerInput;
     public Slider healthUI;
     public Slider staminaUI;
+    public AIController monsterScript;
 
     public Image blackScreen;
 
@@ -49,6 +50,7 @@ public class HealthSystem : MonoBehaviour
             if (blackScreen.color.a >= 1.0f)
             {
                 SceneManager.LoadScene(SceneManager.GetActiveScene().name); // "TitleScreen"
+                monsterScript.scenLoadTime = Time.time;
             }
 
             return;       
