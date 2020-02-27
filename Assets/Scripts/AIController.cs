@@ -42,19 +42,7 @@ public class AIController : MonoBehaviour
         get {return m_playerInSight;}
         set {
             if (m_playerInSight == value) return;
-            else
-            {
-                if (!m_playerInSight && !m_roarPlayed)
-                {
-                    //BeastRoar1 fight starts
-                    choir.Stop();
-                    strings.Stop();
-                    roar1.Play();
-                    fight1.PlayDelayed(2.5f);
-                    m_roarPlayed = true;
-                }
-                m_playerInSight = value;
-            }
+            else m_playerInSight = value;
         }
     }
 
@@ -199,6 +187,15 @@ public class AIController : MonoBehaviour
         bool sensedPlayer = SensedPlayer() && !playerScript.IsInSafeZone();
         if (sensedPlayer)
         {
+            if(!m_roarPlayed)
+            {
+                //BeastRoar1 fight starts
+                choir.Stop();
+                strings.Stop();
+                roar1.Play();
+                fight1.PlayDelayed(2.5f);
+                m_roarPlayed = true;
+            }
             lastSense = new Vector3Wrapper(player.transform.position);
         }
 
