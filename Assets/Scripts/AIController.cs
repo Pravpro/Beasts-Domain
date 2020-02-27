@@ -17,8 +17,10 @@ class Vector3Wrapper
 public class AIController : MonoBehaviour
 {
     //Audio design
+    public AudioClip MoodBoard;
     public AudioClip Death;
     public AudioClip Hurt;
+    public AudioClip Violin;
     public AudioSource damage;
     public AudioSource choir;
     public AudioSource roar1;
@@ -100,7 +102,9 @@ public class AIController : MonoBehaviour
         lineRenderer.positionCount = 2;
 
         IntroMoodboard.TransitionTo(0.0f);
-        strings.PlayDelayed(27.0f);
+        choir.Play();
+        strings.clip = Violin;
+        strings.PlayDelayed(30.0f);
         strings.loop = true;
     }
 
@@ -300,7 +304,6 @@ public class AIController : MonoBehaviour
                 Debug.Log("Player Dies");
                 damage.clip = Death;
                 damage.PlayOneShot(Death, 0.5f);
-                IntroMoodboard.TransitionTo(2f);
             }
         }
 
