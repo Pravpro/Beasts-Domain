@@ -30,8 +30,8 @@ public class mainmenu : MonoBehaviour
         startPos   = arrowTrans.position;
         offset     = quitBtn.GetComponent<Transform>().position - startBtn.GetComponent<Transform>().position ;
 
-		// startBtn.onClick.AddListener(startOnClick);
-        // quitBtn.onClick.AddListener(quitOnClick);
+		startBtn.onClick.AddListener(startOnClick);
+        quitBtn.onClick.AddListener(controllerOnClick);
     }
 
     void Update()
@@ -40,16 +40,21 @@ public class mainmenu : MonoBehaviour
         
         if (m_playerInput.GetButtonDown("Submit"))
         {
-            if (arrowTrans.position == startPos)
+            if (Vector3.Distance(arrowTrans.position, startPos) < 0.3f)
                 startOnClick();
             else
-                quitOnClick();
+                controllerOnClick();
+        }
+
+        if (m_playerInput.GetButtonDown("Back"))
+        {
+            backToMainMenu();
         }
 
         // move the arrow accordingly
-        if (vertical < 0.0f && arrowTrans.position == startPos)
+        if (vertical < 0.0f && Vector3.Distance(arrowTrans.position, startPos) < 0.3f)
             arrowTrans.position = startPos + offset;
-        else if (vertical > 0.0f && arrowTrans.position == startPos + offset)
+        else if (vertical > 0.0f && Vector3.Distance(arrowTrans.position, startPos + offset) < 0.3f)
             arrowTrans.position = startPos;  
 
     }
@@ -59,13 +64,32 @@ public class mainmenu : MonoBehaviour
         SceneManager.LoadScene("Scenes/AlphaScene");
     }
 
-    void quitOnClick()
+    void controllerOnClick()
     {
-        #if UNITY_EDITOR
-            UnityEditor.EditorApplication.isPlaying = false;
-        #else
-            Application.Quit();
-        #endif
+        // #if UNITY_EDITOR
+        //     UnityEditor.EditorApplication.isPlaying = false;
+        // #else
+        //     Application.Quit();
+        // #endif
+        SceneManager.LoadScene("Scenes/ControlsDesc", LoadSceneMode.Additive);
+    }
+
+    void backToMainMenu()
+    {
+        if (isLoaded("ControlsDesc") )
+            SceneManager.UnloadSceneAsync("ControlsDesc");
+    }
+
+    private static bool isLoaded(string name)
+    {
+        for (int i = 0; i < SceneManager.sceneCount; i++)
+        {
+            if (SceneManager.GetSceneAt(i).name == name)
+            {
+                return true;
+            }
+        }
+        return false;
     }
 
 }
