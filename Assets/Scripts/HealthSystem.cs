@@ -61,17 +61,17 @@ public class HealthSystem : MonoBehaviour
 
         // logic for pause menu
         // TODO: move this somewhere else
-        if (m_playerInput.GetButtonDown("Pause") && !isLoaded("PauseMenu") )
+        if (m_playerInput.GetButtonDown("Pause") && !isLoaded("ControlsDesc") )
         {
             Time.timeScale = 0.0f;
-            // SceneManager.LoadScene("PauseMenu", LoadSceneMode.Additive);
+            SceneManager.LoadScene("ControlsDesc", LoadSceneMode.Additive);
             
         }
 
-        if (m_playerInput.GetButtonDown("Pause") && isLoaded("PauseMenu"))
+        if (m_playerInput.GetButtonDown("Pause") && isLoaded("ControlsDesc"))
         {
-            // SceneManager.UnloadSceneAsync("PauseMenu");
-            // Time.timeScale = 1.0f;
+            SceneManager.UnloadSceneAsync("ControlsDesc");
+            Time.timeScale = 1.0f;
         }
     }
 
