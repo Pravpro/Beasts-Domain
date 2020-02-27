@@ -211,7 +211,7 @@ public class AIController : MonoBehaviour
                 state = State.RandomSearch;
                 break;
             case State.RandomSearch:
-                if (sensedPlayer) { ReactToPlayer(); return; }
+                if (sensedPlayer && !playerScript.IsInSafeZone()) { ReactToPlayer(); return; }
 
                 if (ReachedWanderDest()) {
                     if (IsPhaseOne())
@@ -222,7 +222,13 @@ public class AIController : MonoBehaviour
                 }
                 break;
             case State.Charge:
-                if (ReachedChargeDest())
+                if (playerScript.IsInSafeZone())
+                {
+                    state = State.RandomSearch;
+                    RestartAgent();
+                    target = null;
+                }
+                else if (ReachedChargeDest())
                 {
                     if (lastSense != null)
                     {

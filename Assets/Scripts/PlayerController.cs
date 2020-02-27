@@ -47,6 +47,8 @@ public class PlayerController : MonoBehaviour
     public AudioSource Stamina;
     public AudioMixerGroup output;
 
+    private bool inSafeZone = true;
+
     private void Start()
     {  
         // to access input using rewired
@@ -304,6 +306,23 @@ public class PlayerController : MonoBehaviour
     {
         return isMoving;
     }
+
+    public bool IsInSafeZone()
+    {
+        return inSafeZone;
+    }
+
+    void OnTriggerEnter(Collider col)
+    {
+        if (col.tag == "Safezone")
+            inSafeZone = true;
+    }
+    void OnTriggerExit(Collider col)
+    {
+        if (col.tag == "Safezone")
+            inSafeZone = false;
+    }
+
 
     public IEnumerator waitNextDamage(float waitTime)
     {
