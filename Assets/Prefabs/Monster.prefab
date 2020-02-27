@@ -113,7 +113,7 @@ MonoBehaviour:
   IntroMoodboard: {fileID: 24500006, guid: b12a37322bc5b8444879a1c72e83a533, type: 2}
   IntroStrings: {fileID: -2019386721928641525, guid: b12a37322bc5b8444879a1c72e83a533,
     type: 2}
-  BossFight1: {fileID: 8652321810981917062, guid: b12a37322bc5b8444879a1c72e83a533,
+  BossFight1: {fileID: 8252497145976169834, guid: b12a37322bc5b8444879a1c72e83a533,
     type: 2}
   player: {fileID: 0}
   turningSpeed: 1
