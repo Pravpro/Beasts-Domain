@@ -196,7 +196,7 @@ public class AIController : MonoBehaviour
             return;
         }
 
-        bool sensedPlayer = SensedPlayer();
+        bool sensedPlayer = SensedPlayer() && !playerScript.IsInSafeZone();
         if (sensedPlayer)
         {
             lastSense = new Vector3Wrapper(player.transform.position);
@@ -211,7 +211,7 @@ public class AIController : MonoBehaviour
                 state = State.RandomSearch;
                 break;
             case State.RandomSearch:
-                if (sensedPlayer && !playerScript.IsInSafeZone()) { ReactToPlayer(); return; }
+                if (sensedPlayer) { ReactToPlayer(); return; }
 
                 if (ReachedWanderDest()) {
                     if (IsPhaseOne())
@@ -222,13 +222,7 @@ public class AIController : MonoBehaviour
                 }
                 break;
             case State.Charge:
-                if (playerScript.IsInSafeZone())
-                {
-                    state = State.RandomSearch;
-                    RestartAgent();
-                    target = null;
-                }
-                else if (ReachedChargeDest())
+                if (ReachedChargeDest())
                 {
                     if (lastSense != null)
                     {
