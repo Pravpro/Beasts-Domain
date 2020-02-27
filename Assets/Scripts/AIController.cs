@@ -136,7 +136,7 @@ public class AIController : MonoBehaviour
         }
 
         // ADRIAN LOOK HERE!!!! :)
-        if (Time.time == 25)
+        if (Time.timeSinceLevelLoad == 25)
         {
             IntroStrings.TransitionTo(5f);
         }
