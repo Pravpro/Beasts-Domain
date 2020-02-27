@@ -302,6 +302,11 @@ public class AIController : MonoBehaviour
                 damage.PlayOneShot(Death, 0.5f);
             }
         }
+
+        // not allow monster to push boulder
+        if (col.gameObject.name.Contains("Boulder") ||
+            col.gameObject.name.Contains("boulder") )
+                col.gameObject.GetComponent<Rigidbody>().isKinematic = true;
     }
 
     IEnumerator playerInvincible()
