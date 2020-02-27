@@ -86,7 +86,7 @@ public class AIController : MonoBehaviour
     private State state = State.Idle;
     private Phase phase = Phase.One;
 
-    private LineRenderer lineRenderer;
+    //private LineRenderer lineRenderer;
 
     void Start()
     {
@@ -98,8 +98,8 @@ public class AIController : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player");
         playerScript = player.GetComponent<PlayerController>();
 
-        lineRenderer = GetComponent<LineRenderer>();
-        lineRenderer.positionCount = 2;
+        //lineRenderer = GetComponent<LineRenderer>();
+        //lineRenderer.positionCount = 2;
 
         IntroMoodboard.TransitionTo(0.0f);
         choir.Play();
@@ -113,11 +113,11 @@ public class AIController : MonoBehaviour
         if (target != null)
         {
             Vector3[] corners = {transform.position, target.vector};
-            lineRenderer.SetPositions(corners);
-            lineRenderer.enabled = true;
+            //lineRenderer.SetPositions(corners);
+            //lineRenderer.enabled = true;
         }
-        else
-            lineRenderer.enabled = false;
+        //else
+            //lineRenderer.enabled = false;
     }
 
     private void FixedUpdate()
