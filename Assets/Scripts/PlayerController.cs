@@ -30,12 +30,13 @@ public class PlayerController : MonoBehaviour
     private bool isMoving, pushing, grounded, walking, running, crouching = false;
     private ICinemachineCamera thirdPersonCam;
 
-
+    // for spell
     ParticleSystem spellArea;
     GameObject AimArea;
-
     public int spellWaitTime;
     private Coroutine WaitNextSpellCoroutine;
+
+    // player damage time
 
     //Audio design
     public AudioClip[] Jumps;
@@ -222,9 +223,7 @@ public class PlayerController : MonoBehaviour
                 // wait time before next available spell
                 WaitNextSpellCoroutine = StartCoroutine(WaitNextSpell() );
             }
-
         }
-
     }
 
     IEnumerator WaitNextSpell()
@@ -306,4 +305,24 @@ public class PlayerController : MonoBehaviour
         return isMoving;
     }
 
+    public IEnumerator waitNextDamage(float waitTime)
+    {
+        Renderer[] renderers = GetComponentsInChildren<Renderer>();
+        var endTime = Time.time +  waitTime;
+
+        while(Time.time < endTime)
+        {
+            foreach (Renderer rend in renderers)
+                rend.enabled = false;
+
+            yield return new WaitForSeconds(0.2f);
+
+            foreach (Renderer rend in renderers)
+                rend.enabled = true;
+
+            yield return new WaitForSeconds(0.2f);
+        }
+
+        yield return null;
+    }
 }

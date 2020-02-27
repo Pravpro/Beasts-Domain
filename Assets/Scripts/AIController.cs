@@ -35,7 +35,7 @@ public class AIController : MonoBehaviour
     public int hp = 2;
 
     // give some buffer time for player to get next damange
-    private Coroutine damageCoroutine;
+    private Coroutine damageCoroutine = null;
 
     public bool playerInSight
     {
@@ -270,10 +270,10 @@ public class AIController : MonoBehaviour
                     damage.clip = Hurt;
                     damage.PlayOneShot(Hurt, 0.2f);
                     damage.pitch = Random.Range(0.9f, 1.1f);
+
+                    // give some buffer
+                    damageCoroutine = StartCoroutine(playerInvincible() );
                 }
-                
-                // give some buffer
-                damageCoroutine = StartCoroutine(NextDamageWaitTime() );
             }
 
             if (playerScript.hp <= 0)
@@ -285,9 +285,9 @@ public class AIController : MonoBehaviour
         }
     }
 
-    IEnumerator NextDamageWaitTime()
+    IEnumerator playerInvincible()
     {
-        yield return new WaitForSeconds(3 /* wait time for player next damage */);
+        yield return StartCoroutine(playerScript.waitNextDamage(3)  );
         damageCoroutine = null;
     }
 
