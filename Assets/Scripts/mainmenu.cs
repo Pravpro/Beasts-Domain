@@ -71,7 +71,8 @@ public class mainmenu : MonoBehaviour
         // #else
         //     Application.Quit();
         // #endif
-        SceneManager.LoadScene("Scenes/ControlsDesc", LoadSceneMode.Additive);
+        if (!isLoaded("ControlsDesc") )
+            SceneManager.LoadScene("ControlsDesc", LoadSceneMode.Additive);
     }
 
     void backToMainMenu()
