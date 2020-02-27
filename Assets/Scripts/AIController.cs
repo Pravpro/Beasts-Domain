@@ -49,6 +49,7 @@ public class AIController : MonoBehaviour
 
     public float farHearRange = 20f;
     public float nearHearRange = 10f;
+    public float scenLoadTime = 0f;
 
     public GameObject targetObj;
     // private variables
@@ -63,7 +64,6 @@ public class AIController : MonoBehaviour
     private Vector3Wrapper lastSense = null;
 
     private Vector3 interruptPos;
-
     private Vector3 m_targetedDir;
     private Vector3 playerPos, playerDir;
 
@@ -136,7 +136,7 @@ public class AIController : MonoBehaviour
         }
 
         // ADRIAN LOOK HERE!!!! :)
-        if (Time.timeSinceLevelLoad == 25)
+        if (Time.time - scenLoadTime == 25f)
         {
             IntroStrings.TransitionTo(5f);
         }
