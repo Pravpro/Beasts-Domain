@@ -201,8 +201,6 @@ public class AIController : MonoBehaviour
             }
             lastSense = new Vector3Wrapper(player.transform.position);
         }
-        Debug.Log(state);
-
         switch(state)
         {
             case State.Idle:
@@ -248,7 +246,7 @@ public class AIController : MonoBehaviour
                 Quaternion qRotate;
                 Vector3 tDir = interruptPos - transform.position;
                 tDir.y = 0;
-                if (Vector3.Angle(tDir, transform.forward) > 10.0f)
+                if (Vector3.Angle(tDir, transform.forward) > 15.0f)
                 {
                     qRotate = Quaternion.LookRotation(tDir);
                     transform.rotation = Quaternion.Slerp(transform.rotation, qRotate, Time.deltaTime * turningSpeed);
