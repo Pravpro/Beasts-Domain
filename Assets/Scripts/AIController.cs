@@ -61,6 +61,8 @@ public class AIController : MonoBehaviour
     private Vector3Wrapper target = null;
     private Vector3Wrapper lastSense = null;
 
+    private Vector3 interruptPos;
+
     private Vector3 m_targetedDir;
     private Vector3 playerPos, playerDir;
 
@@ -69,7 +71,8 @@ public class AIController : MonoBehaviour
         Idle,
         RandomSearch,
         Charge,
-        Defeated
+        Defeated,
+        Interrupted
     }
     private enum Phase
     {
@@ -198,6 +201,7 @@ public class AIController : MonoBehaviour
             }
             lastSense = new Vector3Wrapper(player.transform.position);
         }
+        Debug.Log(state);
 
         switch(state)
         {
@@ -236,6 +240,24 @@ public class AIController : MonoBehaviour
                 else
                     Charge();
 
+                break;
+            case State.Interrupted:
+                if (sensedPlayer) { ReactToPlayer(); return; }
+
+                // turn the boss to the rock hit direction
+                Quaternion qRotate;
+                Vector3 tDir = interruptPos - transform.position;
+                tDir.y = 0;
+                if (Vector3.Angle(tDir, transform.forward) > 10.0f)
+                {
+                    qRotate = Quaternion.LookRotation(tDir);
+                    transform.rotation = Quaternion.Slerp(transform.rotation, qRotate, Time.deltaTime * turningSpeed);
+                }
+                else
+                {
+                    RestartAgent();
+                    state = State.RandomSearch;
+                }
                 break;
             default:
                 break;
@@ -337,10 +359,22 @@ public class AIController : MonoBehaviour
         transform.rotation = Quaternion.Slerp(transform.rotation, qRotate, Time.deltaTime * turningSpeed);
     }
 
-    bool MakeSound(Vector3 pos)
+    public void MakeSound(Vector3 pos)
     {
-        float d = DistanceTo(player.transform.position);
-        return d < farHearRange;
+        float d = DistanceTo(transform.position);
+        if (d < farHearRange)
+            Interrupt(pos);
+    }
+
+    void Interrupt(Vector3 pos)
+    {
+        interruptPos = pos;
+        if (state != State.Charge)
+        {
+            if (state != State.Interrupted)
+                StopAgent();
+            state = State.Interrupted;
+        }
     }
 
     bool SensedPlayer()
@@ -360,12 +394,16 @@ public class AIController : MonoBehaviour
 
     void RestartAgent()
     {
+        if (agent.enabled)
+            return;
         agent.enabled = true;
         agent.isStopped = false;
     }
 
     void StopAgent()
     {
+        if (!agent.enabled)
+            return;
         agent.isStopped = true;
         agent.ResetPath();
         agent.enabled = false;
