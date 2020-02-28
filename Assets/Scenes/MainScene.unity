@@ -151,7 +151,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dabcb60f8fcb4f248af2788fecc02522, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 355292361}
+  player: {fileID: 0}
   rotationSpeed: 1
   smoothTuring: 0.5
   fixedRange_y: {x: 10, y: 55}
@@ -390,12 +390,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 226966121}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
---- !u!1 &355292361 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 9206296177471051248, guid: 35b58b46bca88334daef10b3a5c81c42,
-    type: 3}
-  m_PrefabInstance: {fileID: 9206296177713215368}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &461264785
 GameObject:
   m_ObjectHideFlags: 0
@@ -599,7 +593,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 60, y: -50, z: 0}
 --- !u!1 &608252491
 GameObject:
@@ -678,9 +672,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d81ebb50dee03d34da9e55cdfde9d06d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fov: 120
+  fovHoriz: 120
+  fovVert: 50
   viewDistance: 12
-  obj: {fileID: 0}
+  rayCount: 40
+  fovCount: 5
+  monster: {fileID: 0}
 --- !u!4 &608252495
 Transform:
   m_ObjectHideFlags: 0
@@ -1053,7 +1050,7 @@ PrefabInstance:
     - target: {fileID: -4216859302048453862, guid: 1b6841963a58a5742912bb3eb8c971e9,
         type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 1b6841963a58a5742912bb3eb8c971e9,
         type: 3}
@@ -1095,6 +1092,11 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Monster
       objectReference: {fileID: 0}
+    - target: {fileID: 1197654348229058851, guid: 1b6841963a58a5742912bb3eb8c971e9,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: c5198f1d1594c50478d3d2f3b516fcb6, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1b6841963a58a5742912bb3eb8c971e9, type: 3}
 --- !u!1 &1298055600 stripped
@@ -1115,11 +1117,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8843ebff5279d4d2baa7a5d2da0118aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 355292361}
+  MoodBoard: {fileID: 0}
+  Death: {fileID: 0}
+  Hurt: {fileID: 0}
+  Violin: {fileID: 0}
+  damage: {fileID: 0}
+  choir: {fileID: 0}
+  roar1: {fileID: 0}
+  fight1: {fileID: 0}
+  strings: {fileID: 0}
+  IntroMoodboard: {fileID: 0}
+  IntroStrings: {fileID: 0}
+  BossFight1: {fileID: 0}
+  player: {fileID: 0}
   turningSpeed: 30
   movingSpeed: 2
+  maxHp: 2
   hp: 3
-  playerInSight: 0
+  farHearRange: 20
+  nearHearRange: 10
+  scenLoadTime: 0
+  targetObj: {fileID: 0}
 --- !u!54 &1298055602
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1234,7 +1252,7 @@ Transform:
   m_Children:
   - {fileID: 226966122}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1431145082
 GameObject:
