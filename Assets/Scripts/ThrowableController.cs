@@ -25,7 +25,7 @@ public class ThrowableController : MonoBehaviour
         {
             slingshotScript.playProjectileCollisionSound();
             monsterScript.MakeSound(transform.position);
-            Destroy(gameObject, 1f);
+            Destroy(gameObject);
         }
     }
 }
