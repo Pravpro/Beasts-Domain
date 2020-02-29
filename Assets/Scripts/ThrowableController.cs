@@ -1,22 +1,30 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
 
 public class ThrowableController : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public SlingshotController slingshotScript;
+
+    Rigidbody m_rb;
+    public GameObject monster;
+    private AIController monsterScript;
+
+    private void Start()
     {
-        Rigidbody m_rid = GetComponent<Rigidbody>();
-        m_rid.useGravity = true;
-        
+        m_rb = gameObject.GetComponent<Rigidbody>();
+        m_rb.useGravity = false;
+        monster = GameObject.FindGameObjectWithTag("Monster");
+        monsterScript = monster.GetComponent<AIController>();
     }
 
-    void OnTriggerEnter(Collider other)
+    void OnCollisionEnter(Collision col)
     {
-        if (other.name != "Player" && other.name != "MonsterViewArea")
+        if (col.collider.name != "Player")
         {
-            Debug.Log("collision detected, delete the object: " + other.name);
+            slingshotScript.playProjectileCollisionSound();
+            monsterScript.MakeSound(transform.position);
             Destroy(gameObject);
         }
     }

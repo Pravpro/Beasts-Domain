@@ -201,10 +201,10 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -4612162990109294230, guid: f878d81844843164881c09c9f8812a5e, type: 3}
-  - {fileID: 6034957751646507721, guid: f878d81844843164881c09c9f8812a5e, type: 3}
-  - {fileID: -2355588867341528080, guid: f878d81844843164881c09c9f8812a5e, type: 3}
-  - {fileID: 6809135948766818388, guid: f878d81844843164881c09c9f8812a5e, type: 3}
+  - {fileID: 2100000, guid: 14695209ec68d034f8910ccbe7e2d722, type: 2}
+  - {fileID: 2100000, guid: df99c201e9241654ab35bbf6f39959f7, type: 2}
+  - {fileID: 2100000, guid: df99c201e9241654ab35bbf6f39959f7, type: 2}
+  - {fileID: 2100000, guid: 14695209ec68d034f8910ccbe7e2d722, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -391,7 +391,7 @@ GameObject:
   - component: {fileID: 7620642464590722930}
   m_Layer: 0
   m_Name: Body
-  m_TagString: Untagged
+  m_TagString: Movable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -436,7 +436,7 @@ GameObject:
   - component: {fileID: 7620642464735177378}
   m_Layer: 0
   m_Name: BrokenBranch
-  m_TagString: Untagged
+  m_TagString: Movable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

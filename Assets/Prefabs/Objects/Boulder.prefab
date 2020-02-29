@@ -15,11 +15,11 @@ GameObject:
   - component: {fileID: 761862437618306339}
   - component: {fileID: 761862437618306340}
   m_Layer: 0
-  m_Name: Rock_Block_1x1x1
+  m_Name: Boulder
   m_TagString: Movable
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &761862437119371318
 Transform:

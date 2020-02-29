@@ -6,25 +6,24 @@ public class TreeController : MonoBehaviour
 {
     // Start is called before the first frame update
     public GameObject log;
+    public TreeAudio treeAudioScript;
     private Mesh mesh;
     private Bounds bounds;
+
+    //Audio
+    public AudioSource Tree;
+    public AudioClip Fall;
     void Start()
     {
         mesh = gameObject.GetComponent<MeshFilter>().mesh;
         bounds = mesh.bounds;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     void OnTriggerEnter(Collider other)
     {
         if (other.tag == "Monster")
         {
-            Debug.Log(bounds.max.y);
+            treeAudioScript.TreeFall();
             Instantiate(log, new Vector3(transform.position.x, bounds.max.y, transform.position.z), transform.rotation);
             Destroy(gameObject);
         }
