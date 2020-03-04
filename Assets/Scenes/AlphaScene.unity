@@ -225,7 +225,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 13337469}
-  m_LocalRotation: {x: 0.05688297, y: 0.7048151, z: -0.05688297, w: 0.70481515}
+  m_LocalRotation: {x: 0.056882393, y: 0.70481515, z: -0.056882393, w: 0.7048152}
   m_LocalPosition: {x: -98.71, y: 3.8860002, z: 25.86}
   m_LocalScale: {x: 30, y: 30, z: 30}
   m_Children: []
@@ -6569,7 +6569,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 382882444}
-  m_LocalRotation: {x: 0.056882728, y: 0.7048151, z: -0.056882784, w: 0.70481515}
+  m_LocalRotation: {x: 0.05688239, y: 0.70481515, z: -0.056882445, w: 0.7048152}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -7483,9 +7483,56 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e178dc2b2a3bb994892267490b2c141a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  introFight: {fileID: 0}
+  Boss1: {fileID: 0}
+  Boss2: {fileID: 0}
   landingClips:
   - {fileID: 8300000, guid: a2db89066a1b9bd41a5996686b05b262, type: 3}
+  jumpingClips:
+  - {fileID: 8300000, guid: 0bd124c637a512348a15e14ce4581dc6, type: 3}
+  - {fileID: 8300000, guid: 7e14fd1ce1a7cf440b3fb49fb2a97402, type: 3}
+  staminaClips:
+  - {fileID: 8300000, guid: ca73de5900e5c2946bf69e0bd1d4dad1, type: 3}
+  - {fileID: 0}
+  footstepClips:
+  - {fileID: 8300000, guid: 87513ba3b8b4fd24d832592899ab6853, type: 3}
+  - {fileID: 8300000, guid: 908f10149ce7b2f4a8f939f35016d4d3, type: 3}
+  - {fileID: 8300000, guid: b9ef2fcd1105e834098f1080eedc12d5, type: 3}
+  slingshotClips:
+  - {fileID: 8300000, guid: 67fb7425e3f22475398db38cf02e6323, type: 3}
+  - {fileID: 8300000, guid: a68cb3d90f65e8146ac2454b55af0aa3, type: 3}
+  - {fileID: 0}
+  rockClips:
+  - {fileID: 8300000, guid: 76c37cbc4fecc4b4ab66f1c999bc7add, type: 3}
+  - {fileID: 8300000, guid: e06411748a135264da022b7124bdd82a, type: 3}
+  spellClips:
+  - {fileID: 8300000, guid: 5a13ac1f1998748f48f927f500253222, type: 3}
+  moodboardClips:
+  - {fileID: 8300000, guid: 39e05d3af4aa3f64ab0267e150fc6ad8, type: 3}
+  musicClips:
+  - {fileID: 8300000, guid: a20fb40e6c0638942b72050cac004b91, type: 3}
+  - {fileID: 8300000, guid: 17cab08b85c07470f83a9159c481be80, type: 3}
+  - {fileID: 8300000, guid: e7fa13a808edf4d80aa57fb2e4c258e1, type: 3}
+  roarClips:
+  - {fileID: 8300000, guid: 94aaad1912ea6fa41a1d3afbd47beb6b, type: 3}
+  - {fileID: 8300000, guid: c4ba7b1503980f042a5704154c1b2042, type: 3}
+  damageClips:
+  - {fileID: 8300000, guid: 915b8c427065a9b44a77de4ff74ed6ce, type: 3}
+  - {fileID: 8300000, guid: 3b16ced12cd24cf4db8bbdf5e81a3ffd, type: 3}
+  treeClips:
+  - {fileID: 8300000, guid: 0903a66ea1c42f94a850aedccd8b9ec1, type: 3}
   landing: {fileID: 0}
+  jumping: {fileID: 0}
+  stamina: {fileID: 0}
+  footstep: {fileID: 0}
+  slingshot: {fileID: 0}
+  rock: {fileID: 0}
+  spell: {fileID: 0}
+  moodboard: {fileID: 0}
+  music: {fileID: 0}
+  roar: {fileID: 0}
+  damage: {fileID: 0}
+  tree: {fileID: 0}
 --- !u!4 &760171701
 Transform:
   m_ObjectHideFlags: 0
@@ -13725,7 +13772,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1044896107}
-  m_LocalRotation: {x: 0.04410397, y: 0.70572996, z: -0.04410345, w: 0.70573014}
+  m_LocalRotation: {x: 0.044103954, y: 0.70572996, z: -0.044103436, w: 0.70573014}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
