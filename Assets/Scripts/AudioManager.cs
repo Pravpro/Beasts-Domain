@@ -5,48 +5,40 @@ using UnityEngine;
 
 public class AudioManager : MonoBehaviour
 {
-
-    // Add Audio Clips variables here as type AudioClip[] and set these in the inspector
     [Header("Clips")]
-    public AudioClip[] landingClips;
-   
+    public AudioClip landingClip;
 
 
     [HideInInspector] public AudioSource landing;
 
 
-    Dictionary<AudioSource, AudioClip[]> sourceClipRelation = new Dictionary<AudioSource, AudioClip[]>();
-
     void Awake()
     {
-        // 1. Create AuidoSource by calling AddAudio and passing in following parameters:
-            // loop (true or false)
-            // playAwake (true or false)
-            // volume (value of volume followed by an 'f')
-        landing = AddAudio(false, false, 0.7f);
-
-
-        // 2. Add AudioSource and AudioClip relation into dictionary by doing:
-            // sourceClipRelation.Add(<name of AudioSource>, <name of AudioClip>)
-        sourceClipRelation.Add(landing, landingClips);
+        landing = AddAudio(landingClip, false, false, 0.7f);
     }
 
-
-
-    AudioSource AddAudio(bool loop, bool playAwake, float vol)
+    AudioSource AddAudio(AudioClip clip, bool loop, bool playAwake, float vol)
     {
         AudioSource newAudio = gameObject.AddComponent<AudioSource>();
+        newAudio.clip = clip;
         newAudio.loop = loop;
         newAudio.playOnAwake = playAwake;
         newAudio.volume = vol;
         return newAudio;
     }
 
-    public void Play(AudioSource toPlay, float low = 1f, float high = 1f)
+    public void Play(AudioSource toPlay, bool randomPitch = false)
     {
-        toPlay.clip = sourceClipRelation[toPlay][Random.Range(0, sourceClipRelation[toPlay].Length)];
-        toPlay.pitch = Random.Range(low, high);
-        toPlay.Play();
+        //if (toPlay == sourceWithMultipleClips)
+        //{
+        //    sourceWithMultipleClips.clip = clips[Random.Range(0, clips.Length)];
+        //}
 
+        if (randomPitch)
+        {
+            toPlay.pitch = Random.Range(0.8f, 1.2f);
+        }
+        toPlay.Play();
+        toPlay.pitch = 1f;
     }
 }

@@ -10,10 +10,12 @@ public class PlayerController : MonoBehaviour
 {
     // Create variable for movement speed
     public float walkSpeed, runSpeed, jumpSpeed, turnSpeed, crouchSpeed;
-    public int hp, stamina, maxStamina;
+    public int hp, stamina;
+    public int maxStamina; //maxHp;
+    private bool recoverStamia = false;
     public Animator m_Animator;
+
     public CinemachineStateDrivenCamera SDCam;
-    public AudioManager audioManager;
 
     // player id for reference Rewired input
     // we only have one player id will always = 0
@@ -26,7 +28,6 @@ public class PlayerController : MonoBehaviour
     Quaternion m_Rotation, lastRotation = Quaternion.identity;
     private bool isMoving, pushing, grounded, walking, running, crouching = false;
     private ICinemachineCamera thirdPersonCam;
-    private bool recoverStamia = false;
 
     // for spell
     ParticleSystem spellArea;
@@ -242,7 +243,9 @@ public class PlayerController : MonoBehaviour
     {
         if (col.collider.tag == "Ground")
         {
-            audioManager.Play(audioManager.landing);
+            grounded = true;
+            Jumping.clip = Landing;
+            Jumping.PlayOneShot(Landing, 1f);
         }
 
         // Avoid unwaned moving of a movable object
