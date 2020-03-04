@@ -76,6 +76,19 @@ AudioMixerGroupController:
   m_Mute: 0
   m_Solo: 0
   m_BypassEffects: 0
+--- !u!245 &-4565273174578477400
+AudioMixerSnapshotController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Pause
+  m_AudioMixer: {fileID: 24100000}
+  m_SnapshotID: 8afb5714bbb2b1d45bb8f68bfdffa1f9
+  m_FloatValues:
+    0e5d7f3e5c2601d4ebef0135b9264d2d: -10.345207
+    8d523cafe5a752a46805083ed60b1f20: -10.4748535
+  m_TransitionOverrides: {}
 --- !u!244 &-4269009766134894820
 AudioMixerEffectController:
   m_ObjectHideFlags: 3
@@ -118,19 +131,6 @@ AudioMixerEffectController:
   m_SendTarget: {fileID: 0}
   m_EnableWetMix: 0
   m_Bypass: 0
---- !u!245 &-2019386721928641525
-AudioMixerSnapshotController:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: IntroStrings
-  m_AudioMixer: {fileID: 24100000}
-  m_SnapshotID: 04615da8ce0601d41bcb80e6be36f828
-  m_FloatValues:
-    0e5d7f3e5c2601d4ebef0135b9264d2d: -20.09816
-    8d523cafe5a752a46805083ed60b1f20: -10.4748535
-  m_TransitionOverrides: {}
 --- !u!243 &-1957139070176323428
 AudioMixerGroupController:
   m_ObjectHideFlags: 0
@@ -196,8 +196,8 @@ AudioMixerController:
   m_MasterGroup: {fileID: 24300002}
   m_Snapshots:
   - {fileID: 24500006}
-  - {fileID: -2019386721928641525}
   - {fileID: 8252497145976169834}
+  - {fileID: -4565273174578477400}
   m_StartSnapshot: {fileID: 24500006}
   m_SuspendThreshold: -80
   m_EnableSuspend: 1
@@ -220,7 +220,7 @@ AudioMixerController:
     - 59b882f937eaa83449fcd9450ec27952
     name: View
   m_CurrentViewIndex: 0
-  m_TargetSnapshot: {fileID: -2019386721928641525}
+  m_TargetSnapshot: {fileID: -4565273174578477400}
 --- !u!243 &24300002
 AudioMixerGroupController:
   m_ObjectHideFlags: 0
@@ -263,7 +263,7 @@ AudioMixerSnapshotController:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: IntroMoodboard
+  m_Name: IntroFight
   m_AudioMixer: {fileID: 24100000}
   m_SnapshotID: ef5a8a1c9cb4f6147a20b937c53ea462
   m_FloatValues:
@@ -457,7 +457,7 @@ AudioMixerSnapshotController:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: BossFight1
+  m_Name: Boss
   m_AudioMixer: {fileID: 24100000}
   m_SnapshotID: 0d56f3287afae9e4a8750d639f2964bf
   m_FloatValues:
