@@ -251,9 +251,28 @@ public class PlayerController : MonoBehaviour
         {
             Rigidbody rbMovable = col.gameObject.GetComponent<Rigidbody>();
             rbMovable.isKinematic = true;
+
+            if (m_playerInput.GetButton("Push"))
+            {
+                pushing = true;
+                rbMovable.isKinematic = false;
+
+                // get the contact point of player with the movable object to look at.
+                Vector3 targetPos = col.GetContact(0).point; 
+                // set y same height as player ** might have issues with hills?
+                targetPos.y = transform.position.y;
+
+                transform.LookAt(targetPos);
+            }
+            if (m_playerInput.GetButtonUp("Push"))
+            {
+                rbMovable.isKinematic = true;
+                pushing = false;
+            }
         }
     }
 
+#if false
     void OnCollisionStay(Collision col)
     {
         // Logic for moving objects
@@ -280,6 +299,7 @@ public class PlayerController : MonoBehaviour
                 
         }   
     }
+#endif
 
     void OnCollisionExit(Collision col)
     {
