@@ -47,7 +47,7 @@ public class PlayerController : MonoBehaviour
     public AudioSource Stamina;
     public AudioMixerGroup output;
 
-    private bool inSafeZone = true;
+    private bool inSafeZone = false;
 
     private void Start()
     {  
@@ -281,6 +281,11 @@ public class PlayerController : MonoBehaviour
     public bool IsInSafeZone()
     {
         return inSafeZone;
+    }
+    
+    public bool IsRunning()
+    {
+        return running;
     }
 
     void OnTriggerEnter(Collider col)

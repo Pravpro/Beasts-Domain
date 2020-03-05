@@ -11,17 +11,21 @@ public class FieldOfView : MonoBehaviour
     public int rayCount = 40;
     public int fovCount = 5;
     public GameObject monster;
+    public GameObject player;
 
     private Mesh mesh;
     private Vector3 origin;
     private MeshCollider meshCol;
     private AIController script;
+    private PlayerController playerScript;
     void Start()
     {
         mesh = new Mesh();
         GetComponent<MeshFilter>().mesh = mesh;
         monster = GameObject.FindGameObjectWithTag("Monster");
         script = monster.GetComponent<AIController>();
+        player = GameObject.FindGameObjectWithTag("Player");
+        playerScript = player.GetComponent<PlayerController>();
         ComputeFOV();
         //GetComponent<MeshCollider>().sharedMesh = mesh;
         //gameObject.AddComponent<MeshCollider>();
@@ -31,6 +35,29 @@ public class FieldOfView : MonoBehaviour
     void FixedUpdate()
     {
         ComputeFOV();
+    }
+
+    public bool PlayerInSight()
+    {
+        Vector3 playerPos = player.transform.position;
+        Vector3 monsterPos = monster.transform.position;
+        Vector3 monsterForward = monster.transform.forward;
+
+        float angle = Vector3.Angle(monsterForward, playerPos - monsterPos);
+        if (angle > fovHoriz / 2f)
+            return false;
+
+        Vector3 playerDir = playerPos - monsterPos;
+        RaycastHit hitInfo;
+        if (Physics.Raycast(monsterPos, playerDir.normalized, out hitInfo, viewDistance))
+        {
+            if (hitInfo.collider.tag == "Player")
+            {
+                Debug.DrawLine(monsterPos, playerPos);
+                return true;
+            }
+        }
+        return false;
     }
 
     void ComputeFOV()

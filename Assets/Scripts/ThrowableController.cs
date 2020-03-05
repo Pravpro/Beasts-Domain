@@ -9,14 +9,14 @@ public class ThrowableController : MonoBehaviour
 
     Rigidbody m_rb;
     public GameObject monster;
-    private AIController monsterScript;
+    private MonsterHearing hearingScript;
 
     private void Start()
     {
         m_rb = gameObject.GetComponent<Rigidbody>();
         m_rb.useGravity = false;
         monster = GameObject.FindGameObjectWithTag("Monster");
-        monsterScript = monster.GetComponent<AIController>();
+        hearingScript = monster.GetComponent<MonsterHearing>();
     }
 
     void OnCollisionEnter(Collision col)
@@ -24,7 +24,7 @@ public class ThrowableController : MonoBehaviour
         if (col.collider.name != "Player")
         {
             slingshotScript.playProjectileCollisionSound();
-            monsterScript.MakeSound(transform.position);
+            hearingScript.RockHit(transform.position);
             Destroy(gameObject);
         }
     }

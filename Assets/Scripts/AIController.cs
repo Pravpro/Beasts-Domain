@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Audio;
 using UnityEditor;
+using UnityEngine.AI;
 
 class Vector3Wrapper
 {
@@ -36,9 +37,11 @@ public class AIController : MonoBehaviour
     public float movingSpeed  = 1.0f;
     public int maxHp = 2;
     public int hp = 2;
+    public float maxChargeDistance = 40.0f;
 
     // give some buffer time for player to get next damange
     private Coroutine damageCoroutine = null;
+    private bool gotHit = false;
 
     public bool playerInSight
     {
@@ -49,8 +52,6 @@ public class AIController : MonoBehaviour
         }
     }
 
-    public float farHearRange = 20f;
-    public float nearHearRange = 10f;
     public float scenLoadTime = 0f;
 
     public GameObject targetObj;
@@ -60,14 +61,17 @@ public class AIController : MonoBehaviour
 
     private Rigidbody rb;
     private PlayerController playerScript;
+    private MonsterHearing hearingScript;
+    private FieldOfView fovScript;
     private UnityEngine.AI.NavMeshAgent agent;
 
     private Vector3Wrapper target = null;
     private Vector3Wrapper lastSense = null;
 
-    private Vector3 interruptPos;
+    private Vector3Wrapper interruptPos = null;
     private Vector3 m_targetedDir;
     private Vector3 playerPos, playerDir;
+    private bool playerReachable = false;
 
     private enum State
     {
@@ -91,12 +95,14 @@ public class AIController : MonoBehaviour
     void Start()
     {
         rb = gameObject.GetComponent<Rigidbody>();
-        Debug.Log("Monster size:" + GetComponent<MeshRenderer>().bounds.size);
+        // Debug.Log("Monster size:" + GetComponent<MeshRenderer>().bounds.size);
         agent = GetComponent<UnityEngine.AI.NavMeshAgent>();
         agent.updateUpAxis = false;
         m_targetedDir = transform.forward;
         player = GameObject.FindGameObjectWithTag("Player");
         playerScript = player.GetComponent<PlayerController>();
+        fovScript = GameObject.Find("FieldOfView").GetComponent<FieldOfView>();
+        hearingScript = gameObject.GetComponent<MonsterHearing>();
 
         //lineRenderer = GetComponent<LineRenderer>();
         //lineRenderer.positionCount = 2;
@@ -135,7 +141,7 @@ public class AIController : MonoBehaviour
         if (hp <= 0 || playerScript.hp <= 0)
         {
             rb.isKinematic = true;
-            agent.enabled = false;
+            agent.isStopped = true;
             return;
         }
 
@@ -180,7 +186,6 @@ public class AIController : MonoBehaviour
         }
 
         Navigate();
-        //Debug.Log(state);
     }
 
     void Navigate()
@@ -188,11 +193,16 @@ public class AIController : MonoBehaviour
         // for debug purpose
         if (targetObj)
         {
-            agent.SetDestination(targetObj.transform.position);
+            //agent.SetDestination(targetObj.transform.position);
+            SetDestination(targetObj.transform.position);
             return;
         }
 
-        bool sensedPlayer = SensedPlayer() && !playerScript.IsInSafeZone();
+        // if (gotHit)
+        //     return;
+        playerReachable = PlayerReachable();
+        bool sensedPlayer = fovScript.PlayerInSight() && playerReachable; // !playerScript.IsInSafeZone();
+        
         if (sensedPlayer)
         {
             if(!m_roarPlayed)
@@ -205,12 +215,15 @@ public class AIController : MonoBehaviour
                 fight1.PlayDelayed(2.5f);
                 m_roarPlayed = true;
             }
-            lastSense = new Vector3Wrapper(player.transform.position);
+            interruptPos = new Vector3Wrapper(player.transform.position);
         }
+        // Debug.Log(state);
         switch(state)
         {
             case State.Idle:
                 if (sensedPlayer) { ReactToPlayer(); return; }
+
+                // TODO: rest for a few secs?
 
                 MoveToRandomPos();
                 state = State.RandomSearch;
@@ -227,41 +240,64 @@ public class AIController : MonoBehaviour
                 }
                 break;
             case State.Charge:
-                if (ReachedChargeDest())
+                if (ReachedWanderDest())
                 {
-                    if (lastSense != null)
+                    if (interruptPos != null)
                     {
-                        target = lastSense;
-                        lastSense = null;
+                        SetDestination(interruptPos.vector);
+                        //agent.SetDestination(interruptPos.vector);
+                        state = State.Interrupted;
                     }
                     else
                     {
                         state = State.RandomSearch;
-                        RestartAgent();
-                        target = null;
                     }
+                    UnsetChargeSpeed();
+                    // if (lastSense != null)
+                    // {
+                    //     target = lastSense;
+                    //     lastSense = null;
+                    // }
+                    // else
+                    // {
+                    //     state = State.RandomSearch;
+                    //     RestartAgent();
+                    //     target = null;
+                    // }
                 }
-                else
-                    Charge();
+                // else
+                //     Charge();
 
                 break;
             case State.Interrupted:
                 if (sensedPlayer) { ReactToPlayer(); return; }
 
-                // turn the boss to the rock hit direction
-                Quaternion qRotate;
-                Vector3 tDir = interruptPos - transform.position;
+                if (interruptPos == null) { state = State.RandomSearch; return; }
+
+                Vector3 tDir = interruptPos.vector - transform.position;
                 tDir.y = 0;
-                if (Vector3.Angle(tDir, transform.forward) > 15.0f)
+                if ( (Vector3.Angle(tDir, transform.forward) < 15.0f && tDir.magnitude < 15f)
+                    || ReachedWanderDest()) // tDir.magnitude < 3f)
                 {
-                    qRotate = Quaternion.LookRotation(tDir);
-                    transform.rotation = Quaternion.Slerp(transform.rotation, qRotate, Time.deltaTime * turningSpeed);
-                }
-                else
-                {
-                    RestartAgent();
+                    interruptPos = null;
                     state = State.RandomSearch;
                 }
+                
+                // turn the boss to the rock hit direction
+                // Quaternion qRotate;
+                // Vector3 tDir = interruptPos.vector - transform.position;
+                // tDir.y = 0;
+                // if (Vector3.Angle(tDir, transform.forward) > 15.0f)
+                // {
+                //     qRotate = Quaternion.LookRotation(tDir);
+                //     transform.rotation = Quaternion.Slerp(transform.rotation, qRotate, Time.deltaTime * turningSpeed);
+                // }
+                // else
+                // {
+                //     RestartAgent();
+                //     state = State.RandomSearch;
+                // }
+
                 break;
             default:
                 break;
@@ -270,14 +306,13 @@ public class AIController : MonoBehaviour
 
     void OnCollisionEnter(Collision col)
     {
+        //Debug.Log("Monster: the object " + col.collider.name + " is in the target." + col.collider.tag);
         if (col.collider.tag == "Throwable")
         {
             Vector3 targetedPos = col.collider.gameObject.transform.position;
             m_targetedDir = targetedPos - transform.position;
             // ignore the (up) y direction
             m_targetedDir.y = 0;
-
-            Debug.Log("Monster: the object " + col.collider.name + " is in the target." + col.collider.name + " position: " + targetedPos);
         }
         else if (col.collider.tag == "Player")
         {
@@ -306,11 +341,35 @@ public class AIController : MonoBehaviour
                 damage.PlayOneShot(Death, 0.5f);
             }
         }
+        // react to hitting geysers etc
+        else if (col.collider.tag == "Trigger" || col.collider.tag == "Movable")
+        {
+            // state = State.Interrupted;
+            // Vector3 awayFromHit = transform.position - col.transform.position;
+            // awayFromHit.y = 0;
+            // awayFromHit = awayFromHit.normalized;
+            // hardcoded for now
+            // interruptPos = new Vector3Wrapper(transform.position + awayFromHit * 5f);
+            // SetDestination(interruptPos.vector);
+            // gotHit = true;
+            // Debug.Log("damage subrout");
+            // MonsterDamaged();
+        }
 
         // not allow monster to push boulder
         if (col.gameObject.name.Contains("Boulder") ||
             col.gameObject.name.Contains("boulder") )
                 col.gameObject.GetComponent<Rigidbody>().isKinematic = true;
+    }
+
+    bool PlayerReachable()
+    {
+        NavMeshPath path = new UnityEngine.AI.NavMeshPath();
+        NavMeshHit hit;
+        bool hasPath = agent.CalculatePath(player.transform.position, path);
+        bool close = NavMesh.SamplePosition(player.transform.position, out hit, 2f, 1 << NavMesh.GetNavMeshLayerFromName("Walkable"));
+        // Debug.Log(hasPath + "" + close);
+        return hasPath || close;
     }
 
     IEnumerator playerInvincible()
@@ -320,86 +379,140 @@ public class AIController : MonoBehaviour
         damageCoroutine = null;
     }
 
+    IEnumerator MonsterDamaged()
+    {
+        yield return new WaitForSeconds(3);
+
+        gotHit = false;
+    }
+
     void MoveToRandomPos()
     {
+        agent.ResetPath();
         UnityEngine.AI.NavMeshPath path = new UnityEngine.AI.NavMeshPath();
         Vector3 finalPosition = SampleRandomPos();
-        while (!agent.CalculatePath(finalPosition, path))
-            finalPosition = SampleRandomPos();
-        
-        agent.SetPath(path);
+        SetDestination(finalPosition);
         //agent.SetDestination(finalPosition);
+    }
+
+    void MoveToPos(Vector3 pos)
+    {
+        Vector3 position = SamplePos(pos);
+        SetDestination(pos);
+    }
+
+    void SetDestination(Vector3 pos)
+    {
+        // UnityEngine.AI.NavMeshPath path = new UnityEngine.AI.NavMeshPath();
+        Vector3 finalPos = SamplePos(pos);
+        finalPos.y = transform.position.y;
+        agent.SetDestination(finalPos);
+        // agent.CalculatePath(pos, path);
+        // agent.SetPath(path);
     }
 
     Vector3 SampleRandomPos()
     {
         float walkRadius = 80f;//Random.Range(1f, 80f);
-        float x = Random.Range(-80f, 15f);
-        float z = Random.Range(5f, 90f);
+        float x = Random.Range(-85f, 15f);
+        float z = Random.Range(-5f, 90f);
         // Vector3 randomDirection = Random.insideUnitSphere * walkRadius;
         // Vector3 center = new Vector3(-20f, transform.position.y, 20f);
         // randomDirection += center;
         Vector3 randomDirection = new Vector3(x, transform.position.y, z);
         UnityEngine.AI.NavMeshHit hit;
-        UnityEngine.AI.NavMesh.SamplePosition(randomDirection, out hit, walkRadius, 1);
+        UnityEngine.AI.NavMesh.SamplePosition(randomDirection, out hit, walkRadius, 1 << NavMesh.GetNavMeshLayerFromName("Walkable"));
         Vector3 finalPosition = hit.position;
         return finalPosition;
     }
 
+    Vector3 SamplePos(Vector3 dest, float radius=80f)
+    {
+        UnityEngine.AI.NavMeshHit hit;
+        UnityEngine.AI.NavMesh.SamplePosition(dest, out hit, radius, 1 << NavMesh.GetNavMeshLayerFromName("Walkable"));
+        return hit.position;
+    }
+
     void ReactToPlayer()
     {
-        target = new Vector3Wrapper(player.transform.position);
-        state = State.Charge;
         if (IsPhaseOne())
             phase = Phase.Two;
-        StopAgent();
+        
+        Vector3 playerPos = player.transform.position;
+        Vector3 toPlayer = playerPos - transform.position;
+        toPlayer.y = 0;
+        toPlayer = toPlayer.normalized;
+
+        Vector3 targetPos;
+        RaycastHit hitInfo;
+        NavMeshHit hit;
+        int layerMask = ~(1 << LayerMask.NameToLayer("Player"));
+
+        // check if player can be directly charged at
+        Vector3 raycastOrigin = transform.position;
+        raycastOrigin.y = 0.5f;
+        bool blocked = Physics.Raycast(raycastOrigin, toPlayer, out hitInfo, maxChargeDistance) && hitInfo.collider.tag != "Player";
+        bool noStraightPath = NavMesh.Raycast(transform.position, playerPos, out hit, NavMesh.AllAreas);
+        if (hit.distance < 2f)
+            noStraightPath = false;
+
+        if (!blocked && !noStraightPath)
+        {
+            if (Physics.Raycast(raycastOrigin, toPlayer, out hitInfo, Mathf.Infinity, layerMask) )
+                targetPos = transform.position + Mathf.Min(maxChargeDistance, (hitInfo.point - raycastOrigin).magnitude ) * toPlayer;
+            else
+                targetPos = transform.position + maxChargeDistance * toPlayer;
+            state = State.Charge;
+            SetChargeSpeed();
+        }
+        // cannot charge at player directly
+        else
+        {
+            targetPos = player.transform.position;
+            UnsetChargeSpeed();
+            // TODO: if cannot directly charge at player, what should the state be?
+            state = State.Interrupted;
+        }
+
+        target = new Vector3Wrapper(targetPos);
+        SetDestination(target.vector);
+        //agent.SetDestination(target.vector);
     }
 
     void Charge()
     {
-        Vector3 tPos = target.vector;
-        // get the rotation and translate vector to player
-        Vector3 location = transform.position;
-        Vector3 tDir = tPos - location;
-        tDir.y = transform.forward.y;
-        tDir.Normalize();
-        Quaternion qRotate = Quaternion.LookRotation(tDir, transform.up);
-        //transform.rotation = Quaternion.RotateTowards(transform.rotation, qRotate, Time.deltaTime * turningSpeed);
-        transform.position = Vector3.MoveTowards(transform.position, tPos, Time.deltaTime * movingSpeed);
-        transform.rotation = Quaternion.Slerp(transform.rotation, qRotate, Time.deltaTime * turningSpeed);
+        // Vector3 tPos = target.vector;
+        // Vector3 location = transform.position;
+        // Vector3 tDir = tPos - location;
+        // tDir.y = transform.forward.y;
+        // tDir.Normalize();
+        // Quaternion qRotate = Quaternion.LookRotation(tDir, transform.up);
+        // transform.position = Vector3.MoveTowards(transform.position, tPos, Time.deltaTime * movingSpeed);
+        // transform.rotation = Quaternion.Slerp(transform.rotation, qRotate, Time.deltaTime * turningSpeed);
     }
 
-    public void MakeSound(Vector3 pos)
+    public void Interrupt(Vector3 pos, bool fromPlayer = false)
     {
-        float d = DistanceTo(transform.position);
-        if (d < farHearRange)
-            Interrupt(pos);
-    }
-
-    void Interrupt(Vector3 pos)
-    {
-        interruptPos = pos;
-        if (state != State.Charge)
+        if (state == State.Charge)
         {
-            if (state != State.Interrupted)
-                StopAgent();
+            if (fromPlayer && playerReachable)
+                interruptPos = new Vector3Wrapper(pos);
+        }
+        else
+        {
+            if (fromPlayer && !playerReachable)
+                return;
+            interruptPos = new Vector3Wrapper(pos);
+            // if (state != State.Interrupted)
+            //     StopAgent();
+            SetDestination(interruptPos.vector);
             state = State.Interrupted;
         }
     }
 
     bool SensedPlayer()
     {
-        return m_playerInSight || HeardPlayer();
-    }
-
-    bool HeardPlayer()
-    {
-        float d = DistanceTo(player.transform.position);
-        if (d < nearHearRange)
-            return true;
-        if (d < farHearRange && playerScript.IsMoving())
-            return true;
-        return false;
+        return fovScript.PlayerInSight();
     }
 
     void RestartAgent()
@@ -427,6 +540,17 @@ public class AIController : MonoBehaviour
         return diff.magnitude;
     }
 
+    // TODO: not hard code the speed
+    void SetChargeSpeed()
+    {
+        agent.speed = 30f;
+    }
+
+    void UnsetChargeSpeed()
+    {
+        agent.speed = 5f;
+    }
+
     bool IsPhaseOne()
     {
         return phase == Phase.One;
@@ -440,7 +564,7 @@ public class AIController : MonoBehaviour
     bool ReachedWanderDest()
     {
         return //!agent.pathPending
-             agent.remainingDistance <= agent.stoppingDistance
+             agent.remainingDistance <= agent.stoppingDistance + 1
              || !agent.hasPath;
     }
 }
