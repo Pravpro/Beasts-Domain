@@ -29,9 +29,8 @@ public class AIController : MonoBehaviour
     public AudioSource fight1;
     public AudioSource fightStrings;
     public AudioSource strings;
-    public AudioMixerSnapshot IntroMoodboard;
-    public AudioMixerSnapshot IntroStrings;
-    public AudioMixerSnapshot BossFight1;
+    public AudioMixerSnapshot IntroFight;
+    public AudioMixerSnapshot Boss;
 
     // public variables
     public GameObject player;
@@ -109,7 +108,7 @@ public class AIController : MonoBehaviour
         //lineRenderer = GetComponent<LineRenderer>();
         //lineRenderer.positionCount = 2;
 
-        IntroMoodboard.TransitionTo(0.0f);
+        IntroFight.TransitionTo(0.0f);
         choir.Play();
         strings.clip = Violin;
         strings.PlayDelayed(30.0f);
@@ -213,7 +212,7 @@ public class AIController : MonoBehaviour
                 choir.Stop();
                 strings.Stop();
                 roar1.Play();
-                BossFight1.TransitionTo(4f);
+                Boss.TransitionTo(4f);
                 int randomClip = Random.Range(0, bossStrings.Length);
                 fightStrings.clip = bossStrings[randomClip];
                 fightStrings.PlayDelayed(2.5f);

@@ -65,6 +65,7 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -105,23 +106,24 @@ MonoBehaviour:
   Death: {fileID: 8300000, guid: 98067a162e11891468263cb81364deae, type: 3}
   Hurt: {fileID: 8300000, guid: 915b8c427065a9b44a77de4ff74ed6ce, type: 3}
   Violin: {fileID: 8300000, guid: a20fb40e6c0638942b72050cac004b91, type: 3}
+  bossStrings:
+  - {fileID: 8300000, guid: 75831189a3c11429891b7cac8261b43d, type: 3}
+  - {fileID: 8300000, guid: 23e68e8634f854b3c9be027291d69455, type: 3}
+  - {fileID: 8300000, guid: d2500c59057a34618998930deaf16822, type: 3}
   damage: {fileID: 6346451721298342684}
   choir: {fileID: 496040787}
   roar1: {fileID: 496040789}
   fight1: {fileID: 496040788}
+  fightStrings: {fileID: 496040788}
   strings: {fileID: 7662356015815701336}
-  IntroMoodboard: {fileID: 24500006, guid: b12a37322bc5b8444879a1c72e83a533, type: 2}
-  IntroStrings: {fileID: -2019386721928641525, guid: b12a37322bc5b8444879a1c72e83a533,
-    type: 2}
-  BossFight1: {fileID: 8252497145976169834, guid: b12a37322bc5b8444879a1c72e83a533,
-    type: 2}
+  IntroFight: {fileID: 24500006, guid: b12a37322bc5b8444879a1c72e83a533, type: 2}
+  Boss: {fileID: 8252497145976169834, guid: b12a37322bc5b8444879a1c72e83a533, type: 2}
   player: {fileID: 0}
   turningSpeed: 1
   movingSpeed: 5.5
   maxHp: 2
   hp: 2
-  farHearRange: 20
-  nearHearRange: 10
+  maxChargeDistance: 40
   scenLoadTime: 0
   targetObj: {fileID: 0}
 --- !u!64 &-2625637854013436290
@@ -264,6 +266,7 @@ LineRenderer:
   m_MotionVectors: 0
   m_LightProbeUsage: 0
   m_ReflectionProbeUsage: 0
+  m_RayTracingMode: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -454,7 +457,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: -683621483407260390, guid: b12a37322bc5b8444879a1c72e83a533,
     type: 2}
-  m_audioClip: {fileID: 8300000, guid: 17cab08b85c07470f83a9159c481be80, type: 3}
+  m_audioClip: {fileID: 8300000, guid: a0e859f6d158d4f0a91b05895465f3ff, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
