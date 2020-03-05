@@ -26,6 +26,7 @@ public class PlayerController : MonoBehaviour
     Vector3 m_Movement, jump, desiredForward, prevCamForward;
     Quaternion m_Rotation, lastRotation = Quaternion.identity;
     private bool isMoving, pushing, grounded, walking, running, crouching = false;
+    private GameObject pushingObject;
     private ICinemachineCamera thirdPersonCam;
     private bool recoverStamia = false;
 
@@ -64,13 +65,17 @@ public class PlayerController : MonoBehaviour
         AimArea = GameObject.Find("SpellArea/AimArea");
         // set to false at beginning
         AimArea.SetActive(false);
+
+        pushingObject = null;
     }
 
     private void FixedUpdate()
     {
+        if (pushingObject != null) pushing = pushingObject.GetComponent<MovableController>().isPushing;
+
         // Set Animator bools
         m_Animator.SetBool("IsMoving", activateSpell ? false : isMoving);
-        m_Animator.SetBool("IsRunning", recoverStamia ? false : running); // not allow running if recovering stamina
+        m_Animator.SetBool("IsRunning", recoverStamia || pushing ? false : running); // not allow running if recovering stamina
         m_Animator.SetBool("IsCrouching", crouching); 
 
         if (hp <= 0)
@@ -232,12 +237,6 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    IEnumerator WaitNextSpell()
-    {
-        yield return new WaitForSeconds(spellWaitTime);
-        WaitNextSpellCoroutine = null;
-    }
-
     void OnCollisionEnter(Collision col)
     {
         if (col.collider.tag == "Ground")
@@ -246,78 +245,33 @@ public class PlayerController : MonoBehaviour
             audioManager.Play(audioManager.landing);
         }
 
-        // Avoid unwaned moving of a movable object
         if (col.collider.tag == "Movable")
         {
-            Rigidbody rbMovable = col.gameObject.GetComponent<Rigidbody>();
-            rbMovable.isKinematic = true;
-
-            if (m_playerInput.GetButton("Push"))
-            {
-                pushing = true;
-                rbMovable.isKinematic = false;
-
-                // get the contact point of player with the movable object to look at.
-                Vector3 targetPos = col.GetContact(0).point; 
-                // set y same height as player ** might have issues with hills?
-                targetPos.y = transform.position.y;
-
-                transform.LookAt(targetPos);
-            }
-            if (m_playerInput.GetButtonUp("Push"))
-            {
-                rbMovable.isKinematic = true;
-                pushing = false;
-            }
+            pushingObject = col.collider.gameObject;
         }
     }
 
-#if false
-    void OnCollisionStay(Collision col)
-    {
-        // Logic for moving objects
-        if (col.collider.tag == "Movable")
-        {
-            Rigidbody rbMovable = col.gameObject.GetComponent<Rigidbody>();
-            if (m_playerInput.GetButton("Push"))
-            {
-                pushing = true;
-                rbMovable.isKinematic = false;
+    // void OnTriggerStay(Collider col)
+    // {
 
-                // get the contact point of player with the movable object to look at.
-                Vector3 targetPos = col.GetContact(0).point; 
-                // set y same height as player ** might have issues with hills?
-                targetPos.y = transform.position.y;
-
-                transform.LookAt(targetPos);
-            }
-            if (m_playerInput.GetButtonUp("Push"))
-            {
-                rbMovable.isKinematic = true;
-                pushing = false;
-            }
-                
-        }   
-    }
-#endif
+    //     if (col.tag == "Movable")
+    //     {
+    //         pushing = col.gameObject.GetComponent<MovableController>().isPushing;
+    //     }
+            
+    // }
 
     void OnCollisionExit(Collision col)
     {
-        if (col.collider.tag == "Movable")
-        {
-            Rigidbody rbMovable = col.gameObject.GetComponent<Rigidbody>();
-            
-            // stop any residual force that might cause object move
-            rbMovable.Sleep();
-
-            // allow monster to move around objects
-            rbMovable.isKinematic = false;
-
-            // make sure pushing has been reset properly
-            pushing = false;
-        }
-        
+        pushingObject = null;
     }
+
+    IEnumerator WaitNextSpell()
+    {
+        yield return new WaitForSeconds(spellWaitTime);
+        WaitNextSpellCoroutine = null;
+    }
+
 
     public bool IsMoving()
     {

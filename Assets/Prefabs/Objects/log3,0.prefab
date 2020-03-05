@@ -71,6 +71,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3223241686780894312}
   - component: {fileID: 7620642465309186527}
+  - component: {fileID: 679000911682067099}
   m_Layer: 0
   m_Name: log3,0
   m_TagString: Untagged
@@ -111,8 +112,21 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 112
   m_CollisionDetection: 0
+--- !u!114 &679000911682067099
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1936575209353555579}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68556a59ec52940f3b8cb13b66db0c8f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isPushing: 0
 --- !u!1 &2977932768914615486
 GameObject:
   m_ObjectHideFlags: 0
@@ -198,6 +212,7 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
