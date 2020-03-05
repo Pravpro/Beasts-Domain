@@ -113,6 +113,9 @@ public class AIController : MonoBehaviour
         strings.clip = Violin;
         strings.PlayDelayed(30.0f);
         strings.loop = true;
+
+        // mask defaults to all areas and we don't want that
+        UnsetChargeAreaMask();
     }
 
     void Update()
@@ -257,6 +260,7 @@ public class AIController : MonoBehaviour
                         state = State.RandomSearch;
                     }
                     UnsetChargeSpeed();
+                    UnsetChargeAreaMask();
                     // if (lastSense != null)
                     // {
                     //     target = lastSense;
@@ -468,12 +472,14 @@ public class AIController : MonoBehaviour
                 targetPos = transform.position + maxChargeDistance * toPlayer;
             state = State.Charge;
             SetChargeSpeed();
+            SetChargeAreaMask();
         }
         // cannot charge at player directly
         else
         {
             targetPos = player.transform.position;
             UnsetChargeSpeed();
+            UnsetChargeAreaMask();
             // TODO: if cannot directly charge at player, what should the state be?
             state = State.Interrupted;
         }
@@ -553,6 +559,18 @@ public class AIController : MonoBehaviour
     void UnsetChargeSpeed()
     {
         agent.speed = 5f;
+    }
+
+    void SetChargeAreaMask()
+    {
+        int areaMask = NavMesh.AllAreas;
+        agent.areaMask = areaMask;
+    }
+
+    void UnsetChargeAreaMask()
+    {
+        int areaMask = ~(1 << NavMesh.GetAreaFromName("Geyser"));
+        agent.areaMask = areaMask;
     }
 
     bool IsPhaseOne()
