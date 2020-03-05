@@ -229,12 +229,13 @@ public class PlayerController : MonoBehaviour
                     spellArea.Play();
 
                     //audio test
+                    spellSound.clip = Spell;
                     spellSound.pitch = Random.Range(0.9f, 1.3f);
                     spellSound.Play();
 
                     // wait time before next available spell
                     WaitNextSpellCoroutine = StartCoroutine(WaitNextSpell() );
-                    
+
                 }
             
                 activateSpell = false;
