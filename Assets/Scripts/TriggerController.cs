@@ -56,6 +56,7 @@ public class TriggerController : MonoBehaviour
         {
             if (script.hp > 0)
             {
+                script.TakeDamage(transform.position);
                 script.hp -= 1;
                 Debug.Log("monster lose health to " + script.hp);
             }

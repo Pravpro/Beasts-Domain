@@ -202,8 +202,9 @@ public class AIController : MonoBehaviour
             return;
         }
 
-        // if (gotHit)
-        //     return;
+        if (gotHit)
+            return;
+        
         playerReachable = PlayerReachable();
         bool sensedPlayer = fovScript.PlayerInSight() && playerReachable; // !playerScript.IsInSafeZone();
         
@@ -349,20 +350,6 @@ public class AIController : MonoBehaviour
                 damage.PlayOneShot(Death, 0.5f);
             }
         }
-        // react to hitting geysers etc
-        else if (col.collider.tag == "Trigger" || col.collider.tag == "Movable")
-        {
-            // state = State.Interrupted;
-            // Vector3 awayFromHit = transform.position - col.transform.position;
-            // awayFromHit.y = 0;
-            // awayFromHit = awayFromHit.normalized;
-            // hardcoded for now
-            // interruptPos = new Vector3Wrapper(transform.position + awayFromHit * 5f);
-            // SetDestination(interruptPos.vector);
-            // gotHit = true;
-            // Debug.Log("damage subrout");
-            // MonsterDamaged();
-        }
 
         // not allow monster to push boulder
         if (col.gameObject.name.Contains("Boulder") ||
@@ -387,7 +374,7 @@ public class AIController : MonoBehaviour
         damageCoroutine = null;
     }
 
-    IEnumerator MonsterDamaged()
+    IEnumerator TimedDamageRecoil()
     {
         yield return new WaitForSeconds(3);
 
@@ -518,6 +505,19 @@ public class AIController : MonoBehaviour
             SetDestination(interruptPos.vector);
             state = State.Interrupted;
         }
+    }
+
+    public void TakeDamage(Vector3 hitPos)
+    {
+
+        // react to hitting geysers etc
+        Vector3 awayFromHit = transform.position - hitPos;
+        awayFromHit.y = 0;
+        awayFromHit = awayFromHit.normalized;
+        // hardcoded for now
+        SetDestination(transform.position + awayFromHit * 5f);
+        gotHit = true;
+        StartCoroutine(TimedDamageRecoil());
     }
 
     bool SensedPlayer()
