@@ -23,8 +23,7 @@ public class SlingshotController : MonoBehaviour
      // Rock hit
     public AudioClip[] Hit;
     public AudioSource Rock;
-     // Ready
-    public AudioSource ready;
+
     
     Animator playerAnimator;
     Vector3 targetVector;
@@ -51,7 +50,6 @@ public class SlingshotController : MonoBehaviour
                 playerAnimator.SetBool("IsAiming", true);
                 Slingshot.clip = Hold;
                 Slingshot.PlayOneShot(Hold, 1f);
-                ready.PlayDelayed(1.2f);
             }
 
             if (m_playerInput.GetButtonUp("Throw"))
