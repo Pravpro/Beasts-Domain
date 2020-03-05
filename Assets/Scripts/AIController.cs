@@ -219,8 +219,9 @@ public class AIController : MonoBehaviour
                 Boss.TransitionTo(4f);
                 int randomClip = Random.Range(0, bossStrings.Length);
                 fightStrings.clip = bossStrings[randomClip];
-                fightStrings.PlayDelayed(2.5f);
-                fight1.PlayDelayed(2.5f);
+                fightStrings.Play();
+                fight1.Play();
+
                 m_roarPlayed = true;
             }
             interruptPos = new Vector3Wrapper(player.transform.position);
