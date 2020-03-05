@@ -22,10 +22,12 @@ public class AIController : MonoBehaviour
     public AudioClip Death;
     public AudioClip Hurt;
     public AudioClip Violin;
+    public AudioClip[] bossStrings;
     public AudioSource damage;
     public AudioSource choir;
     public AudioSource roar1;
     public AudioSource fight1;
+    public AudioSource fightStrings;
     public AudioSource strings;
     public AudioMixerSnapshot IntroMoodboard;
     public AudioMixerSnapshot IntroStrings;
@@ -212,6 +214,9 @@ public class AIController : MonoBehaviour
                 strings.Stop();
                 roar1.Play();
                 BossFight1.TransitionTo(4f);
+                int randomClip = Random.Range(0, bossStrings.Length);
+                fightStrings.clip = bossStrings[randomClip];
+                fightStrings.PlayDelayed(2.5f);
                 fight1.PlayDelayed(2.5f);
                 m_roarPlayed = true;
             }
