@@ -59,6 +59,14 @@ public class HealthSystem : MonoBehaviour
         healthUI.value = playerScript.hp;      
         staminaUI.value = playerScript.stamina;
 
+        float buttonPressed = m_playerInput.GetButtonTimePressed("Pause");
+
+        if (buttonPressed > 2.0f)
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name); 
+        }
+
+#if false
         // logic for pause menu
         // TODO: move this somewhere else
         if (m_playerInput.GetButtonDown("Pause") && !isLoaded("ControlsDesc") )
@@ -73,6 +81,7 @@ public class HealthSystem : MonoBehaviour
             SceneManager.UnloadSceneAsync("ControlsDesc");
             Time.timeScale = 1.0f;
         }
+#endif
     }
 
     private static bool isLoaded(string name)

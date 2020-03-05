@@ -10,7 +10,7 @@ public class PlayerController : MonoBehaviour
 {
     // Create variable for movement speed
     public float walkSpeed, runSpeed, jumpSpeed, turnSpeed, crouchSpeed;
-    public int hp, stamina, maxStamina;
+    public float hp, stamina, maxStamina;
     public Animator m_Animator;
     public CinemachineStateDrivenCamera SDCam;
     public AudioManager audioManager;
@@ -71,6 +71,7 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
+        // something is wrong with this push thing... I will investigate later...
         if (pushingObject != null) pushing = pushingObject.GetComponent<MovableController>().isPushing;
 
         // Set Animator bools
@@ -150,18 +151,22 @@ public class PlayerController : MonoBehaviour
             
         }
         rb.MoveRotation(m_Rotation);
+        
+        if ((stamina < maxStamina) && !running) stamina++;
+        else if (recoverStamia)                 stamina += 0.1f;
 
-        if (stamina < maxStamina && !running) stamina++;
         if (stamina <= 0)
         {
             Stamina.Play();
             recoverStamia = true;
         }
 
-        // some buffer for recovering, set to half point of stamina
-        // player is required to recover to that point for using stamina for running.
-        // TODO: change to other way like wait time (?)
-        if (recoverStamia && stamina >= maxStamina / 4) recoverStamia = false;
+        // when stamina is fully recovered, player can run again (no need to buttonUp then buttonDown)
+        if (recoverStamia && (stamina > maxStamina / 3)) 
+        {
+            recoverStamia = false;
+        }
+
 
         if (m_playerInput.GetButtonDown("Jump") && grounded)
         {
