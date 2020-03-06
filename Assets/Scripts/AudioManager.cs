@@ -51,8 +51,8 @@ public class AudioManager : MonoBehaviour
         slingshot = AddAudio(false, false, 0.7f);
         rock = AddAudio(false, false, 0.7f);
         spell = AddAudio(false, false, 0.8f);
-        moodboard = AddAudio(true, true, 1f);
-        music = AddAudio(false, true, 1f);
+        moodboard = AddAudio(false, true, 1f);
+        music = AddAudio(true, true, 1f);
         roar = AddAudio(false, false, 1f);
         damage = AddAudio(false, false, 1f);
         tree = AddAudio(false, false, 0.7f);
