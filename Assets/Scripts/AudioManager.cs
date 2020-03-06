@@ -26,9 +26,6 @@ public class AudioManager : MonoBehaviour
     public AudioClip[] damageClips;
     public AudioClip[] treeClips;
 
-
-
-
     [HideInInspector] public AudioSource landing; // pitch: 0.7, 1.3
     [HideInInspector] public AudioSource jumping; // pitch: 0.8, 1.2
     [HideInInspector] public AudioSource stamina;
@@ -44,6 +41,7 @@ public class AudioManager : MonoBehaviour
 
     void Awake()
     {
+        // Params: 1.Loop 2.Play on Awake 3.Volume
         landing = AddAudio(false, false, 0.6f);
         jumping = AddAudio(false, false, 0.7f);
         stamina = AddAudio(false, false, 0.7f);
@@ -51,7 +49,7 @@ public class AudioManager : MonoBehaviour
         slingshot = AddAudio(false, false, 0.7f);
         rock = AddAudio(false, false, 0.7f);
         spell = AddAudio(false, false, 0.8f);
-        moodboard = AddAudio(false, true, 1f);
+        moodboard = AddAudio(true, false, 1f);
         music = AddAudio(true, true, 1f);
         roar = AddAudio(false, false, 1f);
         damage = AddAudio(false, false, 1f);
