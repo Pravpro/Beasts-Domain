@@ -248,7 +248,7 @@ public class PlayerController : MonoBehaviour
         if (col.collider.tag == "Ground")
         {
             grounded = true;
-            audioManager.Play(audioManager.landing);
+            audioManager.Play(audioManager.landing, 0.7f, 1.3f);
         }
 
         if (col.collider.tag == "Movable")

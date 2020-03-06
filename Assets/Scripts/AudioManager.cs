@@ -82,7 +82,14 @@ public class AudioManager : MonoBehaviour
 
     public void Play(AudioSource toPlay, float low = 1f, float high = 1f)
     {
-        toPlay.clip = sourceClipRelation[toPlay][Random.Range(0, sourceClipRelation[toPlay].Length)];
+        if (toPlay == music)
+        {
+
+        }
+        else
+        {
+            toPlay.clip = sourceClipRelation[toPlay][Random.Range(0, sourceClipRelation[toPlay].Length)];
+        }
         toPlay.pitch = Random.Range(low, high);
         toPlay.Play();
 
