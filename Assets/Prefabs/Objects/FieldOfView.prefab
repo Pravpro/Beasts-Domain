@@ -45,9 +45,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d81ebb50dee03d34da9e55cdfde9d06d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fov: 120
-  viewDistance: 12
-  obj: {fileID: 0}
+  fovHoriz: 120
+  fovVert: 0
+  viewDistance: 25
+  rayCount: 40
+  fovCount: 1
+  monster: {fileID: 0}
+  player: {fileID: 0}
 --- !u!33 &7405921560749070737
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -70,6 +74,7 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
