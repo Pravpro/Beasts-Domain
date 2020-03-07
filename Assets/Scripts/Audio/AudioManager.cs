@@ -22,9 +22,10 @@ public class AudioManager : MonoBehaviour
     public AudioClip[] spellClips;
     public AudioClip[] moodboardClips;
     public AudioClip[] musicClips;
-    public AudioClip[] roarClips;
+    public AudioClip[] beastClips;
     public AudioClip[] damageClips;
     public AudioClip[] treeClips;
+    public AudioClip[] UIClips;
 
     [HideInInspector] public AudioSource landing; // pitch: 0.7, 1.3
     [HideInInspector] public AudioSource jumping; // pitch: 0.8, 1.2
@@ -35,9 +36,10 @@ public class AudioManager : MonoBehaviour
     [HideInInspector] public AudioSource spell;
     [HideInInspector] public AudioSource moodboard;
     [HideInInspector] public AudioSource music;
-    [HideInInspector] public AudioSource roar;
+    [HideInInspector] public AudioSource beast;
     [HideInInspector] public AudioSource damage;
     [HideInInspector] public AudioSource tree; //pitch: 0.8, 1.1
+    [HideInInspector] public AudioSource UI;
 
     void Awake()
     {
@@ -51,9 +53,10 @@ public class AudioManager : MonoBehaviour
         spell = AddAudio(false, false, 0.8f);
         moodboard = AddAudio(true, false, 1f);
         music = AddAudio(true, true, 1f);
-        roar = AddAudio(false, false, 1f);
+        beast = AddAudio(false, false, 1f);
         damage = AddAudio(false, false, 1f);
         tree = AddAudio(false, false, 0.7f);
+        UI = AddAudio(false, true, 0.7f);
 
         sourceClipRelation.Add(landing, landingClips);
         sourceClipRelation.Add(jumping, jumpingClips);
@@ -64,9 +67,10 @@ public class AudioManager : MonoBehaviour
         sourceClipRelation.Add(spell, spellClips);
         sourceClipRelation.Add(moodboard, moodboardClips);
         sourceClipRelation.Add(music, musicClips);
-        sourceClipRelation.Add(roar, roarClips);
+        sourceClipRelation.Add(beast, beastClips);
         sourceClipRelation.Add(damage, damageClips);
         sourceClipRelation.Add(tree, treeClips);
+        sourceClipRelation.Add(UI, UIClips);
     }
 
 
