@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine.UI;
 using UnityEngine;
+using UnityEngine.Audio;
 using UnityEngine.SceneManagement;
 using Rewired;
 public class mainmenu : MonoBehaviour
@@ -10,6 +11,8 @@ public class mainmenu : MonoBehaviour
     public Button startButton;
     public Button quitButton;
     public Image arrow;
+
+    public AudioManager audioManager;
 
     private Vector3 offset;
     private Vector3 startPos;
@@ -40,6 +43,7 @@ public class mainmenu : MonoBehaviour
         
         if (m_playerInput.GetButtonDown("Submit"))
         {
+            audioManager.Play(audioManager.UISelection);
             if (Vector3.Distance(arrowTrans.position, startPos) < 0.3f)
                 startOnClick();
             else
@@ -51,6 +55,10 @@ public class mainmenu : MonoBehaviour
             backToMainMenu();
         }
 
+        if (vertical != 0f)
+        {
+            audioManager.Play(audioManager.UIToggle);
+        }
         // move the arrow accordingly
         if (vertical < 0.0f && Vector3.Distance(arrowTrans.position, startPos) < 0.3f)
             arrowTrans.position = startPos + offset;
