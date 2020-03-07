@@ -23,6 +23,8 @@ public class AIController : MonoBehaviour
     public AudioClip Hurt;
     public AudioClip Violin;
     public AudioClip[] bossStrings;
+    public AudioClip startRoar;
+    public AudioClip nostril;
     public AudioSource damage;
     public AudioSource choir;
     public AudioSource roar1;
@@ -215,6 +217,7 @@ public class AIController : MonoBehaviour
                 //BeastRoar1 fight starts
                 choir.Stop();
                 strings.Stop();
+                roar1.clip = startRoar;
                 roar1.Play();
                 Boss.TransitionTo(4f);
                 int randomClip = Random.Range(0, bossStrings.Length);
@@ -461,6 +464,9 @@ public class AIController : MonoBehaviour
             state = State.Charge;
             SetChargeSpeed();
             SetChargeAreaMask();
+            //nostril flare before charge?
+            roar1.clip = nostril;
+            roar1.Play();
         }
         // cannot charge at player directly
         else
