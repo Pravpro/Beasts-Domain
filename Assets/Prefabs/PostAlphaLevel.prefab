@@ -304,19 +304,6 @@ MonoBehaviour:
   m_Area: 1
   m_IgnoreFromBuild: 0
   m_AffectedAgents: ffffffff
---- !u!65 &3989312379318522239
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3989312379318491090}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 3.1012492, y: 3.072737, z: 1.1203213}
-  m_Center: {x: -1.4991765, y: -1.4902877, z: 0.50321996}
 --- !u!114 &1751900608
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -333,6 +320,20 @@ MonoBehaviour:
   m_Area: 1
   m_IgnoreFromBuild: 0
   m_AffectedAgents: ffffffff
+--- !u!64 &1751900545
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3989312379318491090}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4300000, guid: ed05e6f8eaeb2124aa5a15a305b35924, type: 3}
 --- !u!1 &3989312379373958308
 GameObject:
   m_ObjectHideFlags: 0
@@ -575,8 +576,8 @@ Light:
   m_UseBoundingSphereOverride: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
---- !u!65 &3989312381009377918
-BoxCollider:
+--- !u!64 &3990274260912560778
+MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -585,9 +586,10 @@ BoxCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 3.1012497, y: 3.0727375, z: 1.1203215}
-  m_Center: {x: -1.4991765, y: -1.4902878, z: 0.5032201}
+  serializedVersion: 3
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4300000, guid: ed05e6f8eaeb2124aa5a15a305b35924, type: 3}
 --- !u!114 &1751900612
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -812,19 +814,6 @@ Transform:
   m_Father: {fileID: 3989312380870315776}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &3989312380202639536
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3989312380202542615}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 4.11409, y: 4.1003275, z: 4.1086717}
-  m_Center: {x: -1.9994144, y: -2.0075617, z: 2.0061042}
 --- !u!114 &1751900604
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -841,6 +830,20 @@ MonoBehaviour:
   m_Area: 1
   m_IgnoreFromBuild: 0
   m_AffectedAgents: ffffffff
+--- !u!64 &1751900541
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3989312380202542615}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4300000, guid: 2d3f517df17f7694b883733ae04f0ec7, type: 3}
 --- !u!65 &3989312379974235376
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -899,19 +902,6 @@ MonoBehaviour:
   m_Area: 1
   m_IgnoreFromBuild: 0
   m_AffectedAgents: ffffffff
---- !u!65 &3989312380338782093
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3989312380338747680}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 3.1012492, y: 3.072737, z: 1.1203213}
-  m_Center: {x: -1.4991765, y: -1.4902877, z: 0.50321996}
 --- !u!114 &1751900609
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -928,6 +918,20 @@ MonoBehaviour:
   m_Area: 1
   m_IgnoreFromBuild: 0
   m_AffectedAgents: ffffffff
+--- !u!64 &1751900546
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3989312380338747680}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4300000, guid: ed05e6f8eaeb2124aa5a15a305b35924, type: 3}
 --- !u!65 &3989312380360502536
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1028,19 +1032,6 @@ MonoBehaviour:
   m_Area: 1
   m_IgnoreFromBuild: 0
   m_AffectedAgents: ffffffff
---- !u!65 &3989312380568189304
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3989312380568092639}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 3.1012492, y: 3.072737, z: 1.1203213}
-  m_Center: {x: -1.4991765, y: -1.4902877, z: 0.50321996}
 --- !u!114 &1751900605
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1057,6 +1048,20 @@ MonoBehaviour:
   m_Area: 1
   m_IgnoreFromBuild: 0
   m_AffectedAgents: ffffffff
+--- !u!64 &1751900542
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3989312380568092639}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4300000, guid: ed05e6f8eaeb2124aa5a15a305b35924, type: 3}
 --- !u!1 &3989312380618635254
 GameObject:
   m_ObjectHideFlags: 0
@@ -1426,8 +1431,8 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &3989312380216966293
-BoxCollider:
+--- !u!64 &375717148977643098
+MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -1436,9 +1441,10 @@ BoxCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 4.11409, y: 4.1003275, z: 4.1086717}
-  m_Center: {x: -1.9994144, y: -2.0075617, z: 2.0061042}
+  serializedVersion: 3
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4300000, guid: 2d3f517df17f7694b883733ae04f0ec7, type: 3}
 --- !u!114 &1751900611
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1484,19 +1490,6 @@ MonoBehaviour:
   m_Area: 1
   m_IgnoreFromBuild: 0
   m_AffectedAgents: ffffffff
---- !u!65 &3989312381015615639
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3989312381015649834}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 3.1012497, y: 3.0727375, z: 1.1203215}
-  m_Center: {x: -1.4991765, y: -1.4902878, z: 0.5032201}
 --- !u!114 &1751900610
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1513,19 +1506,20 @@ MonoBehaviour:
   m_Area: 1
   m_IgnoreFromBuild: 0
   m_AffectedAgents: ffffffff
---- !u!65 &3989312381127503263
-BoxCollider:
+--- !u!64 &1751900547
+MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3989312381127600946}
+  m_GameObject: {fileID: 3989312381015649834}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 3.1012492, y: 3.072737, z: 1.1203213}
-  m_Center: {x: -1.4991765, y: -1.4902877, z: 0.50321996}
+  serializedVersion: 3
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4300000, guid: ed05e6f8eaeb2124aa5a15a305b35924, type: 3}
 --- !u!114 &1751900606
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1542,6 +1536,20 @@ MonoBehaviour:
   m_Area: 1
   m_IgnoreFromBuild: 0
   m_AffectedAgents: ffffffff
+--- !u!64 &1751900543
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3989312381127600946}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4300000, guid: ed05e6f8eaeb2124aa5a15a305b35924, type: 3}
 --- !u!65 &3989312381212049914
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1765,19 +1773,6 @@ MonoBehaviour:
   m_Area: 1
   m_IgnoreFromBuild: 0
   m_AffectedAgents: ffffffff
---- !u!65 &3989312381407204099
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3989312381407303078}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 3.1012492, y: 3.072737, z: 1.1203213}
-  m_Center: {x: -1.4991765, y: -1.4902877, z: 0.50321996}
 --- !u!114 &1751900607
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1794,6 +1789,20 @@ MonoBehaviour:
   m_Area: 1
   m_IgnoreFromBuild: 0
   m_AffectedAgents: ffffffff
+--- !u!64 &1751900544
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3989312381407303078}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4300000, guid: ed05e6f8eaeb2124aa5a15a305b35924, type: 3}
 --- !u!65 &1751900557
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1962,7 +1971,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isPushing: 0
---- !u!65 &1751900545
+--- !u!65 &5997047642926389789
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1991,7 +2000,7 @@ NavMeshObstacle:
   m_CarveOnlyStationary: 0
   m_Center: {x: -0.499, y: 0.51100004, z: 0.46600002}
   m_TimeToStationary: 0.5
---- !u!114 &1751900544
+--- !u!114 &8845066543744676514
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2172,7 +2181,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isPushing: 0
---- !u!65 &1751900547
+--- !u!65 &8243514661625466948
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2201,7 +2210,7 @@ NavMeshObstacle:
   m_CarveOnlyStationary: 0
   m_Center: {x: -0.499, y: 0.51100004, z: 0.46600002}
   m_TimeToStationary: 0.5
---- !u!114 &1751900546
+--- !u!114 &8026967280860323989
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
