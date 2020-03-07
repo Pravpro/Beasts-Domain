@@ -26,6 +26,7 @@ public class AudioManager : MonoBehaviour
     public AudioClip[] damageClips;
     public AudioClip[] treeClips;
     public AudioClip[] UIClips;
+    public AudioClip[] narratorClips;
 
     [HideInInspector] public AudioSource landing; // pitch: 0.7, 1.3
     [HideInInspector] public AudioSource jumping; // pitch: 0.8, 1.2
@@ -40,6 +41,7 @@ public class AudioManager : MonoBehaviour
     [HideInInspector] public AudioSource damage;
     [HideInInspector] public AudioSource tree; //pitch: 0.8, 1.1
     [HideInInspector] public AudioSource UI;
+    [HideInInspector] public AudioSource narrator;
 
     void Awake()
     {
@@ -56,7 +58,8 @@ public class AudioManager : MonoBehaviour
         beast = AddAudio(false, false, 1f);
         damage = AddAudio(false, false, 1f);
         tree = AddAudio(false, false, 0.7f);
-        UI = AddAudio(false, true, 0.7f);
+        UI = AddAudio(false, false, 0.7f);
+        narrator = AddAudio(false, true, 0.7f);
 
         sourceClipRelation.Add(landing, landingClips);
         sourceClipRelation.Add(jumping, jumpingClips);
@@ -71,6 +74,7 @@ public class AudioManager : MonoBehaviour
         sourceClipRelation.Add(damage, damageClips);
         sourceClipRelation.Add(tree, treeClips);
         sourceClipRelation.Add(UI, UIClips);
+        sourceClipRelation.Add(narrator, narratorClips);
     }
 
 
@@ -87,6 +91,14 @@ public class AudioManager : MonoBehaviour
     public void Play(AudioSource toPlay, float low = 1f, float high = 1f)
     {
         if (toPlay == music)
+        {
+
+        }
+        if (toPlay == beast)
+        {
+
+        }
+        if (toPlay == UI)
         {
 
         }
