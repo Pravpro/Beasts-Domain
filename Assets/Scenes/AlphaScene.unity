@@ -225,7 +225,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 13337469}
-  m_LocalRotation: {x: 0.056882948, y: 0.7048151, z: -0.056882948, w: 0.70481515}
+  m_LocalRotation: {x: 0.05688237, y: 0.70481515, z: -0.05688237, w: 0.7048152}
   m_LocalPosition: {x: -75.8, y: 3.1, z: 13.4}
   m_LocalScale: {x: 30, y: 30, z: 30}
   m_Children: []
@@ -6644,7 +6644,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 382882444}
-  m_LocalRotation: {x: 0.056882735, y: 0.70481527, z: -0.056882847, w: 0.70481503}
+  m_LocalRotation: {x: 0.05688239, y: 0.70481527, z: -0.0568825, w: 0.70481503}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -13471,124 +13471,6 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 3151139112651850908}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &940204009
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 940204008}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 566ee658b4c9bff4a9a2031d7ad7e260, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  monster: {fileID: 0}
-  player: {fileID: 0}
-  hearRanges:
-  - 10
-  - 20
-  - 25
-  rockHitHearLevel: 2
-  playerStandLevel: 0
-  playerMoveLevel: 1
-  playerRunLevel: 2
---- !u!82 &940204023
-AudioSource:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 940204008}
-  m_Enabled: 1
-  serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 1
-  m_Volume: 1
-  m_Pitch: 1
-  Loop: 0
-  Mute: 0
-  Spatialize: 0
-  SpatializePostEffects: 0
-  Priority: 128
-  DopplerLevel: 1
-  MinDistance: 1
-  MaxDistance: 500
-  Pan2D: 0
-  rolloffMode: 0
-  BypassEffects: 0
-  BypassListenerEffects: 0
-  BypassReverbZones: 0
-  rolloffCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    - serializedVersion: 3
-      time: 1
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  panLevelCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  spreadCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  reverbZoneMixCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
 --- !u!1 &950533226
 GameObject:
   m_ObjectHideFlags: 0
@@ -13964,7 +13846,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1044896107}
-  m_LocalRotation: {x: 0.04410408, y: 0.70573014, z: -0.04410362, w: 0.7057299}
+  m_LocalRotation: {x: 0.044104088, y: 0.70573014, z: -0.044103626, w: 0.7057299}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -22477,43 +22359,19 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 496040779, guid: db2d1e588e2c7e9449a5f4122889d2c2, type: 3}
-      propertyPath: m_Constraints
-      value: 126
-      objectReference: {fileID: 0}
-    - target: {fileID: 496040779, guid: db2d1e588e2c7e9449a5f4122889d2c2, type: 3}
-      propertyPath: m_IsKinematic
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 496040780, guid: db2d1e588e2c7e9449a5f4122889d2c2, type: 3}
       propertyPath: m_Controller
       value: 
       objectReference: {fileID: 9100000, guid: d4dba78f2d485ab499dd0a14f48c7a2c, type: 2}
-    - target: {fileID: 496040785, guid: db2d1e588e2c7e9449a5f4122889d2c2, type: 3}
-      propertyPath: m_StoppingDistance
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 3394953851411704556, guid: db2d1e588e2c7e9449a5f4122889d2c2,
-        type: 3}
-      propertyPath: m_Mesh
+    - target: {fileID: 940204010, guid: db2d1e588e2c7e9449a5f4122889d2c2, type: 3}
+      propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 4068373912626513877, guid: 6ff68ded19b86494bba478b3d88dccd9,
-        type: 3}
+      objectReference: {fileID: 2100000, guid: b71b9c70940092f46a55707e6daf3546, type: 2}
     - target: {fileID: 5739287687011034710, guid: db2d1e588e2c7e9449a5f4122889d2c2,
         type: 3}
       propertyPath: player
       value: 
       objectReference: {fileID: 9206296177949412576}
-    - target: {fileID: 5739287687011034710, guid: db2d1e588e2c7e9449a5f4122889d2c2,
-        type: 3}
-      propertyPath: targetObj
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 5739287687011034710, guid: db2d1e588e2c7e9449a5f4122889d2c2,
-        type: 3}
-      propertyPath: fightStrings
-      value: 
-      objectReference: {fileID: 940204023}
     - target: {fileID: 5928507552868471002, guid: db2d1e588e2c7e9449a5f4122889d2c2,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -22574,11 +22432,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Monster
       objectReference: {fileID: 0}
-    - target: {fileID: 8944647905813648917, guid: db2d1e588e2c7e9449a5f4122889d2c2,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: b71b9c70940092f46a55707e6daf3546, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: db2d1e588e2c7e9449a5f4122889d2c2, type: 3}
 --- !u!4 &6644984643197479919 stripped
