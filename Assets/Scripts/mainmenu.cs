@@ -24,6 +24,8 @@ public class mainmenu : MonoBehaviour
 
     void Start()
     {
+        audioManager.Play(audioManager.music);
+        audioManager.Play(audioManager.narrator);
         m_playerInput = ReInput.players.GetPlayer(m_playerID);
 
         Button startBtn = startButton.GetComponent<Button>();
@@ -55,15 +57,19 @@ public class mainmenu : MonoBehaviour
             backToMainMenu();
         }
 
-        if (vertical != 0f)
-        {
-            audioManager.Play(audioManager.UIToggle);
-        }
         // move the arrow accordingly
         if (vertical < 0.0f && Vector3.Distance(arrowTrans.position, startPos) < 0.3f)
+        {
             arrowTrans.position = startPos + offset;
+            audioManager.Play(audioManager.UIToggle);
+        }
+        
         else if (vertical > 0.0f && Vector3.Distance(arrowTrans.position, startPos + offset) < 0.3f)
-            arrowTrans.position = startPos;  
+        {
+            arrowTrans.position = startPos;
+            audioManager.Play(audioManager.UIToggle);
+        }
+             
 
     }
 

@@ -314,7 +314,7 @@ AudioMixerController:
     - 62c7bc1dfe53e4aa88d56a9a515c7696
     name: SFX
   m_CurrentViewIndex: 0
-  m_TargetSnapshot: {fileID: 4027853678517964899}
+  m_TargetSnapshot: {fileID: 24500006}
 --- !u!243 &24300002
 AudioMixerGroupController:
   m_ObjectHideFlags: 0

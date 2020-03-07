@@ -22,10 +22,10 @@ public class AudioManagerTitle : MonoBehaviour
     void Awake()
     {
         // Params: 1.Loop 2.Play on Awake 3.Volume
-        music = AddAudio(true, true, 1f);
-        UIToggle = AddAudio(false, false, 0.7f);
-        UISelection = AddAudio(false, false, 0.7f);
-        narrator = AddAudio(false, true, 1f);
+        music = AddAudio(true, true, 1f, musicClips[0]);
+        UIToggle = AddAudio(false, false, 0.4f);
+        UISelection = AddAudio(false, false, 0.5f);
+        narrator = AddAudio(false, true, 1f, narratorClips[0]);
         
         sourceClipRelation.Add(music, musicClips);
         sourceClipRelation.Add(UIToggle, UIToggleClips);
@@ -35,9 +35,10 @@ public class AudioManagerTitle : MonoBehaviour
 
 
 
-    AudioSource AddAudio(bool loop, bool playAwake, float vol)
+    AudioSource AddAudio(bool loop, bool playAwake, float vol, AudioClip Clip = null)
     {
         AudioSource newAudio = gameObject.AddComponent<AudioSource>();
+        newAudio.clip = Clip;
         newAudio.loop = loop;
         newAudio.playOnAwake = playAwake;
         newAudio.volume = vol;

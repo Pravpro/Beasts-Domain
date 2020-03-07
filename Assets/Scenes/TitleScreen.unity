@@ -902,10 +902,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b33e0b3e50deee459caf245616882ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  musicClips: []
-  UIToggleClips: []
-  UISelectionClips: []
-  narratorClips: []
+  musicClips:
+  - {fileID: 8300000, guid: f55fada9450dcfd41a177f1efe60f089, type: 3}
+  UIToggleClips:
+  - {fileID: 8300000, guid: bffc3b4ea5fa6ff49b1781ea77adab91, type: 3}
+  UISelectionClips:
+  - {fileID: 8300000, guid: 197460ba8afe95145bcf07adc30ae1bf, type: 3}
+  narratorClips:
+  - {fileID: 8300000, guid: 31c7b142d76526b47be84205731a1d03, type: 3}
   music: {fileID: 0}
   UIToggle: {fileID: 0}
   UISelection: {fileID: 0}
