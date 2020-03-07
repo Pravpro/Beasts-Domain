@@ -12,7 +12,7 @@ public class mainmenu : MonoBehaviour
     public Button quitButton;
     public Image arrow;
 
-    public AudioManager audioManager;
+    public AudioManagerTitle audioManager;
 
     private Vector3 offset;
     private Vector3 startPos;

@@ -609,7 +609,7 @@ MonoBehaviour:
   startButton: {fileID: 1077696596}
   quitButton: {fileID: 1643534530}
   arrow: {fileID: 863875284}
-  audioManager: {fileID: 0}
+  audioManager: {fileID: 1142695201}
 --- !u!1 &863875282
 GameObject:
   m_ObjectHideFlags: 0
@@ -899,38 +899,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 1142695200}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e178dc2b2a3bb994892267490b2c141a, type: 3}
+  m_Script: {fileID: 11500000, guid: 0b33e0b3e50deee459caf245616882ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  introFight: {fileID: 0}
-  Boss: {fileID: 0}
-  landingClips: []
-  jumpingClips: []
-  staminaClips: []
-  footstepClips: []
-  slingshotClips: []
-  rockClips: []
-  spellClips: []
-  moodboardClips: []
   musicClips: []
-  beastClips: []
-  damageClips: []
-  treeClips: []
   UIToggleClips: []
   UISelectionClips: []
   narratorClips: []
-  landing: {fileID: 0}
-  jumping: {fileID: 0}
-  stamina: {fileID: 0}
-  footstep: {fileID: 0}
-  slingshot: {fileID: 0}
-  rock: {fileID: 0}
-  spell: {fileID: 0}
-  moodboard: {fileID: 0}
   music: {fileID: 0}
-  beast: {fileID: 0}
-  damage: {fileID: 0}
-  tree: {fileID: 0}
   UIToggle: {fileID: 0}
   UISelection: {fileID: 0}
   narrator: {fileID: 0}

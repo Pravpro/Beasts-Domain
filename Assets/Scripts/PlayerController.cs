@@ -13,7 +13,7 @@ public class PlayerController : MonoBehaviour
     public float hp, stamina, maxStamina;
     public Animator m_Animator;
     public CinemachineStateDrivenCamera SDCam;
-    public AudioManager audioManager;
+    public AudioManagerMain audioManager;
     
 
     // player id for reference Rewired input
