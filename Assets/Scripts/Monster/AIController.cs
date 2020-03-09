@@ -36,6 +36,7 @@ public class AIController : MonoBehaviour
 
     // public variables
     public GameObject player;
+    public Animator animator;
     public float turningSpeed = 60.0f;
     public float movingSpeed  = 1.0f;
     public int maxHp = 2;
@@ -115,6 +116,7 @@ public class AIController : MonoBehaviour
         strings.clip = Violin;
         strings.PlayDelayed(30.0f);
         strings.loop = true;
+        animator = gameObject.GetComponent<Animator>();
 
         // mask defaults to all areas and we don't want that
         UnsetChargeAreaMask();
@@ -130,6 +132,10 @@ public class AIController : MonoBehaviour
         }
         //else
             //lineRenderer.enabled = false;
+
+        animator.SetBool("IsIdle", state == State.Idle);
+        animator.SetBool("IsWalking", state == State.RandomSearch || state == State.Interrupted);
+        animator.SetBool("IsCharging", state == State.Charge); // not allow running if recovering stamina
     }
 
     private void FixedUpdate()
