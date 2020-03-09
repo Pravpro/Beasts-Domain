@@ -9,7 +9,10 @@ public class AudioManagerMain : MonoBehaviour
     private Dictionary<AudioSource, AudioClip[]> sourceClipRelation = new Dictionary<AudioSource, AudioClip[]>();
 
     [Header("Snapshots")]
-    public AudioMixerSnapshot introFight;
+    public AudioMixerSnapshot Homebase;
+    public AudioMixerSnapshot Moodboard;
+    public AudioMixerSnapshot Strings;
+    public AudioMixerSnapshot Pause;
     public AudioMixerSnapshot Boss;
 
     [Header("SfxClips")]
