@@ -55,6 +55,13 @@ public class PlayerController : MonoBehaviour
         AimArea.SetActive(false);
 
         pushingObject = null;
+
+        //Audio
+        audioManager.Play(audioManager.homebase);
+        audioManager.Play(audioManager.moodboard);
+        audioManager.Play(audioManager.strings);
+        audioManager.HomebaseVolume();
+        
     }
 
     private void FixedUpdate()
