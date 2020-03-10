@@ -225,8 +225,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 13337469}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: 0.056882948, y: 0.7048151, z: -0.056882948, w: 0.70481515}
+  m_LocalPosition: {x: -75.8, y: 3.1, z: 13.4}
   m_LocalScale: {x: 30, y: 30, z: 30}
   m_Children: []
   m_Father: {fileID: 0}
@@ -7234,68 +7234,97 @@ MonoBehaviour:
       type: 2}
     boss: {fileID: 8252497145976169834, guid: b12a37322bc5b8444879a1c72e83a533, type: 2}
   sfxClips:
-    landingClips:
-    - {fileID: 8300000, guid: a2db89066a1b9bd41a5996686b05b262, type: 3}
-    jumpingClips:
-    - {fileID: 8300000, guid: 0bd124c637a512348a15e14ce4581dc6, type: 3}
-    - {fileID: 8300000, guid: 7e14fd1ce1a7cf440b3fb49fb2a97402, type: 3}
-    staminaClips:
-    - {fileID: 8300000, guid: ca73de5900e5c2946bf69e0bd1d4dad1, type: 3}
-    footstepClips:
-    - {fileID: 8300000, guid: 87513ba3b8b4fd24d832592899ab6853, type: 3}
-    - {fileID: 8300000, guid: 908f10149ce7b2f4a8f939f35016d4d3, type: 3}
-    - {fileID: 8300000, guid: b9ef2fcd1105e834098f1080eedc12d5, type: 3}
-    slingshotDrawClips:
-    - {fileID: 8300000, guid: 67fb7425e3f22475398db38cf02e6323, type: 3}
-    slingshotReleaseClips:
-    - {fileID: 8300000, guid: a68cb3d90f65e8146ac2454b55af0aa3, type: 3}
-    rockClips:
-    - {fileID: 8300000, guid: 76c37cbc4fecc4b4ab66f1c999bc7add, type: 3}
-    - {fileID: 8300000, guid: e06411748a135264da022b7124bdd82a, type: 3}
-    spellClips:
-    - {fileID: 8300000, guid: 5a13ac1f1998748f48f927f500253222, type: 3}
-    damageClips:
-    - {fileID: 8300000, guid: 915b8c427065a9b44a77de4ff74ed6ce, type: 3}
-    deathClips:
-    - {fileID: 8300000, guid: 3b16ced12cd24cf4db8bbdf5e81a3ffd, type: 3}
-    treeClips:
-    - {fileID: 8300000, guid: 0e20349afaadc144f913949f31bd93b7, type: 3}
-    birdsClips:
-    - {fileID: 8300000, guid: 9de01f3ca66d95441befef25639589d5, type: 3}
-    fireClips:
-    - {fileID: 8300000, guid: 1e9cf69174eaa6f40b3ad4ce0b0c5915, type: 3}
-    geyserClips:
-    - {fileID: 8300000, guid: aae3f26c5fd6a6c41ae0441c6a78568c, type: 3}
-    boulderClips:
-    - {fileID: 8300000, guid: 24b0d7d990fd47d409fcf00eebbdad69, type: 3}
-    rockSlideClips:
-    - {fileID: 8300000, guid: d848df879b3aac24392be28cff5aa23d, type: 3}
+    player:
+      landing:
+      - {fileID: 8300000, guid: a2db89066a1b9bd41a5996686b05b262, type: 3}
+      landingVol: 0.6
+      jumping:
+      - {fileID: 8300000, guid: 0bd124c637a512348a15e14ce4581dc6, type: 3}
+      - {fileID: 8300000, guid: 7e14fd1ce1a7cf440b3fb49fb2a97402, type: 3}
+      jumpingVol: 0.25
+      stamina:
+      - {fileID: 8300000, guid: ca73de5900e5c2946bf69e0bd1d4dad1, type: 3}
+      staminaVol: 0.1
+      footstep:
+      - {fileID: 8300000, guid: 87513ba3b8b4fd24d832592899ab6853, type: 3}
+      - {fileID: 8300000, guid: 908f10149ce7b2f4a8f939f35016d4d3, type: 3}
+      - {fileID: 8300000, guid: b9ef2fcd1105e834098f1080eedc12d5, type: 3}
+      footstepVol: 0.4
+      damage:
+      - {fileID: 8300000, guid: 915b8c427065a9b44a77de4ff74ed6ce, type: 3}
+      damageVol: 1
+      death:
+      - {fileID: 8300000, guid: 3b16ced12cd24cf4db8bbdf5e81a3ffd, type: 3}
+      deathVol: 1
+      boulder:
+      - {fileID: 8300000, guid: 24b0d7d990fd47d409fcf00eebbdad69, type: 3}
+      boulderVol: 0.4
+      slingshotDraw:
+      - {fileID: 8300000, guid: 67fb7425e3f22475398db38cf02e6323, type: 3}
+      slingshotDrawVol: 0.7
+      slingshotRelease:
+      - {fileID: 8300000, guid: a68cb3d90f65e8146ac2454b55af0aa3, type: 3}
+      slingshotReleaseVol: 0.7
+      rock:
+      - {fileID: 8300000, guid: 76c37cbc4fecc4b4ab66f1c999bc7add, type: 3}
+      - {fileID: 8300000, guid: e06411748a135264da022b7124bdd82a, type: 3}
+      rockVol: 0.7
+      spell:
+      - {fileID: 8300000, guid: 5a13ac1f1998748f48f927f500253222, type: 3}
+      spellVol: 0.8
+    beast:
+      phase1:
+      - {fileID: 8300000, guid: 94aaad1912ea6fa41a1d3afbd47beb6b, type: 3}
+      phase1Vol: 1
+      phase2:
+      - {fileID: 8300000, guid: c4ba7b1503980f042a5704154c1b2042, type: 3}
+      phase2Vol: 1
+      hurt:
+      - {fileID: 8300000, guid: 8c5d04f08c66e4f5ea6a12468ace106b, type: 3}
+      hurtVol: 1
+      flare:
+      - {fileID: 8300000, guid: b9b86032db7fc4259a134b69080b4e17, type: 3}
+      flareVol: 1
+      hoof:
+      - {fileID: 8300000, guid: e73f55637d8d64c80872f6dd67c12efa, type: 3}
+      hoofVol: 1
   musicClips:
-    stringsClips:
+    strings:
     - {fileID: 8300000, guid: a20fb40e6c0638942b72050cac004b91, type: 3}
-    bossstringsClips:
+    stringsVol: 1
+    bossstrings:
     - {fileID: 8300000, guid: 75831189a3c11429891b7cac8261b43d, type: 3}
     - {fileID: 8300000, guid: 23e68e8634f854b3c9be027291d69455, type: 3}
     - {fileID: 8300000, guid: d2500c59057a34618998930deaf16822, type: 3}
-    boss1Clips:
+    bossstringsVol: 1
+    boss1:
     - {fileID: 8300000, guid: a0e859f6d158d4f0a91b05895465f3ff, type: 3}
-    boss2Clips:
+    boss1Vol: 1
+    boss2:
     - {fileID: 8300000, guid: 82e84873351040645afb6d918ea36ae5, type: 3}
-    moodboardClips:
+    boss2Vol: 1
+    moodboard:
     - {fileID: 8300000, guid: 39e05d3af4aa3f64ab0267e150fc6ad8, type: 3}
-    homebaseClips:
+    moodboardVol: 1
+    homebase:
     - {fileID: 8300000, guid: a121e663d284e7247b85906bc60aad6c, type: 3}
-  monsterClips:
-    phase1Clips:
-    - {fileID: 8300000, guid: 94aaad1912ea6fa41a1d3afbd47beb6b, type: 3}
-    phase2Clips:
-    - {fileID: 8300000, guid: c4ba7b1503980f042a5704154c1b2042, type: 3}
-    hurtClips:
-    - {fileID: 8300000, guid: 8c5d04f08c66e4f5ea6a12468ace106b, type: 3}
-    flareClips:
-    - {fileID: 8300000, guid: b9b86032db7fc4259a134b69080b4e17, type: 3}
-    hoofClips:
-    - {fileID: 8300000, guid: e73f55637d8d64c80872f6dd67c12efa, type: 3}
+    homebaseVol: 1
+  environmentClips:
+    tree:
+    - {fileID: 8300000, guid: 0e20349afaadc144f913949f31bd93b7, type: 3}
+    treeVol: 0.7
+    birds:
+    - {fileID: 8300000, guid: 9de01f3ca66d95441befef25639589d5, type: 3}
+    birdsVol: 0.3
+    fire:
+    - {fileID: 8300000, guid: 1e9cf69174eaa6f40b3ad4ce0b0c5915, type: 3}
+    fireVol: 0.4
+    geyser:
+    - {fileID: 8300000, guid: aae3f26c5fd6a6c41ae0441c6a78568c, type: 3}
+    geyserVol: 0.8
+    rockSlide:
+    - {fileID: 8300000, guid: d848df879b3aac24392be28cff5aa23d, type: 3}
+    rockSlideVol: 0.4
   landing: {fileID: 0}
   jumping: {fileID: 0}
   stamina: {fileID: 0}
@@ -13272,7 +13301,9 @@ MonoBehaviour:
   m_LayerIndex: 0
   m_ShowDebugText: 1
   m_EnableAllChildCameras: 1
-  m_ChildCameras: []
+  m_ChildCameras:
+  - {fileID: 1993504316}
+  - {fileID: 807353627}
   m_Instructions:
   - m_FullHash: 1432961145
     m_VirtualCamera: {fileID: 1993504316}
@@ -13393,7 +13424,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1044896107}
-  m_LocalRotation: {x: 0.044103954, y: 0.70573014, z: -0.044103492, w: 0.7057299}
+  m_LocalRotation: {x: 0.044104148, y: 0.70573014, z: -0.044103686, w: 0.7057299}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:

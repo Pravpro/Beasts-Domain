@@ -44,43 +44,82 @@ public class AudioManagerMain : MonoBehaviour
     [System.Serializable]
     public class SfxClips
     {
-        public AudioClip[] landingClips;
-        public AudioClip[] jumpingClips;
-        public AudioClip[] staminaClips;
-        public AudioClip[] footstepClips;
-        public AudioClip[] slingshotDrawClips;
-        public AudioClip[] slingshotReleaseClips;
-        public AudioClip[] rockClips;
-        public AudioClip[] spellClips;
-        public AudioClip[] damageClips;
-        public AudioClip[] deathClips;
-        public AudioClip[] treeClips;
-        public AudioClip[] birdsClips;
-        public AudioClip[] fireClips;
-        public AudioClip[] geyserClips;
-        public AudioClip[] boulderClips;
-        public AudioClip[] rockSlideClips;
+        [System.Serializable]
+        public class PlayerClips
+        {
+            public AudioClip[] landing;
+            [Range(0f, 1f)] public float landingVol;
+            public AudioClip[] jumping;
+            [Range(0f, 1f)] public float jumpingVol;
+            public AudioClip[] stamina;
+            [Range(0f, 1f)] public float staminaVol;
+            public AudioClip[] footstep;
+            [Range(0f, 1f)] public float footstepVol;
+            public AudioClip[] damage;
+            [Range(0f, 1f)] public float damageVol;
+            public AudioClip[] death;
+            [Range(0f, 1f)] public float deathVol;
+            public AudioClip[] boulder;
+            [Range(0f, 1f)] public float boulderVol;
+            public AudioClip[] slingshotDraw;
+            [Range(0f, 1f)] public float slingshotDrawVol;
+            public AudioClip[] slingshotRelease;
+            [Range(0f, 1f)] public float slingshotReleaseVol;
+            public AudioClip[] rock;
+            [Range(0f, 1f)] public float rockVol;
+            public AudioClip[] spell;
+            [Range(0f, 1f)] public float spellVol;
+        }
+
+        [System.Serializable]
+        public class BeastClips
+        {
+            public AudioClip[] phase1;
+            [Range(0f, 1f)] public float phase1Vol;
+            public AudioClip[] phase2;
+            [Range(0f, 1f)] public float phase2Vol;
+            public AudioClip[] hurt;
+            [Range(0f, 1f)] public float hurtVol;
+            public AudioClip[] flare;
+            [Range(0f, 1f)] public float flareVol;
+            public AudioClip[] hoof;
+            [Range(0f, 1f)] public float hoofVol;
+        }
+
+        public PlayerClips player;
+        public BeastClips beast;
     }
 
     [System.Serializable]
     public class MusicClips
     {
-        public AudioClip[] stringsClips;
-        public AudioClip[] bossstringsClips;
-        public AudioClip[] boss1Clips;
-        public AudioClip[] boss2Clips;
-        public AudioClip[] moodboardClips;
-        public AudioClip[] homebaseClips;
+        public AudioClip[] strings;
+        [Range(0f, 1f)] public float stringsVol;
+        public AudioClip[] bossstrings;
+        [Range(0f, 1f)] public float bossstringsVol;
+        public AudioClip[] boss1;
+        [Range(0f, 1f)] public float boss1Vol;
+        public AudioClip[] boss2;
+        [Range(0f, 1f)] public float boss2Vol;
+        public AudioClip[] moodboard;
+        [Range(0f, 1f)] public float moodboardVol;
+        public AudioClip[] homebase;
+        [Range(0f, 1f)] public float homebaseVol;
     }
 
     [System.Serializable]
-    public class MonsterClips
+    public class EnvironmentClips
     {
-        public AudioClip[] phase1Clips;
-        public AudioClip[] phase2Clips;
-        public AudioClip[] hurtClips;
-        public AudioClip[] flareClips;
-        public AudioClip[] hoofClips;
+        public AudioClip[] tree;
+        [Range(0f, 1f)] public float treeVol;
+        public AudioClip[] birds;
+        [Range(0f, 1f)] public float birdsVol;
+        public AudioClip[] fire;
+        [Range(0f, 1f)] public float fireVol;
+        public AudioClip[] geyser;
+        [Range(0f, 1f)] public float geyserVol;
+        public AudioClip[] rockSlide;
+        [Range(0f, 1f)] public float rockSlideVol;
     }
 
     [Space(6)]
@@ -91,7 +130,7 @@ public class AudioManagerMain : MonoBehaviour
     [Header("Clips")]
     public SfxClips sfxClips;
     public MusicClips musicClips;
-    public MonsterClips monsterClips;
+    public EnvironmentClips environmentClips;
     
 
     [HideInInspector] public AudioSource landing; // pitch: 0.7, 1.3
@@ -124,78 +163,79 @@ public class AudioManagerMain : MonoBehaviour
 
     void Awake()
     {
-        // Params: 1.Loop 2.Play on Awake 3.Volume
-        landing = AddAudio(false, false, 0.6f);
-        landing.outputAudioMixerGroup = mixerGroups.action;
+        // SFX: Player sources
+        landing = AddAudio(false, false, sfxClips.player.landingVol, mixerGroups.action); // Params: 1.Loop 2.Play on Awake 3.Volume 4. Mixer Group
+        jumping = AddAudio(false, false, sfxClips.player.jumpingVol, mixerGroups.action);
+        stamina = AddAudio(false, false, sfxClips.player.staminaVol, mixerGroups.action);
+        footstep = AddAudio(false, false, sfxClips.player.footstepVol, mixerGroups.action);
+        damage = AddAudio(false, false, sfxClips.player.damageVol, mixerGroups.action);
+        death = AddAudio(false, false, sfxClips.player.deathVol, mixerGroups.action);
+        boulder = AddAudio(true, false, sfxClips.player.boulderVol, mixerGroups.action);
+        slingshotDraw = AddAudio(false, false, sfxClips.player.slingshotDrawVol, mixerGroups.weapons);
+        slingshotRelease = AddAudio(false, false, sfxClips.player.slingshotReleaseVol, mixerGroups.weapons);
+        rock = AddAudio(false, false, sfxClips.player.rockVol, mixerGroups.weapons);
+        spell = AddAudio(false, false, sfxClips.player.spellVol, mixerGroups.weapons);
+        // SFX: Beast sources
+        phase1 = AddAudio(false, false, sfxClips.beast.phase1Vol, mixerGroups.beast);
+        phase2 = AddAudio(false, false, sfxClips.beast.phase2Vol, mixerGroups.beast);
+        hurt = AddAudio(false, false, sfxClips.beast.hurtVol, mixerGroups.beast);
+        flare = AddAudio(false, false, sfxClips.beast.flareVol, mixerGroups.beast);
+        hoof = AddAudio(false, false, sfxClips.beast.hoofVol, mixerGroups.beast);
+        // Music sources
+        moodboard = AddAudio(true, true, musicClips.moodboardVol, mixerGroups.choir);
+        strings = AddAudio(true, true, musicClips.stringsVol, mixerGroups.themes);
+        bossstrings = AddAudio(true, false, musicClips.bossstringsVol, mixerGroups.bossFight);
+        boss1 = AddAudio(true, false, musicClips.boss1Vol, mixerGroups.bossFight);
+        boss2 = AddAudio(true, false, musicClips.boss2Vol, mixerGroups.bossFight);
+        homebase = AddAudio(true, true, musicClips.homebaseVol, mixerGroups.themes);
+        // Environment sources
+        tree = AddAudio(false, false, environmentClips.treeVol, mixerGroups.trees);
+        birds = AddAudio(false, true, environmentClips.birdsVol, mixerGroups.birds);
+        fire = AddAudio(false, true, environmentClips.fireVol, mixerGroups.fire);
+        geyser = AddAudio(false, false, environmentClips.geyserVol, mixerGroups.geyser);
+        rockSlide = AddAudio(false, false, environmentClips.rockSlideVol, mixerGroups.rocks);
 
-        jumping = AddAudio(false, false, 0.7f);
-        jumping.outputAudioMixerGroup = mixerGroups.action;
 
-        stamina = AddAudio(false, false, 0.7f);
-        footstep = AddAudio(false, false, 0.4f);
-        slingshotDraw = AddAudio(false, false, 0.7f);
-        slingshotRelease = AddAudio(false, false, 0.7f);
-        rock = AddAudio(false, false, 0.7f);
-        spell = AddAudio(false, false, 0.8f);
-        moodboard = AddAudio(true, true, 1f);
-        strings = AddAudio(true, true, 1f);
-        bossstrings = AddAudio(true, false, 1f);
-        boss1 = AddAudio(true, false, 1f);
-        boss2 = AddAudio(true, false, 1f);
-        homebase = AddAudio(true, true, 1f);
-        phase1 = AddAudio(false, false, 1f);
-        phase2 = AddAudio(false, false, 1f);
-        hurt = AddAudio(false, false, 1f);
-        flare = AddAudio(false, false, 1f);
-        hoof = AddAudio(false, false, 1f);
-        damage = AddAudio(false, false, 1f);
-        death = AddAudio(false, false, 1f);
-        tree = AddAudio(false, false, 0.7f);
-        birds = AddAudio(false, true, 0.3f);
-        fire = AddAudio(false, true, 0.4f);
-        geyser = AddAudio(false, false, 0.8f);
-        boulder = AddAudio(true, false, 0.4f);
-        rockSlide = AddAudio(false, false, 0.4f);
-
-        sourceClipRelation.Add(landing, sfxClips.landingClips);
-        sourceClipRelation.Add(jumping, sfxClips.jumpingClips);
-        sourceClipRelation.Add(stamina, sfxClips.staminaClips);
-        sourceClipRelation.Add(footstep, sfxClips.footstepClips);
-        sourceClipRelation.Add(slingshotDraw, sfxClips.slingshotDrawClips);
-        sourceClipRelation.Add(slingshotRelease, sfxClips.slingshotReleaseClips);
-        sourceClipRelation.Add(rock, sfxClips.rockClips);
-        sourceClipRelation.Add(spell, sfxClips.spellClips);
-        sourceClipRelation.Add(moodboard, musicClips.moodboardClips);
-        sourceClipRelation.Add(strings, musicClips.stringsClips);
-        sourceClipRelation.Add(bossstrings, musicClips.bossstringsClips);
-        sourceClipRelation.Add(boss1, musicClips.boss1Clips);
-        sourceClipRelation.Add(boss2, musicClips.boss2Clips);
-        sourceClipRelation.Add(homebase, musicClips.homebaseClips);
-        sourceClipRelation.Add(phase1, monsterClips.phase1Clips);
-        sourceClipRelation.Add(phase2, monsterClips.phase1Clips);
-        sourceClipRelation.Add(hurt, monsterClips.hurtClips);
-        sourceClipRelation.Add(flare, monsterClips.flareClips);
-        sourceClipRelation.Add(hoof, monsterClips.hoofClips);
-        sourceClipRelation.Add(damage, sfxClips.damageClips);
-        sourceClipRelation.Add(death, sfxClips.deathClips);
-        sourceClipRelation.Add(tree, sfxClips.treeClips);
-        sourceClipRelation.Add(birds, sfxClips.birdsClips);
-        sourceClipRelation.Add(fire, sfxClips.fireClips);
-        sourceClipRelation.Add(geyser, sfxClips.geyserClips);
-        sourceClipRelation.Add(boulder, sfxClips.boulderClips);
-        sourceClipRelation.Add(rockSlide, sfxClips.rockSlideClips);
+        sourceClipRelation.Add(landing, sfxClips.player.landing);
+        sourceClipRelation.Add(jumping, sfxClips.player.jumping);
+        sourceClipRelation.Add(stamina, sfxClips.player.stamina);
+        sourceClipRelation.Add(footstep, sfxClips.player.footstep);
+        sourceClipRelation.Add(damage, sfxClips.player.damage);
+        sourceClipRelation.Add(death, sfxClips.player.death);
+        sourceClipRelation.Add(boulder, sfxClips.player.boulder);
+        sourceClipRelation.Add(slingshotDraw, sfxClips.player.slingshotDraw);
+        sourceClipRelation.Add(slingshotRelease, sfxClips.player.slingshotRelease);
+        sourceClipRelation.Add(rock, sfxClips.player.rock);
+        sourceClipRelation.Add(spell, sfxClips.player.spell);
+        sourceClipRelation.Add(phase1, sfxClips.beast.phase1);
+        sourceClipRelation.Add(phase2, sfxClips.beast.phase1);
+        sourceClipRelation.Add(hurt, sfxClips.beast.hurt);
+        sourceClipRelation.Add(flare, sfxClips.beast.flare);
+        sourceClipRelation.Add(hoof, sfxClips.beast.hoof);
+        sourceClipRelation.Add(moodboard, musicClips.moodboard);
+        sourceClipRelation.Add(strings, musicClips.strings);
+        sourceClipRelation.Add(bossstrings, musicClips.bossstrings);
+        sourceClipRelation.Add(boss1, musicClips.boss1);
+        sourceClipRelation.Add(boss2, musicClips.boss2);
+        sourceClipRelation.Add(homebase, musicClips.homebase);
+        sourceClipRelation.Add(tree, environmentClips.tree);
+        sourceClipRelation.Add(birds, environmentClips.birds);
+        sourceClipRelation.Add(fire, environmentClips.fire);
+        sourceClipRelation.Add(geyser, environmentClips.geyser);
+        sourceClipRelation.Add(rockSlide, environmentClips.rockSlide);
 
         
     }
 
 
 
-    AudioSource AddAudio(bool loop, bool playAwake, float vol)
+    AudioSource AddAudio(bool loop, bool playAwake, float vol, AudioMixerGroup output)
     {
         AudioSource newAudio = gameObject.AddComponent<AudioSource>();
         newAudio.loop = loop;
         newAudio.playOnAwake = playAwake;
         newAudio.volume = vol;
+        newAudio.outputAudioMixerGroup = output;
         return newAudio;
     }
 

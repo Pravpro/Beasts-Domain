@@ -21,7 +21,6 @@ public class PlayerController : MonoBehaviour
     private int m_playerID = 0;
     private Player m_playerInput;
     private int count = 1;
-    // private List<Collider> colliders = new List<Collider>();
     private Rigidbody rb;
     Vector3 m_Movement, jump, desiredForward, prevCamForward;
     Quaternion m_Rotation, lastRotation = Quaternion.identity;
@@ -36,17 +35,6 @@ public class PlayerController : MonoBehaviour
     public int spellWaitTime;
     private Coroutine WaitNextSpellCoroutine;
     private bool activateSpell = false;
-
-    // player damage time
-
-    //Audio design
-    public AudioClip[] Jumps;
-    public AudioClip Spell;
-    public AudioSource Jumping;
-    public AudioSource spellSound;
-    public AudioSource Stamina;
-    public AudioMixerGroup output;
-
     private bool inSafeZone = false;
 
     private void Start()
@@ -157,7 +145,7 @@ public class PlayerController : MonoBehaviour
 
         if (stamina <= 0)
         {
-            Stamina.Play();
+            audioManager.Play(audioManager.stamina, 1.1f, 1.2f);
             recoverStamia = true;
         }
 
@@ -172,11 +160,7 @@ public class PlayerController : MonoBehaviour
         {
             rb.velocity += jump * jumpSpeed;
             grounded = false;
-            //int randomClip = Random.Range(0, Jumps.Length);
-            //Jumping.clip = Jumps[randomClip];
-            //Jumping.outputAudioMixerGroup = output;
-            //Jumping.PlayOneShot(Jumps[randomClip], 0.15f);
-            //Jumping.pitch = Random.Range(1f, 1.1f);
+
             audioManager.Play(audioManager.jumping, 1f, 1.1f);
         }
 
@@ -230,9 +214,7 @@ public class PlayerController : MonoBehaviour
                     spellArea.Play();
 
                     //audio test
-                    spellSound.clip = Spell;
-                    spellSound.pitch = Random.Range(0.9f, 1.3f);
-                    spellSound.Play();
+                    audioManager.Play(audioManager.spell);
 
                     // wait time before next available spell
                     WaitNextSpellCoroutine = StartCoroutine(WaitNextSpell() );
@@ -257,16 +239,6 @@ public class PlayerController : MonoBehaviour
             pushingObject = col.collider.gameObject;
         }
     }
-
-    // void OnTriggerStay(Collider col)
-    // {
-
-    //     if (col.tag == "Movable")
-    //     {
-    //         pushing = col.gameObject.GetComponent<MovableController>().isPushing;
-    //     }
-            
-    // }
 
     void OnCollisionExit(Collision col)
     {
