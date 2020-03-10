@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 7923622919743733179}
   - component: {fileID: 7923622919743733155}
   - component: {fileID: 7923622919743733158}
+  - component: {fileID: 2570536213308241204}
   m_Layer: 9
   m_Name: Player
   m_TagString: Player
@@ -224,6 +225,14 @@ MonoBehaviour:
   staminaUI: {fileID: 0}
   monsterScript: {fileID: 0}
   blackScreen: {fileID: 0}
+--- !u!81 &2570536213308241204
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1311964250415205063}
+  m_Enabled: 1
 --- !u!1001 &386040555487670718
 PrefabInstance:
   m_ObjectHideFlags: 0
