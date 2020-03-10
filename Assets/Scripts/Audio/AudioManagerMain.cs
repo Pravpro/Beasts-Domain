@@ -21,10 +21,18 @@ public class AudioManagerMain : MonoBehaviour
     public AudioClip[] staminaClips;
     public AudioClip[] footstepClips;
     public AudioClip[] rockClips;
+    [Range(0f, 1f)] public float SpatialBlendRock;
     public AudioClip[] spellClips;
     public AudioClip[] damageClips;
     public AudioClip[] deathClips;
     public AudioClip[] treeClips;
+    public AudioClip[] birdsClips;
+    public AudioClip[] fireClips;
+    [Range(0f, 1f)] public float SpatialBlendFire;
+    public AudioClip[] geyserClips;
+    public AudioClip[] boulderClips;
+    public AudioClip[] rockSlideClips;
+
     [Header("MusicClips")]
     public AudioClip[] stringsClips;
     public AudioClip[] bossstringsClips;
@@ -37,7 +45,9 @@ public class AudioManagerMain : MonoBehaviour
     public AudioClip[] phase2Clips;
     public AudioClip[] hurtClips;
     public AudioClip[] flareClips;
+    [Range(0f, 1f)] public float SpatialBlendFlare;
     public AudioClip[] hoofClips;
+    [Range(0f, 1f)] public float SpatialBlendHoof;
 
     [Header("SlingshotClips")]
     public AudioClip[] slingshotClips;
@@ -64,6 +74,11 @@ public class AudioManagerMain : MonoBehaviour
     [HideInInspector] public AudioSource damage;
     [HideInInspector] public AudioSource death;
     [HideInInspector] public AudioSource tree; //pitch: 0.8, 1.1
+    [HideInInspector] public AudioSource birds; //pitch: 0.9, 1.1
+    [HideInInspector] public AudioSource fire;
+    [HideInInspector] public AudioSource geyser;
+    [HideInInspector] public AudioSource boulder;
+    [HideInInspector] public AudioSource rockSlide;
 
     void Awake()
     {
@@ -89,6 +104,11 @@ public class AudioManagerMain : MonoBehaviour
         damage = AddAudio(false, false, 1f);
         death = AddAudio(false, false, 1f);
         tree = AddAudio(false, false, 0.7f);
+        birds = AddAudio(false, true, 0.3f);
+        fire = AddAudio(false, true, 0.4f);
+        geyser = AddAudio(false, false, 0.8f);
+        boulder = AddAudio(true, false, 0.4f);
+        rockSlide = AddAudio(false, false, 0.4f);
 
         sourceClipRelation.Add(landing, landingClips);
         sourceClipRelation.Add(jumping, jumpingClips);
@@ -111,6 +131,11 @@ public class AudioManagerMain : MonoBehaviour
         sourceClipRelation.Add(damage, damageClips);
         sourceClipRelation.Add(death, deathClips);
         sourceClipRelation.Add(tree, treeClips);
+        sourceClipRelation.Add(birds, birdsClips);
+        sourceClipRelation.Add(fire, fireClips);
+        sourceClipRelation.Add(geyser, geyserClips);
+        sourceClipRelation.Add(boulder, boulderClips);
+        sourceClipRelation.Add(rockSlide, rockSlideClips);
     }
 
 
@@ -132,4 +157,30 @@ public class AudioManagerMain : MonoBehaviour
         toPlay.Play();
 
     }
+
+    public void HomebaseVolume()
+    {
+        Homebase.TransitionTo(2f);
+    }
+
+    public void MoodboardVolume()
+    {
+        Moodboard.TransitionTo(2f);
+    }
+
+    public void StringsVolume()
+    {
+        Strings.TransitionTo(2f);
+    }
+
+    public void BossVolume()
+    {
+        Boss.TransitionTo(0f);
+    }
+
+    public void PauseVolume()
+    {
+        Pause.TransitionTo(0f);
+    }
 }
+

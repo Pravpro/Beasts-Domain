@@ -225,8 +225,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 13337469}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: 0.05688237, y: 0.70481515, z: -0.05688237, w: 0.7048152}
+  m_LocalPosition: {x: -75.8, y: 3.1, z: 13.4}
   m_LocalScale: {x: 30, y: 30, z: 30}
   m_Children: []
   m_Father: {fileID: 0}
@@ -7218,6 +7218,7 @@ MonoBehaviour:
   rockClips:
   - {fileID: 8300000, guid: 76c37cbc4fecc4b4ab66f1c999bc7add, type: 3}
   - {fileID: 8300000, guid: e06411748a135264da022b7124bdd82a, type: 3}
+  SpatialBlendRock: 0
   spellClips:
   - {fileID: 8300000, guid: 5a13ac1f1998748f48f927f500253222, type: 3}
   damageClips:
@@ -7226,6 +7227,17 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 3b16ced12cd24cf4db8bbdf5e81a3ffd, type: 3}
   treeClips:
   - {fileID: 8300000, guid: 0903a66ea1c42f94a850aedccd8b9ec1, type: 3}
+  birdsClips:
+  - {fileID: 8300000, guid: 9de01f3ca66d95441befef25639589d5, type: 3}
+  fireClips:
+  - {fileID: 8300000, guid: 1e9cf69174eaa6f40b3ad4ce0b0c5915, type: 3}
+  SpatialBlendFire: 0
+  geyserClips:
+  - {fileID: 8300000, guid: aae3f26c5fd6a6c41ae0441c6a78568c, type: 3}
+  boulderClips:
+  - {fileID: 8300000, guid: 24b0d7d990fd47d409fcf00eebbdad69, type: 3}
+  rockSlideClips:
+  - {fileID: 8300000, guid: d848df879b3aac24392be28cff5aa23d, type: 3}
   stringsClips:
   - {fileID: 8300000, guid: a20fb40e6c0638942b72050cac004b91, type: 3}
   bossstringsClips:
@@ -7248,8 +7260,10 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 8c5d04f08c66e4f5ea6a12468ace106b, type: 3}
   flareClips:
   - {fileID: 8300000, guid: b9b86032db7fc4259a134b69080b4e17, type: 3}
+  SpatialBlendFlare: 0
   hoofClips:
   - {fileID: 8300000, guid: e73f55637d8d64c80872f6dd67c12efa, type: 3}
+  SpatialBlendHoof: 0
   slingshotClips:
   - {fileID: 8300000, guid: 67fb7425e3f22475398db38cf02e6323, type: 3}
   - {fileID: 8300000, guid: a68cb3d90f65e8146ac2454b55af0aa3, type: 3}
@@ -7274,6 +7288,11 @@ MonoBehaviour:
   damage: {fileID: 0}
   death: {fileID: 0}
   tree: {fileID: 0}
+  birds: {fileID: 0}
+  fire: {fileID: 0}
+  geyser: {fileID: 0}
+  boulder: {fileID: 0}
+  rockSlide: {fileID: 0}
 --- !u!4 &760171701
 Transform:
   m_ObjectHideFlags: 0
@@ -13223,7 +13242,9 @@ MonoBehaviour:
   m_LayerIndex: 0
   m_ShowDebugText: 1
   m_EnableAllChildCameras: 1
-  m_ChildCameras: []
+  m_ChildCameras:
+  - {fileID: 1993504316}
+  - {fileID: 807353627}
   m_Instructions:
   - m_FullHash: 1432961145
     m_VirtualCamera: {fileID: 1993504316}
@@ -13344,7 +13365,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1044896107}
-  m_LocalRotation: {x: 0.04410415, y: 0.70573014, z: -0.04410369, w: 0.7057299}
+  m_LocalRotation: {x: 0.04410394, y: 0.70573014, z: -0.044103477, w: 0.7057299}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
