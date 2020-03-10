@@ -122,24 +122,21 @@ public class AIController : MonoBehaviour
         UnsetChargeAreaMask();
     }
 
-    void Update()
-    {
-        if (target != null)
-        {
-            Vector3[] corners = {transform.position, target.vector};
-            //lineRenderer.SetPositions(corners);
-            //lineRenderer.enabled = true;
-        }
-        //else
-            //lineRenderer.enabled = false;
+    // void Update()
+    // {
+    //     if (target != null)
+    //     {
+    //         Vector3[] corners = {transform.position, target.vector};
+    //         //lineRenderer.SetPositions(corners);
+    //         //lineRenderer.enabled = true;
+    //     }
+    //     //else
+    //         //lineRenderer.enabled = false;
+    // }
 
-        animator.SetBool("IsIdle", state == State.Idle);
-        animator.SetBool("IsWalking", state == State.RandomSearch || state == State.Interrupted);
-        animator.SetBool("IsCharging", state == State.Charge); // not allow running if recovering stamina
-    }
-
-    private void FixedUpdate()
+    private void Update()
     {
+        UpdateAnimator();
         float theta = Vector3.Angle(Vector3.up, transform.up) * Mathf.Deg2Rad;
         if (theta > 0)
         {
@@ -323,6 +320,13 @@ public class AIController : MonoBehaviour
         }
     }
 
+    void UpdateAnimator()
+    {
+        animator.SetBool("IsIdle", state == State.Idle);
+        animator.SetBool("IsWalking", state == State.RandomSearch || state == State.Interrupted);
+        animator.SetBool("IsCharging", state == State.Charge); // not allow running if recovering stamina
+    }
+
     void OnCollisionEnter(Collision col)
     {
         //Debug.Log("Monster: the object " + col.collider.name + " is in the target." + col.collider.tag);
@@ -372,14 +376,15 @@ public class AIController : MonoBehaviour
         NavMeshPath path = new UnityEngine.AI.NavMeshPath();
         NavMeshHit hit;
         bool hasPath = agent.CalculatePath(player.transform.position, path);
-        bool close = NavMesh.SamplePosition(player.transform.position, out hit, 2f, 1 << NavMesh.GetNavMeshLayerFromName("Walkable"));
+        int mask = ~(1 << NavMesh.GetAreaFromName("Not Walkable"));
+        bool close = NavMesh.SamplePosition(player.transform.position, out hit, 2f, mask);
         // Debug.Log(hasPath + "" + close);
         return hasPath || close;
     }
 
     IEnumerator playerInvincible()
     {
-        yield return StartCoroutine(playerScript.waitNextDamage(3)  );
+        yield return StartCoroutine(playerScript.waitNextDamage(3) );
         playerScript.stamina = playerScript.maxStamina;
         damageCoroutine = null;
     }
@@ -426,7 +431,7 @@ public class AIController : MonoBehaviour
         // randomDirection += center;
         Vector3 randomDirection = new Vector3(x, transform.position.y, z);
         UnityEngine.AI.NavMeshHit hit;
-        UnityEngine.AI.NavMesh.SamplePosition(randomDirection, out hit, walkRadius, 1 << NavMesh.GetNavMeshLayerFromName("Walkable"));
+        UnityEngine.AI.NavMesh.SamplePosition(randomDirection, out hit, walkRadius, 1 << NavMesh.GetAreaFromName("Walkable"));
         Vector3 finalPosition = hit.position;
         return finalPosition;
     }
@@ -434,7 +439,7 @@ public class AIController : MonoBehaviour
     Vector3 SamplePos(Vector3 dest, float radius=80f)
     {
         UnityEngine.AI.NavMeshHit hit;
-        UnityEngine.AI.NavMesh.SamplePosition(dest, out hit, radius, 1 << NavMesh.GetNavMeshLayerFromName("Walkable"));
+        UnityEngine.AI.NavMesh.SamplePosition(dest, out hit, radius, 1 << NavMesh.GetAreaFromName("Walkable"));
         return hit.position;
     }
 
@@ -598,6 +603,7 @@ public class AIController : MonoBehaviour
 
     bool ReachedWanderDest()
     {
+        // Debug.Log(!agent.hasPath +  "" + (agent.remainingDistance <= agent.stoppingDistance + 1));
         return //!agent.pathPending
              agent.remainingDistance <= agent.stoppingDistance + 1
              || !agent.hasPath;

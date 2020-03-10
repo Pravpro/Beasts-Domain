@@ -72,7 +72,7 @@ public class SlingshotController : MonoBehaviour
             crosshair.enabled = true;
 
             // Release Slinghot
-            if (nextThrowTime >= Time.time)
+            if (nextThrowTime <= Time.time)
             {
                 if (m_playerInput.GetButtonDown("Throw"))
                 {
@@ -91,7 +91,7 @@ public class SlingshotController : MonoBehaviour
                     // Add the launch arc forces to the throwable
                     m_rb.AddForce(targetVector * throwVelocity, ForceMode.VelocityChange);
 
-                    playerAnimator.SetBool("IsAiming", false);
+                    //playerAnimator.SetBool("IsAiming", false);
                     nextThrowTime = Time.time + throwDelay;
                 }
             }
