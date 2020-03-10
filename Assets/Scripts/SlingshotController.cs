@@ -41,21 +41,20 @@ public class SlingshotController : MonoBehaviour
     }
 
     private void Update()
-    { 
-        if(nextThrowTime <= Time.time)
-        {
-            // Activate slingshot
-            if (m_playerInput.GetButtonDown("Throw"))
-            {
-                playerAnimator.SetBool("IsAiming", true);
-                Slingshot.clip = Hold;
-                Slingshot.PlayOneShot(Hold, 1f);
-            }
+    {
 
-            if (m_playerInput.GetButtonUp("Throw"))
-            {
-                playerAnimator.SetBool("IsAiming", false);
-            }
+        // Activate slingshot
+        if (m_playerInput.GetButtonDown("Aim"))
+        {
+            playerAnimator.SetBool("IsAiming", true);
+            Slingshot.clip = Hold;
+            Slingshot.PlayOneShot(Hold, 1f);
+        }
+
+        if (m_playerInput.GetButtonUp("Aim"))
+        {
+            playerAnimator.SetBool("IsAiming", false);
+            crosshair.enabled = false;
         }
 
         if (CB.ActiveVirtualCamera.LiveChildOrSelf.Name == "CM_AimCam")
@@ -73,28 +72,30 @@ public class SlingshotController : MonoBehaviour
             crosshair.enabled = true;
 
             // Release Slinghot
-            if (m_playerInput.GetButtonUp("Throw"))
+            if (nextThrowTime >= Time.time)
             {
-                // Create the throwable object
-                GameObject m_rock = Instantiate(throwObject,
-                                                transform.position,
-                                                player.transform.rotation) as GameObject;
-                Rigidbody m_rb = m_rock.GetComponent<Rigidbody>();
-                ThrowableController m_rockScript = m_rock.GetComponent<ThrowableController>();
-                m_rockScript.slingshotScript = this;
+                if (m_playerInput.GetButtonDown("Throw"))
+                {
+                    // Create the throwable object
+                    GameObject m_rock = Instantiate(throwObject,
+                                                    transform.position,
+                                                    player.transform.rotation) as GameObject;
+                    Rigidbody m_rb = m_rock.GetComponent<Rigidbody>();
+                    ThrowableController m_rockScript = m_rock.GetComponent<ThrowableController>();
+                    m_rockScript.slingshotScript = this;
 
-                Slingshot.clip = Release;
-                Slingshot.PlayOneShot(Release, 1f);
-                Slingshot.outputAudioMixerGroup = output;
+                    Slingshot.clip = Release;
+                    Slingshot.PlayOneShot(Release, 1f);
+                    Slingshot.outputAudioMixerGroup = output;
 
-                // Add the launch arc forces to the throwable
-                m_rb.AddForce(targetVector * throwVelocity, ForceMode.VelocityChange);
+                    // Add the launch arc forces to the throwable
+                    m_rb.AddForce(targetVector * throwVelocity, ForceMode.VelocityChange);
 
-                playerAnimator.SetBool("IsAiming", false);
-                nextThrowTime = Time.time + throwDelay;
+                    playerAnimator.SetBool("IsAiming", false);
+                    nextThrowTime = Time.time + throwDelay;
+                }
             }
         }
-        else crosshair.enabled = false;
 
         
 
