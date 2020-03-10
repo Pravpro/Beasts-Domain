@@ -172,11 +172,12 @@ public class PlayerController : MonoBehaviour
         {
             rb.velocity += jump * jumpSpeed;
             grounded = false;
-            int randomClip = Random.Range(0, Jumps.Length);
-            Jumping.clip = Jumps[randomClip];
-            Jumping.outputAudioMixerGroup = output;
-            Jumping.PlayOneShot(Jumps[randomClip], 0.15f);
-            Jumping.pitch = Random.Range(1f, 1.1f);
+            //int randomClip = Random.Range(0, Jumps.Length);
+            //Jumping.clip = Jumps[randomClip];
+            //Jumping.outputAudioMixerGroup = output;
+            //Jumping.PlayOneShot(Jumps[randomClip], 0.15f);
+            //Jumping.pitch = Random.Range(1f, 1.1f);
+            audioManager.Play(audioManager.jumping, 1f, 1.1f);
         }
 
         // Crouch and Run Logic (Cannot do both at the same time)
