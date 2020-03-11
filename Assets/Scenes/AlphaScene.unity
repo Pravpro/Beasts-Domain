@@ -216,7 +216,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 13337469}
-  m_LocalRotation: {x: 0.05688237, y: 0.70481515, z: -0.05688237, w: 0.7048152}
+  m_LocalRotation: {x: 0.056882948, y: 0.7048151, z: -0.056882948, w: 0.70481515}
   m_LocalPosition: {x: -77.3, y: 3.1, z: 10.1}
   m_LocalScale: {x: 30, y: 30, z: 30}
   m_Children: []
@@ -6414,7 +6414,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 382882444}
-  m_LocalRotation: {x: 0.056882415, y: 0.7048158, z: -0.056882598, w: 0.7048145}
+  m_LocalRotation: {x: 0.056882646, y: 0.7048158, z: -0.05688283, w: 0.7048145}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -7395,17 +7395,17 @@ MonoBehaviour:
       jumpingVol: 0.25
       stamina:
       - {fileID: 8300000, guid: ca73de5900e5c2946bf69e0bd1d4dad1, type: 3}
-      staminaVol: 0.1
+      staminaVol: 0.2
       walking:
       - {fileID: 8300000, guid: 87513ba3b8b4fd24d832592899ab6853, type: 3}
       - {fileID: 8300000, guid: 908f10149ce7b2f4a8f939f35016d4d3, type: 3}
       - {fileID: 8300000, guid: b9ef2fcd1105e834098f1080eedc12d5, type: 3}
-      walkingVol: 0.1
+      walkingVol: 0.05
       running:
       - {fileID: 8300000, guid: a3f4b3bad08686f40ab4be2f2b9d6772, type: 3}
       - {fileID: 8300000, guid: 94577f808479cac488b455ec61e513e4, type: 3}
       - {fileID: 8300000, guid: 3452ed63f1fe881498908df8ddaf303f, type: 3}
-      runningVol: 0.1
+      runningVol: 0.05
       damage:
       - {fileID: 8300000, guid: 915b8c427065a9b44a77de4ff74ed6ce, type: 3}
       damageVol: 1
@@ -7430,10 +7430,10 @@ MonoBehaviour:
       spellVol: 0.8
     beast:
       roar1:
-      - {fileID: 8300000, guid: c4ba7b1503980f042a5704154c1b2042, type: 3}
+      - {fileID: 8300000, guid: 94aaad1912ea6fa41a1d3afbd47beb6b, type: 3}
       roar1Vol: 1
       roar2:
-      - {fileID: 8300000, guid: 94aaad1912ea6fa41a1d3afbd47beb6b, type: 3}
+      - {fileID: 8300000, guid: c4ba7b1503980f042a5704154c1b2042, type: 3}
       roar2Vol: 1
       hurt:
       - {fileID: 8300000, guid: 8c5d04f08c66e4f5ea6a12468ace106b, type: 3}
@@ -7447,12 +7447,15 @@ MonoBehaviour:
   musicClips:
     strings:
     - {fileID: 8300000, guid: a20fb40e6c0638942b72050cac004b91, type: 3}
-    stringsVol: 0.7
+    stringsVol: 0.4
     bossstrings:
     - {fileID: 8300000, guid: 75831189a3c11429891b7cac8261b43d, type: 3}
     - {fileID: 8300000, guid: 23e68e8634f854b3c9be027291d69455, type: 3}
     - {fileID: 8300000, guid: d2500c59057a34618998930deaf16822, type: 3}
-    bossstringsVol: 1
+    bossstringsVol: 0.7
+    bossStinger:
+    - {fileID: 8300000, guid: 3f6dc4611fa78684aa11ae26543987a5, type: 3}
+    bossStingerVol: 0.8
     boss1:
     - {fileID: 8300000, guid: a0e859f6d158d4f0a91b05895465f3ff, type: 3}
     boss1Vol: 1
@@ -7460,11 +7463,11 @@ MonoBehaviour:
     - {fileID: 8300000, guid: 82e84873351040645afb6d918ea36ae5, type: 3}
     boss2Vol: 1
     moodboard:
-    - {fileID: 8300000, guid: 39e05d3af4aa3f64ab0267e150fc6ad8, type: 3}
-    moodboardVol: 1
+    - {fileID: 8300000, guid: 52498955191b14c318e02131c0dd13ca, type: 3}
+    moodboardVol: 0.7
     homebase:
     - {fileID: 8300000, guid: a121e663d284e7247b85906bc60aad6c, type: 3}
-    homebaseVol: 1
+    homebaseVol: 0.8
   environmentClips:
     tree:
     - {fileID: 8300000, guid: 0e20349afaadc144f913949f31bd93b7, type: 3}
@@ -7493,6 +7496,7 @@ MonoBehaviour:
   moodboard: {fileID: 0}
   strings: {fileID: 0}
   bossStrings: {fileID: 0}
+  bossStinger: {fileID: 0}
   boss1: {fileID: 0}
   boss2: {fileID: 0}
   homebase: {fileID: 0}
@@ -13581,7 +13585,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1044896107}
-  m_LocalRotation: {x: 0.044104356, y: 0.7057264, z: -0.044103418, w: 0.70573366}
+  m_LocalRotation: {x: 0.044104367, y: 0.7057264, z: -0.04410343, w: 0.70573366}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
