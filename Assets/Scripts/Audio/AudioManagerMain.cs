@@ -39,6 +39,7 @@ public class AudioManagerMain : MonoBehaviour
         public AudioMixerSnapshot strings;
         public AudioMixerSnapshot pause;
         public AudioMixerSnapshot boss;
+        public AudioMixerSnapshot alleys;
     }
 
     [System.Serializable]
