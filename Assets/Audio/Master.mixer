@@ -306,7 +306,6 @@ AudioMixerController:
   - {fileID: -4565273174578477400}
   - {fileID: -6523754486378997014}
   - {fileID: 5331478804513933854}
-  - {fileID: 9048005433421730327}
   m_StartSnapshot: {fileID: 4027853678517964899}
   m_SuspendThreshold: -80
   m_EnableSuspend: 1
@@ -699,22 +698,6 @@ AudioMixerGroupController:
   m_Mute: 0
   m_Solo: 0
   m_BypassEffects: 0
---- !u!245 &9048005433421730327
-AudioMixerSnapshotController:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: Win
-  m_AudioMixer: {fileID: 24100000}
-  m_SnapshotID: 4730e07008d938644ab24b8607c35698
-  m_FloatValues:
-    a7f1cc999ecc30749adb711f79536bf6: 0.13552584
-    ad20914c17df3460d92b6097bd1cca87: -0.002441872
-    e716915d279d3cb4c8d8cc8c0c6466c6: -80
-    0e5d7f3e5c2601d4ebef0135b9264d2d: -80
-    8d523cafe5a752a46805083ed60b1f20: -80
-  m_TransitionOverrides: {}
 --- !u!244 &9057027027820809255
 AudioMixerEffectController:
   m_ObjectHideFlags: 3

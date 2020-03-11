@@ -20,11 +20,11 @@ public class MusicController : MonoBehaviour
         if (other.name == "Homebase")
             audioManager.SetHomebaseVolume();
         else if (other.name == "Training")
-            audioManager.SetMoodboardVolume();
+            audioManager.SetTrainingVolume();
         else if (other.name == "Alley")
             audioManager.SetAlleysVolume();
         else if (other.name == "Arena")
-            audioManager.SetBossVolume();
+            audioManager.SetArenaVolume();
 
     }
 }

@@ -21,13 +21,13 @@ public class AIController : MonoBehaviour
     public AudioManagerMain audioManager;
     public AudioClip MoodBoard;
     public AudioClip Death; // done
-    public AudioClip Hurt;
+    public AudioClip Hurt; // done, implemented in Geyser
     public AudioClip Violin;
     public AudioClip[] bossStrings;
     public AudioClip startRoar;
     public AudioClip nostril;
     public AudioSource damage; // done
-    public AudioSource choir;
+    public AudioSource choir; // done, taken out
     public AudioSource roar1;
     public AudioSource fight1;
     public AudioSource fightStrings;
@@ -113,10 +113,10 @@ public class AIController : MonoBehaviour
         //lineRenderer.positionCount = 2;
 
         IntroFight.TransitionTo(0.0f);
-        choir.Play();
-        strings.clip = Violin;
-        strings.PlayDelayed(30.0f);
-        strings.loop = true;
+        //choir.Play();
+        //strings.clip = Violin;
+        //strings.PlayDelayed(30.0f);
+        //strings.loop = true;
         animator = gameObject.GetComponent<Animator>();
 
         // mask defaults to all areas and we don't want that
@@ -219,15 +219,19 @@ public class AIController : MonoBehaviour
             if(!m_roarPlayed)
             {
                 //BeastRoar1 fight starts
-                choir.Stop();
-                strings.Stop();
-                roar1.clip = startRoar;
-                roar1.Play();
-                Boss.TransitionTo(4f);
-                int randomClip = Random.Range(0, bossStrings.Length);
-                fightStrings.clip = bossStrings[randomClip];
-                fightStrings.Play();
-                fight1.Play();
+                //choir.Stop();
+                //strings.Stop();
+                //roar1.clip = startRoar;
+                //roar1.Play();
+                //audioManager.Play(audioManager.boss1);
+                //audioManager.Play(audioManager.phase1);
+                //audioManager.strings.Stop();
+                //audioManager.Play(audioManager.bossstrings);
+                //Boss.TransitionTo(4f);
+                //int randomClip = Random.Range(0, bossStrings.Length);
+                //fightStrings.clip = bossStrings[randomClip];
+                //fightStrings.Play();
+                //fight1.Play();
 
                 m_roarPlayed = true;
             }

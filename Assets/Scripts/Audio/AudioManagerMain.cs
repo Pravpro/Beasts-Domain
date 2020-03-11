@@ -16,8 +16,8 @@ public class AudioManagerMain : MonoBehaviour
         public AudioMixerGroup action;
         public AudioMixerGroup beast;
         public AudioMixerGroup birds;
-        public AudioMixerGroup bossFight;
-        public AudioMixerGroup choir;
+        public AudioMixerGroup arena;
+        public AudioMixerGroup training;
         public AudioMixerGroup environment;
         public AudioMixerGroup fire;
         public AudioMixerGroup geyser;
@@ -26,7 +26,7 @@ public class AudioManagerMain : MonoBehaviour
         public AudioMixerGroup player;
         public AudioMixerGroup rocks;
         public AudioMixerGroup sfx;
-        public AudioMixerGroup themes;
+        public AudioMixerGroup homebase;
         public AudioMixerGroup trees;
         public AudioMixerGroup weapons;
     }
@@ -35,10 +35,11 @@ public class AudioManagerMain : MonoBehaviour
     public class Snapshots
     {
         public AudioMixerSnapshot homebase;
-        public AudioMixerSnapshot moodboard;
-        public AudioMixerSnapshot strings;
-        public AudioMixerSnapshot pause;
-        public AudioMixerSnapshot boss;
+        public AudioMixerSnapshot training;
+        public AudioMixerSnapshot pauseArena;
+        public AudioMixerSnapshot pauseHomeBase;
+        public AudioMixerSnapshot pauseTraining;
+        public AudioMixerSnapshot arena;
         public AudioMixerSnapshot alleys;
     }
 
@@ -187,12 +188,12 @@ public class AudioManagerMain : MonoBehaviour
         flare = AddAudio(false, false, sfxClips.beast.flareVol, mixerGroups.beast);
         hoof = AddAudio(false, false, sfxClips.beast.hoofVol, mixerGroups.beast);
         // Music sources
-        moodboard = AddAudio(true, true, musicClips.moodboardVol, mixerGroups.choir);
-        strings = AddAudio(true, true, musicClips.stringsVol, mixerGroups.themes);
-        bossstrings = AddAudio(true, false, musicClips.bossstringsVol, mixerGroups.bossFight);
-        boss1 = AddAudio(true, false, musicClips.boss1Vol, mixerGroups.bossFight);
-        boss2 = AddAudio(true, false, musicClips.boss2Vol, mixerGroups.bossFight);
-        homebase = AddAudio(true, true, musicClips.homebaseVol, mixerGroups.themes);
+        moodboard = AddAudio(true, true, musicClips.moodboardVol, mixerGroups.training);
+        strings = AddAudio(true, true, musicClips.stringsVol, mixerGroups.homebase);
+        bossstrings = AddAudio(true, false, musicClips.bossstringsVol, mixerGroups.arena);
+        boss1 = AddAudio(true, false, musicClips.boss1Vol, mixerGroups.arena);
+        boss2 = AddAudio(true, false, musicClips.boss2Vol, mixerGroups.arena);
+        homebase = AddAudio(true, true, musicClips.homebaseVol, mixerGroups.homebase);
         // Environment sources
         tree = AddAudio(false, false, environmentClips.treeVol, mixerGroups.trees);
         birds = AddAudio(false, true, environmentClips.birdsVol, mixerGroups.birds);
@@ -259,24 +260,29 @@ public class AudioManagerMain : MonoBehaviour
         snapshots.homebase.TransitionTo(2f);
     }
 
-    public void SetMoodboardVolume()
+    public void SetTrainingVolume()
     {
-        snapshots.moodboard.TransitionTo(2f);
+        snapshots.training.TransitionTo(2f);
     }
 
-    public void SetStringsVolume()
+    public void SetArenaVolume()
     {
-        snapshots.strings.TransitionTo(2f);
+        snapshots.arena.TransitionTo(1.5f);
     }
 
-    public void SetBossVolume()
+    public void SetPauseArenaVolume()
     {
-        snapshots.boss.TransitionTo(0f);
+        snapshots.pauseArena.TransitionTo(0f);
     }
 
-    public void SetPauseVolume()
+    public void SetPauseHomebaseVolume()
     {
-        snapshots.pause.TransitionTo(0f);
+        snapshots.pauseHomeBase.TransitionTo(0f);
+    }
+
+    public void SetPauseTrainingVolume()
+    {
+        snapshots.pauseTraining.TransitionTo(0f);
     }
 
     public void SetAlleysVolume()

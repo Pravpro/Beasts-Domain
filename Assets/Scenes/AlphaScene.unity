@@ -216,8 +216,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 13337469}
-  m_LocalRotation: {x: 0.056882948, y: 0.7048151, z: -0.056882948, w: 0.70481515}
-  m_LocalPosition: {x: -75.8, y: 3.1, z: 13.4}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 30, y: 30, z: 30}
   m_Children: []
   m_Father: {fileID: 0}
@@ -6409,7 +6409,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 382882444}
-  m_LocalRotation: {x: 0.05688262, y: 0.70481527, z: -0.05688273, w: 0.70481503}
+  m_LocalRotation: {x: 0.056882735, y: 0.70481527, z: -0.056882847, w: 0.70481503}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -7346,9 +7346,9 @@ MonoBehaviour:
     beast: {fileID: 9189731060982471689, guid: b12a37322bc5b8444879a1c72e83a533, type: 2}
     birds: {fileID: -6326619149905166048, guid: b12a37322bc5b8444879a1c72e83a533,
       type: 2}
-    bossFight: {fileID: -683621483407260390, guid: b12a37322bc5b8444879a1c72e83a533,
+    arena: {fileID: -683621483407260390, guid: b12a37322bc5b8444879a1c72e83a533, type: 2}
+    training: {fileID: 3728301513905487298, guid: b12a37322bc5b8444879a1c72e83a533,
       type: 2}
-    choir: {fileID: 3728301513905487298, guid: b12a37322bc5b8444879a1c72e83a533, type: 2}
     environment: {fileID: 4464209829870362510, guid: b12a37322bc5b8444879a1c72e83a533,
       type: 2}
     fire: {fileID: -3923134402367959249, guid: b12a37322bc5b8444879a1c72e83a533, type: 2}
@@ -7362,20 +7362,26 @@ MonoBehaviour:
     rocks: {fileID: -2823458709258695230, guid: b12a37322bc5b8444879a1c72e83a533,
       type: 2}
     sfx: {fileID: -1957139070176323428, guid: b12a37322bc5b8444879a1c72e83a533, type: 2}
-    themes: {fileID: 312817399248102967, guid: b12a37322bc5b8444879a1c72e83a533, type: 2}
+    homebase: {fileID: 312817399248102967, guid: b12a37322bc5b8444879a1c72e83a533,
+      type: 2}
     trees: {fileID: 20657509805438966, guid: b12a37322bc5b8444879a1c72e83a533, type: 2}
     weapons: {fileID: 8590317676607429496, guid: b12a37322bc5b8444879a1c72e83a533,
       type: 2}
   snapshots:
     homebase: {fileID: 4027853678517964899, guid: b12a37322bc5b8444879a1c72e83a533,
       type: 2}
-    moodboard: {fileID: 24500006, guid: b12a37322bc5b8444879a1c72e83a533, type: 2}
+    training: {fileID: 24500006, guid: b12a37322bc5b8444879a1c72e83a533, type: 2}
     strings: {fileID: 5723546305241390800, guid: b12a37322bc5b8444879a1c72e83a533,
       type: 2}
-    pause: {fileID: -4565273174578477400, guid: b12a37322bc5b8444879a1c72e83a533,
+    pauseArena: {fileID: 5331478804513933854, guid: b12a37322bc5b8444879a1c72e83a533,
       type: 2}
-    boss: {fileID: 8252497145976169834, guid: b12a37322bc5b8444879a1c72e83a533, type: 2}
-    alleys: {fileID: 0}
+    pauseHomeBase: {fileID: -4565273174578477400, guid: b12a37322bc5b8444879a1c72e83a533,
+      type: 2}
+    pauseTraining: {fileID: -6523754486378997014, guid: b12a37322bc5b8444879a1c72e83a533,
+      type: 2}
+    arena: {fileID: 8252497145976169834, guid: b12a37322bc5b8444879a1c72e83a533, type: 2}
+    alleys: {fileID: 1155859526790766930, guid: b12a37322bc5b8444879a1c72e83a533,
+      type: 2}
   sfxClips:
     player:
       landing:
@@ -13463,9 +13469,7 @@ MonoBehaviour:
   m_LayerIndex: 0
   m_ShowDebugText: 1
   m_EnableAllChildCameras: 1
-  m_ChildCameras:
-  - {fileID: 1993504316}
-  - {fileID: 807353627}
+  m_ChildCameras: []
   m_Instructions:
   - m_FullHash: 1432961145
     m_VirtualCamera: {fileID: 1993504316}
@@ -13586,7 +13590,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1044896107}
-  m_LocalRotation: {x: 0.044104036, y: 0.70573014, z: -0.044103574, w: 0.7057299}
+  m_LocalRotation: {x: 0.044104017, y: 0.70573014, z: -0.044103555, w: 0.7057299}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
