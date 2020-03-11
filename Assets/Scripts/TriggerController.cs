@@ -5,12 +5,13 @@ using UnityEngine;
 public class TriggerController : MonoBehaviour
 {
     public AudioManagerMain audioManager;
-    public bool triggered = false;
-    public int resetTime = 10;
-    public float triggerCoeff = 3f;
-
+    public Material usedGeyserMaterial;
+    public float triggerDistance = 4f;
     private AIController script;
     private GameObject monster;
+
+    private bool isTriggered, changedColor = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -18,53 +19,45 @@ public class TriggerController : MonoBehaviour
         script = monster.GetComponent<AIController>();
     }
 
-    IEnumerator TimedUntrigger()
+    void OnTriggerStay(Collider col)
     {
-        yield return new WaitForSeconds(resetTime);
-        Untrigger();
-    }
-
-    void Trigger() 
-    {
-        this.triggered = true;
-        this.ModifySize(this.triggerCoeff);
-        audioManager.Play(audioManager.geyser);
-    }
-
-    void Untrigger()
-    {
-        this.triggered = false;
-        this.ModifySize(1/this.triggerCoeff);
-    }
-
-    void ModifySize(float coeff)
-    {
-        // Vector3 pos = transform.position;
-        // pos.y *= coeff;
-        // transform.position = pos;
-        Vector3 scale = transform.localScale;
-        scale.y *= coeff;
-        transform.localScale = scale;
-    }
-
-    void OnTriggerEnter(Collider col)
-    {
-        if (col.tag == "Throwable" && !this.triggered)
+        if (col.tag == "Monster" && !isTriggered)
         {
-            this.Trigger();
-            StartCoroutine(TimedUntrigger());
-        }
-        if (col.tag == "Monster" && this.triggered)
-        {
-            if (script.hp > 0)
+            // check the center of monster and geyser
+            Vector3 monsterPos = col.gameObject.transform.position;
+            Vector3 geyserPos  = this.transform.position;
+
+            // ignore y axis
+            monsterPos.y = 0;
+            geyserPos.y  = 0;
+
+            if (Vector3.Distance(monsterPos, geyserPos) < triggerDistance)
             {
-                audioManager.Play(audioManager.hurt);
-                script.TakeDamage(transform.position);
-                script.hp -= 1;
-                Debug.Log("monster lose health to " + script.hp);
+                if (script.hp > 0)
+                {
+                    audioManager.Play(audioManager.hurt);
+                    script.TakeDamage(transform.position);
+                    script.hp -= 1;
+                    Debug.Log("monster lose health to " + script.hp);
+
+                    isTriggered = true;
+                }
+                if (script.hp <= 0)
+                    Debug.Log("Monster dies!");
             }
-            if (script.hp <= 0)
-                Debug.Log("Monster dies!");
         }
     }
+
+    void OnTriggerExit(Collider col)
+    {
+        // geyser is one-time activated therefore, if the geyser is triggered to give damage to monster,
+        // we deactive the geyser
+        if (isTriggered && !changedColor)
+        {
+            // change the material color
+            this.GetComponent<Renderer>().material = usedGeyserMaterial;
+            changedColor = true;
+        }
+    }
+
 }

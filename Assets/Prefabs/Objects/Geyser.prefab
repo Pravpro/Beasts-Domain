@@ -108,9 +108,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   audioManager: {fileID: 0}
-  triggered: 0
-  resetTime: 10
-  triggerCoeff: 3
+  usedGeyserMaterial: {fileID: 2100000, guid: ee872a82d2d7d4055988ada657a2367e, type: 2}
+  triggerDistance: 4.5
 --- !u!54 &3559483679017615111
 Rigidbody:
   m_ObjectHideFlags: 0
