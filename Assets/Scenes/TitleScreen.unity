@@ -908,7 +908,8 @@ MonoBehaviour:
   - {fileID: 8300000, guid: bffc3b4ea5fa6ff49b1781ea77adab91, type: 3}
   UISelectionClips:
   - {fileID: 8300000, guid: 197460ba8afe95145bcf07adc30ae1bf, type: 3}
-  narratorClips: []
+  narratorClips:
+  - {fileID: 8300000, guid: 31c7b142d76526b47be84205731a1d03, type: 3}
   music: {fileID: 0}
   UIToggle: {fileID: 0}
   UISelection: {fileID: 0}
