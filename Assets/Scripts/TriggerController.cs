@@ -28,6 +28,7 @@ public class TriggerController : MonoBehaviour
     {
         this.triggered = true;
         this.ModifySize(this.triggerCoeff);
+        audioManager.Play(audioManager.geyser);
     }
 
     void Untrigger()
