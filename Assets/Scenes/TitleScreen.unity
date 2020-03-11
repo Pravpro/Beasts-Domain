@@ -603,11 +603,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 692193479}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a8d30e760aa98b445b92dcdca7e902b0, type: 3}
+  m_Script: {fileID: 11500000, guid: f1685deff5ee847a89456dcf5d5b9058, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startButton: {fileID: 1077696596}
-  quitButton: {fileID: 1643534530}
+  startBtn: {fileID: 1077696596}
+  quitBtn: {fileID: 1643534530}
   arrow: {fileID: 863875284}
   audioManager: {fileID: 1142695201}
 --- !u!1 &863875282
@@ -908,8 +908,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: bffc3b4ea5fa6ff49b1781ea77adab91, type: 3}
   UISelectionClips:
   - {fileID: 8300000, guid: 197460ba8afe95145bcf07adc30ae1bf, type: 3}
-  narratorClips:
-  - {fileID: 8300000, guid: 31c7b142d76526b47be84205731a1d03, type: 3}
+  narratorClips: []
   music: {fileID: 0}
   UIToggle: {fileID: 0}
   UISelection: {fileID: 0}
@@ -1526,7 +1525,7 @@ GameObject:
   - component: {fileID: 1643534531}
   - component: {fileID: 1643534530}
   m_Layer: 5
-  m_Name: QuitButton
+  m_Name: ControlsButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

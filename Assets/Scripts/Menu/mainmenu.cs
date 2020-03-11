@@ -5,11 +5,11 @@ using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.SceneManagement;
 using Rewired;
+
 public class mainmenu : MonoBehaviour
 {
-
-    public Button startButton;
-    public Button quitButton;
+    public Button startBtn;
+    public Button quitBtn;
     public Image arrow;
 
     public AudioManagerTitle audioManager;
@@ -22,14 +22,19 @@ public class mainmenu : MonoBehaviour
     private int m_playerID = 0;
     private Player m_playerInput;
 
+
+    /**
+     *  PLEASE CLEAN UP THIS DISGUSTING CODE!! 
+     */
+
     void Start()
     {
         audioManager.Play(audioManager.music);
-        audioManager.Play(audioManager.narrator);
-        m_playerInput = ReInput.players.GetPlayer(m_playerID);
+        
+        if (isLoaded("TitleScreen"))
+            audioManager.Play(audioManager.narrator);
 
-        Button startBtn = startButton.GetComponent<Button>();
-        Button quitBtn  = quitButton.GetComponent<Button>();
+        m_playerInput = ReInput.players.GetPlayer(m_playerID);
 
         arrowTrans = arrow.GetComponent<Transform>();
         startPos   = arrowTrans.position;
@@ -43,13 +48,13 @@ public class mainmenu : MonoBehaviour
     {
         float vertical = m_playerInput.GetAxis("Vertical");
         
+        // PLSSS look into event system!! STOP WRITING THIS SHITTY CODE!!
         if (m_playerInput.GetButtonDown("Submit"))
         {
-            audioManager.Play(audioManager.UISelection);
             if (Vector3.Distance(arrowTrans.position, startPos) < 0.3f)
-                startOnClick();
+                triggerEvent(startBtn);
             else
-                controllerOnClick();
+                triggerEvent(quitBtn);
         }
 
         if (m_playerInput.GetButtonDown("Back"))
@@ -62,14 +67,14 @@ public class mainmenu : MonoBehaviour
         {
             arrowTrans.position = startPos + offset;
             audioManager.Play(audioManager.UIToggle);
-        }
-        
+        }      
         else if (vertical > 0.0f && Vector3.Distance(arrowTrans.position, startPos + offset) < 0.3f)
         {
-            arrowTrans.position = startPos;
+            
+            arrowTrans.position = startPos;  
             audioManager.Play(audioManager.UIToggle);
         }
-             
+            
 
     }
 
@@ -95,6 +100,21 @@ public class mainmenu : MonoBehaviour
             SceneManager.UnloadSceneAsync("ControlsDesc");
     }
 
+    void RestartOnClick()
+    {
+        SceneManager.LoadScene("Scenes/AlphaScene", LoadSceneMode.Single);
+    }
+
+    void triggerEvent(Button btn)
+    {
+        if (btn.name.Contains("Start") || btn.name.Contains("start"))
+            startOnClick();
+        else if (btn.name.Contains("Control") || btn.name.Contains("control"))
+            controllerOnClick();
+        else if (btn.name.Contains("Restart") || btn.name.Contains("restart"))
+            RestartOnClick();
+
+    }
     private static bool isLoaded(string name)
     {
         for (int i = 0; i < SceneManager.sceneCount; i++)

@@ -37,6 +37,12 @@ public class PlayerController : MonoBehaviour
     private bool activateSpell = false;
     private bool inSafeZone = false;
 
+    private void Awake()
+    {
+        // becauze my menu input event is written to messed up, i need to add this line here...
+        Time.timeScale = 1; 
+    }
+    
     private void Start()
     {  
         // to access input using rewired
