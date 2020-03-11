@@ -12,7 +12,8 @@ public class MovableController : MonoBehaviour
     private Rigidbody m_rbMovable;
 
     private bool m_monsterCollided = false;
-    
+
+    public AudioManagerMain audioManager;
 
     // Start is called before the first frame update
     void Start()
@@ -71,6 +72,12 @@ public class MovableController : MonoBehaviour
             {
                 isPushing = true;
                 m_rbMovable.isKinematic = false;
+
+                //Audio
+                if (!audioManager.boulder.isPlaying)
+                {
+                    audioManager.Play(audioManager.boulder);
+                }
 
                 // always look at the movable objects when pushing
                 Vector3 targetPos = this.transform.position;

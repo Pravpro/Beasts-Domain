@@ -4,11 +4,10 @@ using UnityEngine;
 
 public class MusicController : MonoBehaviour
 {
-    private AudioManagerMain audioManager;
+    public AudioManagerMain audioManager;
 
     private void Start()
-    {
-        audioManager = GetComponent<AudioManagerMain>();
+    {        
         audioManager.Play(audioManager.homebase);
         audioManager.Play(audioManager.moodboard);
         audioManager.Play(audioManager.strings);

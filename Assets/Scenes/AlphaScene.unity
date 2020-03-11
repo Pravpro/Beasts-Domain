@@ -216,8 +216,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 13337469}
-  m_LocalRotation: {x: 0.05688237, y: 0.70481515, z: -0.05688237, w: 0.7048152}
-  m_LocalPosition: {x: -75.8, y: 3.1, z: 13.4}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 30, y: 30, z: 30}
   m_Children: []
   m_Father: {fileID: 0}
@@ -6409,7 +6409,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 382882444}
-  m_LocalRotation: {x: 0.056882273, y: 0.70481527, z: -0.056882385, w: 0.70481503}
+  m_LocalRotation: {x: 0.05688239, y: 0.70481527, z: -0.0568825, w: 0.70481503}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -7405,7 +7405,7 @@ MonoBehaviour:
       - {fileID: 8300000, guid: 915b8c427065a9b44a77de4ff74ed6ce, type: 3}
       damageVol: 1
       death:
-      - {fileID: 8300000, guid: 3b16ced12cd24cf4db8bbdf5e81a3ffd, type: 3}
+      - {fileID: 8300000, guid: 98067a162e11891468263cb81364deae, type: 3}
       deathVol: 1
       boulder:
       - {fileID: 8300000, guid: 24b0d7d990fd47d409fcf00eebbdad69, type: 3}
@@ -13576,7 +13576,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1044896107}
-  m_LocalRotation: {x: 0.044103984, y: 0.70573014, z: -0.04410352, w: 0.7057299}
+  m_LocalRotation: {x: 0.04410409, y: 0.70573014, z: -0.04410363, w: 0.7057299}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -15892,6 +15892,46 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1751900548, guid: 39cf856a474a0024fa11563daeedfd5a, type: 3}
+      propertyPath: audioManager
+      value: 
+      objectReference: {fileID: 760171700}
+    - target: {fileID: 1751900550, guid: 39cf856a474a0024fa11563daeedfd5a, type: 3}
+      propertyPath: audioManager
+      value: 
+      objectReference: {fileID: 760171700}
+    - target: {fileID: 1751900552, guid: 39cf856a474a0024fa11563daeedfd5a, type: 3}
+      propertyPath: audioManager
+      value: 
+      objectReference: {fileID: 760171700}
+    - target: {fileID: 1751900554, guid: 39cf856a474a0024fa11563daeedfd5a, type: 3}
+      propertyPath: audioManager
+      value: 
+      objectReference: {fileID: 760171700}
+    - target: {fileID: 1751900556, guid: 39cf856a474a0024fa11563daeedfd5a, type: 3}
+      propertyPath: audioManager
+      value: 
+      objectReference: {fileID: 760171700}
+    - target: {fileID: 1751900558, guid: 39cf856a474a0024fa11563daeedfd5a, type: 3}
+      propertyPath: audioManager
+      value: 
+      objectReference: {fileID: 760171700}
+    - target: {fileID: 1751900560, guid: 39cf856a474a0024fa11563daeedfd5a, type: 3}
+      propertyPath: audioManager
+      value: 
+      objectReference: {fileID: 760171700}
+    - target: {fileID: 1751900562, guid: 39cf856a474a0024fa11563daeedfd5a, type: 3}
+      propertyPath: audioManager
+      value: 
+      objectReference: {fileID: 760171700}
+    - target: {fileID: 1751900564, guid: 39cf856a474a0024fa11563daeedfd5a, type: 3}
+      propertyPath: audioManager
+      value: 
+      objectReference: {fileID: 760171700}
+    - target: {fileID: 1751900566, guid: 39cf856a474a0024fa11563daeedfd5a, type: 3}
+      propertyPath: audioManager
+      value: 
+      objectReference: {fileID: 760171700}
     - target: {fileID: 448444566412729008, guid: 39cf856a474a0024fa11563daeedfd5a,
         type: 3}
       propertyPath: audioManager
@@ -15962,6 +16002,66 @@ PrefabInstance:
       propertyPath: audioManager
       value: 
       objectReference: {fileID: 760171700}
+    - target: {fileID: 511201236803595030, guid: 39cf856a474a0024fa11563daeedfd5a,
+        type: 3}
+      propertyPath: audioManager
+      value: 
+      objectReference: {fileID: 760171700}
+    - target: {fileID: 511201237247100271, guid: 39cf856a474a0024fa11563daeedfd5a,
+        type: 3}
+      propertyPath: audioManager
+      value: 
+      objectReference: {fileID: 760171700}
+    - target: {fileID: 511201237891827723, guid: 39cf856a474a0024fa11563daeedfd5a,
+        type: 3}
+      propertyPath: audioManager
+      value: 
+      objectReference: {fileID: 760171700}
+    - target: {fileID: 511201238070150170, guid: 39cf856a474a0024fa11563daeedfd5a,
+        type: 3}
+      propertyPath: audioManager
+      value: 
+      objectReference: {fileID: 760171700}
+    - target: {fileID: 511201238265612738, guid: 39cf856a474a0024fa11563daeedfd5a,
+        type: 3}
+      propertyPath: audioManager
+      value: 
+      objectReference: {fileID: 760171700}
+    - target: {fileID: 511201238378973782, guid: 39cf856a474a0024fa11563daeedfd5a,
+        type: 3}
+      propertyPath: audioManager
+      value: 
+      objectReference: {fileID: 760171700}
+    - target: {fileID: 511201238391602439, guid: 39cf856a474a0024fa11563daeedfd5a,
+        type: 3}
+      propertyPath: audioManager
+      value: 
+      objectReference: {fileID: 760171700}
+    - target: {fileID: 511201238564205043, guid: 39cf856a474a0024fa11563daeedfd5a,
+        type: 3}
+      propertyPath: audioManager
+      value: 
+      objectReference: {fileID: 760171700}
+    - target: {fileID: 511201238590480552, guid: 39cf856a474a0024fa11563daeedfd5a,
+        type: 3}
+      propertyPath: audioManager
+      value: 
+      objectReference: {fileID: 760171700}
+    - target: {fileID: 511201238769590105, guid: 39cf856a474a0024fa11563daeedfd5a,
+        type: 3}
+      propertyPath: audioManager
+      value: 
+      objectReference: {fileID: 760171700}
+    - target: {fileID: 511201238856472238, guid: 39cf856a474a0024fa11563daeedfd5a,
+        type: 3}
+      propertyPath: audioManager
+      value: 
+      objectReference: {fileID: 760171700}
+    - target: {fileID: 975745139760251238, guid: 39cf856a474a0024fa11563daeedfd5a,
+        type: 3}
+      propertyPath: audioManager
+      value: 
+      objectReference: {fileID: 760171700}
     - target: {fileID: 3989312380870315776, guid: 39cf856a474a0024fa11563daeedfd5a,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -16022,7 +16122,29 @@ PrefabInstance:
       propertyPath: m_Name
       value: Level
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 8026967280860323989, guid: 39cf856a474a0024fa11563daeedfd5a,
+        type: 3}
+      propertyPath: audioManager
+      value: 
+      objectReference: {fileID: 760171700}
+    - target: {fileID: 8845066543744676514, guid: 39cf856a474a0024fa11563daeedfd5a,
+        type: 3}
+      propertyPath: audioManager
+      value: 
+      objectReference: {fileID: 760171700}
+    m_RemovedComponents:
+    - {fileID: 1751900552, guid: 39cf856a474a0024fa11563daeedfd5a, type: 3}
+    - {fileID: 8026967280860323989, guid: 39cf856a474a0024fa11563daeedfd5a, type: 3}
+    - {fileID: 1751900562, guid: 39cf856a474a0024fa11563daeedfd5a, type: 3}
+    - {fileID: 1751900560, guid: 39cf856a474a0024fa11563daeedfd5a, type: 3}
+    - {fileID: 1751900548, guid: 39cf856a474a0024fa11563daeedfd5a, type: 3}
+    - {fileID: 1751900550, guid: 39cf856a474a0024fa11563daeedfd5a, type: 3}
+    - {fileID: 8845066543744676514, guid: 39cf856a474a0024fa11563daeedfd5a, type: 3}
+    - {fileID: 1751900564, guid: 39cf856a474a0024fa11563daeedfd5a, type: 3}
+    - {fileID: 1751900554, guid: 39cf856a474a0024fa11563daeedfd5a, type: 3}
+    - {fileID: 1751900558, guid: 39cf856a474a0024fa11563daeedfd5a, type: 3}
+    - {fileID: 1751900556, guid: 39cf856a474a0024fa11563daeedfd5a, type: 3}
+    - {fileID: 1751900566, guid: 39cf856a474a0024fa11563daeedfd5a, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 39cf856a474a0024fa11563daeedfd5a, type: 3}
 --- !u!1 &1759431231
 GameObject:
@@ -19038,6 +19160,11 @@ PrefabInstance:
       propertyPath: crosshair
       value: 
       objectReference: {fileID: 1703087567}
+    - target: {fileID: 5651607225151071102, guid: 35b58b46bca88334daef10b3a5c81c42,
+        type: 3}
+      propertyPath: audioManager
+      value: 
+      objectReference: {fileID: 760171700}
     - target: {fileID: 7923622919743733158, guid: 35b58b46bca88334daef10b3a5c81c42,
         type: 3}
       propertyPath: healthUI

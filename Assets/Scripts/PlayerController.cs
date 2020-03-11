@@ -125,6 +125,11 @@ public class PlayerController : MonoBehaviour
                 // hacky way of making push same speed while running and walking
                 rb.MovePosition(rb.position + m_Movement * (pushing ? walkSpeed 
                                                                     : runSpeed) );
+                if (!audioManager.running.isPlaying)
+                {
+                    audioManager.Play(audioManager.running);
+                    audioManager.walking.Stop();
+                }
                 stamina--;
             }
             if (crouching)
