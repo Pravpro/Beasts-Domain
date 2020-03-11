@@ -216,8 +216,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 13337469}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: 0.05688237, y: 0.70481515, z: -0.05688237, w: 0.7048152}
+  m_LocalPosition: {x: -75.8, y: 3.1, z: 13.4}
   m_LocalScale: {x: 30, y: 30, z: 30}
   m_Children: []
   m_Father: {fileID: 0}
@@ -6409,7 +6409,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 382882444}
-  m_LocalRotation: {x: 0.056882735, y: 0.70481527, z: -0.056882847, w: 0.70481503}
+  m_LocalRotation: {x: 0.056882273, y: 0.70481527, z: -0.056882385, w: 0.70481503}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -7320,7 +7320,6 @@ GameObject:
   m_Component:
   - component: {fileID: 760171701}
   - component: {fileID: 760171700}
-  - component: {fileID: 760171702}
   m_Layer: 0
   m_Name: AudioManager
   m_TagString: Untagged
@@ -7371,8 +7370,6 @@ MonoBehaviour:
     homebase: {fileID: 4027853678517964899, guid: b12a37322bc5b8444879a1c72e83a533,
       type: 2}
     training: {fileID: 24500006, guid: b12a37322bc5b8444879a1c72e83a533, type: 2}
-    strings: {fileID: 5723546305241390800, guid: b12a37322bc5b8444879a1c72e83a533,
-      type: 2}
     pauseArena: {fileID: 5331478804513933854, guid: b12a37322bc5b8444879a1c72e83a533,
       type: 2}
     pauseHomeBase: {fileID: -4565273174578477400, guid: b12a37322bc5b8444879a1c72e83a533,
@@ -7521,19 +7518,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &760171702
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 760171699}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 245820831db1b56458ac4dcac9819672, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  player: {fileID: 9206296177949412576}
 --- !u!1 &767905638
 GameObject:
   m_ObjectHideFlags: 0
@@ -13469,7 +13453,9 @@ MonoBehaviour:
   m_LayerIndex: 0
   m_ShowDebugText: 1
   m_EnableAllChildCameras: 1
-  m_ChildCameras: []
+  m_ChildCameras:
+  - {fileID: 1993504316}
+  - {fileID: 807353627}
   m_Instructions:
   - m_FullHash: 1432961145
     m_VirtualCamera: {fileID: 1993504316}
@@ -13590,7 +13576,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1044896107}
-  m_LocalRotation: {x: 0.044104017, y: 0.70573014, z: -0.044103555, w: 0.7057299}
+  m_LocalRotation: {x: 0.044103984, y: 0.70573014, z: -0.04410352, w: 0.7057299}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -19075,14 +19061,6 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 7923622918371968551}
   m_PrefabAsset: {fileID: 0}
---- !u!81 &9206296177949412577
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9206296177949412576}
-  m_Enabled: 1
 --- !u!4 &9206296177949412580 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1311964250415205059, guid: 35b58b46bca88334daef10b3a5c81c42,

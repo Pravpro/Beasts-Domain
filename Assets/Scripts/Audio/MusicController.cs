@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class MusicController : MonoBehaviour
 {
-    public GameObject player;
     private AudioManagerMain audioManager;
 
     private void Start()
