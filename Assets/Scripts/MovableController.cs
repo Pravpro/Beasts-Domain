@@ -6,14 +6,15 @@ using Rewired;
 public class MovableController : MonoBehaviour
 {
     [HideInInspector]
-    public bool isPushing = false;
-
+    public bool isPushing, isMoving = false;
     private Player m_playerInput;
     private Rigidbody m_rbMovable;
+    private Vector2 curPos, lastPos;
 
     private bool m_monsterCollided = false;
 
     public AudioManagerMain audioManager;
+    public PlayerController playerScript;
 
     // Start is called before the first frame update
     void Start()
@@ -21,6 +22,7 @@ public class MovableController : MonoBehaviour
         // to access input using rewired
         m_playerInput = ReInput.players.GetPlayer(0 /*m_playerID */);
         m_rbMovable   = this.GetComponent<Rigidbody>();
+        curPos = lastPos = new Vector2(transform.position.x, transform.position.z);
         
     }
 
@@ -73,11 +75,21 @@ public class MovableController : MonoBehaviour
                 isPushing = true;
                 m_rbMovable.isKinematic = false;
 
+
+                //curPos = new Vector2(transform.position.x, transform.position.z);
+                //isMoving = curPos.x != lastPos.x || curPos.y != lastPos.y;
+                //lastPos = curPos;
+                //Debug.Log(isMoving);
+
                 //Audio
-                if (!audioManager.boulder.isPlaying)
+                if (playerScript.IsMoving())
                 {
-                    audioManager.Play(audioManager.boulder);
+                    if(!audioManager.boulder.isPlaying)
+                        audioManager.Play(audioManager.boulder);
                 }
+                else
+                    audioManager.boulder.Stop();
+
 
                 // always look at the movable objects when pushing
                 Vector3 targetPos = this.transform.position;
@@ -96,6 +108,7 @@ public class MovableController : MonoBehaviour
             {
                 m_rbMovable.isKinematic = true;
                 isPushing = false;
+                audioManager.boulder.Stop();
             }
         }
     }
@@ -104,7 +117,8 @@ public class MovableController : MonoBehaviour
     {
         if (col.tag == "Monster") m_monsterCollided = false;
 
-        
+        //audioManager.boulder.Stop();
+
 
         if (!m_monsterCollided)
         {            

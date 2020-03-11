@@ -125,7 +125,7 @@ public class PlayerController : MonoBehaviour
                 // hacky way of making push same speed while running and walking
                 rb.MovePosition(rb.position + m_Movement * (pushing ? walkSpeed 
                                                                     : runSpeed) );
-                if (!audioManager.running.isPlaying)
+                if (!audioManager.running.isPlaying && grounded)
                 {
                     audioManager.Play(audioManager.running);
                     audioManager.walking.Stop();
@@ -140,7 +140,7 @@ public class PlayerController : MonoBehaviour
             else
             {
                 rb.MovePosition(rb.position + m_Movement * walkSpeed);
-                if(!audioManager.walking.isPlaying)
+                if(!audioManager.walking.isPlaying && grounded)
                 {
                     audioManager.Play(audioManager.walking);
                 }
@@ -171,6 +171,7 @@ public class PlayerController : MonoBehaviour
             rb.velocity += jump * jumpSpeed;
             grounded = false;
 
+            audioManager.walking.Stop();
             audioManager.Play(audioManager.jumping, 1f, 1.1f);
         }
 
@@ -241,6 +242,7 @@ public class PlayerController : MonoBehaviour
         if (col.collider.tag == "Ground")
         {
             grounded = true;
+            Debug.Log("landed");
             audioManager.Play(audioManager.landing, 0.7f, 1.3f);
         }
 
