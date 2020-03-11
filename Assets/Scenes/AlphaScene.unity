@@ -6409,7 +6409,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 382882444}
-  m_LocalRotation: {x: 0.056882523, y: 0.7048154, z: -0.056882635, w: 0.7048149}
+  m_LocalRotation: {x: 0.056882754, y: 0.7048154, z: -0.056882866, w: 0.7048149}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -13453,9 +13453,7 @@ MonoBehaviour:
   m_LayerIndex: 0
   m_ShowDebugText: 1
   m_EnableAllChildCameras: 1
-  m_ChildCameras:
-  - {fileID: 1993504316}
-  - {fileID: 807353627}
+  m_ChildCameras: []
   m_Instructions:
   - m_FullHash: 1432961145
     m_VirtualCamera: {fileID: 1993504316}
@@ -13576,7 +13574,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1044896107}
-  m_LocalRotation: {x: 0.04410405, y: 0.70573026, z: -0.044103608, w: 0.7057298}
+  m_LocalRotation: {x: 0.04410409, y: 0.70573026, z: -0.04410365, w: 0.7057298}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -19012,34 +19010,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 496040780, guid: db2d1e588e2c7e9449a5f4122889d2c2, type: 3}
-      propertyPath: m_Controller
-      value: 
-      objectReference: {fileID: 9100000, guid: 73f4b2dbef79d17419741e5d515ab566, type: 2}
-    - target: {fileID: 496040780, guid: db2d1e588e2c7e9449a5f4122889d2c2, type: 3}
-      propertyPath: m_Avatar
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 5739287687011034710, guid: db2d1e588e2c7e9449a5f4122889d2c2,
-        type: 3}
-      propertyPath: player
-      value: 
-      objectReference: {fileID: 9206296177949412576}
-    - target: {fileID: 5739287687011034710, guid: db2d1e588e2c7e9449a5f4122889d2c2,
-        type: 3}
-      propertyPath: startRoar
-      value: 
-      objectReference: {fileID: 8300000, guid: c4ba7b1503980f042a5704154c1b2042, type: 3}
-    - target: {fileID: 5739287687011034710, guid: db2d1e588e2c7e9449a5f4122889d2c2,
-        type: 3}
-      propertyPath: nostril
-      value: 
-      objectReference: {fileID: 8300000, guid: b9b86032db7fc4259a134b69080b4e17, type: 3}
     - target: {fileID: 5739287687011034710, guid: db2d1e588e2c7e9449a5f4122889d2c2,
         type: 3}
       propertyPath: audioManager
       value: 
       objectReference: {fileID: 760171700}
+    - target: {fileID: 5739287687011034710, guid: db2d1e588e2c7e9449a5f4122889d2c2,
+        type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 9206296177949412576}
     - target: {fileID: 5928507552868471002, guid: db2d1e588e2c7e9449a5f4122889d2c2,
         type: 3}
       propertyPath: m_LocalPosition.x
