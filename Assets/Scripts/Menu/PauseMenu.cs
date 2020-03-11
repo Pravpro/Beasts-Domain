@@ -5,6 +5,9 @@ using UnityEngine.SceneManagement;
 using Rewired;
 public class PauseMenu : MonoBehaviour
 {
+    public AudioManagerMain audioManager;
+    public MusicController musicController;
+
     private Player m_playerInput;
     private bool isPaused, buttonPressed = false;
 
@@ -33,8 +36,10 @@ public class PauseMenu : MonoBehaviour
             buttonPressed = true; isPaused = true;
 
             SceneManager.LoadScene("PauseMenu", LoadSceneMode.Additive);
-            Time.timeScale = 0; 
-            
+            Time.timeScale = 0;
+
+            audioManager.SetVolume(musicController.getPauseState());
+
             StartCoroutine(waitForNextFrame() );
         }
 
@@ -48,6 +53,8 @@ public class PauseMenu : MonoBehaviour
 
                 SceneManager.UnloadSceneAsync("PauseMenu");
                 Time.timeScale = 1;
+
+                audioManager.SetVolume(musicController.getResumeState());
             }
         }
     }

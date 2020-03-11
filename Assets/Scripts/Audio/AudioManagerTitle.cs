@@ -22,10 +22,10 @@ public class AudioManagerTitle : MonoBehaviour
     void Awake()
     {
         // Params: 1.Loop 2.Play on Awake 3.Volume
-        music = AddAudio(true, true, 1f, musicClips[0]);
-        UIToggle = AddAudio(false, false, 0.4f);
-        UISelection = AddAudio(false, false, 0.5f);
-        narrator = AddAudio(false, true, 1f, narratorClips[0]);
+        music = AddAudio(true, true, 1f);
+        UIToggle = AddAudio(false, false, 0.2f);
+        UISelection = AddAudio(false, false, 0.3f);
+        narrator = AddAudio(false, true, 1f);
         
         sourceClipRelation.Add(music, musicClips);
         sourceClipRelation.Add(UIToggle, UIToggleClips);

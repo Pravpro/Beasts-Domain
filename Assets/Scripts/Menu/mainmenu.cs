@@ -57,6 +57,7 @@ public class mainmenu : MonoBehaviour
                 triggerEvent(startBtn);
             else
                 triggerEvent(quitBtn);
+            audioManager.Play(audioManager.UISelection);
         }
 
         if (m_playerInput.GetButtonDown("Back"))
@@ -69,11 +70,11 @@ public class mainmenu : MonoBehaviour
         {
             arrowTrans.position = startPos + offset;
             audioManager.Play(audioManager.UIToggle);
-        }      
+        }
         else if (vertical > 0.0f && Vector3.Distance(arrowTrans.position, startPos + offset) < 0.3f)
         {
             
-            arrowTrans.position = startPos;  
+            arrowTrans.position = startPos;
             audioManager.Play(audioManager.UIToggle);
         }
             

@@ -128,6 +128,20 @@ public class AudioManagerMain : MonoBehaviour
         [Range(0f, 1f)] public float rockSlideVol;
     }
 
+    public enum SnapshotState
+    {
+        Homebase = 0,
+        Training = 1,
+        Arena = 2,
+        Alleys = 3,
+        PauseHombase = 4,
+        PauseTraining = 5,
+        PauseArena = 6,
+        ResumeHomebase = 7,
+        ResumeTraining = 8,
+        ResumeArena = 9
+    }
+
     [Space(6)]
     public MixerGroups mixerGroups;
     [Space(6)]
@@ -171,6 +185,9 @@ public class AudioManagerMain : MonoBehaviour
 
     void Awake()
     {
+
+        DontDestroyOnLoad(this.gameObject);
+
         // SFX: Player sources
         landing = AddAudio(false, false, sfxClips.player.landingVol, mixerGroups.action); // Params: 1.Loop 2.Play on Awake 3.Volume 4. Mixer Group
         jumping = AddAudio(false, false, sfxClips.player.jumpingVol, mixerGroups.action);
@@ -282,39 +299,43 @@ public class AudioManagerMain : MonoBehaviour
         bossStrings.PlayDelayed(5.5f);
     }
 
-    public void SetHomebaseVolume()
+    public void SetVolume(SnapshotState state)
     {
-        snapshots.homebase.TransitionTo(2f);
-    }
-
-    public void SetTrainingVolume()
-    {
-        snapshots.training.TransitionTo(2f);
-    }
-
-    public void SetArenaVolume()
-    {
-        snapshots.arena.TransitionTo(2f);
-    }
-
-    public void SetPauseArenaVolume()
-    {
-        snapshots.pauseArena.TransitionTo(0f);
-    }
-
-    public void SetPauseHomebaseVolume()
-    {
-        snapshots.pauseHomeBase.TransitionTo(0f);
-    }
-
-    public void SetPauseTrainingVolume()
-    {
-        snapshots.pauseTraining.TransitionTo(0f);
-    }
-
-    public void SetAlleysVolume()
-    {
-        snapshots.alleys.TransitionTo(2f);
+        Debug.Log(state);
+        switch (state)
+        {
+            case SnapshotState.Homebase:
+                snapshots.homebase.TransitionTo(2f);
+                break;
+            case SnapshotState.Training:
+                snapshots.training.TransitionTo(2f);
+                break;
+            case SnapshotState.Arena:
+                snapshots.arena.TransitionTo(2f);
+                break;
+            case SnapshotState.Alleys:
+                snapshots.alleys.TransitionTo(2f);
+                break;
+            case SnapshotState.PauseHombase:
+                snapshots.pauseHomeBase.TransitionTo(0f);
+                break;
+            case SnapshotState.PauseTraining:
+                snapshots.pauseTraining.TransitionTo(0f);
+                break;
+            case SnapshotState.PauseArena:
+                snapshots.pauseArena.TransitionTo(0f);
+                break;
+            case SnapshotState.ResumeHomebase:
+                snapshots.homebase.TransitionTo(0f);
+                break;
+            case SnapshotState.ResumeTraining:
+                snapshots.training.TransitionTo(0f);
+                break;
+            case SnapshotState.ResumeArena:
+                snapshots.arena.TransitionTo(0f);
+                break;
+            
+        }
     }
 }
 
