@@ -216,8 +216,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 13337469}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: 0.056882948, y: 0.7048151, z: -0.056882948, w: 0.70481515}
+  m_LocalPosition: {x: -75.8, y: 3.1, z: 13.4}
   m_LocalScale: {x: 30, y: 30, z: 30}
   m_Children: []
   m_Father: {fileID: 0}
@@ -6406,7 +6406,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 382882444}
-  m_LocalRotation: {x: 0.056882273, y: 0.70481527, z: -0.056882385, w: 0.70481503}
+  m_LocalRotation: {x: 0.05688262, y: 0.70481527, z: -0.05688273, w: 0.70481503}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -7038,14 +7038,14 @@ RectTransform:
   m_GameObject: {fileID: 657578384}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children: []
   m_Father: {fileID: 260698480}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 614, y: -200}
+  m_AnchorMin: {x: 1, y: 0}
+  m_AnchorMax: {x: 1, y: 0}
+  m_AnchoredPosition: {x: -120, y: 120}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &657578386
@@ -7298,6 +7298,7 @@ MonoBehaviour:
     pause: {fileID: -4565273174578477400, guid: b12a37322bc5b8444879a1c72e83a533,
       type: 2}
     boss: {fileID: 8252497145976169834, guid: b12a37322bc5b8444879a1c72e83a533, type: 2}
+    alleys: {fileID: 0}
   sfxClips:
     player:
       landing:
@@ -7310,11 +7311,10 @@ MonoBehaviour:
       stamina:
       - {fileID: 8300000, guid: ca73de5900e5c2946bf69e0bd1d4dad1, type: 3}
       staminaVol: 0.1
-      footstep:
-      - {fileID: 8300000, guid: 87513ba3b8b4fd24d832592899ab6853, type: 3}
-      - {fileID: 8300000, guid: 908f10149ce7b2f4a8f939f35016d4d3, type: 3}
-      - {fileID: 8300000, guid: b9ef2fcd1105e834098f1080eedc12d5, type: 3}
-      footstepVol: 0.4
+      walking: []
+      walkingVol: 0
+      running: []
+      runningVol: 0
       damage:
       - {fileID: 8300000, guid: 915b8c427065a9b44a77de4ff74ed6ce, type: 3}
       damageVol: 1
@@ -7393,7 +7393,8 @@ MonoBehaviour:
   landing: {fileID: 0}
   jumping: {fileID: 0}
   stamina: {fileID: 0}
-  footstep: {fileID: 0}
+  walking: {fileID: 0}
+  running: {fileID: 0}
   slingshotDraw: {fileID: 0}
   slingshotRelease: {fileID: 0}
   rock: {fileID: 0}
@@ -13489,7 +13490,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1044896107}
-  m_LocalRotation: {x: 0.04410395, y: 0.70573014, z: -0.04410349, w: 0.7057299}
+  m_LocalRotation: {x: 0.044104118, y: 0.70573014, z: -0.044103656, w: 0.7057299}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
