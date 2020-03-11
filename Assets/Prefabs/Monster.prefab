@@ -65,6 +65,8 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 75831189a3c11429891b7cac8261b43d, type: 3}
   - {fileID: 8300000, guid: 23e68e8634f854b3c9be027291d69455, type: 3}
   - {fileID: 8300000, guid: d2500c59057a34618998930deaf16822, type: 3}
+  startRoar: {fileID: 0}
+  nostril: {fileID: 0}
   damage: {fileID: 6346451721298342684}
   choir: {fileID: 496040787}
   roar1: {fileID: 496040789}
@@ -74,6 +76,7 @@ MonoBehaviour:
   IntroFight: {fileID: 24500006, guid: b12a37322bc5b8444879a1c72e83a533, type: 2}
   Boss: {fileID: 8252497145976169834, guid: b12a37322bc5b8444879a1c72e83a533, type: 2}
   player: {fileID: 0}
+  animator: {fileID: 0}
   turningSpeed: 1
   movingSpeed: 5.5
   maxHp: 2
