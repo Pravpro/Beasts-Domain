@@ -27,11 +27,12 @@ public class AIController : MonoBehaviour
     public float movingSpeed  = 1.0f;
     public int maxHp = 2;
     public int hp = 2;
-    public float maxChargeDistance = 40.0f;
+    public float maxChargeDistance = 50.0f;
+    public float maxAoeDistance = 20.0f;
+    public float maxMeleeDistance = 7.0f;
+    public int maxMoss = 4;
 
     // give some buffer time for player to get next damange
-    private Coroutine damageCoroutine = null;
-    private bool gotHit = false;
 
     public bool playerInSight
     {
@@ -45,9 +46,13 @@ public class AIController : MonoBehaviour
     public float scenLoadTime = 0f;
 
     public GameObject targetObj;
+    public GameObject mossObj;
+
     // private variables
     private bool m_playerInSight = false;
     private bool m_roarPlayed = false;
+    private bool gotHit = false;
+    private Coroutine damageCoroutine = null;
 
     private Rigidbody rb;
     private PlayerController playerScript;
@@ -68,6 +73,7 @@ public class AIController : MonoBehaviour
         Idle,
         RandomSearch,
         Charge,
+        Attack,
         Defeated,
         Interrupted
     }
@@ -77,8 +83,20 @@ public class AIController : MonoBehaviour
         Two,
         Three
     }
+    private enum SubState
+    {
+        Charge,
+        AOE,
+        Horn,
+        Kick
+    }
     private State state = State.Idle;
+    private SubState subState = SubState.Horn;
     private Phase phase = Phase.One;
+
+    private int throwedMoss = 0;
+    private float nextThrowTime = 0f;
+    private float throwDelay = 0.33f;
 
     //private LineRenderer lineRenderer;
 
@@ -208,7 +226,7 @@ public class AIController : MonoBehaviour
             }
             interruptPos = new Vector3Wrapper(player.transform.position);
         }
-        // Debug.Log(state);
+        // Debug.Log(state + "  " + subState);
         switch(state)
         {
             case State.Idle:
@@ -230,36 +248,8 @@ public class AIController : MonoBehaviour
                     }
                 }
                 break;
-            case State.Charge:
-                if (ReachedWanderDest())
-                {
-                    if (interruptPos != null)
-                    {
-                        SetDestination(interruptPos.vector);
-                        //agent.SetDestination(interruptPos.vector);
-                        state = State.Interrupted;
-                    }
-                    else
-                    {
-                        state = State.RandomSearch;
-                    }
-                    UnsetChargeSpeed();
-                    UnsetChargeAreaMask();
-                    // if (lastSense != null)
-                    // {
-                    //     target = lastSense;
-                    //     lastSense = null;
-                    // }
-                    // else
-                    // {
-                    //     state = State.RandomSearch;
-                    //     RestartAgent();
-                    //     target = null;
-                    // }
-                }
-                // else
-                //     Charge();
-
+            case State.Attack:
+                UpdateAttackSubStateMachine();
                 break;
             case State.Interrupted:
                 if (sensedPlayer) { ReactToPlayer(); return; }
@@ -301,6 +291,156 @@ public class AIController : MonoBehaviour
         animator.SetBool("IsIdle", state == State.Idle);
         animator.SetBool("IsWalking", state == State.RandomSearch || state == State.Interrupted);
         animator.SetBool("IsCharging", state == State.Charge); // not allow running if recovering stamina
+    }
+
+    void UpdateAttackSubStateMachineStates()
+    {
+        float d = DistanceToPlayer();
+        if (d < maxMeleeDistance)
+        {
+            // TODO: horn and kick
+        }
+        else if (d < maxAoeDistance)
+        {
+            subState = SubState.AOE;
+        }
+        else
+        {
+            bool canCharge = PrepareCharge();
+            if (canCharge)
+            {
+                subState = SubState.Charge;
+                SetChargeSpeed();
+                SetChargeAreaMask();
+                SetDestination(target.vector);
+            }
+        }
+    }
+
+    void UpdateAttackSubStateMachine()
+    {
+        if (subState != SubState.Charge)
+            UpdateAttackSubStateMachineStates();
+        
+        switch (subState)
+        {
+            case SubState.Charge:
+                if (ReachedWanderDest())
+                {
+                    if (interruptPos != null)
+                    {
+                        SetDestination(interruptPos.vector);
+                        //agent.SetDestination(interruptPos.vector);
+                        state = State.Interrupted;
+                    }
+                    else
+                    {
+                        state = State.RandomSearch;
+                    }
+                    UnsetChargeSpeed();
+                    UnsetChargeAreaMask();
+                    UpdateAttackSubStateMachineStates();
+                    // if (lastSense != null)
+                    // {
+                    //     target = lastSense;
+                    //     lastSense = null;
+                    // }
+                    // else
+                    // {
+                    //     state = State.RandomSearch;
+                    //     RestartAgent();
+                    //     target = null;
+                    // }
+                }
+                else
+                {
+                    // SetChargeSpeed();
+                    // SetChargeAreaMask();
+                }
+                break;
+            case SubState.AOE:
+                if (throwedMoss < maxMoss)
+                    ThrowMoss();
+                else
+                {
+                    if (interruptPos != null)
+                    {
+                        SetDestination(interruptPos.vector);
+                        //agent.SetDestination(interruptPos.vector);
+                        state = State.Interrupted;
+                    }
+                    else
+                    {
+                        state = State.RandomSearch;
+                    }
+                }
+                break;
+            default:
+                break;
+        }
+    }
+
+    bool PrepareCharge()
+    {
+        Vector3 playerPos = player.transform.position;
+        Vector3 toPlayer = playerPos - transform.position;
+        toPlayer.y = 0;
+        toPlayer = toPlayer.normalized;
+
+        Vector3 targetPos;
+        RaycastHit hitInfo;
+        NavMeshHit hit;
+        int layerMask = ~(1 << LayerMask.NameToLayer("Player"));
+
+        // check if player can be directly charged at
+        Vector3 raycastOrigin = transform.position;
+        raycastOrigin.y = 0.5f;
+        bool blocked = Physics.Raycast(raycastOrigin, toPlayer, out hitInfo, maxChargeDistance) && hitInfo.collider.tag != "Player";
+        bool noStraightPath = NavMesh.Raycast(transform.position, playerPos - toPlayer * 2f, out hit, NavMesh.AllAreas);
+        if (hit.distance < 2f)
+            noStraightPath = false;
+
+        if (!noStraightPath && blocked)
+            Debug.Log("nononononono");
+
+        if (!noStraightPath)
+        {
+            // if (Physics.Raycast(raycastOrigin, toPlayer, out hitInfo, Mathf.Infinity, layerMask) )
+            //     targetPos = transform.position + Mathf.Min(maxChargeDistance, (hitInfo.point - raycastOrigin).magnitude ) * toPlayer;
+            // else
+            //     targetPos = transform.position + maxChargeDistance * toPlayer;
+            NavMesh.Raycast(transform.position, playerPos + toPlayer * 1000, out hit, NavMesh.AllAreas);
+            targetPos = transform.position + Mathf.Min(maxChargeDistance, hit.distance) * toPlayer;
+            //nostril flare before charge?
+            audioManager.Play(audioManager.flare);
+        }
+        // cannot charge at player directly
+        else
+        {
+            targetPos = player.transform.position;
+            UnsetChargeSpeed();
+            UnsetChargeAreaMask();
+            // TODO: if cannot directly charge at player, what should the state be?
+            state = State.Interrupted;
+        }
+
+        target = new Vector3Wrapper(targetPos);
+        return !noStraightPath;
+        //agent.SetDestination(target.vector);
+    }
+
+    void ThrowMoss()
+    {
+        if (throwedMoss >= maxMoss)
+            return;
+        if (Time.time <= nextThrowTime)
+            return;
+        Vector2 randVec2 = Random.insideUnitCircle.normalized;
+        Vector3 dir = new Vector3(randVec2.x, 0, randVec2.y);
+        GameObject moss = Instantiate(mossObj, transform.position + 3f * dir, transform.rotation);
+        moss.GetComponent<Rigidbody>().velocity += dir * 12f;
+        throwedMoss += 1;
+        nextThrowTime = Time.time + throwDelay;
     }
 
     void OnCollisionEnter(Collision col)
@@ -420,67 +560,14 @@ public class AIController : MonoBehaviour
     {
         if (IsPhaseOne())
             phase = Phase.Two;
-        
-        Vector3 playerPos = player.transform.position;
-        Vector3 toPlayer = playerPos - transform.position;
-        toPlayer.y = 0;
-        toPlayer = toPlayer.normalized;
 
-        Vector3 targetPos;
-        RaycastHit hitInfo;
-        NavMeshHit hit;
-        int layerMask = ~(1 << LayerMask.NameToLayer("Player"));
-
-        // check if player can be directly charged at
-        Vector3 raycastOrigin = transform.position;
-        raycastOrigin.y = 0.5f;
-        bool blocked = Physics.Raycast(raycastOrigin, toPlayer, out hitInfo, maxChargeDistance) && hitInfo.collider.tag != "Player";
-        bool noStraightPath = NavMesh.Raycast(transform.position, playerPos, out hit, NavMesh.AllAreas);
-        if (hit.distance < 2f)
-            noStraightPath = false;
-
-        if (!blocked && !noStraightPath)
-        {
-            if (Physics.Raycast(raycastOrigin, toPlayer, out hitInfo, Mathf.Infinity, layerMask) )
-                targetPos = transform.position + Mathf.Min(maxChargeDistance, (hitInfo.point - raycastOrigin).magnitude ) * toPlayer;
-            else
-                targetPos = transform.position + maxChargeDistance * toPlayer;
-            state = State.Charge;
-            SetChargeSpeed();
-            SetChargeAreaMask();
-            //nostril flare before charge?
-            audioManager.Play(audioManager.flare);
-        }
-        // cannot charge at player directly
-        else
-        {
-            targetPos = player.transform.position;
-            UnsetChargeSpeed();
-            UnsetChargeAreaMask();
-            // TODO: if cannot directly charge at player, what should the state be?
-            state = State.Interrupted;
-        }
-
-        target = new Vector3Wrapper(targetPos);
-        SetDestination(target.vector);
-        //agent.SetDestination(target.vector);
-    }
-
-    void Charge()
-    {
-        // Vector3 tPos = target.vector;
-        // Vector3 location = transform.position;
-        // Vector3 tDir = tPos - location;
-        // tDir.y = transform.forward.y;
-        // tDir.Normalize();
-        // Quaternion qRotate = Quaternion.LookRotation(tDir, transform.up);
-        // transform.position = Vector3.MoveTowards(transform.position, tPos, Time.deltaTime * movingSpeed);
-        // transform.rotation = Quaternion.Slerp(transform.rotation, qRotate, Time.deltaTime * turningSpeed);
+        state = State.Attack;
+        UpdateAttackSubStateMachineStates();
     }
 
     public void Interrupt(Vector3 pos, bool fromPlayer = false)
     {
-        if (state == State.Charge)
+        if (state == State.Attack)
         {
             if (fromPlayer && playerReachable)
                 interruptPos = new Vector3Wrapper(pos);
@@ -538,6 +625,11 @@ public class AIController : MonoBehaviour
         if (ignoreY)
             diff.y = 0;
         return diff.magnitude;
+    }
+
+    float DistanceToPlayer()
+    {
+        return DistanceTo(player.transform.position, true);
     }
 
     // TODO: not hard code the speed

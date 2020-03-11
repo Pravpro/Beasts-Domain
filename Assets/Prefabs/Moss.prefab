@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 115900146386600647}
   - component: {fileID: 115900146386600646}
   - component: {fileID: 115900146386600645}
+  - component: {fileID: -9133104080907875893}
   m_Layer: 0
   m_Name: Moss
   m_TagString: Untagged
@@ -28,7 +29,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 115900146386600644}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -45.01952, y: 1.809416, z: 39.512806}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -110,3 +111,17 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &-9133104080907875893
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 115900146386600644}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d2bc7584a4e564d45a3164228fd2bb10, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mossAreaObj: {fileID: 5605519090829086092, guid: a4006ea8aff73fd41ae81ae7b1dc72fb,
+    type: 3}
