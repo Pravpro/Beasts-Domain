@@ -216,8 +216,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 13337469}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: 0.056882948, y: 0.7048151, z: -0.056882948, w: 0.70481515}
+  m_LocalPosition: {x: -77.3, y: 3.1, z: 10.1}
   m_LocalScale: {x: 30, y: 30, z: 30}
   m_Children: []
   m_Father: {fileID: 0}
@@ -1426,6 +1426,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 7405921560749070738, guid: 124763a81d4090e40af2157b5d6f9b66,
+        type: 3}
+      propertyPath: viewDistance
+      value: 45
+      objectReference: {fileID: 0}
     - target: {fileID: 7405921560749070739, guid: 124763a81d4090e40af2157b5d6f9b66,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -6409,7 +6414,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 382882444}
-  m_LocalRotation: {x: 0.0568823, y: 0.7048158, z: -0.056882482, w: 0.7048145}
+  m_LocalRotation: {x: 0.056882646, y: 0.7048158, z: -0.05688283, w: 0.7048145}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -13576,7 +13581,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1044896107}
-  m_LocalRotation: {x: 0.044104394, y: 0.7057264, z: -0.044103455, w: 0.70573366}
+  m_LocalRotation: {x: 0.04410419, y: 0.7057264, z: -0.04410325, w: 0.70573366}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -19185,6 +19190,11 @@ PrefabInstance:
       propertyPath: audioManager
       value: 
       objectReference: {fileID: 760171700}
+    - target: {fileID: 1311964250415205058, guid: 35b58b46bca88334daef10b3a5c81c42,
+        type: 3}
+      propertyPath: jumpSpeed
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 1311964250415205059, guid: 35b58b46bca88334daef10b3a5c81c42,
         type: 3}
       propertyPath: m_LocalPosition.x
