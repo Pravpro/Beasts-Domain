@@ -287,6 +287,7 @@ AudioMixerController:
   - {fileID: 5723546305241390800}
   - {fileID: 8252497145976169834}
   - {fileID: -4565273174578477400}
+  - {fileID: 1155859526790766930}
   m_StartSnapshot: {fileID: 4027853678517964899}
   m_SuspendThreshold: -80
   m_EnableSuspend: 1
@@ -335,7 +336,7 @@ AudioMixerController:
     - 62c7bc1dfe53e4aa88d56a9a515c7696
     name: SFX
   m_CurrentViewIndex: 0
-  m_TargetSnapshot: {fileID: 5723546305241390800}
+  m_TargetSnapshot: {fileID: 1155859526790766930}
 --- !u!243 &24300002
 AudioMixerGroupController:
   m_ObjectHideFlags: 0
@@ -382,6 +383,7 @@ AudioMixerSnapshotController:
   m_AudioMixer: {fileID: 24100000}
   m_SnapshotID: ef5a8a1c9cb4f6147a20b937c53ea462
   m_FloatValues:
+    ad20914c17df3460d92b6097bd1cca87: -80
     e716915d279d3cb4c8d8cc8c0c6466c6: -80
     0e5d7f3e5c2601d4ebef0135b9264d2d: -10.345207
     8d523cafe5a752a46805083ed60b1f20: -80
@@ -454,6 +456,21 @@ AudioMixerEffectController:
   m_SendTarget: {fileID: 0}
   m_EnableWetMix: 0
   m_Bypass: 0
+--- !u!245 &1155859526790766930
+AudioMixerSnapshotController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Alleys
+  m_AudioMixer: {fileID: 24100000}
+  m_SnapshotID: 846dc6f7ff05f194cbf58755671783f4
+  m_FloatValues:
+    ad20914c17df3460d92b6097bd1cca87: -80
+    e716915d279d3cb4c8d8cc8c0c6466c6: -80
+    0e5d7f3e5c2601d4ebef0135b9264d2d: -80
+    8d523cafe5a752a46805083ed60b1f20: -80
+  m_TransitionOverrides: {}
 --- !u!244 &1890947193073910676
 AudioMixerEffectController:
   m_ObjectHideFlags: 3
@@ -530,6 +547,7 @@ AudioMixerSnapshotController:
   m_AudioMixer: {fileID: 24100000}
   m_SnapshotID: cf1940bf1fe503841adaa1e3399f4cc0
   m_FloatValues:
+    ad20914c17df3460d92b6097bd1cca87: -80
     0e5d7f3e5c2601d4ebef0135b9264d2d: -80
     8d523cafe5a752a46805083ed60b1f20: -10.4748535
   m_TransitionOverrides: {}
@@ -623,6 +641,7 @@ AudioMixerSnapshotController:
   m_AudioMixer: {fileID: 24100000}
   m_SnapshotID: fef200b1511fc764caee42378e718ff1
   m_FloatValues:
+    ad20914c17df3460d92b6097bd1cca87: -80
     e716915d279d3cb4c8d8cc8c0c6466c6: -80
     0e5d7f3e5c2601d4ebef0135b9264d2d: -80
     8d523cafe5a752a46805083ed60b1f20: -9.960263
