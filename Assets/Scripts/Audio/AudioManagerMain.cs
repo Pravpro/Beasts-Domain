@@ -171,11 +171,11 @@ public class AudioManagerMain : MonoBehaviour
         landing = AddAudio(false, false, sfxClips.player.landingVol, mixerGroups.action); // Params: 1.Loop 2.Play on Awake 3.Volume 4. Mixer Group
         jumping = AddAudio(false, false, sfxClips.player.jumpingVol, mixerGroups.action);
         stamina = AddAudio(false, false, sfxClips.player.staminaVol, mixerGroups.action);
-        walking = AddAudio(true, false, sfxClips.player.walkingVol, mixerGroups.action);
-        running = AddAudio(true, false, sfxClips.player.runningVol, mixerGroups.action);
+        walking = AddAudio(false, false, sfxClips.player.walkingVol, mixerGroups.action);
+        running = AddAudio(false, false, sfxClips.player.runningVol, mixerGroups.action);
         damage = AddAudio(false, false, sfxClips.player.damageVol, mixerGroups.action);
         death = AddAudio(false, false, sfxClips.player.deathVol, mixerGroups.action);
-        boulder = AddAudio(true, false, sfxClips.player.boulderVol, mixerGroups.action);
+        boulder = AddAudio(false, false, sfxClips.player.boulderVol, mixerGroups.action);
         slingshotDraw = AddAudio(false, false, sfxClips.player.slingshotDrawVol, mixerGroups.weapons);
         slingshotRelease = AddAudio(false, false, sfxClips.player.slingshotReleaseVol, mixerGroups.weapons);
         rock = AddAudio(false, false, sfxClips.player.rockVol, mixerGroups.weapons);
