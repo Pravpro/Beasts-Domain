@@ -141,6 +141,7 @@ public class PlayerController : MonoBehaviour
             else
             {
                 rb.MovePosition(rb.position + m_Movement * walkSpeed);
+                audioManager.Play(audioManager.walking);
             }
 
             

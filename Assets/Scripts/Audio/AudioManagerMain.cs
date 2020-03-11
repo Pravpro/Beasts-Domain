@@ -53,8 +53,10 @@ public class AudioManagerMain : MonoBehaviour
             [Range(0f, 1f)] public float jumpingVol;
             public AudioClip[] stamina;
             [Range(0f, 1f)] public float staminaVol;
-            public AudioClip[] footstep;
-            [Range(0f, 1f)] public float footstepVol;
+            public AudioClip[] walking;
+            [Range(0f, 1f)] public float walkingVol;
+            public AudioClip[] running;
+            [Range(0f, 1f)] public float runningVol;
             public AudioClip[] damage;
             [Range(0f, 1f)] public float damageVol;
             public AudioClip[] death;
@@ -136,7 +138,8 @@ public class AudioManagerMain : MonoBehaviour
     [HideInInspector] public AudioSource landing; // pitch: 0.7, 1.3
     [HideInInspector] public AudioSource jumping; // pitch: 1.0, 1.1
     [HideInInspector] public AudioSource stamina;
-    [HideInInspector] public AudioSource footstep; //pitch: 0.8, 1.2
+    [HideInInspector] public AudioSource walking; //pitch: 0.8, 1.2
+    [HideInInspector] public AudioSource running; //pitch: 0.8, 1.2
     [HideInInspector] public AudioSource slingshotDraw;
     [HideInInspector] public AudioSource slingshotRelease;
     [HideInInspector] public AudioSource rock; //pitch: 0.6, 1.3
@@ -167,7 +170,8 @@ public class AudioManagerMain : MonoBehaviour
         landing = AddAudio(false, false, sfxClips.player.landingVol, mixerGroups.action); // Params: 1.Loop 2.Play on Awake 3.Volume 4. Mixer Group
         jumping = AddAudio(false, false, sfxClips.player.jumpingVol, mixerGroups.action);
         stamina = AddAudio(false, false, sfxClips.player.staminaVol, mixerGroups.action);
-        footstep = AddAudio(false, false, sfxClips.player.footstepVol, mixerGroups.action);
+        walking = AddAudio(true, false, sfxClips.player.walkingVol, mixerGroups.action);
+        running = AddAudio(true, false, sfxClips.player.runningVol, mixerGroups.action);
         damage = AddAudio(false, false, sfxClips.player.damageVol, mixerGroups.action);
         death = AddAudio(false, false, sfxClips.player.deathVol, mixerGroups.action);
         boulder = AddAudio(true, false, sfxClips.player.boulderVol, mixerGroups.action);
@@ -199,7 +203,8 @@ public class AudioManagerMain : MonoBehaviour
         sourceClipRelation.Add(landing, sfxClips.player.landing);
         sourceClipRelation.Add(jumping, sfxClips.player.jumping);
         sourceClipRelation.Add(stamina, sfxClips.player.stamina);
-        sourceClipRelation.Add(footstep, sfxClips.player.footstep);
+        sourceClipRelation.Add(walking, sfxClips.player.walking);
+        sourceClipRelation.Add(running, sfxClips.player.running);
         sourceClipRelation.Add(damage, sfxClips.player.damage);
         sourceClipRelation.Add(death, sfxClips.player.death);
         sourceClipRelation.Add(boulder, sfxClips.player.boulder);
