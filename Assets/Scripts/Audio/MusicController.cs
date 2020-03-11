@@ -15,6 +15,7 @@ public class MusicController : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        Debug.Log("The trigger is: " + other.name);
         if (other.name == "Homebase")
             audioManager.SetHomebaseVolume();
         else if (other.name == "Training")
