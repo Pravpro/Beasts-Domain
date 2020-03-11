@@ -78,10 +78,10 @@ public class AudioManagerMain : MonoBehaviour
         [System.Serializable]
         public class BeastClips
         {
-            public AudioClip[] phase1;
-            [Range(0f, 1f)] public float phase1Vol;
-            public AudioClip[] phase2;
-            [Range(0f, 1f)] public float phase2Vol;
+            public AudioClip[] roar1;
+            [Range(0f, 1f)] public float roar1Vol;
+            public AudioClip[] roar2;
+            [Range(0f, 1f)] public float roar2Vol;
             public AudioClip[] hurt;
             [Range(0f, 1f)] public float hurtVol;
             public AudioClip[] flare;
@@ -148,12 +148,12 @@ public class AudioManagerMain : MonoBehaviour
     [HideInInspector] public AudioSource spell;
     [HideInInspector] public AudioSource moodboard;
     [HideInInspector] public AudioSource strings;
-    [HideInInspector] public AudioSource bossstrings;
+    [HideInInspector] public AudioSource bossStrings;
     [HideInInspector] public AudioSource boss1;
     [HideInInspector] public AudioSource boss2;
     [HideInInspector] public AudioSource homebase;
-    [HideInInspector] public AudioSource phase1;
-    [HideInInspector] public AudioSource phase2;
+    [HideInInspector] public AudioSource roar1;
+    [HideInInspector] public AudioSource roar2;
     [HideInInspector] public AudioSource hurt;
     [HideInInspector] public AudioSource flare;
     [HideInInspector] public AudioSource hoof;
@@ -182,15 +182,15 @@ public class AudioManagerMain : MonoBehaviour
         rock = AddAudio(false, false, sfxClips.player.rockVol, mixerGroups.weapons);
         spell = AddAudio(false, false, sfxClips.player.spellVol, mixerGroups.weapons);
         // SFX: Beast sources
-        phase1 = AddAudio(false, false, sfxClips.beast.phase1Vol, mixerGroups.beast);
-        phase2 = AddAudio(false, false, sfxClips.beast.phase2Vol, mixerGroups.beast);
+        roar1 = AddAudio(false, false, sfxClips.beast.roar1Vol, mixerGroups.beast);
+        roar2 = AddAudio(false, false, sfxClips.beast.roar2Vol, mixerGroups.beast);
         hurt = AddAudio(false, false, sfxClips.beast.hurtVol, mixerGroups.beast);
         flare = AddAudio(false, false, sfxClips.beast.flareVol, mixerGroups.beast);
         hoof = AddAudio(false, false, sfxClips.beast.hoofVol, mixerGroups.beast);
         // Music sources
         moodboard = AddAudio(true, true, musicClips.moodboardVol, mixerGroups.training);
-        strings = AddAudio(true, true, musicClips.stringsVol, mixerGroups.homebase);
-        bossstrings = AddAudio(true, false, musicClips.bossstringsVol, mixerGroups.arena);
+        strings = AddAudio(true, true, musicClips.stringsVol, mixerGroups.arena);
+        bossStrings = AddAudio(true, false, musicClips.bossstringsVol, mixerGroups.arena);
         boss1 = AddAudio(true, false, musicClips.boss1Vol, mixerGroups.arena);
         boss2 = AddAudio(true, false, musicClips.boss2Vol, mixerGroups.arena);
         homebase = AddAudio(true, true, musicClips.homebaseVol, mixerGroups.homebase);
@@ -214,14 +214,14 @@ public class AudioManagerMain : MonoBehaviour
         sourceClipRelation.Add(slingshotRelease, sfxClips.player.slingshotRelease);
         sourceClipRelation.Add(rock, sfxClips.player.rock);
         sourceClipRelation.Add(spell, sfxClips.player.spell);
-        sourceClipRelation.Add(phase1, sfxClips.beast.phase1);
-        sourceClipRelation.Add(phase2, sfxClips.beast.phase1);
+        sourceClipRelation.Add(roar1, sfxClips.beast.roar1);
+        sourceClipRelation.Add(roar2, sfxClips.beast.roar1);
         sourceClipRelation.Add(hurt, sfxClips.beast.hurt);
         sourceClipRelation.Add(flare, sfxClips.beast.flare);
         sourceClipRelation.Add(hoof, sfxClips.beast.hoof);
         sourceClipRelation.Add(moodboard, musicClips.moodboard);
         sourceClipRelation.Add(strings, musicClips.strings);
-        sourceClipRelation.Add(bossstrings, musicClips.bossstrings);
+        sourceClipRelation.Add(bossStrings, musicClips.bossstrings);
         sourceClipRelation.Add(boss1, musicClips.boss1);
         sourceClipRelation.Add(boss2, musicClips.boss2);
         sourceClipRelation.Add(homebase, musicClips.homebase);
@@ -248,11 +248,32 @@ public class AudioManagerMain : MonoBehaviour
 
     public void Play(AudioSource toPlay, float low = 1f, float high = 1f)
     {
-           
         toPlay.clip = sourceClipRelation[toPlay][Random.Range(0, sourceClipRelation[toPlay].Length)];
         toPlay.pitch = Random.Range(low, high);
         toPlay.Play();
 
+    }
+
+    public void PlayPhaseOne()
+    {
+        strings.Stop();
+        Play(roar1);
+        boss1.clip = sourceClipRelation[boss1][Random.Range(0, sourceClipRelation[boss1].Length)];
+        boss1.PlayDelayed(2.5f);
+        bossStrings.clip = sourceClipRelation[bossStrings][Random.Range(0, sourceClipRelation[bossStrings].Length)];
+        bossStrings.PlayDelayed(2.5f);
+    }
+
+    public void PlayPhaseTwo()
+    {
+        boss1.Stop();
+        bossStrings.Stop();
+
+        Play(roar2);
+        boss2.clip = sourceClipRelation[boss2][Random.Range(0, sourceClipRelation[boss2].Length)];
+        boss2.PlayDelayed(5.5f);
+        bossStrings.clip = sourceClipRelation[bossStrings][Random.Range(0, sourceClipRelation[bossStrings].Length)];
+        bossStrings.PlayDelayed(5.5f);
     }
 
     public void SetHomebaseVolume()
@@ -267,7 +288,7 @@ public class AudioManagerMain : MonoBehaviour
 
     public void SetArenaVolume()
     {
-        snapshots.arena.TransitionTo(1.5f);
+        snapshots.arena.TransitionTo(2f);
     }
 
     public void SetPauseArenaVolume()
@@ -287,7 +308,7 @@ public class AudioManagerMain : MonoBehaviour
 
     public void SetAlleysVolume()
     {
-        snapshots.alleys.TransitionTo(0f);
+        snapshots.alleys.TransitionTo(2f);
     }
 }
 

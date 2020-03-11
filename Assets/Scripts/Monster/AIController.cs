@@ -112,7 +112,7 @@ public class AIController : MonoBehaviour
         //lineRenderer = GetComponent<LineRenderer>();
         //lineRenderer.positionCount = 2;
 
-        IntroFight.TransitionTo(0.0f);
+        //IntroFight.TransitionTo(0.0f);
         //choir.Play();
         //strings.clip = Violin;
         //strings.PlayDelayed(30.0f);
@@ -232,6 +232,9 @@ public class AIController : MonoBehaviour
                 //fightStrings.clip = bossStrings[randomClip];
                 //fightStrings.Play();
                 //fight1.Play();
+
+                audioManager.PlayPhaseOne();
+                
 
                 m_roarPlayed = true;
             }
