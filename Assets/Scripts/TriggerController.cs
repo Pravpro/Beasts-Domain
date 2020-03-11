@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class TriggerController : MonoBehaviour
 {
+    public AudioManagerMain audioManager;
     public bool triggered = false;
     public int resetTime = 10;
     public float triggerCoeff = 3f;
@@ -56,6 +57,7 @@ public class TriggerController : MonoBehaviour
         {
             if (script.hp > 0)
             {
+                audioManager.Play(audioManager.hurt);
                 script.TakeDamage(transform.position);
                 script.hp -= 1;
                 Debug.Log("monster lose health to " + script.hp);
