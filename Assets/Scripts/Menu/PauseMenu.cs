@@ -33,7 +33,7 @@ public class PauseMenu : MonoBehaviour
             buttonPressed = true; isPaused = true;
 
             SceneManager.LoadScene("PauseMenu", LoadSceneMode.Additive);
-            Time.timeScale = 0.001f; 
+            Time.timeScale = 0; 
             
             StartCoroutine(waitForNextFrame() );
         }

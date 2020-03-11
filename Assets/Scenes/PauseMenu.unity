@@ -297,7 +297,7 @@ MonoBehaviour:
   startBtn: {fileID: 1339428368}
   quitBtn: {fileID: 1203823586}
   arrow: {fileID: 645223462}
-  audioManager: {fileID: 1028959185}
+  audioManager: {fileID: 1817851711}
 --- !u!114 &441389332
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -588,60 +588,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 645223460}
   m_CullTransparentMesh: 0
---- !u!1 &1028959184
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1028959186}
-  - component: {fileID: 1028959185}
-  m_Layer: 0
-  m_Name: AudioManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1028959185
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1028959184}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0b33e0b3e50deee459caf245616882ec, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  musicClips:
-  - {fileID: 8300000, guid: f55fada9450dcfd41a177f1efe60f089, type: 3}
-  UIToggleClips:
-  - {fileID: 8300000, guid: bffc3b4ea5fa6ff49b1781ea77adab91, type: 3}
-  UISelectionClips:
-  - {fileID: 8300000, guid: 197460ba8afe95145bcf07adc30ae1bf, type: 3}
-  narratorClips: []
-  music: {fileID: 0}
-  UIToggle: {fileID: 0}
-  UISelection: {fileID: 0}
-  narrator: {fileID: 0}
---- !u!4 &1028959186
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1028959184}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 5.966482, y: 0, z: -5.9664817}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 4
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1040686283
 GameObject:
   m_ObjectHideFlags: 0
@@ -1052,4 +998,57 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1817851710
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1817851712}
+  - component: {fileID: 1817851711}
+  m_Layer: 0
+  m_Name: AudioManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1817851711
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1817851710}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0b33e0b3e50deee459caf245616882ec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  musicClips: []
+  UIToggleClips:
+  - {fileID: 8300000, guid: bffc3b4ea5fa6ff49b1781ea77adab91, type: 3}
+  UISelectionClips:
+  - {fileID: 8300000, guid: 197460ba8afe95145bcf07adc30ae1bf, type: 3}
+  narratorClips: []
+  music: {fileID: 0}
+  UIToggle: {fileID: 0}
+  UISelection: {fileID: 0}
+  narrator: {fileID: 0}
+--- !u!4 &1817851712
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1817851710}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

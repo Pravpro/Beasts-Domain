@@ -29,10 +29,12 @@ public class mainmenu : MonoBehaviour
 
     void Start()
     {
-        audioManager.Play(audioManager.music);
-        
         if (isLoaded("TitleScreen"))
+        {
+            audioManager.Play(audioManager.music);
             audioManager.Play(audioManager.narrator);
+        }
+        
 
         m_playerInput = ReInput.players.GetPlayer(m_playerID);
 
