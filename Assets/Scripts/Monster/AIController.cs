@@ -30,7 +30,8 @@ public class AIController : MonoBehaviour
     public float maxChargeDistance = 50.0f;
     public float maxAoeDistance = 20.0f;
     public float maxMeleeDistance = 7.0f;
-    public int maxMoss = 4;
+    public int maxMoss = 6;
+    public float mossCD = 30f;
 
     // give some buffer time for player to get next damange
 
@@ -97,6 +98,7 @@ public class AIController : MonoBehaviour
     private int throwedMoss = 0;
     private float nextThrowTime = 0f;
     private float throwDelay = 0.33f;
+    private float mossCDTime = 0f;
 
     //private LineRenderer lineRenderer;
 
@@ -111,6 +113,8 @@ public class AIController : MonoBehaviour
         playerScript = player.GetComponent<PlayerController>();
         fovScript = GameObject.Find("FieldOfView").GetComponent<FieldOfView>();
         hearingScript = gameObject.GetComponent<MonsterHearing>();
+
+        mossCDTime = Time.time + mossCD;
 
         //lineRenderer = GetComponent<LineRenderer>();
         //lineRenderer.positionCount = 2;
@@ -299,6 +303,11 @@ public class AIController : MonoBehaviour
         if (d < maxMeleeDistance)
         {
             // TODO: horn and kick
+            float angle = Vector3.Angle(transform.forward, player.transform.position - transform.position);
+            if (angle <= Mathf.PI / 2f)
+                subState = SubState.Horn;
+            else
+                subState = SubState.Kick;
         }
         else if (d < maxAoeDistance)
         {
@@ -359,7 +368,7 @@ public class AIController : MonoBehaviour
                 }
                 break;
             case SubState.AOE:
-                if (throwedMoss < maxMoss)
+                if (throwedMoss < maxMoss && Time.time > mossCDTime)
                     ThrowMoss();
                 else
                 {
@@ -431,8 +440,6 @@ public class AIController : MonoBehaviour
 
     void ThrowMoss()
     {
-        if (throwedMoss >= maxMoss)
-            return;
         if (Time.time <= nextThrowTime)
             return;
         Vector2 randVec2 = Random.insideUnitCircle.normalized;
@@ -441,6 +448,11 @@ public class AIController : MonoBehaviour
         moss.GetComponent<Rigidbody>().velocity += dir * 12f;
         throwedMoss += 1;
         nextThrowTime = Time.time + throwDelay;
+        if (throwedMoss == maxMoss)
+        {
+            mossCDTime = Time.time + mossCD;
+            throwedMoss = 0;
+        }
     }
 
     void OnCollisionEnter(Collision col)

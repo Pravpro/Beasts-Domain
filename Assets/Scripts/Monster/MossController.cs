@@ -22,9 +22,9 @@ public class MossController : MonoBehaviour
     {
         if (col.tag != "Monster" && col.tag != "Moss" && col.name != "Arena")
         {
-            //Debug.Log("moss hit: " + col.name);
-            Vector3 pos =  transform.position;
-            pos.y = 0;
+            // Debug.Log("moss hit: " + col.name);
+            Vector3 pos = transform.position;
+            pos.y = -0.25f;
             GameObject mossArea = Instantiate(mossAreaObj, pos, transform.rotation);
             Destroy(mossArea, mossDisappearTime);
             Destroy(gameObject);
