@@ -18,14 +18,15 @@ class Vector3Wrapper
 public class AIController : MonoBehaviour
 {
     //Audio design
+    public AudioManagerMain audioManager;
     public AudioClip MoodBoard;
-    public AudioClip Death;
+    public AudioClip Death; // done
     public AudioClip Hurt;
     public AudioClip Violin;
     public AudioClip[] bossStrings;
     public AudioClip startRoar;
     public AudioClip nostril;
-    public AudioSource damage;
+    public AudioSource damage; // done
     public AudioSource choir;
     public AudioSource roar1;
     public AudioSource fight1;
@@ -347,10 +348,8 @@ public class AIController : MonoBehaviour
                 // avoid getting both hurt sound and dead sound when hp = 0
                 // check the updated hp
                 if (playerScript.hp > 0)
-                {   
-                    damage.clip = Hurt;
-                    damage.PlayOneShot(Hurt, 0.2f);
-                    damage.pitch = Random.Range(0.9f, 1.1f);
+                {
+                    audioManager.Play(audioManager.damage);
 
                     // give some buffer
                     damageCoroutine = StartCoroutine(playerInvincible() );
@@ -360,8 +359,7 @@ public class AIController : MonoBehaviour
             if (playerScript.hp <= 0)
             {
                 Debug.Log("Player Dies");
-                damage.clip = Death;
-                damage.PlayOneShot(Death, 0.5f);
+                audioManager.Play(audioManager.death);
             }
         }
 

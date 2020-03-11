@@ -254,29 +254,34 @@ public class AudioManagerMain : MonoBehaviour
 
     }
 
-    public void HomebaseVolume()
+    public void SetHomebaseVolume()
     {
         snapshots.homebase.TransitionTo(2f);
     }
 
-    public void MoodboardVolume()
+    public void SetMoodboardVolume()
     {
         snapshots.moodboard.TransitionTo(2f);
     }
 
-    public void StringsVolume()
+    public void SetStringsVolume()
     {
         snapshots.strings.TransitionTo(2f);
     }
 
-    public void BossVolume()
+    public void SetBossVolume()
     {
         snapshots.boss.TransitionTo(0f);
     }
 
-    public void PauseVolume()
+    public void SetPauseVolume()
     {
         snapshots.pause.TransitionTo(0f);
+    }
+
+    public void SetAlleysVolume()
+    {
+        snapshots.alleys.TransitionTo(0f);
     }
 }
 

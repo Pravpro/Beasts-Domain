@@ -5,10 +5,11 @@ using UnityEngine;
 public class MusicController : MonoBehaviour
 {
     public GameObject player;
-    public AudioManagerMain audioManager;
+    private AudioManagerMain audioManager;
 
     private void Start()
     {
+        audioManager = GetComponent<AudioManagerMain>();
         audioManager.Play(audioManager.homebase);
         audioManager.Play(audioManager.moodboard);
         audioManager.Play(audioManager.strings);
@@ -17,13 +18,13 @@ public class MusicController : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         if (other.name == "Homebase")
-            audioManager.HomebaseVolume();
+            audioManager.SetHomebaseVolume();
         else if (other.name == "Training")
-            audioManager.MoodboardVolume();
+            audioManager.SetMoodboardVolume();
         else if (other.name == "Alley")
-            audioManager.BossVolume();
+            audioManager.SetAlleysVolume();
         else if (other.name == "Arena")
-            audioManager.HomebaseVolume();
+            audioManager.SetBossVolume();
 
     }
 }
