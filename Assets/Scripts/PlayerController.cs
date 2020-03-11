@@ -32,8 +32,11 @@ public class PlayerController : MonoBehaviour
     // for spell
     ParticleSystem spellArea;
     GameObject AimArea;
+
     public int spellWaitTime;
-    private Coroutine WaitNextSpellCoroutine;
+    
+    [HideInInspector]
+    public Coroutine WaitNextSpellCoroutine; // needed for UI 
     private bool activateSpell = false;
     private bool inSafeZone = false;
 

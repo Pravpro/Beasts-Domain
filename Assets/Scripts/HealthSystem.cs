@@ -14,8 +14,10 @@ public class HealthSystem : MonoBehaviour
 {
     // rewired input
     private Player m_playerInput;
-    public Slider healthUI;
-    public Slider staminaUI;
+    public Image staminaUIFill;
+    public Image spellUIFill;
+
+    private float hpCurrValue, hpMaxValue, staminaMaxValue;
 
     public Image healthImage;
     public AIController monsterScript;
@@ -26,8 +28,9 @@ public class HealthSystem : MonoBehaviour
 
     private bool animatingDamage = false;
     private int frameCounter = 0;
+    private bool startRecargeSpell = false;
+    private float rechargeStartTime;
 
-    // private Object[] maxHP, damagedAnimation, lessHP;
     private Sprite[] maxHP, damagedAnimation, lessHP;
 
     private PlayerController playerScript;
@@ -37,12 +40,14 @@ public class HealthSystem : MonoBehaviour
         playerScript  = this.GetComponent<PlayerController>();
         m_playerInput = ReInput.players.GetPlayer(0 /* player id */);
         
-        healthUI.maxValue  = (float) playerScript.hp;
-        staminaUI.maxValue = (float) playerScript.stamina;
+        hpMaxValue = (float) playerScript.hp;
+        staminaMaxValue = (float) playerScript.stamina;
 
         // initialized to the max
-        healthUI.value  = healthUI.maxValue;
-        staminaUI.value = staminaUI.maxValue;
+        hpCurrValue  = hpMaxValue;
+
+        spellUIFill.fillAmount   = 0.5f;
+        staminaUIFill.fillAmount = 0.5f;
 
         // load all the resources for Sprite Animation
         maxHP            = Resources.LoadAll<Sprite>("Sprites/PlayerHP/maxHP"          ).OrderBy(img => img.name).ToArray();
@@ -50,9 +55,11 @@ public class HealthSystem : MonoBehaviour
         lessHP           = Resources.LoadAll<Sprite>("Sprites/PlayerHP/lessHP"         ).OrderBy(img => img.name).ToArray();
 
         frameCounter = 0;
+#if false
         Debug.Log("maxHP: " + maxHP.Length);
         Debug.Log("maxHP: " + damagedAnimation.Length);
         Debug.Log("maxHP: " + lessHP.Length);
+#endif
     }
 
     // Update is called once per frame
@@ -61,8 +68,8 @@ public class HealthSystem : MonoBehaviour
     {   
         if (!animatingDamage)
         {
-            if (healthUI.value == healthUI.maxValue) animateSprite(ref maxHP);
-            if (healthUI.value < healthUI.maxValue) animateSprite(ref lessHP);
+            if (hpCurrValue == hpMaxValue) animateSprite(ref maxHP);
+            else                           animateSprite(ref lessHP);
         }
         else
         {
@@ -77,19 +84,16 @@ public class HealthSystem : MonoBehaviour
             }
         }
             
-        
         // health decreased, start damage animation
-        if (playerScript.hp < healthUI.value)
+        if (playerScript.hp < hpCurrValue)
         {
             frameCounter = 0;
             animatingDamage = true;
             Debug.Log("start animating damage");
         }
 
-        
-
-        // player Died, avoid monster and player die at same time 
-        if (healthUI.value == 0 && (monsterScript.hp > 0))
+        // player Died,  avoid monster and player die at same time 
+        if (hpCurrValue == 0 && (monsterScript.hp > 0))
         {
             var color = blackScreen.color;
             // alpha for color fade out
@@ -106,46 +110,34 @@ public class HealthSystem : MonoBehaviour
             return;       
         }
 
-        healthUI.value = playerScript.hp;      
-        staminaUI.value = playerScript.stamina;
+        // keep track of player hp and update stamina and spell 
+        hpCurrValue              = playerScript.hp;     
+        staminaUIFill.fillAmount = playerScript.stamina / staminaMaxValue * 0.5f; 
 
+        if (playerScript.WaitNextSpellCoroutine != null) 
+        {
+            if (!startRecargeSpell)
+            {
+                startRecargeSpell = true;
+                rechargeStartTime = Time.time;
+            }
+            else
+                spellUIFill.fillAmount =  (Time.time - rechargeStartTime) / playerScript.spellWaitTime * 0.5f;            
+        }
+        else
+            startRecargeSpell = false;
+        
         // hacky way of restarting
         float buttonPressed = m_playerInput.GetButtonTimePressed("Pause");
         if (buttonPressed > 2.0f)
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().name); 
         }
-
-
-
-#if false
-        // logic for pause menu
-        // TODO: move this somewhere else
-        if (m_playerInput.GetButtonDown("Pause") && !isLoaded("ControlsDesc") )
-        {
-            Time.timeScale = 0.0f;
-            SceneManager.LoadScene("ControlsDesc", LoadSceneMode.Additive);
-            
-        }
-
-        if (m_playerInput.GetButtonDown("Pause") && isLoaded("ControlsDesc"))
-        {
-            SceneManager.UnloadSceneAsync("ControlsDesc");
-            Time.timeScale = 1.0f;
-        }
-#endif
     }
 
-    private static bool isLoaded(string name)
+    void Update()
     {
-        for (int i = 0; i < SceneManager.sceneCount; i++)
-        {
-            if (SceneManager.GetSceneAt(i).name == name)
-            {
-                return true;
-            }
-        }
-        return false;
+        
     }
 
     // pass in sprite object as reference
