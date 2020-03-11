@@ -19,21 +19,6 @@ public class AIController : MonoBehaviour
 {
     //Audio design
     public AudioManagerMain audioManager;
-    public AudioClip MoodBoard;
-    public AudioClip Death; // done
-    public AudioClip Hurt; // done, implemented in Geyser
-    public AudioClip Violin;
-    public AudioClip[] bossStrings;
-    public AudioClip startRoar;
-    public AudioClip nostril;
-    public AudioSource damage; // done
-    public AudioSource choir; // done, taken out
-    public AudioSource roar1;
-    public AudioSource fight1;
-    public AudioSource fightStrings;
-    public AudioSource strings;
-    public AudioMixerSnapshot IntroFight;
-    public AudioMixerSnapshot Boss;
 
     // public variables
     public GameObject player;
@@ -218,24 +203,7 @@ public class AIController : MonoBehaviour
         {
             if(!m_roarPlayed)
             {
-                //BeastRoar1 fight starts
-                //choir.Stop();
-                //strings.Stop();
-                //roar1.clip = startRoar;
-                //roar1.Play();
-                //audioManager.Play(audioManager.boss1);
-                //audioManager.Play(audioManager.phase1);
-                //audioManager.strings.Stop();
-                //audioManager.Play(audioManager.bossstrings);
-                //Boss.TransitionTo(4f);
-                //int randomClip = Random.Range(0, bossStrings.Length);
-                //fightStrings.clip = bossStrings[randomClip];
-                //fightStrings.Play();
-                //fight1.Play();
-
                 audioManager.PlayPhaseOne();
-                
-
                 m_roarPlayed = true;
             }
             interruptPos = new Vector3Wrapper(player.transform.position);
@@ -481,8 +449,7 @@ public class AIController : MonoBehaviour
             SetChargeSpeed();
             SetChargeAreaMask();
             //nostril flare before charge?
-            roar1.clip = nostril;
-            roar1.Play();
+            audioManager.Play(audioManager.flare);
         }
         // cannot charge at player directly
         else
