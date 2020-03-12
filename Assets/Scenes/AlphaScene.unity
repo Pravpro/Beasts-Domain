@@ -16437,6 +16437,16 @@ PrefabInstance:
       propertyPath: audioManager
       value: 
       objectReference: {fileID: 760171700}
+    - target: {fileID: 238038038685824190, guid: 39cf856a474a0024fa11563daeedfd5a,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.049999982
+      objectReference: {fileID: 0}
+    - target: {fileID: 238038039239299084, guid: 39cf856a474a0024fa11563daeedfd5a,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.05
+      objectReference: {fileID: 0}
     - target: {fileID: 375717148977643098, guid: 39cf856a474a0024fa11563daeedfd5a,
         type: 3}
       propertyPath: m_CookingOptions
@@ -16720,7 +16730,7 @@ PrefabInstance:
     - target: {fileID: 3989312380202777143, guid: 39cf856a474a0024fa11563daeedfd5a,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 62.559395
+      value: 60.837395
       objectReference: {fileID: 0}
     - target: {fileID: 3989312380202777143, guid: 39cf856a474a0024fa11563daeedfd5a,
         type: 3}
@@ -16860,7 +16870,7 @@ PrefabInstance:
     - target: {fileID: 3989312381003930180, guid: 39cf856a474a0024fa11563daeedfd5a,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 65.6
+      value: 63.878
       objectReference: {fileID: 0}
     - target: {fileID: 3989312381003930180, guid: 39cf856a474a0024fa11563daeedfd5a,
         type: 3}
@@ -17182,6 +17192,11 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: 5.64
       objectReference: {fileID: 0}
+    - target: {fileID: 8349880441413726730, guid: 39cf856a474a0024fa11563daeedfd5a,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 69.80323
+      objectReference: {fileID: 0}
     - target: {fileID: 8349880441566405535, guid: 39cf856a474a0024fa11563daeedfd5a,
         type: 3}
       propertyPath: m_LocalPosition.z
@@ -17200,12 +17215,27 @@ PrefabInstance:
     - target: {fileID: 8349880441661522727, guid: 39cf856a474a0024fa11563daeedfd5a,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 87.860985
+      value: 83.07
+      objectReference: {fileID: 0}
+    - target: {fileID: 8349880441661522727, guid: 39cf856a474a0024fa11563daeedfd5a,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -31.52
       objectReference: {fileID: 0}
     - target: {fileID: 8349880441899008661, guid: 39cf856a474a0024fa11563daeedfd5a,
         type: 3}
       propertyPath: m_LocalPosition.y
       value: 0.35
+      objectReference: {fileID: 0}
+    - target: {fileID: 8349880442221819879, guid: 39cf856a474a0024fa11563daeedfd5a,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 84.56446
+      objectReference: {fileID: 0}
+    - target: {fileID: 8349880442221819879, guid: 39cf856a474a0024fa11563daeedfd5a,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -25.809849
       objectReference: {fileID: 0}
     - target: {fileID: 8349880442362186520, guid: 39cf856a474a0024fa11563daeedfd5a,
         type: 3}
@@ -17216,6 +17246,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalPosition.z
       value: 2.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8349880442391451829, guid: 39cf856a474a0024fa11563daeedfd5a,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 73.17746
       objectReference: {fileID: 0}
     - target: {fileID: 8349880442391451831, guid: 39cf856a474a0024fa11563daeedfd5a,
         type: 3}
@@ -17235,12 +17270,12 @@ PrefabInstance:
     - target: {fileID: 8349880442754727061, guid: 39cf856a474a0024fa11563daeedfd5a,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 86.2
+      value: 84.478
       objectReference: {fileID: 0}
     - target: {fileID: 8349880442776412766, guid: 39cf856a474a0024fa11563daeedfd5a,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 83.63804
+      value: 81.91604
       objectReference: {fileID: 0}
     - target: {fileID: 8349880442968737445, guid: 39cf856a474a0024fa11563daeedfd5a,
         type: 3}
@@ -17262,6 +17297,11 @@ PrefabInstance:
       propertyPath: audioManager
       value: 
       objectReference: {fileID: 760171700}
+    - target: {fileID: 9037893264389212525, guid: 39cf856a474a0024fa11563daeedfd5a,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.2454277
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 1751900552, guid: 39cf856a474a0024fa11563daeedfd5a, type: 3}
     - {fileID: 8026967280860323989, guid: 39cf856a474a0024fa11563daeedfd5a, type: 3}
