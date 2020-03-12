@@ -12,6 +12,7 @@ TagManager:
   - Throwable
   - Safezone
   - Moss
+  - Horn
   layers:
   - Default
   - TransparentFX
@@ -48,4 +49,7 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Hitbox
+    uniqueID: 4096220231
     locked: 0
