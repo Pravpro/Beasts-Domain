@@ -186,8 +186,6 @@ public class AudioManagerMain : MonoBehaviour
     void Awake()
     {
 
-        DontDestroyOnLoad(this.gameObject);
-
         // SFX: Player sources
         landing = AddAudio(false, false, sfxClips.player.landingVol, mixerGroups.action); // Params: 1.Loop 2.Play on Awake 3.Volume 4. Mixer Group
         jumping = AddAudio(false, false, sfxClips.player.jumpingVol, mixerGroups.action);
