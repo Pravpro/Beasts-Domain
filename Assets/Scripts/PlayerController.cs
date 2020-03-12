@@ -299,8 +299,14 @@ public class PlayerController : MonoBehaviour
     {
         if (col.tag == "Safezone")
             inSafeZone = true;
+    }
+    private void OnTriggerStay(Collider col)
+    {
         if (col.tag == "Moss")
+        {
             inMoss = true;
+            running = false;
+        }
     }
     void OnTriggerExit(Collider col)
     {
