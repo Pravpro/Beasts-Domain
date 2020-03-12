@@ -216,8 +216,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 13337469}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: 0.056882948, y: 0.7048151, z: -0.056882948, w: 0.70481515}
+  m_LocalPosition: {x: -77.3, y: 3.1, z: 10.1}
   m_LocalScale: {x: 30, y: 30, z: 30}
   m_Children: []
   m_Father: {fileID: 0}
@@ -6548,7 +6548,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 382882444}
-  m_LocalRotation: {x: 0.0568823, y: 0.7048158, z: -0.056882482, w: 0.7048145}
+  m_LocalRotation: {x: 0.056882646, y: 0.7048158, z: -0.05688283, w: 0.7048145}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -13832,7 +13832,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1044896107}
-  m_LocalRotation: {x: 0.0441043, y: 0.7057264, z: -0.04410336, w: 0.70573366}
+  m_LocalRotation: {x: 0.044104274, y: 0.7057264, z: -0.044103336, w: 0.70573366}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -17765,7 +17765,7 @@ MonoBehaviour:
   maxMoss: 6
   mossCD: 30
   scenLoadTime: 0
-  targetObj: {fileID: 1634780123}
+  targetObj: {fileID: 0}
   mossObj: {fileID: 115900146386600644, guid: df62d1c786f601046aea85391f69e08b, type: 3}
 --- !u!95 &2023273999
 Animator:
