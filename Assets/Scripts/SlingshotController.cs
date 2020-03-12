@@ -96,6 +96,8 @@ public class SlingshotController : MonoBehaviour
                 }
             }
         }
+        else 
+            crosshair.enabled = false;
 
         
 
