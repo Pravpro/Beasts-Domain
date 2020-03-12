@@ -6,7 +6,8 @@ public class TriggerController : MonoBehaviour
 {
     public AudioManagerMain audioManager;
     public Material usedGeyserMaterial;
-    public float triggerDistance = 4f;
+
+    public float triggerDistance = 3f;
     private AIController script;
     private GameObject monster;
 
@@ -55,7 +56,7 @@ public class TriggerController : MonoBehaviour
         if (isTriggered && !changedColor)
         {
             // change the material color
-            this.GetComponent<Renderer>().material = usedGeyserMaterial;
+            this.GetComponentInChildren<Renderer>().material = usedGeyserMaterial;
             changedColor = true;
         }
     }
