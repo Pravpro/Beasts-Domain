@@ -44,10 +44,9 @@ public class MovableController : MonoBehaviour
             if (this.name.Contains("Boulder") ||
                 this.name.Contains("boulder") )
             {
-                m_rbMovable.isKinematic = true;
+                // m_rbMovable.isKinematic = true;
 
                 m_monsterCollided = true;   
-                
             }
         }
 
@@ -64,7 +63,7 @@ public class MovableController : MonoBehaviour
         if (col.tag == "Player")
         {
             // avoid pushing without button pressed
-            m_rbMovable.isKinematic = true;
+            // m_rbMovable.isKinematic = true;
 
             GameObject player = col.gameObject;
 
@@ -73,7 +72,7 @@ public class MovableController : MonoBehaviour
             if (m_playerInput.GetButton("Push"))
             {
                 isPushing = true;
-                m_rbMovable.isKinematic = false;
+                // m_rbMovable.isKinematic = false;
 
 
                 //curPos = new Vector2(transform.position.x, transform.position.z);
@@ -90,7 +89,6 @@ public class MovableController : MonoBehaviour
                 else
                     audioManager.boulder.Stop();
 
-
                 // always look at the movable objects when pushing
                 Vector3 targetPos = this.transform.position;
 
@@ -101,12 +99,15 @@ public class MovableController : MonoBehaviour
                 targetPos.x = targetPos.x - this.transform.localScale.x / 2;
                 targetPos.z = targetPos.z + this.transform.localScale.z / 2;
 
+                Vector3 transPos = this.transform.position;
+                this.transform.position = Vector3.Slerp(transPos, transPos + player.transform.forward, Time.deltaTime * 2.0f);
+                
                 player.transform.LookAt(targetPos);
             }
 
             if (m_playerInput.GetButtonUp("Push"))
             {
-                m_rbMovable.isKinematic = true;
+                // m_rbMovable.isKinematic = true;
                 isPushing = false;
                 audioManager.boulder.Stop();
             }
@@ -123,10 +124,10 @@ public class MovableController : MonoBehaviour
         if (!m_monsterCollided)
         {            
             // stop any residual force that might cause object move
-            m_rbMovable.Sleep();
+            // m_rbMovable.Sleep();
 
             // allow monster to move around objects
-            m_rbMovable.isKinematic = false;
+            // m_rbMovable.isKinematic = false;
         }
 
         isPushing = false;

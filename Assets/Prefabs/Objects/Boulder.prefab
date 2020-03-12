@@ -117,7 +117,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 112
+  m_Constraints: 122
   m_CollisionDetection: 0
 --- !u!65 &761862437618306340
 BoxCollider:
@@ -158,3 +158,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isPushing: 0
+  isMoving: 0
+  audioManager: {fileID: 0}
+  playerScript: {fileID: 0}
