@@ -30,6 +30,7 @@ public class AIController : MonoBehaviour
     public float maxChargeDistance = 50.0f;
     public float maxAoeDistance = 20.0f;
     public float maxMeleeDistance = 7.0f;
+    public float maxMeleeAngle = 30f;
     public int maxMoss = 6;
     public float mossCD = 30f;
 
@@ -170,40 +171,6 @@ public class AIController : MonoBehaviour
             
         }
 
-        // // 1. rotation
-        // Quaternion qRotate;
-        // // turn the boss to the rock hit direction
-        // if (Vector3.Angle(m_targetedDir, transform.forward) > 2.0f)
-        // {
-        //     qRotate = Quaternion.LookRotation(m_targetedDir);
-        //     transform.rotation = Quaternion.RotateTowards(transform.rotation, qRotate, Time.deltaTime * turningSpeed);
-        // }
-        // // if the monster already rotated to the direction of rock hit,
-        // // then keep the target the same as current forward direction to prevent further turning
-        // else
-        // {
-        //     m_targetedDir = transform.forward;
-        // }
-
-        // // 2. move to the target position only if the player is in the viewArea.
-        // //    boss ignores rocks when locked on to player
-        // if (m_playerInSight)
-        // {
-
-        //     // playerPos = player.transform.position;
-        //     // // get the rotation and translate vector to player
-        //     // Vector3 playerPosCopy = new Vector3(playerPos.x, 0, playerPos.z);
-        //     // Vector3 location = transform.position;
-        //     // playerDir = playerPosCopy - location;
-        //     // playerDir.y = transform.forward.y;
-        //     // playerDir.Normalize();
-        //     // m_targetedDir = transform.forward;
-        //     // qRotate = Quaternion.LookRotation(playerDir);
-        //     // transform.rotation = Quaternion.RotateTowards(transform.rotation, qRotate, Time.deltaTime * turningSpeed);
-        //     // //transform.position += movingSpeed * transform.forward;
-        //     // transform.position = Vector3.MoveTowards(transform.position, playerPosCopy, Time.deltaTime * movingSpeed);
-        // }
-
         Navigate();
     }
 
@@ -315,16 +282,11 @@ public class AIController : MonoBehaviour
         if (!PlayerReachable()) { state = State.Interrupted; return;}
         
         float d = DistanceToPlayer();
-        if (d < maxMeleeDistance)
+        float angle = AngleToPlayer();
+
+        if (d < maxMeleeDistance && angle <= 30)
         {
-            // TODO: horn and kick
-            Vector3 toPlayer = player.transform.position - transform.position;
-            toPlayer.y = 0;
-            float angle = Vector3.Angle(transform.forward, toPlayer);
-            if (angle <= 90f)
-                subState = SubState.Horn;
-            else
-                subState = SubState.Kick;
+            subState = SubState.Horn;
         }
         else if (d < maxAoeDistance)
         {
@@ -345,7 +307,7 @@ public class AIController : MonoBehaviour
 
     void UpdateAttackSubStateMachine()
     {
-        Debug.Log(state + " " + subState);
+        // Debug.Log(state + " " + subState);
         if (subState != SubState.Charge)
             UpdateAttackSubStateMachineStates();
         
@@ -418,7 +380,7 @@ public class AIController : MonoBehaviour
         horned = true;
         yield return new WaitForSeconds(1);
 
-        if (DistanceToPlayer() <= maxMeleeDistance - 1f)
+        if (DistanceToPlayer() <= maxMeleeDistance && AngleToPlayer() <= 30f)
             DamagePlayer();
         
         horned = false;        
@@ -654,6 +616,7 @@ public class AIController : MonoBehaviour
         // hardcoded for now
         SetDestination(transform.position + awayFromHit * 5f);
         gotHit = true;
+        state = State.Interrupted;
         UnsetChargeAreaMask();
         UnsetChargeSpeed();
         StartCoroutine(TimedDamageRecoil());
@@ -687,6 +650,14 @@ public class AIController : MonoBehaviour
         if (ignoreY)
             diff.y = 0;
         return diff.magnitude;
+    }
+
+    float AngleToPlayer()
+    {
+        Vector3 toPlayer = player.transform.position - transform.position;
+        toPlayer.y = 0;
+        float angle = Vector3.Angle(transform.forward, toPlayer);
+        return angle;
     }
 
     float DistanceToPlayer()
