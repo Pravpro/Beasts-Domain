@@ -27,7 +27,8 @@ public class SpellEffect : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        m_renderer  = monster.GetComponent<Renderer>();
+        // for now the renderer for monster is in the child object
+        m_renderer  = monster.GetComponentInChildren<SkinnedMeshRenderer>();
         monsterScript = monster.GetComponent<AIController>();
 
         spellEffect = GetComponent<ParticleSystem>();
@@ -51,8 +52,12 @@ public class SpellEffect : MonoBehaviour
             spellPosition.y   = 0;
             startDisappear = false;
 
-            if (Vector3.Distance(monsterPosition, spellPosition) < 2.0f)
+            if (Vector3.Distance(monsterPosition, spellPosition) < 3.0f)
+            {
                 monsterTrapped = true;
+                Debug.Log("monster trapped");
+            }
+                
         }
 
         if (!startDisappear && (monsterTrapped || monsterScript.hp == 0))
@@ -61,7 +66,7 @@ public class SpellEffect : MonoBehaviour
             disappearEffect.Play();
 
             setTransparent();
-            currAlpha = disappearEffect.main.duration * 20f;
+            currAlpha = disappearEffect.main.duration * 25f;
             startDisappear = true;
 
             // music can be added heare
@@ -72,7 +77,7 @@ public class SpellEffect : MonoBehaviour
         if (startDisappear)
         {            
             Color newColor = m_renderer.material.color;
-            newColor.a     = currAlpha / (disappearEffect.main.duration * 20f);
+            newColor.a     = currAlpha / (disappearEffect.main.duration * 25f);
 
             // always stick with monster
             disappearEffect.transform.position = monster.transform.position;
@@ -84,7 +89,7 @@ public class SpellEffect : MonoBehaviour
         // alpha is 0
         if (m_renderer.material.color.a <= 0.0f)
         {
-            monster.GetComponent<Renderer>().enabled = false;
+            monster.GetComponentInChildren<SkinnedMeshRenderer>().enabled = false;
         
             SceneManager.LoadScene(SceneManager.GetActiveScene().name); // "TitleScreen"
 
