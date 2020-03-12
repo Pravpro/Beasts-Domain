@@ -33,6 +33,8 @@ public class MusicController : MonoBehaviour
         else if (other.name == "Alley")
         {
             audioManager.SetVolume(AudioManagerMain.SnapshotState.Alleys);
+            pauseState = AudioManagerMain.SnapshotState.Alleys;
+            resumeState = AudioManagerMain.SnapshotState.Alleys;
         }
         else if (other.name == "Arena")
         {
