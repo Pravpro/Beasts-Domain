@@ -53,10 +53,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   walkSpeed: 0.09
   runSpeed: 0.11
-  jumpSpeed: 6
+  jumpSpeed: 10
   turnSpeed: 12
   crouchSpeed: 0.04
-  mossSpeed: 0
+  mossSpeed: -0.04
   hp: 2
   stamina: 120
   maxStamina: 0
@@ -151,6 +151,57 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   audioManager: {fileID: 0}
+--- !u!137 &1788475012
+SkinnedMeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7392248443934406518}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  serializedVersion: 2
+  m_Quality: 0
+  m_UpdateWhenOffscreen: 0
+  m_SkinnedMotionVectors: 1
+  m_Mesh: {fileID: 0}
+  m_Bones: []
+  m_BlendShapeWeights: []
+  m_RootBone: {fileID: 0}
+  m_AABB:
+    m_Center: {x: 0, y: 0, z: 0}
+    m_Extent: {x: 0, y: 0, z: 0}
+  m_DirtyAABB: 1
 --- !u!1001 &386040555487670718
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -809,6 +860,12 @@ Transform:
 --- !u!95 &4981442073234879400 stripped
 Animator:
   m_CorrespondingSourceObject: {fileID: -6057140222963153312, guid: 9ea64c310d6dfae4f86b2bcc286341b2,
+    type: 3}
+  m_PrefabInstance: {fileID: 7985185755193718216}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &7392248443934406518 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -8626751840527039810, guid: 9ea64c310d6dfae4f86b2bcc286341b2,
     type: 3}
   m_PrefabInstance: {fileID: 7985185755193718216}
   m_PrefabAsset: {fileID: 0}
