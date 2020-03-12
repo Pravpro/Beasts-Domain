@@ -56,6 +56,7 @@ MonoBehaviour:
   jumpSpeed: 6
   turnSpeed: 12
   crouchSpeed: 0.04
+  mossSpeed: 0
   hp: 2
   stamina: 120
   maxStamina: 0
@@ -124,8 +125,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 70409c1e59c3948a9b605b60aa59a17e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  healthUI: {fileID: 0}
-  staminaUI: {fileID: 0}
+  staminaUIFill: {fileID: 0}
+  spellUIFill: {fileID: 0}
+  healthImage: {fileID: 0}
   monsterScript: {fileID: 0}
   blackScreen: {fileID: 0}
 --- !u!81 &9206296177949412577
@@ -148,6 +150,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 245820831db1b56458ac4dcac9819672, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  audioManager: {fileID: 0}
 --- !u!1001 &386040555487670718
 PrefabInstance:
   m_ObjectHideFlags: 0
