@@ -35,7 +35,7 @@ public class MonsterHearing : MonoBehaviour
 
     bool HearPlayer()
     {
-        float d = DistanceTo(player.transform.position);
+        float d = DistanceTo(player.transform.position, true);
         if (d < hearRanges[playerStandLevel])
             return true;
         if (playerScript.IsMoving() && d < hearRanges[playerMoveLevel])
@@ -54,7 +54,7 @@ public class MonsterHearing : MonoBehaviour
     {
         if (aiScript.hp <= 0)
             return;
-        if (DistanceTo(pos) < hearRanges[hearLevel])
+        if (DistanceTo(pos, true) < hearRanges[hearLevel])
             aiScript.Interrupt(pos);
     }
 

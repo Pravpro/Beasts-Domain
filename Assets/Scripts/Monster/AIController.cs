@@ -99,6 +99,9 @@ public class AIController : MonoBehaviour
     private float throwDelay = 0.33f;
     private float mossCDTime = 0f;
 
+    private bool horned = false;
+    private float nextRoarTime = 0f;
+
     //private LineRenderer lineRenderer;
 
     void Start()
@@ -204,6 +207,11 @@ public class AIController : MonoBehaviour
         Navigate();
     }
 
+    public bool IsCharging()
+    {
+        return state == State.Attack && subState == SubState.Charge;
+    }
+
     void Navigate()
     {
         // for debug purpose
@@ -292,20 +300,28 @@ public class AIController : MonoBehaviour
     void UpdateAnimator()
     {
         bool isIdle = (state == State.Idle);
-        bool isCharge = (state == State.Attack && subState == SubState.Charge);
+        bool isAttack = (state == State.Attack);
+        bool isCharge = (isAttack && subState == SubState.Charge);
         animator.SetBool("IsIdle", isIdle);
+        animator.SetBool("IsAttacking", isAttack);
         animator.SetBool("IsCharging", isCharge);
+        animator.SetBool("IsAOE", isAttack && subState == SubState.AOE);
+        animator.SetBool("IsHorn", isAttack && subState == SubState.Horn);
         animator.SetBool("IsWalking", state == State.RandomSearch || state == State.Interrupted);
     }
 
     void UpdateAttackSubStateMachineStates()
     {
+        if (!PlayerReachable()) { state = State.Interrupted; return;}
+        
         float d = DistanceToPlayer();
         if (d < maxMeleeDistance)
         {
             // TODO: horn and kick
-            float angle = Vector3.Angle(transform.forward, player.transform.position - transform.position);
-            if (angle <= Mathf.PI / 2f)
+            Vector3 toPlayer = player.transform.position - transform.position;
+            toPlayer.y = 0;
+            float angle = Vector3.Angle(transform.forward, toPlayer);
+            if (angle <= 90f)
                 subState = SubState.Horn;
             else
                 subState = SubState.Kick;
@@ -314,7 +330,7 @@ public class AIController : MonoBehaviour
         {
             subState = SubState.AOE;
         }
-        else
+        else if (d < maxChargeDistance)
         {
             bool canCharge = PrepareCharge();
             if (canCharge)
@@ -329,6 +345,7 @@ public class AIController : MonoBehaviour
 
     void UpdateAttackSubStateMachine()
     {
+        Debug.Log(state + " " + subState);
         if (subState != SubState.Charge)
             UpdateAttackSubStateMachineStates();
         
@@ -337,6 +354,8 @@ public class AIController : MonoBehaviour
             case SubState.Charge:
                 if (ReachedWanderDest())
                 {
+                    UnsetChargeSpeed();
+                    UnsetChargeAreaMask();
                     if (interruptPos != null)
                     {
                         SetDestination(interruptPos.vector);
@@ -347,8 +366,6 @@ public class AIController : MonoBehaviour
                     {
                         state = State.RandomSearch;
                     }
-                    UnsetChargeSpeed();
-                    UnsetChargeAreaMask();
                     UpdateAttackSubStateMachineStates();
                     // if (lastSense != null)
                     // {
@@ -373,21 +390,38 @@ public class AIController : MonoBehaviour
                     ThrowMoss();
                 else
                 {
-                    if (interruptPos != null)
-                    {
-                        SetDestination(interruptPos.vector);
-                        //agent.SetDestination(interruptPos.vector);
-                        state = State.Interrupted;
-                    }
-                    else
-                    {
-                        state = State.RandomSearch;
-                    }
+                    SetDestination(interruptPos.vector);
+                    
+                    // if (interruptPos != null)
+                    // {
+                    //     SetDestination(interruptPos.vector);
+                    //     //agent.SetDestination(interruptPos.vector);
+                    //     state = State.Interrupted;
+                    // }
+                    // else
+                    // {
+                    //     state = State.RandomSearch;
+                    // }
                 }
+                break;
+            case SubState.Horn:
+                if (!horned)
+                    StartCoroutine( HornPlayer() );
                 break;
             default:
                 break;
         }
+    }
+
+    IEnumerator HornPlayer()
+    {
+        horned = true;
+        yield return new WaitForSeconds(1);
+
+        if (DistanceToPlayer() <= maxMeleeDistance - 1f)
+            DamagePlayer();
+        
+        horned = false;        
     }
 
     bool PrepareCharge()
@@ -403,10 +437,10 @@ public class AIController : MonoBehaviour
         int layerMask = ~(1 << LayerMask.NameToLayer("Player"));
 
         // check if player can be directly charged at
-        Vector3 raycastOrigin = transform.position;
+        Vector3 raycastOrigin = transform.position + new Vector3(0,3,0);
         raycastOrigin.y = 0.5f;
         bool blocked = Physics.Raycast(raycastOrigin, toPlayer, out hitInfo, maxChargeDistance) && hitInfo.collider.tag != "Player";
-        bool noStraightPath = NavMesh.Raycast(transform.position, playerPos - toPlayer * 2f, out hit, NavMesh.AllAreas);
+        bool noStraightPath = NavMesh.Raycast(raycastOrigin, playerPos - toPlayer * 2f, out hit, NavMesh.AllAreas);
         if (hit.distance < 2f)
             noStraightPath = false;
 
@@ -419,8 +453,8 @@ public class AIController : MonoBehaviour
             //     targetPos = transform.position + Mathf.Min(maxChargeDistance, (hitInfo.point - raycastOrigin).magnitude ) * toPlayer;
             // else
             //     targetPos = transform.position + maxChargeDistance * toPlayer;
-            NavMesh.Raycast(transform.position, playerPos + toPlayer * 1000, out hit, NavMesh.AllAreas);
-            targetPos = transform.position + Mathf.Min(maxChargeDistance, hit.distance) * toPlayer;
+            NavMesh.Raycast(raycastOrigin, playerPos + toPlayer * 1000, out hit, NavMesh.AllAreas);
+            targetPos = raycastOrigin + Mathf.Min(maxChargeDistance, Mathf.Max(hit.distance, agent.stoppingDistance + 2f) ) * toPlayer;
             //nostril flare before charge?
             audioManager.Play(audioManager.flare);
         }
@@ -431,7 +465,8 @@ public class AIController : MonoBehaviour
             UnsetChargeSpeed();
             UnsetChargeAreaMask();
             // TODO: if cannot directly charge at player, what should the state be?
-            state = State.Interrupted;
+            // state = State.Interrupted;
+            subState = SubState.AOE;
         }
 
         target = new Vector3Wrapper(targetPos);
@@ -469,27 +504,8 @@ public class AIController : MonoBehaviour
         }
         else if (col.collider.tag == "Player")
         {
-            if (playerScript.hp > 0 && damageCoroutine == null)
-            {
-                playerScript.hp -= 1;
-                Debug.Log("Player lose health to " + playerScript.hp);
-
-                // avoid getting both hurt sound and dead sound when hp = 0
-                // check the updated hp
-                if (playerScript.hp > 0)
-                {
-                    audioManager.Play(audioManager.damage);
-
-                    // give some buffer
-                    damageCoroutine = StartCoroutine(playerInvincible() );
-                }
-            }
-
-            if (playerScript.hp <= 0)
-            {
-                Debug.Log("Player Dies");
-                audioManager.Play(audioManager.death);
-            }
+            if (IsCharging())
+                DamagePlayer();
         }
 
         // not allow monster to push boulder
@@ -542,7 +558,7 @@ public class AIController : MonoBehaviour
     {
         // UnityEngine.AI.NavMeshPath path = new UnityEngine.AI.NavMeshPath();
         Vector3 finalPos = SamplePos(pos);
-        finalPos.y = transform.position.y;
+        finalPos.y = transform.position.y + 3f;
         agent.SetDestination(finalPos);
         // agent.CalculatePath(pos, path);
         // agent.SetPath(path);
@@ -556,7 +572,7 @@ public class AIController : MonoBehaviour
         // Vector3 randomDirection = Random.insideUnitSphere * walkRadius;
         // Vector3 center = new Vector3(-20f, transform.position.y, 20f);
         // randomDirection += center;
-        Vector3 randomDirection = new Vector3(x, transform.position.y, z);
+        Vector3 randomDirection = new Vector3(x, transform.position.y + 3f, z);
         UnityEngine.AI.NavMeshHit hit;
         UnityEngine.AI.NavMesh.SamplePosition(randomDirection, out hit, walkRadius, 1 << NavMesh.GetAreaFromName("Walkable"));
         Vector3 finalPosition = hit.position;
@@ -576,7 +592,37 @@ public class AIController : MonoBehaviour
             phase = Phase.Two;
 
         state = State.Attack;
+        if (Time.time >= nextRoarTime)
+        {
+            audioManager.Play(audioManager.roar1);
+            nextRoarTime = Time.time + Random.Range(3f, 10f);
+        }
         UpdateAttackSubStateMachineStates();
+    }
+
+    void DamagePlayer()
+    {
+        if (playerScript.hp > 0 && damageCoroutine == null)
+        {
+            playerScript.hp -= 1;
+            Debug.Log("Player lose health to " + playerScript.hp);
+
+            // avoid getting both hurt sound and dead sound when hp = 0
+            // check the updated hp
+            if (playerScript.hp > 0)
+            {
+                audioManager.Play(audioManager.damage);
+
+                // give some buffer
+                damageCoroutine = StartCoroutine(playerInvincible() );
+            }
+        }
+
+        if (playerScript.hp <= 0)
+        {
+            Debug.Log("Player Dies");
+            audioManager.PlayDeath();
+        }
     }
 
     public void Interrupt(Vector3 pos, bool fromPlayer = false)
@@ -608,6 +654,8 @@ public class AIController : MonoBehaviour
         // hardcoded for now
         SetDestination(transform.position + awayFromHit * 5f);
         gotHit = true;
+        UnsetChargeAreaMask();
+        UnsetChargeSpeed();
         StartCoroutine(TimedDamageRecoil());
     }
 
