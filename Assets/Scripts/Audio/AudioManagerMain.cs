@@ -299,6 +299,15 @@ public class AudioManagerMain : MonoBehaviour
         bossStrings.PlayDelayed(5.5f);
     }
 
+    public void PlayDeath()
+    {
+        boss1.Stop();
+        bossStrings.Stop();
+        boss2.Stop();
+        death.clip = sourceClipRelation[death] [Random.Range(0, sourceClipRelation [death].Length)];
+        death.Play();
+    }
+
     public void SetVolume(SnapshotState state)
     {
         Debug.Log(state);
