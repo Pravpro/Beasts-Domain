@@ -9,7 +9,7 @@ using Rewired;
 public class PlayerController : MonoBehaviour
 {
     // Create variable for movement speed
-    public float walkSpeed, runSpeed, jumpSpeed, turnSpeed, crouchSpeed;
+    public float walkSpeed, runSpeed, jumpSpeed, turnSpeed, crouchSpeed, mossSpeed;
     public float hp, stamina, maxStamina;
     public Animator m_Animator;
     public CinemachineStateDrivenCamera SDCam;
@@ -24,7 +24,7 @@ public class PlayerController : MonoBehaviour
     private Rigidbody rb;
     Vector3 m_Movement, jump, desiredForward, prevCamForward;
     Quaternion m_Rotation, lastRotation = Quaternion.identity;
-    private bool isMoving, pushing, grounded, walking, running, crouching = false;
+    private bool isMoving, pushing, grounded, walking, running, crouching, inMoss = false;
     private GameObject pushingObject;
     private ICinemachineCamera thirdPersonCam;
     private bool recoverStamia = false;
@@ -129,18 +129,25 @@ public class PlayerController : MonoBehaviour
         // Code for Running and walking
         if (isMoving && !activateSpell)
         {
-            if (running && !recoverStamia)
+            if (inMoss)
             {
-                // hacky way of making push same speed while running and walking
-                rb.MovePosition(rb.position + m_Movement * (pushing ? walkSpeed 
-                                                                    : runSpeed) );
-                if (!audioManager.running.isPlaying && grounded)
+                rb.MovePosition(rb.position + m_Movement * mossSpeed);
+            } else
+            {
+                if (running && !recoverStamia)
                 {
-                    audioManager.Play(audioManager.running);
-                    audioManager.walking.Stop();
+                    // hacky way of making push same speed while running and walking
+                    rb.MovePosition(rb.position + m_Movement * (pushing ? walkSpeed
+                                                                        : runSpeed));
+                    if (!audioManager.running.isPlaying && grounded)
+                    {
+                        audioManager.Play(audioManager.running);
+                        audioManager.walking.Stop();
+                    }
+                    stamina--;
                 }
-                stamina--;
             }
+
             if (crouching)
             {
                 rb.MovePosition(rb.position + m_Movement * crouchSpeed);
@@ -292,11 +299,15 @@ public class PlayerController : MonoBehaviour
     {
         if (col.tag == "Safezone")
             inSafeZone = true;
+        if (col.tag == "Moss")
+            inMoss = true;
     }
     void OnTriggerExit(Collider col)
     {
         if (col.tag == "Safezone")
             inSafeZone = false;
+        if (col.tag == "Moss")
+            inMoss = false;
     }
 
 
