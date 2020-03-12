@@ -234,7 +234,7 @@ public class PlayerController : MonoBehaviour
                 AimArea.SetActive(false);
 
                 // activate the area
-                if (!GameObject.Find("Monster").GetComponent<AIController>().playerInSight)
+                // if (!GameObject.Find("Monster").GetComponent<AIController>().playerInSight)
                 {
                     var spellAreaEmission = spellArea.emission;
                     spellAreaEmission.enabled = true;

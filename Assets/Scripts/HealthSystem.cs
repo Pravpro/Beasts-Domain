@@ -69,15 +69,18 @@ public class HealthSystem : MonoBehaviour
         if (!animatingDamage)
         {
             if (hpCurrValue == hpMaxValue) animateSprite(ref maxHP);
-            else                           animateSprite(ref lessHP);
+            // if (hpCurrValue == 0)          animateSprite(ref damagedAnimation, 5, 5);
+            else if (hpCurrValue != 0)     animateSprite(ref lessHP);
+
         }
         else
         {
-            int keepTime = 3;
-            animateSprite(ref damagedAnimation, keepTime /* num of frames to keep the same sprite */);
+            int keepTime = 5;
+            int length = (hpCurrValue == 0) ? 3 : damagedAnimation.Length;
+            animateSprite(ref damagedAnimation, keepTime /* num of frames to keep the same sprite */, length);
 
             // wait till damage animation finish
-            if (frameCounter >= damagedAnimation.Length * keepTime) 
+            if (frameCounter >= length * keepTime) 
             {
                 animatingDamage = false;
                 Debug.Log("finish animating damage");
@@ -144,10 +147,10 @@ public class HealthSystem : MonoBehaviour
     // The damage animation is too fast, so to slow down the animation, use keepTime
     // rendering same image for set of frames.
     // default 1 means that it does not skip any frames, will be switching the iamge for each frame.
-    private void animateSprite(ref Sprite[] spriteList, int keepTime = 1)
+    private void animateSprite(ref Sprite[] spriteList, int keepTime = 1, int length = -1)
     {
-
-        if (frameCounter >= spriteList.Length * keepTime ) frameCounter = 0;
+        if (length == -1) length = spriteList.Length;
+        if (frameCounter >= length * keepTime ) frameCounter = 0;
 
             healthImage.sprite = spriteList[frameCounter / keepTime];
             frameCounter++;

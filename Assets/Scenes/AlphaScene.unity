@@ -12517,7 +12517,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2c9521618dc5469a8c5beec0e3904b3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  monster: {fileID: 940204008}
+  monster: {fileID: 2023273995}
   disappearEffectObject: {fileID: 367006061}
 --- !u!1 &778565225
 GameObject:
@@ -13426,12 +13426,6 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
---- !u!1 &940204008 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7213944089419768521, guid: db2d1e588e2c7e9449a5f4122889d2c2,
-    type: 3}
-  m_PrefabInstance: {fileID: 3151139112651850908}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &950533226
 GameObject:
   m_ObjectHideFlags: 0
@@ -13838,7 +13832,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1044896107}
-  m_LocalRotation: {x: 0.04410419, y: 0.7057264, z: -0.04410325, w: 0.70573366}
+  m_LocalRotation: {x: 0.044104274, y: 0.7057264, z: -0.044103336, w: 0.70573366}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -19749,7 +19743,7 @@ MonoBehaviour:
     type: 3}
   m_PrefabInstance: {fileID: 3151139112651850908}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 940204008}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8843ebff5279d4d2baa7a5d2da0118aa, type: 3}
