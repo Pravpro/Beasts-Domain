@@ -67,7 +67,8 @@ public class FieldOfView : MonoBehaviour
         Vector3 up = monster.transform.up;
         
         origin = monster.transform.position;
-        //origin.y -= 1f;
+        // 3f hardcoded!!! need a better way
+        origin.y = 3f;
         
         float angleIncHoriz = fovHoriz / rayCount;
         float angleVert = - fovVert / 2f;

@@ -73,7 +73,6 @@ public class AIController : MonoBehaviour
     {
         Idle,
         RandomSearch,
-        Charge,
         Attack,
         Defeated,
         Interrupted
@@ -145,19 +144,19 @@ public class AIController : MonoBehaviour
     private void Update()
     {
         UpdateAnimator();
-        float theta = Vector3.Angle(Vector3.up, transform.up) * Mathf.Deg2Rad;
-        if (theta > 0)
-        {
-            Vector3 side = Vector3.Cross(transform.up, Vector3.up);
-            Vector3 upHillDir = Quaternion.AngleAxis(90, side) * transform.up;
-            Vector3 force = rb.mass * 10f * Mathf.Sin(theta) * upHillDir.normalized;
-            // Debug.Log("Up: " + transform.up + " Force: " + force);
-            rb.AddForce(force);
-        }
+        // float theta = Vector3.Angle(Vector3.up, transform.up) * Mathf.Deg2Rad;
+        // if (theta > 0)
+        // {
+        //     Vector3 side = Vector3.Cross(transform.up, Vector3.up);
+        //     Vector3 upHillDir = Quaternion.AngleAxis(90, side) * transform.up;
+        //     Vector3 force = rb.mass * 10f * Mathf.Sin(theta) * upHillDir.normalized;
+        //     // Debug.Log("Up: " + transform.up + " Force: " + force);
+        //     rb.AddForce(force);
+        // }
 
         if (hp <= 0 || playerScript.hp <= 0)
         {
-            rb.isKinematic = true;
+            // rb.isKinematic = true;
             agent.isStopped = true;
             return;
         }
@@ -168,39 +167,39 @@ public class AIController : MonoBehaviour
             
         }
 
-        // 1. rotation
-        Quaternion qRotate;
-        // turn the boss to the rock hit direction
-        if (Vector3.Angle(m_targetedDir, transform.forward) > 2.0f)
-        {
-            qRotate = Quaternion.LookRotation(m_targetedDir);
-            transform.rotation = Quaternion.RotateTowards(transform.rotation, qRotate, Time.deltaTime * turningSpeed);
-        }
-        // if the monster already rotated to the direction of rock hit,
-        // then keep the target the same as current forward direction to prevent further turning
-        else
-        {
-            m_targetedDir = transform.forward;
-        }
+        // // 1. rotation
+        // Quaternion qRotate;
+        // // turn the boss to the rock hit direction
+        // if (Vector3.Angle(m_targetedDir, transform.forward) > 2.0f)
+        // {
+        //     qRotate = Quaternion.LookRotation(m_targetedDir);
+        //     transform.rotation = Quaternion.RotateTowards(transform.rotation, qRotate, Time.deltaTime * turningSpeed);
+        // }
+        // // if the monster already rotated to the direction of rock hit,
+        // // then keep the target the same as current forward direction to prevent further turning
+        // else
+        // {
+        //     m_targetedDir = transform.forward;
+        // }
 
-        // 2. move to the target position only if the player is in the viewArea.
-        //    boss ignores rocks when locked on to player
-        if (m_playerInSight)
-        {
+        // // 2. move to the target position only if the player is in the viewArea.
+        // //    boss ignores rocks when locked on to player
+        // if (m_playerInSight)
+        // {
 
-            // playerPos = player.transform.position;
-            // // get the rotation and translate vector to player
-            // Vector3 playerPosCopy = new Vector3(playerPos.x, 0, playerPos.z);
-            // Vector3 location = transform.position;
-            // playerDir = playerPosCopy - location;
-            // playerDir.y = transform.forward.y;
-            // playerDir.Normalize();
-            // m_targetedDir = transform.forward;
-            // qRotate = Quaternion.LookRotation(playerDir);
-            // transform.rotation = Quaternion.RotateTowards(transform.rotation, qRotate, Time.deltaTime * turningSpeed);
-            // //transform.position += movingSpeed * transform.forward;
-            // transform.position = Vector3.MoveTowards(transform.position, playerPosCopy, Time.deltaTime * movingSpeed);
-        }
+        //     // playerPos = player.transform.position;
+        //     // // get the rotation and translate vector to player
+        //     // Vector3 playerPosCopy = new Vector3(playerPos.x, 0, playerPos.z);
+        //     // Vector3 location = transform.position;
+        //     // playerDir = playerPosCopy - location;
+        //     // playerDir.y = transform.forward.y;
+        //     // playerDir.Normalize();
+        //     // m_targetedDir = transform.forward;
+        //     // qRotate = Quaternion.LookRotation(playerDir);
+        //     // transform.rotation = Quaternion.RotateTowards(transform.rotation, qRotate, Time.deltaTime * turningSpeed);
+        //     // //transform.position += movingSpeed * transform.forward;
+        //     // transform.position = Vector3.MoveTowards(transform.position, playerPosCopy, Time.deltaTime * movingSpeed);
+        // }
 
         Navigate();
     }
@@ -292,9 +291,11 @@ public class AIController : MonoBehaviour
 
     void UpdateAnimator()
     {
-        animator.SetBool("IsIdle", state == State.Idle);
+        bool isIdle = (state == State.Idle);
+        bool isCharge = (state == State.Attack && subState == SubState.Charge);
+        animator.SetBool("IsIdle", isIdle);
+        animator.SetBool("IsCharging", isCharge);
         animator.SetBool("IsWalking", state == State.RandomSearch || state == State.Interrupted);
-        animator.SetBool("IsCharging", state == State.Charge); // not allow running if recovering stamina
     }
 
     void UpdateAttackSubStateMachineStates()
@@ -443,9 +444,10 @@ public class AIController : MonoBehaviour
         if (Time.time <= nextThrowTime)
             return;
         Vector2 randVec2 = Random.insideUnitCircle.normalized;
-        Vector3 dir = new Vector3(randVec2.x, 0, randVec2.y);
+        // 1f hardcoded!!! need a better way
+        Vector3 dir = new Vector3(randVec2.x, 1f, randVec2.y);
         GameObject moss = Instantiate(mossObj, transform.position + 3f * dir, transform.rotation);
-        moss.GetComponent<Rigidbody>().velocity += dir * 12f;
+        moss.GetComponent<Rigidbody>().velocity += dir * 5f;
         throwedMoss += 1;
         nextThrowTime = Time.time + throwDelay;
         if (throwedMoss == maxMoss)
