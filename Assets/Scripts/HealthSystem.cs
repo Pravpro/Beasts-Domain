@@ -1,10 +1,16 @@
-﻿using System.Collections;
+﻿
+// For debugging log, comment out here
+// #define DEBUG_LOG
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using System.Linq;
 using UnityEngine.SceneManagement;
 using Rewired;
+
+
 
 /**
  * UI health and stamina system for player
@@ -55,7 +61,8 @@ public class HealthSystem : MonoBehaviour
         lessHP           = Resources.LoadAll<Sprite>("Sprites/PlayerHP/lessHP"         ).OrderBy(img => img.name).ToArray();
 
         frameCounter = 0;
-#if false
+
+#if DEBUG_LOG
         Debug.Log("maxHP: " + maxHP.Length);
         Debug.Log("maxHP: " + damagedAnimation.Length);
         Debug.Log("maxHP: " + lessHP.Length);
@@ -83,7 +90,9 @@ public class HealthSystem : MonoBehaviour
             if (frameCounter >= length * keepTime) 
             {
                 animatingDamage = false;
+#if DEBUG_LOG
                 Debug.Log("finish animating damage");
+#endif
             }
         }
             
@@ -92,7 +101,9 @@ public class HealthSystem : MonoBehaviour
         {
             frameCounter = 0;
             animatingDamage = true;
+#if DEBUG_LOG 
             Debug.Log("start animating damage");
+#endif
         }
 
         // player Died,  avoid monster and player die at same time 
