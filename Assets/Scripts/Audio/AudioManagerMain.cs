@@ -305,7 +305,6 @@ public class AudioManagerMain : MonoBehaviour
         newAudio.volume = source.volume;
         newAudio.outputAudioMixerGroup = source.outputAudioMixerGroup;
         sourceClipRelation.Add(newAudio, sourceClipRelation[source]);
-        Destroy(source);
         return newAudio;
     }
 
