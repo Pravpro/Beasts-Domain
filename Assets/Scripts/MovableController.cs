@@ -129,8 +129,8 @@ public class MovableController : MonoBehaviour
 
                 // restrict the movement to one axis
                 Vector3 playerForward = col.gameObject.transform.forward;
-                if (playerForward.x > playerForward.z) playerForward.z = 0;
-                else                                   playerForward.x = 0;
+                if (Mathf.Abs(playerForward.x) > Mathf.Abs(playerForward.z)) playerForward.z = 0;
+                else                                                         playerForward.x = 0;
 
                 Vector3 newPos = targetPos + playerForward * 2.0f;
 
