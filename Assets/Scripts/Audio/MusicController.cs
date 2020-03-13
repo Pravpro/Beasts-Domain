@@ -13,6 +13,7 @@ public class MusicController : MonoBehaviour
         audioManager.Play(audioManager.homebase);
         audioManager.Play(audioManager.moodboard);
         audioManager.Play(audioManager.strings);
+        audioManager.Play(audioManager.birds);
     }
 
     private void OnTriggerEnter(Collider other)

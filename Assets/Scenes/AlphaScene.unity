@@ -216,7 +216,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 13337469}
-  m_LocalRotation: {x: 0.056882948, y: 0.7048151, z: -0.056882948, w: 0.70481515}
+  m_LocalRotation: {x: 0.05688237, y: 0.70481515, z: -0.05688237, w: 0.7048152}
   m_LocalPosition: {x: -77.3, y: 3.1, z: 10.1}
   m_LocalScale: {x: 30, y: 30, z: 30}
   m_Children: []
@@ -6808,7 +6808,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 382882444}
-  m_LocalRotation: {x: 0.05688253, y: 0.7048158, z: -0.056882713, w: 0.7048145}
+  m_LocalRotation: {x: 0.056882415, y: 0.7048158, z: -0.056882598, w: 0.7048145}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -8003,7 +8003,7 @@ MonoBehaviour:
     birdsVol: 0.3
     fire:
     - {fileID: 8300000, guid: 1e9cf69174eaa6f40b3ad4ce0b0c5915, type: 3}
-    fireVol: 0.4
+    fireVol: 0.6
     geyser:
     - {fileID: 8300000, guid: aae3f26c5fd6a6c41ae0441c6a78568c, type: 3}
     geyserVol: 0.8
@@ -14168,7 +14168,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1044896107}
-  m_LocalRotation: {x: 0.044104185, y: 0.7057264, z: -0.044103246, w: 0.70573366}
+  m_LocalRotation: {x: 0.044104233, y: 0.7057264, z: -0.044103295, w: 0.70573366}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -21153,6 +21153,11 @@ PrefabInstance:
       propertyPath: crosshair
       value: 
       objectReference: {fileID: 1703087567}
+    - target: {fileID: 1311964250726574269, guid: 35b58b46bca88334daef10b3a5c81c42,
+        type: 3}
+      propertyPath: audioManager
+      value: 
+      objectReference: {fileID: 760171700}
     - target: {fileID: 5651607225151071102, guid: 35b58b46bca88334daef10b3a5c81c42,
         type: 3}
       propertyPath: audioManager
