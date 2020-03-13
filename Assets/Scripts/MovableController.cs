@@ -96,7 +96,7 @@ public class MovableController : MonoBehaviour
 #if DEBUG_LOG
                 Debug.Log("(MovableController): trigger stay start pushing");
 #endif
-                if (isPushing)  
+                if (!isPushing)  
                 {
                     m_rbMovable.constraints &= ~RigidbodyConstraints.FreezeRotationX;
                     m_rbMovable.constraints &= ~RigidbodyConstraints.FreezeRotationZ;
@@ -132,10 +132,9 @@ public class MovableController : MonoBehaviour
                 if (Mathf.Abs(playerForward.x) > Mathf.Abs(playerForward.z)) playerForward.z = 0;
                 else                                                         playerForward.x = 0;
 
-                Vector3 newPos = targetPos + playerForward * 2.0f;
+                Vector3 newPos = this.transform.position + playerForward * 2.0f;
 
                 newPos.y = this.transform.position.y;
-
                 this.transform.position = Vector3.Slerp(this.transform.position, newPos, Time.deltaTime * 1.0f);
                 
                 player.transform.LookAt(targetPos);
