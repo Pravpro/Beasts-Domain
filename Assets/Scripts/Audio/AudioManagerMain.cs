@@ -188,7 +188,7 @@ public class AudioManagerMain : MonoBehaviour
     {
 
         // SFX: Player sources
-        landing = AddAudio(false, sfxClips.player.landingVol, mixerGroups.action); // Params: 1.GameObject 2.loop 3.Volume 4.Mixer Group
+        landing = AddAudio(false, sfxClips.player.landingVol, mixerGroups.action); // Params: 1.loop 2.Volume 3.Mixer Group
         jumping = AddAudio(false, sfxClips.player.jumpingVol, mixerGroups.action);
         stamina = AddAudio(false, sfxClips.player.staminaVol, mixerGroups.action);
         walking = AddAudio(false, sfxClips.player.walkingVol, mixerGroups.action);
@@ -217,7 +217,7 @@ public class AudioManagerMain : MonoBehaviour
         // Environment sources
         tree = AddAudio(false, environmentClips.treeVol, mixerGroups.trees);
         birds = AddAudio(false, environmentClips.birdsVol, mixerGroups.birds);
-        fire = AddAudio(false, environmentClips.fireVol, mixerGroups.fire);
+        fire = AddAudio(true, environmentClips.fireVol, mixerGroups.fire);
         geyser = AddAudio(false, environmentClips.geyserVol, mixerGroups.geyser);
         rockSlide = AddAudio(false, environmentClips.rockSlideVol, mixerGroups.rocks);
 
@@ -283,7 +283,6 @@ public class AudioManagerMain : MonoBehaviour
 
     public void Play(AudioSource toPlay, float blend )
     {
-        //Assert.AreApproximatelyEqual()
         toPlay.spatialBlend = blend;
         Play(toPlay);
     }
