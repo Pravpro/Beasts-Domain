@@ -74,6 +74,7 @@ public class PlayerController : MonoBehaviour
         AimArea = GameObject.Find("SpellArea/AimArea");
         // set to false at beginning
         AimArea.SetActive(false);
+        audioManager.Localize(spellArea.gameObject, audioManager.spell);
 
         pushingObject = null;
         
@@ -183,7 +184,7 @@ public class PlayerController : MonoBehaviour
 
         if (stamina <= 0)
         {
-            audioManager.Play(audioManager.stamina, 1.1f, 1.2f);
+            audioManager.Play(audioManager.stamina, new float[] {1.1f, 1.2f});
             recoverStamia = true;
         }
 
@@ -200,7 +201,7 @@ public class PlayerController : MonoBehaviour
             grounded = false;
 
             audioManager.walking.Stop();
-            audioManager.Play(audioManager.jumping, 1f, 1.1f);
+            audioManager.Play(audioManager.jumping, new float[] {1f, 1.1f});
         }
 
         // Crouch and Run Logic (Cannot do both at the same time)
@@ -251,6 +252,7 @@ public class PlayerController : MonoBehaviour
         {
             // deactivate aiming for spell area
             AimArea.SetActive(false);
+            audioManager.Play(audioManager.spell, 0.5f);
 
             // activate the spell when monster is not charging
             if (!GameObject.FindGameObjectWithTag("Monster").GetComponent<AIController>().IsCharging())
@@ -258,6 +260,8 @@ public class PlayerController : MonoBehaviour
                 var spellAreaEmission = spellArea.emission;
                 spellAreaEmission.enabled = true;
                 spellArea.Play();
+
+                
 
                 //audio test
                 audioManager.Play(audioManager.spell);
@@ -277,7 +281,7 @@ public class PlayerController : MonoBehaviour
         {
             grounded = true;
             Debug.Log("landed");
-            audioManager.Play(audioManager.landing, 0.7f, 1.3f);
+            audioManager.Play(audioManager.landing, new float[] {0.7f, 1.3f});
         }
 
         if (col.collider.tag == "Movable")

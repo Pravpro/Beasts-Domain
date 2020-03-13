@@ -583,7 +583,7 @@ public class AIController : MonoBehaviour
         if (playerScript.hp <= 0)
         {
             Debug.Log("Player Dies");
-            audioManager.PlayDeath();
+            audioManager.Play(audioManager.death);
         }
     }
 

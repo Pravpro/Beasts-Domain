@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.Audio;
+using UnityEngine.Assertions;
 using UnityEngine;
 
 
@@ -187,38 +188,38 @@ public class AudioManagerMain : MonoBehaviour
     {
 
         // SFX: Player sources
-        landing = AddAudio(false, false, sfxClips.player.landingVol, mixerGroups.action); // Params: 1.Loop 2.Play on Awake 3.Volume 4. Mixer Group
-        jumping = AddAudio(false, false, sfxClips.player.jumpingVol, mixerGroups.action);
-        stamina = AddAudio(false, false, sfxClips.player.staminaVol, mixerGroups.action);
-        walking = AddAudio(false, false, sfxClips.player.walkingVol, mixerGroups.action);
-        running = AddAudio(false, false, sfxClips.player.runningVol, mixerGroups.action);
-        damage = AddAudio(false, false, sfxClips.player.damageVol, mixerGroups.action);
-        death = AddAudio(false, false, sfxClips.player.deathVol, mixerGroups.action);
-        boulder = AddAudio(false, false, sfxClips.player.boulderVol, mixerGroups.action);
-        slingshotDraw = AddAudio(false, false, sfxClips.player.slingshotDrawVol, mixerGroups.weapons);
-        slingshotRelease = AddAudio(false, false, sfxClips.player.slingshotReleaseVol, mixerGroups.weapons);
-        rock = AddAudio(false, false, sfxClips.player.rockVol, mixerGroups.weapons);
-        spell = AddAudio(false, false, sfxClips.player.spellVol, mixerGroups.weapons);
+        landing = AddAudio(false, sfxClips.player.landingVol, mixerGroups.action); // Params: 1.GameObject 2.loop 3.Volume 4.Mixer Group
+        jumping = AddAudio(false, sfxClips.player.jumpingVol, mixerGroups.action);
+        stamina = AddAudio(false, sfxClips.player.staminaVol, mixerGroups.action);
+        walking = AddAudio(false, sfxClips.player.walkingVol, mixerGroups.action);
+        running = AddAudio(false, sfxClips.player.runningVol, mixerGroups.action);
+        damage = AddAudio(false, sfxClips.player.damageVol, mixerGroups.action);
+        death = AddAudio(false, sfxClips.player.deathVol, mixerGroups.action);
+        boulder = AddAudio(false, sfxClips.player.boulderVol, mixerGroups.action);
+        slingshotDraw = AddAudio(false, sfxClips.player.slingshotDrawVol, mixerGroups.weapons);
+        slingshotRelease = AddAudio(false, sfxClips.player.slingshotReleaseVol, mixerGroups.weapons);
+        rock = AddAudio(false, sfxClips.player.rockVol, mixerGroups.weapons);
+        spell = AddAudio(false, sfxClips.player.spellVol, mixerGroups.weapons);
         // SFX: Beast sources
-        roar1 = AddAudio(false, false, sfxClips.beast.roar1Vol, mixerGroups.beast);
-        roar2 = AddAudio(false, false, sfxClips.beast.roar2Vol, mixerGroups.beast);
-        hurt = AddAudio(false, false, sfxClips.beast.hurtVol, mixerGroups.beast);
-        flare = AddAudio(false, false, sfxClips.beast.flareVol, mixerGroups.beast);
-        hoof = AddAudio(false, false, sfxClips.beast.hoofVol, mixerGroups.beast);
+        roar1 = AddAudio(false, sfxClips.beast.roar1Vol, mixerGroups.beast);
+        roar2 = AddAudio(false, sfxClips.beast.roar2Vol, mixerGroups.beast);
+        hurt = AddAudio(false, sfxClips.beast.hurtVol, mixerGroups.beast);
+        flare = AddAudio(false, sfxClips.beast.flareVol, mixerGroups.beast);
+        hoof = AddAudio(false, sfxClips.beast.hoofVol, mixerGroups.beast);
         // Music sources
-        moodboard = AddAudio(true, true, musicClips.moodboardVol, mixerGroups.training);
-        strings = AddAudio(true, true, musicClips.stringsVol, mixerGroups.arena);
-        bossStrings = AddAudio(true, false, musicClips.bossstringsVol, mixerGroups.arena);
-        bossStinger = AddAudio(false, false, musicClips.bossstringsVol, mixerGroups.beast);
-        boss1 = AddAudio(true, false, musicClips.boss1Vol, mixerGroups.arena);
-        boss2 = AddAudio(true, false, musicClips.boss2Vol, mixerGroups.arena);
-        homebase = AddAudio(true, true, musicClips.homebaseVol, mixerGroups.homebase);
+        moodboard = AddAudio(true, musicClips.moodboardVol, mixerGroups.training);
+        strings = AddAudio(true, musicClips.stringsVol, mixerGroups.arena);
+        bossStrings = AddAudio(true, musicClips.bossstringsVol, mixerGroups.arena);
+        bossStinger = AddAudio(false, musicClips.bossstringsVol, mixerGroups.beast);
+        boss1 = AddAudio(true, musicClips.boss1Vol, mixerGroups.arena);
+        boss2 = AddAudio(true, musicClips.boss2Vol, mixerGroups.arena);
+        homebase = AddAudio(true, musicClips.homebaseVol, mixerGroups.homebase);
         // Environment sources
-        tree = AddAudio(false, false, environmentClips.treeVol, mixerGroups.trees);
-        birds = AddAudio(false, true, environmentClips.birdsVol, mixerGroups.birds);
-        fire = AddAudio(false, true, environmentClips.fireVol, mixerGroups.fire);
-        geyser = AddAudio(false, false, environmentClips.geyserVol, mixerGroups.geyser);
-        rockSlide = AddAudio(false, false, environmentClips.rockSlideVol, mixerGroups.rocks);
+        tree = AddAudio(false, environmentClips.treeVol, mixerGroups.trees);
+        birds = AddAudio(false, environmentClips.birdsVol, mixerGroups.birds);
+        fire = AddAudio(false, environmentClips.fireVol, mixerGroups.fire);
+        geyser = AddAudio(false, environmentClips.geyserVol, mixerGroups.geyser);
+        rockSlide = AddAudio(false, environmentClips.rockSlideVol, mixerGroups.rocks);
 
 
         sourceClipRelation.Add(landing, sfxClips.player.landing);
@@ -256,22 +257,52 @@ public class AudioManagerMain : MonoBehaviour
 
 
 
-    AudioSource AddAudio(bool loop, bool playAwake, float vol, AudioMixerGroup output)
+    AudioSource AddAudio(bool loop, float vol, AudioMixerGroup output)
     {
         AudioSource newAudio = gameObject.AddComponent<AudioSource>();
         newAudio.loop = loop;
-        newAudio.playOnAwake = playAwake;
         newAudio.volume = vol;
         newAudio.outputAudioMixerGroup = output;
         return newAudio;
     }
 
-    public void Play(AudioSource toPlay, float low = 1f, float high = 1f)
+    public void Play(AudioSource toPlay)
     {
         toPlay.clip = sourceClipRelation[toPlay][Random.Range(0, sourceClipRelation[toPlay].Length)];
-        toPlay.pitch = Random.Range(low, high);
         toPlay.Play();
 
+    }
+
+    public void Play(AudioSource toPlay, float[] pitch )
+    {
+        Assert.AreEqual(2, pitch.Length);
+        toPlay.pitch = Random.Range(pitch[0], pitch[1]);
+        Play(toPlay);
+
+    }
+
+    public void Play(AudioSource toPlay, float blend )
+    {
+        //Assert.AreApproximatelyEqual()
+        toPlay.spatialBlend = blend;
+        Play(toPlay);
+    }
+
+    public void Play(AudioSource toPlay, float blend, float[] pitch)
+    {
+        toPlay.spatialBlend = blend;
+        Play(toPlay, pitch);
+    }
+
+    public AudioSource Localize(GameObject target, AudioSource source)
+    {
+        AudioSource newAudio = target.AddComponent<AudioSource>();
+        newAudio.loop = source.loop;
+        newAudio.volume = source.volume;
+        newAudio.outputAudioMixerGroup = source.outputAudioMixerGroup;
+        sourceClipRelation.Add(newAudio, sourceClipRelation[source]);
+        Destroy(source);
+        return newAudio;
     }
 
     public void PlayPhaseOne()
@@ -295,15 +326,6 @@ public class AudioManagerMain : MonoBehaviour
         boss2.PlayDelayed(5.5f);
         bossStrings.clip = sourceClipRelation[bossStrings][Random.Range(0, sourceClipRelation[bossStrings].Length)];
         bossStrings.PlayDelayed(5.5f);
-    }
-
-    public void PlayDeath()
-    {
-        boss1.Stop();
-        bossStrings.Stop();
-        boss2.Stop();
-        death.clip = sourceClipRelation[death] [Random.Range(0, sourceClipRelation [death].Length)];
-        death.Play();
     }
 
     public void SetVolume(SnapshotState state)
