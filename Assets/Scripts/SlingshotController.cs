@@ -15,6 +15,7 @@ public class SlingshotController : MonoBehaviour
     public Image crosshair;
     public float throwDelay;
 
+    public AudioManagerMain audioManager;
     //Audio Design 
     public AudioClip Hold;
     public AudioClip Release;
@@ -47,8 +48,8 @@ public class SlingshotController : MonoBehaviour
         if (m_playerInput.GetButtonDown("Aim"))
         {
             playerAnimator.SetBool("IsAiming", true);
-            Slingshot.clip = Hold;
-            Slingshot.PlayOneShot(Hold, 1f);
+            //Slingshot.clip = Hold;
+            //Slingshot.PlayOneShot(Hold, 1f);
         }
 
         if (m_playerInput.GetButtonUp("Aim"))
@@ -84,9 +85,7 @@ public class SlingshotController : MonoBehaviour
                     ThrowableController m_rockScript = m_rock.GetComponent<ThrowableController>();
                     m_rockScript.slingshotScript = this;
 
-                    Slingshot.clip = Release;
-                    Slingshot.PlayOneShot(Release, 1f);
-                    Slingshot.outputAudioMixerGroup = output;
+                    audioManager.Play(audioManager.slingshotRelease);
 
                     // Add the launch arc forces to the throwable
                     m_rb.AddForce(targetVector * throwVelocity, ForceMode.VelocityChange);

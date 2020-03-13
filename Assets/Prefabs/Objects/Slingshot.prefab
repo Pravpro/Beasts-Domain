@@ -42,7 +42,7 @@ AudioSource:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 198654590859144805}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 8590317676607429496, guid: b12a37322bc5b8444879a1c72e83a533,
     type: 2}
@@ -139,7 +139,7 @@ AudioSource:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 198654590859144805}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 8590317676607429496, guid: b12a37322bc5b8444879a1c72e83a533,
     type: 2}
@@ -249,6 +249,7 @@ MonoBehaviour:
   aimCam: {fileID: 0}
   crosshair: {fileID: 0}
   throwDelay: 1
+  audioManager: {fileID: 0}
   Hold: {fileID: 8300000, guid: 67fb7425e3f22475398db38cf02e6323, type: 3}
   Release: {fileID: 8300000, guid: a68cb3d90f65e8146ac2454b55af0aa3, type: 3}
   Slingshot: {fileID: 7542720990226630869}
@@ -257,7 +258,6 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 76c37cbc4fecc4b4ab66f1c999bc7add, type: 3}
   - {fileID: 8300000, guid: e06411748a135264da022b7124bdd82a, type: 3}
   Rock: {fileID: 4941578087757380957}
-  ready: {fileID: 7542720990226630868}
 --- !u!82 &4941578087757380957
 AudioSource:
   m_ObjectHideFlags: 0
@@ -408,6 +408,7 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
