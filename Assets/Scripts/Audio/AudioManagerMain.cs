@@ -89,6 +89,8 @@ public class AudioManagerMain : MonoBehaviour
             [Range(0f, 1f)] public float flareVol;
             public AudioClip[] hoof;
             [Range(0f, 1f)] public float hoofVol;
+            public AudioClip[] moss;
+            [Range(0f, 1f)] public float mossVol;
         }
 
         public PlayerClips player;
@@ -175,6 +177,7 @@ public class AudioManagerMain : MonoBehaviour
     [HideInInspector] public AudioSource hurt;
     [HideInInspector] public AudioSource flare;
     [HideInInspector] public AudioSource hoof;
+    [HideInInspector] public AudioSource moss;
     [HideInInspector] public AudioSource damage;
     [HideInInspector] public AudioSource death;
     [HideInInspector] public AudioSource tree; //pitch: 0.8, 1.1
@@ -206,6 +209,7 @@ public class AudioManagerMain : MonoBehaviour
         hurt = AddAudio(false, sfxClips.beast.hurtVol, mixerGroups.beast);
         flare = AddAudio(false, sfxClips.beast.flareVol, mixerGroups.beast);
         hoof = AddAudio(false, sfxClips.beast.hoofVol, mixerGroups.beast);
+        moss = AddAudio(false, sfxClips.beast.mossVol, mixerGroups.beast);
         // Music sources
         moodboard = AddAudio(true, musicClips.moodboardVol, mixerGroups.training);
         strings = AddAudio(true, musicClips.stringsVol, mixerGroups.arena);
@@ -239,6 +243,7 @@ public class AudioManagerMain : MonoBehaviour
         sourceClipRelation.Add(hurt, sfxClips.beast.hurt);
         sourceClipRelation.Add(flare, sfxClips.beast.flare);
         sourceClipRelation.Add(hoof, sfxClips.beast.hoof);
+        sourceClipRelation.Add(moss, sfxClips.beast.moss);
         sourceClipRelation.Add(moodboard, musicClips.moodboard);
         sourceClipRelation.Add(strings, musicClips.strings);
         sourceClipRelation.Add(bossStrings, musicClips.bossstrings);
@@ -307,7 +312,7 @@ public class AudioManagerMain : MonoBehaviour
     public void PlayPhaseOne()
     {
         strings.Stop();
-        Play(roar1);
+        Play(roar1, 0.5f);
         Play(bossStinger);
         boss1.clip = sourceClipRelation[boss1][Random.Range(0, sourceClipRelation[boss1].Length)];
         boss1.PlayDelayed(2.5f);
@@ -320,7 +325,7 @@ public class AudioManagerMain : MonoBehaviour
         boss1.Stop();
         bossStrings.Stop();
 
-        Play(roar2);
+        Play(roar2, 0.5f);
         boss2.clip = sourceClipRelation[boss2][Random.Range(0, sourceClipRelation[boss2].Length)];
         boss2.PlayDelayed(5.5f);
         bossStrings.clip = sourceClipRelation[bossStrings][Random.Range(0, sourceClipRelation[bossStrings].Length)];

@@ -216,8 +216,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 13337469}
-  m_LocalRotation: {x: 0.05688237, y: 0.70481515, z: -0.05688237, w: 0.7048152}
-  m_LocalPosition: {x: -77.3, y: 3.1, z: 10.1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 30, y: 30, z: 30}
   m_Children: []
   m_Father: {fileID: 0}
@@ -6808,7 +6808,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 382882444}
-  m_LocalRotation: {x: 0.056882415, y: 0.7048158, z: -0.056882598, w: 0.7048145}
+  m_LocalRotation: {x: 0.05688253, y: 0.7048158, z: -0.056882713, w: 0.7048145}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -7956,13 +7956,13 @@ MonoBehaviour:
       spellVol: 0.8
     beast:
       roar1:
-      - {fileID: 8300000, guid: c4ba7b1503980f042a5704154c1b2042, type: 3}
+      - {fileID: 8300000, guid: 94aaad1912ea6fa41a1d3afbd47beb6b, type: 3}
       roar1Vol: 1
       roar2:
-      - {fileID: 8300000, guid: 94aaad1912ea6fa41a1d3afbd47beb6b, type: 3}
+      - {fileID: 8300000, guid: c4ba7b1503980f042a5704154c1b2042, type: 3}
       roar2Vol: 1
       hurt:
-      - {fileID: 8300000, guid: 8c5d04f08c66e4f5ea6a12468ace106b, type: 3}
+      - {fileID: 8300000, guid: 8e5fb9347918aa642a7894641b0bba4c, type: 3}
       hurtVol: 1
       flare:
       - {fileID: 8300000, guid: b9b86032db7fc4259a134b69080b4e17, type: 3}
@@ -7970,6 +7970,9 @@ MonoBehaviour:
       hoof:
       - {fileID: 8300000, guid: e73f55637d8d64c80872f6dd67c12efa, type: 3}
       hoofVol: 1
+      moss:
+      - {fileID: 8300000, guid: 034a8effb5561be4a9b2724db62882e1, type: 3}
+      mossVol: 1
   musicClips:
     strings:
     - {fileID: 8300000, guid: a20fb40e6c0638942b72050cac004b91, type: 3}
@@ -8031,6 +8034,7 @@ MonoBehaviour:
   hurt: {fileID: 0}
   flare: {fileID: 0}
   hoof: {fileID: 0}
+  moss: {fileID: 0}
   damage: {fileID: 0}
   death: {fileID: 0}
   tree: {fileID: 0}
@@ -14168,7 +14172,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1044896107}
-  m_LocalRotation: {x: 0.044104233, y: 0.7057264, z: -0.044103295, w: 0.70573366}
+  m_LocalRotation: {x: 0.04410434, y: 0.7057264, z: -0.044103403, w: 0.70573366}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:

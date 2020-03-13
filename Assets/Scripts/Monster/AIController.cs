@@ -122,15 +122,16 @@ public class AIController : MonoBehaviour
         //lineRenderer = GetComponent<LineRenderer>();
         //lineRenderer.positionCount = 2;
 
-        //IntroFight.TransitionTo(0.0f);
-        //choir.Play();
-        //strings.clip = Violin;
-        //strings.PlayDelayed(30.0f);
-        //strings.loop = true;
         animator = gameObject.GetComponent<Animator>();
 
         // mask defaults to all areas and we don't want that
         UnsetChargeAreaMask();
+
+        //Audio
+        audioManager.roar1 = audioManager.Localize(gameObject, audioManager.roar1);
+        audioManager.hurt = audioManager.Localize(gameObject, audioManager.hurt);
+        audioManager.flare = audioManager.Localize(gameObject, audioManager.flare);
+        audioManager.hoof = audioManager.Localize(gameObject, audioManager.hoof);
     }
 
     // void Update()
@@ -378,6 +379,7 @@ public class AIController : MonoBehaviour
     IEnumerator HornPlayer()
     {
         horned = true;
+        audioManager.Play(audioManager.flare, 0.8f);
         yield return new WaitForSeconds(1);
 
         if (DistanceToPlayer() <= maxMeleeDistance && AngleToPlayer() <= 30f)
@@ -417,8 +419,8 @@ public class AIController : MonoBehaviour
             //     targetPos = transform.position + maxChargeDistance * toPlayer;
             NavMesh.Raycast(raycastOrigin, playerPos + toPlayer * 1000, out hit, NavMesh.AllAreas);
             targetPos = raycastOrigin + Mathf.Min(maxChargeDistance, Mathf.Max(hit.distance, agent.stoppingDistance + 2f) ) * toPlayer;
-            //nostril flare before charge?
-            audioManager.Play(audioManager.flare);
+            //hoof drag before charge
+            audioManager.Play(audioManager.hoof, 0.7f);
         }
         // cannot charge at player directly
         else
@@ -447,6 +449,7 @@ public class AIController : MonoBehaviour
         moss.GetComponent<Rigidbody>().velocity += dir * 5f;
         throwedMoss += 1;
         nextThrowTime = Time.time + throwDelay;
+        audioManager.Play(audioManager.flare, 0.8f);
         if (throwedMoss == maxMoss)
         {
             mossCDTime = Time.time + mossCD;

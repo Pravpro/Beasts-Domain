@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 5605519090829086091}
   - component: {fileID: 5605519090829086090}
   - component: {fileID: 5605519090829086093}
+  - component: {fileID: 193415116874575196}
   m_Layer: 0
   m_Name: MossArea
   m_TagString: Moss
@@ -94,3 +95,15 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &193415116874575196
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5605519090829086092}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a9d8810d0fa132a4c97044b7f8668bfb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
