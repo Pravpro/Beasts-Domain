@@ -8,6 +8,12 @@ using Rewired;
 
 public class PlayerController : MonoBehaviour
 {
+#if false
+    // used for restarting the game by skipping the tutorial section
+    public static Vector3 respawnPlayerPosition; // TODO
+    public static bool tutorialFinished = false;
+#endif
+
     // Create variable for movement speed
     public float walkSpeed, runSpeed, jumpSpeed, turnSpeed, crouchSpeed, mossSpeed;
     public float hp, stamina, maxStamina;
@@ -37,13 +43,19 @@ public class PlayerController : MonoBehaviour
     
     [HideInInspector]
     public Coroutine WaitNextSpellCoroutine; // needed for UI 
-    private bool activateSpell = false;
+    private bool spellActivated = false;
     private bool inSafeZone = false;
 
     private void Awake()
     {
         // becauze my menu input event is written to messed up, i need to add this line here...
         Time.timeScale = 1; 
+
+#if false
+        // when restart, player position should be in the arena, instead of tutorial section
+        if (tutorialFinished)
+            this.transform.position = respawnPlayerPosition;
+#endif
     }
     
     private void Start()
@@ -73,7 +85,7 @@ public class PlayerController : MonoBehaviour
         if (pushingObject != null) pushing = pushingObject.GetComponent<MovableController>().isPushing;
 
         // Set Animator bools
-        m_Animator.SetBool("IsMoving", activateSpell ? false : isMoving);
+        m_Animator.SetBool("IsMoving", spellActivated ? false : isMoving);
         m_Animator.SetBool("IsRunning", recoverStamia || pushing ? false : running); // not allow running if recovering stamina
         m_Animator.SetBool("IsCrouching", crouching); 
 
@@ -127,7 +139,7 @@ public class PlayerController : MonoBehaviour
         }
 
         // Code for Running and walking
-        if (isMoving && !activateSpell)
+        if (isMoving && !spellActivated)
         {
             if (inMoss)
             {
@@ -203,53 +215,59 @@ public class PlayerController : MonoBehaviour
         }
         else running = false;
 
-
+        // player spell logics
         if (WaitNextSpellCoroutine == null)
         {
-            // some distance front of player
-            Vector3 spellAreaPosition = this.transform.position + this.transform.forward * 10f;
-            if (m_playerInput.GetButtonDown("Spell"))
+            ActivateSpell();
+        }
+    }
+
+    void ActivateSpell()
+    {
+        // some distance front of player
+        Vector3 spellAreaPosition = this.transform.position + this.transform.forward * 10f;
+        spellAreaPosition.y = spellArea.transform.position.y; // update the y axis
+        if (m_playerInput.GetButtonDown("Spell"))
+        {
+            spellArea.transform.position = spellAreaPosition;
+            AimArea.SetActive(true);
+            spellActivated = true;
+        }
+
+        // TODO: should probably only allow spell after monster get some damage
+        if (m_playerInput.GetButton("Spell"))
+        {
+            spellArea.transform.position = spellAreaPosition;
+            // ray cast to the ground
+            RaycastHit hit;
+            int mask = (1 << LayerMask.NameToLayer("Ground"));
+            if (Physics.Raycast(spellAreaPosition + Vector3.up * 10f, Vector3.down, out hit, 40.0f /*max distance */, mask) )
             {
-                spellArea.transform.position = spellAreaPosition;
-                AimArea.SetActive(true);
-                activateSpell = true;
+                spellArea.transform.position = hit.point + Vector3.up * 1.0f; /* a little above ground */
             }
+        }
 
-            // TODO: should probably only allow spell after monster get some damage
-            if (m_playerInput.GetButton("Spell"))
+        if (m_playerInput.GetButtonUp("Spell"))
+        {
+            // deactivate aiming for spell area
+            AimArea.SetActive(false);
+
+            // activate the spell when monster is not charging
+            if (!GameObject.FindGameObjectWithTag("Monster").GetComponent<AIController>().IsCharging())
             {
-                spellArea.transform.position = spellAreaPosition;
-                // ray cast to the ground
-                RaycastHit hit;
-                if (Physics.Raycast(spellAreaPosition + Vector3.up * 5f, Vector3.down, out hit, 80.0f /*max distance */) )
-                {
-                    if (hit.collider.tag == "Ground")
-                        spellArea.transform.position = hit.point + Vector3.up * 1.0f; /* a little above ground */
-                }
+                var spellAreaEmission = spellArea.emission;
+                spellAreaEmission.enabled = true;
+                spellArea.Play();
+
+                //audio test
+                audioManager.Play(audioManager.spell);
+
+                // wait time before next available spell
+                WaitNextSpellCoroutine = StartCoroutine(WaitNextSpell() );
+
             }
-
-            if (m_playerInput.GetButtonUp("Spell"))
-            {
-                // deactivate aiming for spell area
-                AimArea.SetActive(false);
-
-                // activate the area
-                // if (!GameObject.Find("Monster").GetComponent<AIController>().playerInSight)
-                {
-                    var spellAreaEmission = spellArea.emission;
-                    spellAreaEmission.enabled = true;
-                    spellArea.Play();
-
-                    //audio test
-                    audioManager.Play(audioManager.spell);
-
-                    // wait time before next available spell
-                    WaitNextSpellCoroutine = StartCoroutine(WaitNextSpell() );
-
-                }
-            
-                activateSpell = false;
-            }
+        
+            spellActivated = false;
         }
     }
 
