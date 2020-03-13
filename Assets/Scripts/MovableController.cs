@@ -1,4 +1,7 @@
-﻿using System.Collections;
+﻿// macro for logging debug message to console
+// #define DEBUG_LOG
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Rewired;
@@ -12,6 +15,7 @@ public class MovableController : MonoBehaviour
     private Vector2 curPos, lastPos;
 
     private bool m_monsterCollided = false;
+    private RigidbodyConstraints m_origRBConstarints;
 
     public AudioManagerMain audioManager;
     public PlayerController playerScript;
@@ -23,57 +27,82 @@ public class MovableController : MonoBehaviour
         m_playerInput = ReInput.players.GetPlayer(0 /*m_playerID */);
         m_rbMovable   = this.GetComponent<Rigidbody>();
         curPos = lastPos = new Vector2(transform.position.x, transform.position.z);
-        
+
+        m_origRBConstarints = m_rbMovable.constraints;
     }
 
-    /** General Note here:
-     *      - movable will require two colliders on it one with Trigger option enabled, one with it disabled.
-     *        The collider with trigger option enabled will be mainly responsible for the logics for push. (like a wrapper) 
-     *        The collider without trigger will be mainly for physics interaction.
-     *
-     *        Push on command requires the object to change isKinematic state. Whenever isKinematic = true, 
-     *        the object will ignore the collision and skip the OnCollisionStay etc functions.
-     *        Use trigger to not ignore any collision happened with isKinematic = true/false.
-    **/
-    void OnTriggerEnter(Collider col)
-    {
 
-        if (col.tag == "Monster")
+    /** General Note here:
+     *      - movable will only need one collider now! (no need for trigger collider)
+     *      - push on command changes the constraints for the rigidbody. 
+     *      - When entering the collider, we enable all the constraints for rotation and position 
+     *        except for positionY (needed for reacting with height).
+     *      - When exiting the coolider, we disable all the constarints, allow boulder to have natural physics.
+     *     
+     *      - If things is not working:
+     *          1. check the collider
+     *          2. check the constraints (need to check all except PositoinY)
+     * 
+     *       (extra note: develper who wrote this is very happy this worked! and been so dumb with using isKinematic=true/false...)
+    **/
+
+    void OnCollisionEnter(Collision col)
+    {
+        
+        if (col.collider.tag == "Monster" || col.collider.tag == "Player")
+            m_rbMovable.constraints = m_origRBConstarints;
+
+
+        if (col.collider.tag == "Monster")
         {
             // not allow monster to push boulder
             if (this.name.Contains("Boulder") ||
                 this.name.Contains("boulder") )
             {
-                // m_rbMovable.isKinematic = true;
-
                 m_monsterCollided = true;   
             }
-        }
 
-        m_rbMovable.Sleep();       
+#if DEBUG_LOG
+            Debug.Log("(MovableController): trigger entered");
+#endif
+
+            m_rbMovable.Sleep();     
+
+        }
+  
     }
 
-    void OnTriggerStay(Collider col)
+    void OnCollisionStay(Collision col)
     {
         
         // maybe check if the monster is static? if so allow pushing
         if (m_monsterCollided)
             return;
 
-        if (col.tag == "Player")
+        if (col.collider.tag == "Player")
         {
+#if DEBUG_LOG
+            Debug.Log("(MovableController): trigger staying");
+#endif
             // avoid pushing without button pressed
             // m_rbMovable.isKinematic = true;
 
-            GameObject player = col.gameObject;
+            GameObject player = col.collider.gameObject;
 
-            // if object is set as isKinematics, onCollisionStay will be skipped
-            // directly go to OnCollisionExit
             if (m_playerInput.GetButton("Push"))
             {
                 isPushing = true;
-                // m_rbMovable.isKinematic = false;
 
+#if DEBUG_LOG
+                Debug.Log("(MovableController): trigger stay start pushing");
+#endif
+                if (isPushing)  
+                {
+                    m_rbMovable.constraints &= ~RigidbodyConstraints.FreezeRotationX;
+                    m_rbMovable.constraints &= ~RigidbodyConstraints.FreezeRotationZ;
+                }
+                else
+                    m_rbMovable.constraints |= RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationZ;
 
                 //curPos = new Vector2(transform.position.x, transform.position.z);
                 //isMoving = curPos.x != lastPos.x || curPos.y != lastPos.y;
@@ -91,7 +120,6 @@ public class MovableController : MonoBehaviour
 
                 // always look at the movable objects when pushing
                 Vector3 targetPos = this.transform.position;
-
                 targetPos.y = player.transform.position.y;
 
                 // currently the center point for boulder is not centered... ughhhh...
@@ -99,37 +127,41 @@ public class MovableController : MonoBehaviour
                 targetPos.x = targetPos.x - this.transform.localScale.x / 2;
                 targetPos.z = targetPos.z + this.transform.localScale.z / 2;
 
-                Vector3 transPos = this.transform.position;
-                this.transform.position = Vector3.Slerp(transPos, transPos + player.transform.forward, Time.deltaTime * 2.0f);
+                // restrict the movement to one axis
+                Vector3 playerForward = col.gameObject.transform.forward;
+                if (playerForward.x > playerForward.z) playerForward.z = 0;
+                else                                   playerForward.x = 0;
+
+                Vector3 newPos = targetPos + playerForward * 2.0f;
+
+                newPos.y = this.transform.position.y;
+
+                this.transform.position = Vector3.Slerp(this.transform.position, newPos, Time.deltaTime * 1.0f);
                 
                 player.transform.LookAt(targetPos);
             }
 
             if (m_playerInput.GetButtonUp("Push"))
             {
-                // m_rbMovable.isKinematic = true;
                 isPushing = false;
                 audioManager.boulder.Stop();
             }
         }
     }
 
-    void OnTriggerExit(Collider col)
+    // void OnTriggerExit(Collider col)
+    void OnCollisionExit(Collision col)
     {
-        if (col.tag == "Monster") m_monsterCollided = false;
+        if (col.collider.tag == "Monster") m_monsterCollided = false;
 
         //audioManager.boulder.Stop();
 
-
-        if (!m_monsterCollided)
-        {            
-            // stop any residual force that might cause object move
-            // m_rbMovable.Sleep();
-
-            // allow monster to move around objects
-            // m_rbMovable.isKinematic = false;
-        }
-
         isPushing = false;
+        m_rbMovable.constraints = RigidbodyConstraints.None;
+
+        
+#if DEBUG_LOG
+        Debug.Log("(MovableController): trigger exit");
+#endif
     }
 }
