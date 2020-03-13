@@ -92,6 +92,7 @@ public class MovableController : MonoBehaviour
             if (m_playerInput.GetButton("Push"))
             {
                 isPushing = true;
+                m_rbMovable.constraints = m_origRBConstarints;
 
 #if DEBUG_LOG
                 Debug.Log("(MovableController): trigger stay start pushing");
@@ -144,6 +145,8 @@ public class MovableController : MonoBehaviour
             {
                 isPushing = false;
                 audioManager.boulder.Stop();
+
+                m_rbMovable.constraints = RigidbodyConstraints.None;
             }
         }
     }
