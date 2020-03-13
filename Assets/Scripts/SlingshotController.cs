@@ -105,10 +105,11 @@ public class SlingshotController : MonoBehaviour
 
     public void playProjectileCollisionSound()
     {
-        int randomClip = Random.Range(0, Hit.Length);
-        Rock.clip = Hit[randomClip];
-        Rock.pitch = Random.Range(0.4f, 1.4f);
-        Rock.Play();
+        //int randomClip = Random.Range(0, Hit.Length);
+        //Rock.clip = Hit[randomClip];
+        //Rock.pitch = Random.Range(0.4f, 1.4f);
+        //Rock.Play();
+        audioManager.Play(audioManager.rock, new float[] {0.7f, 1.2f});
     }
 
 }
