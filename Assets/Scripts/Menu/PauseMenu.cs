@@ -15,8 +15,6 @@ public class PauseMenu : MonoBehaviour
     void Start()
     {
         m_playerInput = ReInput.players.GetPlayer(0 /* playerID */);
-        
-        // enabled = false;
     }
 
     // Update is called once per frame
@@ -28,7 +26,8 @@ public class PauseMenu : MonoBehaviour
          *      - For some reason, this GetButtonDown is triggered twice, when pauseMenu is loaded, 
          *        it immediately unload. But wierd thing is that even its unloaded, still shown 
          *        on the scene in the game and SceneManager is telling me it does not have "PauseMenu" open...
-         *      
+         *     2. give some small time buffer after pausing (mainly for the input processing)
+         *
          *      - Hacky fix: Give small buffer time for getting next button input.
         **/
 
