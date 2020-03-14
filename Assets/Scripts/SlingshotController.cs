@@ -16,14 +16,6 @@ public class SlingshotController : MonoBehaviour
     public float throwDelay;
 
     public AudioManagerMain audioManager;
-    //Audio Design 
-    public AudioClip Hold;
-    public AudioClip Release;
-    public AudioSource Slingshot;
-    public AudioMixerGroup output;
-     // Rock hit
-    public AudioClip[] Hit;
-    public AudioSource Rock;
 
     
     Animator playerAnimator;
@@ -37,7 +29,8 @@ public class SlingshotController : MonoBehaviour
     private void Start()
     {
         crosshair.enabled = false;
-        playerAnimator = player.GetComponent<Animator>();
+        PlayerController playerScript = player.GetComponent<PlayerController>();
+        playerAnimator = playerScript.m_Animator;
         m_playerInput = ReInput.players.GetPlayer(m_playerID);
     }
 
@@ -105,10 +98,6 @@ public class SlingshotController : MonoBehaviour
 
     public void playProjectileCollisionSound()
     {
-        //int randomClip = Random.Range(0, Hit.Length);
-        //Rock.clip = Hit[randomClip];
-        //Rock.pitch = Random.Range(0.4f, 1.4f);
-        //Rock.Play();
         audioManager.Play(audioManager.rock, new float[] {0.7f, 1.2f});
     }
 
