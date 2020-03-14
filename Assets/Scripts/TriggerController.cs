@@ -1,4 +1,7 @@
-﻿using System.Collections;
+﻿
+// #define DEBUG_LOG
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -34,8 +37,9 @@ public class TriggerController : MonoBehaviour
             // ignore y axis
             monsterPos.y = 0;
             geyserPos.y  = 0;
-
+#if DEBUG_LOG
             Debug.Log("geyser distance: " + Vector3.Distance(monsterPos, geyserPos));
+#endif
             if (Vector3.Distance(monsterPos, geyserPos) < triggerDistance)
             {
                 if (script.hp > 0)
