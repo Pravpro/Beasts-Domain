@@ -17,6 +17,8 @@ public class MovableController : MonoBehaviour
     private bool m_monsterCollided = false;
     private RigidbodyConstraints m_origRBConstarints;
 
+    public GameObject buttonPrompt;
+
     public AudioManagerMain audioManager;
     public PlayerController playerScript;
 
@@ -29,18 +31,25 @@ public class MovableController : MonoBehaviour
         curPos = lastPos = new Vector2(transform.position.x, transform.position.z);
 
         m_origRBConstarints = m_rbMovable.constraints;
+
+        // center of mass matters?
+        // var centerofMass = m_rbMovable.centerOfMass;
+        // centerofMass.x -= this.transform.localScale.x / 2;
+        // centerofMass.z += this.transform.localScale.z / 2;
+        // this.GetComponent<Rigidbody>().centerOfMass = centerofMass;
+
+        buttonPrompt.SetActive(false);
     }
 
-
     /** General Note here:
-     *      - movable will only need one collider now! (no need for trigger collider)
+     *      - movable will only require non-trigger collider. (Trigger collider is used for button prompt)
      *      - push on command changes the constraints for the rigidbody. 
      *      - When entering the collider, we enable all the constraints for rotation and position 
      *        except for positionY (needed for reacting with height).
      *      - When exiting the coolider, we disable all the constarints, allow boulder to have natural physics.
      *     
      *      - If things is not working:
-     *          1. check the collider
+     *          1. check the collider if exists and check the position of the collider. (might be shifted esp when player can walk in)
      *          2. check the constraints (need to check all except PositoinY)
      * 
      *       (extra note: develper who wrote this is very happy this worked! and been so dumb with using isKinematic=true/false...)
@@ -93,7 +102,7 @@ public class MovableController : MonoBehaviour
             {
                 isPushing = true;
                 m_rbMovable.constraints = m_origRBConstarints;
-
+        
 #if DEBUG_LOG
                 Debug.Log("(MovableController): trigger stay start pushing");
 #endif
@@ -119,26 +128,20 @@ public class MovableController : MonoBehaviour
                 else
                     audioManager.boulder.Stop();
 
-                // always look at the movable objects when pushing
-                Vector3 targetPos = this.transform.position;
-                targetPos.y = player.transform.position.y;
-
-                // currently the center point for boulder is not centered... ughhhh...
-                // TODO: remove this once the center position is fixed.
-                targetPos.x = targetPos.x - this.transform.localScale.x / 2;
-                targetPos.z = targetPos.z + this.transform.localScale.z / 2;
-
-                // restrict the movement to one axis
-                Vector3 playerForward = col.gameObject.transform.forward;
-                if (Mathf.Abs(playerForward.x) > Mathf.Abs(playerForward.z)) playerForward.z = 0;
-                else                                                         playerForward.x = 0;
-
+                
+                // get contact forward for calculating the direction of boulder movement
+                Vector3 playerForward = col.GetContact(0).normal;
+                playerForward.y = 0;
+                // move the boulder
                 Vector3 newPos = this.transform.position + playerForward * 2.0f;
 
                 newPos.y = this.transform.position.y;
                 this.transform.position = Vector3.Slerp(this.transform.position, newPos, Time.deltaTime * 1.0f);
                 
-                player.transform.LookAt(targetPos);
+                // look at the boulder
+                Vector3 playerLookAt = col.GetContact(0).point;
+                playerLookAt.y = player.transform.position.y;
+                player.transform.LookAt(playerLookAt);
             }
 
             if (m_playerInput.GetButtonUp("Push"))
@@ -161,9 +164,38 @@ public class MovableController : MonoBehaviour
         isPushing = false;
         m_rbMovable.constraints = RigidbodyConstraints.None;
 
-        
 #if DEBUG_LOG
         Debug.Log("(MovableController): trigger exit");
 #endif
+    }
+
+    // following is for button prompt
+    void OnTriggerEnter(Collider col)
+    {
+        if (col.tag == "Player")
+            buttonPrompt.SetActive(true);
+    
+    }
+
+    void OnTriggerStay(Collider col)
+    {
+        // when pushing no need for
+        if (isPushing)
+            buttonPrompt.SetActive(false);
+        // else if (col.tag == "Player")
+            // StartCoroutine(disableButtonPrompt(3) );
+
+    }
+
+    void OnTriggerExit(Collider col)
+    {
+        // remove the button prompt even if player not pushed
+        buttonPrompt.SetActive(false);
+    }
+
+    IEnumerator disableButtonPrompt(float time)
+    {
+        yield return new WaitForSeconds(time);
+        buttonPrompt.SetActive(false);
     }
 }
