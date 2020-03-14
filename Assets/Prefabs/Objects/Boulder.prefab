@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 761862437126293462}
   - component: {fileID: 761862437618306339}
   - component: {fileID: 761862437618306340}
+  - component: {fileID: 7022395682243426677}
   - component: {fileID: 3478121038751907244}
   m_Layer: 0
   m_Name: Boulder
@@ -132,6 +133,19 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 0.97, z: 0.98}
   m_Center: {x: -0.49942374, y: 0.5112521, z: 0.46558294}
+--- !u!65 &7022395682243426677
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 761862437119013910}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.7302283, y: 1.01582, z: 1.6805956}
+  m_Center: {x: -0.5372627, y: 0.5112524, z: 0.49627545}
 --- !u!114 &3478121038751907244
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -146,6 +160,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isPushing: 0
   isMoving: 0
+  buttonPrompt: {fileID: 0}
   audioManager: {fileID: 0}
   playerScript: {fileID: 0}
 --- !u!1001 &8172899598877615634
