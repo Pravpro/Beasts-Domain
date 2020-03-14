@@ -189,85 +189,54 @@ public class AudioManagerMain : MonoBehaviour
 
     void Awake()
     {
+        // Params: 1.clip 1.loop 2.Volume 3.Mixer Group
 
         // SFX: Player sources
-        landing = AddAudio(false, sfxClips.player.landingVol, mixerGroups.action); // Params: 1.loop 2.Volume 3.Mixer Group
-        jumping = AddAudio(false, sfxClips.player.jumpingVol, mixerGroups.action);
-        stamina = AddAudio(false, sfxClips.player.staminaVol, mixerGroups.action);
-        walking = AddAudio(false, sfxClips.player.walkingVol, mixerGroups.action);
-        running = AddAudio(false, sfxClips.player.runningVol, mixerGroups.action);
-        damage = AddAudio(false, sfxClips.player.damageVol, mixerGroups.action);
-        death = AddAudio(false, sfxClips.player.deathVol, mixerGroups.action);
-        boulder = AddAudio(false, sfxClips.player.boulderVol, mixerGroups.action);
-        slingshotDraw = AddAudio(false, sfxClips.player.slingshotDrawVol, mixerGroups.weapons);
-        slingshotRelease = AddAudio(false, sfxClips.player.slingshotReleaseVol, mixerGroups.weapons);
-        rock = AddAudio(false, sfxClips.player.rockVol, mixerGroups.weapons);
-        spell = AddAudio(false, sfxClips.player.spellVol, mixerGroups.weapons);
+        landing = AddAudio(sfxClips.player.landing, false, sfxClips.player.landingVol, mixerGroups.action);
+        jumping = AddAudio(sfxClips.player.jumping, false, sfxClips.player.jumpingVol, mixerGroups.action);
+        stamina = AddAudio(sfxClips.player.stamina, false, sfxClips.player.staminaVol, mixerGroups.action);
+        walking = AddAudio(sfxClips.player.walking, false, sfxClips.player.walkingVol, mixerGroups.action);
+        running = AddAudio(sfxClips.player.running, false, sfxClips.player.runningVol, mixerGroups.action);
+        damage = AddAudio(sfxClips.player.damage, false, sfxClips.player.damageVol, mixerGroups.action);
+        death = AddAudio(sfxClips.player.death, false, sfxClips.player.deathVol, mixerGroups.action);
+        boulder = AddAudio(sfxClips.player.boulder, false, sfxClips.player.boulderVol, mixerGroups.action);
+        slingshotDraw = AddAudio(sfxClips.player.slingshotDraw, false, sfxClips.player.slingshotDrawVol, mixerGroups.weapons);
+        slingshotRelease = AddAudio(sfxClips.player.slingshotRelease, false, sfxClips.player.slingshotReleaseVol, mixerGroups.weapons);
+        rock = AddAudio(sfxClips.player.rock, false, sfxClips.player.rockVol, mixerGroups.weapons);
+        spell = AddAudio(sfxClips.player.spell, false, sfxClips.player.spellVol, mixerGroups.weapons);
         // SFX: Beast sources
-        roar1 = AddAudio(false, sfxClips.beast.roar1Vol, mixerGroups.beast);
-        roar2 = AddAudio(false, sfxClips.beast.roar2Vol, mixerGroups.beast);
-        hurt = AddAudio(false, sfxClips.beast.hurtVol, mixerGroups.beast);
-        flare = AddAudio(false, sfxClips.beast.flareVol, mixerGroups.beast);
-        hoof = AddAudio(false, sfxClips.beast.hoofVol, mixerGroups.beast);
-        moss = AddAudio(false, sfxClips.beast.mossVol, mixerGroups.beast);
+        roar1 = AddAudio(sfxClips.beast.roar1, false, sfxClips.beast.roar1Vol, mixerGroups.beast);
+        roar2 = AddAudio(sfxClips.beast.roar2, false, sfxClips.beast.roar2Vol, mixerGroups.beast);
+        hurt = AddAudio(sfxClips.beast.hurt, false, sfxClips.beast.hurtVol, mixerGroups.beast);
+        flare = AddAudio(sfxClips.beast.flare, false, sfxClips.beast.flareVol, mixerGroups.beast);
+        hoof = AddAudio(sfxClips.beast.hoof, false, sfxClips.beast.hoofVol, mixerGroups.beast);
+        moss = AddAudio(sfxClips.beast.moss, false, sfxClips.beast.mossVol, mixerGroups.beast);
         // Music sources
-        moodboard = AddAudio(true, musicClips.moodboardVol, mixerGroups.training);
-        strings = AddAudio(true, musicClips.stringsVol, mixerGroups.arena);
-        bossStrings = AddAudio(true, musicClips.bossstringsVol, mixerGroups.arena);
-        bossStinger = AddAudio(false, musicClips.bossstringsVol, mixerGroups.beast);
-        boss1 = AddAudio(true, musicClips.boss1Vol, mixerGroups.arena);
-        boss2 = AddAudio(true, musicClips.boss2Vol, mixerGroups.arena);
-        homebase = AddAudio(true, musicClips.homebaseVol, mixerGroups.homebase);
+        moodboard = AddAudio(musicClips.moodboard, true, musicClips.moodboardVol, mixerGroups.training);
+        strings = AddAudio(musicClips.strings, true, musicClips.stringsVol, mixerGroups.arena);
+        bossStrings = AddAudio(musicClips.bossstrings, true, musicClips.bossstringsVol, mixerGroups.arena);
+        bossStinger = AddAudio(musicClips.bossStinger, false, musicClips.bossStingerVol, mixerGroups.beast);
+        boss1 = AddAudio(musicClips.boss1, true, musicClips.boss1Vol, mixerGroups.arena);
+        boss2 = AddAudio(musicClips.boss2, true, musicClips.boss2Vol, mixerGroups.arena);
+        homebase = AddAudio(musicClips.homebase, true, musicClips.homebaseVol, mixerGroups.homebase);
         // Environment sources
-        tree = AddAudio(false, environmentClips.treeVol, mixerGroups.trees);
-        birds = AddAudio(true, environmentClips.birdsVol, mixerGroups.birds);
-        fire = AddAudio(true, environmentClips.fireVol, mixerGroups.fire);
-        geyser = AddAudio(false, environmentClips.geyserVol, mixerGroups.geyser);
-        rockSlide = AddAudio(false, environmentClips.rockSlideVol, mixerGroups.rocks);
-
-
-        sourceClipRelation.Add(landing, sfxClips.player.landing);
-        sourceClipRelation.Add(jumping, sfxClips.player.jumping);
-        sourceClipRelation.Add(stamina, sfxClips.player.stamina);
-        sourceClipRelation.Add(walking, sfxClips.player.walking);
-        sourceClipRelation.Add(running, sfxClips.player.running);
-        sourceClipRelation.Add(damage, sfxClips.player.damage);
-        sourceClipRelation.Add(death, sfxClips.player.death);
-        sourceClipRelation.Add(boulder, sfxClips.player.boulder);
-        sourceClipRelation.Add(slingshotDraw, sfxClips.player.slingshotDraw);
-        sourceClipRelation.Add(slingshotRelease, sfxClips.player.slingshotRelease);
-        sourceClipRelation.Add(rock, sfxClips.player.rock);
-        sourceClipRelation.Add(spell, sfxClips.player.spell);
-        sourceClipRelation.Add(roar1, sfxClips.beast.roar1);
-        sourceClipRelation.Add(roar2, sfxClips.beast.roar1);
-        sourceClipRelation.Add(hurt, sfxClips.beast.hurt);
-        sourceClipRelation.Add(flare, sfxClips.beast.flare);
-        sourceClipRelation.Add(hoof, sfxClips.beast.hoof);
-        sourceClipRelation.Add(moss, sfxClips.beast.moss);
-        sourceClipRelation.Add(moodboard, musicClips.moodboard);
-        sourceClipRelation.Add(strings, musicClips.strings);
-        sourceClipRelation.Add(bossStrings, musicClips.bossstrings);
-        sourceClipRelation.Add(bossStinger, musicClips.bossStinger);
-        sourceClipRelation.Add(boss1, musicClips.boss1);
-        sourceClipRelation.Add(boss2, musicClips.boss2);
-        sourceClipRelation.Add(homebase, musicClips.homebase);
-        sourceClipRelation.Add(tree, environmentClips.tree);
-        sourceClipRelation.Add(birds, environmentClips.birds);
-        sourceClipRelation.Add(fire, environmentClips.fire);
-        sourceClipRelation.Add(geyser, environmentClips.geyser);
-        sourceClipRelation.Add(rockSlide, environmentClips.rockSlide);
-
+        tree = AddAudio(environmentClips.tree, false, environmentClips.treeVol, mixerGroups.trees);
+        birds = AddAudio(environmentClips.birds, false, environmentClips.birdsVol, mixerGroups.birds);
+        fire = AddAudio(environmentClips.fire, false, environmentClips.fireVol, mixerGroups.fire);
+        geyser = AddAudio(environmentClips.geyser, false, environmentClips.geyserVol, mixerGroups.geyser);
+        rockSlide = AddAudio(environmentClips.rockSlide, false, environmentClips.rockSlideVol, mixerGroups.rocks);
         
     }
 
 
 
-    AudioSource AddAudio(bool loop, float vol, AudioMixerGroup output)
+    AudioSource AddAudio(AudioClip[] clip, bool loop, float vol, AudioMixerGroup output)
     {
         AudioSource newAudio = gameObject.AddComponent<AudioSource>();
         newAudio.loop = loop;
         newAudio.volume = vol;
         newAudio.outputAudioMixerGroup = output;
+        sourceClipRelation.Add(newAudio, clip);
         return newAudio;
     }
 
