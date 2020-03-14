@@ -1,4 +1,7 @@
-﻿using System.Collections;
+﻿
+// #define DEBUG_LOG
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -7,17 +10,20 @@ public class TriggerController : MonoBehaviour
     public AudioManagerMain audioManager;
     public Material usedGeyserMaterial;
 
-    public float triggerDistance = 3f;
+    private float triggerDistance;
     private AIController script;
     private GameObject monster;
 
-    private bool isTriggered, changedColor = false;
+    private bool isTriggered = false;
 
     // Start is called before the first frame update
     void Start()
     {
         monster = GameObject.FindGameObjectWithTag("Monster");
         script = monster.GetComponent<AIController>();
+
+        // trigger distance is the radius = localScale.z / 2
+        triggerDistance = this.transform.localScale.z / 2f - 0.2f; // give some small offset for distance 
     }
 
     void OnTriggerStay(Collider col)
@@ -31,7 +37,9 @@ public class TriggerController : MonoBehaviour
             // ignore y axis
             monsterPos.y = 0;
             geyserPos.y  = 0;
-
+#if DEBUG_LOG
+            Debug.Log("geyser distance: " + Vector3.Distance(monsterPos, geyserPos));
+#endif
             if (Vector3.Distance(monsterPos, geyserPos) < triggerDistance)
             {
                 if (script.hp > 0)
@@ -45,19 +53,10 @@ public class TriggerController : MonoBehaviour
                 }
                 if (script.hp <= 0)
                     Debug.Log("Monster dies!");
+                
+                // geyser is one-time activated, therefore deactivate once used by change the color
+                this.GetComponentInChildren<Renderer>().material = usedGeyserMaterial;
             }
-        }
-    }
-
-    void OnTriggerExit(Collider col)
-    {
-        // geyser is one-time activated therefore, if the geyser is triggered to give damage to monster,
-        // we deactive the geyser
-        if (isTriggered && !changedColor)
-        {
-            // change the material color
-            this.GetComponentInChildren<Renderer>().material = usedGeyserMaterial;
-            changedColor = true;
         }
     }
 
