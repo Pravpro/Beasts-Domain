@@ -14269,7 +14269,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1044896107}
-  m_LocalRotation: {x: 0.1301954, y: -0, z: -0, w: 0.9914884}
+  m_LocalRotation: {x: 0.13019554, y: -0, z: -0, w: 0.99148834}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -20190,7 +20190,7 @@ MonoBehaviour:
     inputBehaviors:
     - _id: 0
       _name: Default
-      _joystickAxisSensitivity: 1
+      _joystickAxisSensitivity: 0.8
       _digitalAxisSimulation: 1
       _digitalAxisSnap: 1
       _digitalAxisInstantReverse: 0
@@ -20201,7 +20201,7 @@ MonoBehaviour:
       _mouseXYAxisSensitivity: 1
       _mouseXYAxisDeltaCalc: 0
       _mouseOtherAxisSensitivity: 1
-      _customControllerAxisSensitivity: 1
+      _customControllerAxisSensitivity: 0.8
       _buttonDoublePressSpeed: 0.3
       _buttonShortPressTime: 0.25
       _buttonShortPressExpiresIn: 0
@@ -21451,6 +21451,11 @@ PrefabInstance:
       propertyPath: m_Animator
       value: 
       objectReference: {fileID: 32257000}
+    - target: {fileID: 1311964250415205058, guid: 35b58b46bca88334daef10b3a5c81c42,
+        type: 3}
+      propertyPath: thirdPersonCam
+      value: 
+      objectReference: {fileID: 1993504316}
     - target: {fileID: 1311964250415205059, guid: 35b58b46bca88334daef10b3a5c81c42,
         type: 3}
       propertyPath: m_LocalPosition.x

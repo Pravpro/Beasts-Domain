@@ -32,10 +32,11 @@ public class PlayerController : MonoBehaviour
     Quaternion m_Rotation, lastRotation = Quaternion.identity;
     private bool isMoving, pushing, grounded, walking, running, crouching, inMoss = false;
     private GameObject pushingObject;
-    private ICinemachineCamera thirdPersonCam;
+
     private bool recoverStamia = false;
 
     // for spell
+    public CinemachineFreeLook thirdPersonCam;
     ParticleSystem spellArea;
     GameObject AimArea;
 
@@ -233,6 +234,7 @@ public class PlayerController : MonoBehaviour
             spellArea.transform.position = spellAreaPosition;
             AimArea.SetActive(true);
             spellActivated = true;
+            thirdPersonCam.m_RecenterToTargetHeading.m_enabled = true;
         }
 
         // TODO: should probably only allow spell after monster get some damage
@@ -272,6 +274,7 @@ public class PlayerController : MonoBehaviour
             }
         
             spellActivated = false;
+            thirdPersonCam.m_RecenterToTargetHeading.m_enabled = false;
         }
     }
 

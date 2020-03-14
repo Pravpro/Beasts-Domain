@@ -46,7 +46,7 @@ public class StateCamController : MonoBehaviour
             }
             prevYAxis = thirdPerson.m_YAxis;
 
-            if (m_playerInput.GetButtonDown("Reset"))
+            if (m_playerInput.GetButtonDown("Reset") && !m_playerInput.GetButton("Spell"))
             {
                 StartCoroutine(ResetCam());
                 
