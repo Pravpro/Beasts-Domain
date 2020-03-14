@@ -6,15 +6,12 @@ using UnityEngine.Audio;
 public class ThrowableController : MonoBehaviour
 {
     public SlingshotController slingshotScript;
+    public GameObject monster, hitEffect;
 
-    Rigidbody m_rb;
-    public GameObject monster;
     private MonsterHearing hearingScript;
 
     private void Start()
     {
-        m_rb = gameObject.GetComponent<Rigidbody>();
-        m_rb.useGravity = false;
         monster = GameObject.FindGameObjectWithTag("Monster");
         hearingScript = monster.GetComponent<MonsterHearing>();
     }
@@ -24,8 +21,10 @@ public class ThrowableController : MonoBehaviour
         if (col.collider.name != "Player")
         {
             slingshotScript.playProjectileCollisionSound();
+            Instantiate(hitEffect, col.contacts[0].point, new Quaternion());
             hearingScript.RockHit(transform.position);
             Destroy(gameObject);
         }
     }
+
 }

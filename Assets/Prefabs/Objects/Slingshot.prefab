@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3790511999763225718}
   - component: {fileID: 1688415965222344963}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Slingshot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -46,7 +46,7 @@ MonoBehaviour:
   throwObject: {fileID: 7490987963249429685, guid: dbf27584ebd7f48e28c486b76a3edea5,
     type: 3}
   player: {fileID: 0}
-  throwVelocity: 40
+  throwVelocity: 100
   CB: {fileID: 0}
   aimCam: {fileID: 0}
   crosshair: {fileID: 0}

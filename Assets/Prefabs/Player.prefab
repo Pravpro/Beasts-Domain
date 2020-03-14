@@ -62,6 +62,7 @@ MonoBehaviour:
   m_Animator: {fileID: 0}
   SDCam: {fileID: 0}
   audioManager: {fileID: 0}
+  thirdPersonCam: {fileID: 0}
   spellWaitTime: 10
 --- !u!54 &1311964250415205057
 Rigidbody:
@@ -162,11 +163,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Slingshot
       objectReference: {fileID: 0}
-    - target: {fileID: 198654590859144805, guid: 2347fe245a975f84ab1fec5fe5afebd8,
-        type: 3}
-      propertyPath: m_Layer
-      value: 9
-      objectReference: {fileID: 0}
     - target: {fileID: 1688415965222344963, guid: 2347fe245a975f84ab1fec5fe5afebd8,
         type: 3}
       propertyPath: player
@@ -226,11 +222,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7052124216103224831, guid: 2347fe245a975f84ab1fec5fe5afebd8,
-        type: 3}
-      propertyPath: m_Layer
-      value: 9
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2347fe245a975f84ab1fec5fe5afebd8, type: 3}
