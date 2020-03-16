@@ -107,6 +107,20 @@ AudioMixerGroupController:
   m_Mute: 0
   m_Solo: 0
   m_BypassEffects: 0
+--- !u!244 &-5913662822570527904
+AudioMixerEffectController:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 
+  m_EffectID: 871c8b4c0815747939f6f8dce28a902c
+  m_EffectName: Attenuation
+  m_MixLevel: 3deafdfa8275f492986f6f718fd28a08
+  m_Parameters: []
+  m_SendTarget: {fileID: 0}
+  m_EnableWetMix: 0
+  m_Bypass: 0
 --- !u!243 &-5728549342725470207
 AudioMixerGroupController:
   m_ObjectHideFlags: 0
@@ -258,6 +272,25 @@ AudioMixerGroupController:
   m_Mute: 0
   m_Solo: 0
   m_BypassEffects: 0
+--- !u!243 &-1703600453909313434
+AudioMixerGroupController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Hoofsteps
+  m_AudioMixer: {fileID: 24100000}
+  m_GroupID: b065b7a2bb98d4c49bb295acfa53ce81
+  m_Children: []
+  m_Volume: 528fb2d9b42ec48a5a810648d7ab77a9
+  m_Pitch: 66f30da6df5014abebb6079055fb4324
+  m_Send: 00000000000000000000000000000000
+  m_Effects:
+  - {fileID: -5913662822570527904}
+  m_UserColorIndex: 0
+  m_Mute: 0
+  m_Solo: 0
+  m_BypassEffects: 0
 --- !u!244 &-1073582969718393831
 AudioMixerEffectController:
   m_ObjectHideFlags: 3
@@ -331,6 +364,7 @@ AudioMixerController:
     - 44dd9bf35e3c12c4d8e97e10c53c129f
     - 2ea5492ce7cfe4a45ba3b76f0f3dae8d
     - 8dbe822667d4ee848be8810056aa42e0
+    - b065b7a2bb98d4c49bb295acfa53ce81
     name: Master
   - guids:
     - e44b8d1f41791f646a19d4df1bbeba9d
@@ -356,7 +390,7 @@ AudioMixerController:
     - 62c7bc1dfe53e4aa88d56a9a515c7696
     name: SFX
   m_CurrentViewIndex: 0
-  m_TargetSnapshot: {fileID: 4027853678517964899}
+  m_TargetSnapshot: {fileID: 8252497145976169834}
 --- !u!243 &24300002
 AudioMixerGroupController:
   m_ObjectHideFlags: 0
@@ -686,6 +720,7 @@ AudioMixerSnapshotController:
   m_FloatValues:
     33edd30272679ca43b93c5e9a64e6113: -80
     a7f1cc999ecc30749adb711f79536bf6: 0
+    528fb2d9b42ec48a5a810648d7ab77a9: 20
     ad20914c17df3460d92b6097bd1cca87: -9.833286
     e716915d279d3cb4c8d8cc8c0c6466c6: -80
     0e5d7f3e5c2601d4ebef0135b9264d2d: -80
@@ -733,7 +768,8 @@ AudioMixerGroupController:
   m_Name: Beast
   m_AudioMixer: {fileID: 24100000}
   m_GroupID: 62c7bc1dfe53e4aa88d56a9a515c7696
-  m_Children: []
+  m_Children:
+  - {fileID: -1703600453909313434}
   m_Volume: 67fe451343b134bd7b486fbe3f761f8a
   m_Pitch: f1df4e9cc0502425d9bfdf36a985a78f
   m_Send: 00000000000000000000000000000000

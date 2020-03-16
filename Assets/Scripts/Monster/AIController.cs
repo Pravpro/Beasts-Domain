@@ -132,6 +132,9 @@ public class AIController : MonoBehaviour
         audioManager.hurt = audioManager.Localize(gameObject, audioManager.hurt);
         audioManager.flare = audioManager.Localize(gameObject, audioManager.flare);
         audioManager.hoof = audioManager.Localize(gameObject, audioManager.hoof);
+        audioManager.hoofSteps = audioManager.Localize(gameObject, audioManager.hoofSteps);
+
+        audioManager.InvokeRepeating("Hoofsteps", 0.0f, 0.6f);
     }
 
     // void Update()

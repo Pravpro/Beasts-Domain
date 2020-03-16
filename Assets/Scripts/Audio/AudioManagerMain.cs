@@ -16,6 +16,7 @@ public class AudioManagerMain : MonoBehaviour
     {
         public AudioMixerGroup action;
         public AudioMixerGroup beast;
+        public AudioMixerGroup hoofsteps;
         public AudioMixerGroup birds;
         public AudioMixerGroup arena;
         public AudioMixerGroup training;
@@ -89,6 +90,8 @@ public class AudioManagerMain : MonoBehaviour
             [Range(0f, 1f)] public float flareVol;
             public AudioClip[] hoof;
             [Range(0f, 1f)] public float hoofVol;
+            public AudioClip[] hoofSteps;
+            [Range(0f, 1f)] public float hoofStepsVol;
             public AudioClip[] moss;
             [Range(0f, 1f)] public float mossVol;
         }
@@ -165,6 +168,7 @@ public class AudioManagerMain : MonoBehaviour
     [HideInInspector] public AudioSource slingshotRelease;
     [HideInInspector] public AudioSource rock; //pitch: 0.6, 1.3
     [HideInInspector] public AudioSource spell;
+
     [HideInInspector] public AudioSource moodboard;
     [HideInInspector] public AudioSource strings;
     [HideInInspector] public AudioSource bossStrings;
@@ -172,12 +176,15 @@ public class AudioManagerMain : MonoBehaviour
     [HideInInspector] public AudioSource boss1;
     [HideInInspector] public AudioSource boss2;
     [HideInInspector] public AudioSource homebase;
+
     [HideInInspector] public AudioSource roar1;
     [HideInInspector] public AudioSource roar2;
     [HideInInspector] public AudioSource hurt;
     [HideInInspector] public AudioSource flare;
     [HideInInspector] public AudioSource hoof;
+    [HideInInspector] public AudioSource hoofSteps;
     [HideInInspector] public AudioSource moss;
+
     [HideInInspector] public AudioSource damage;
     [HideInInspector] public AudioSource death;
     [HideInInspector] public AudioSource tree; //pitch: 0.8, 1.1
@@ -210,6 +217,7 @@ public class AudioManagerMain : MonoBehaviour
         hurt = AddAudio(sfxClips.beast.hurt, false, sfxClips.beast.hurtVol, mixerGroups.beast);
         flare = AddAudio(sfxClips.beast.flare, false, sfxClips.beast.flareVol, mixerGroups.beast);
         hoof = AddAudio(sfxClips.beast.hoof, false, sfxClips.beast.hoofVol, mixerGroups.beast);
+        hoofSteps = AddAudio(sfxClips.beast.hoofSteps, false, sfxClips.beast.hoofStepsVol, mixerGroups.hoofsteps);
         moss = AddAudio(sfxClips.beast.moss, false, sfxClips.beast.mossVol, mixerGroups.beast);
         // Music sources
         moodboard = AddAudio(musicClips.moodboard, true, musicClips.moodboardVol, mixerGroups.training);
@@ -298,6 +306,16 @@ public class AudioManagerMain : MonoBehaviour
         boss2.PlayDelayed(5.5f);
         bossStrings.clip = sourceClipRelation[bossStrings][Random.Range(0, sourceClipRelation[bossStrings].Length)];
         bossStrings.PlayDelayed(5.5f);
+    }
+
+    public void Hoofsteps()
+    {
+        hoofSteps.spatialBlend = (1.0f);
+        hoofSteps.minDistance = (20.0f);
+        hoofSteps.maxDistance = (100.0f);
+        hoofSteps.clip = sourceClipRelation[hoofSteps][Random.Range(0, sourceClipRelation[hoofSteps].Length)];
+        hoofSteps.pitch = Random.Range(0.8f, 1.2f);
+        hoofSteps.Play();
     }
 
     public void SetVolume(SnapshotState state)
