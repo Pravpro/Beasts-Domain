@@ -41,8 +41,6 @@ public class SlingshotController : MonoBehaviour
         if (m_playerInput.GetButtonDown("Aim"))
         {
             playerAnimator.SetBool("IsAiming", true);
-            //Slingshot.clip = Hold;
-            //Slingshot.PlayOneShot(Hold, 1f);
         }
 
         if (m_playerInput.GetButtonUp("Aim"))
@@ -77,6 +75,7 @@ public class SlingshotController : MonoBehaviour
                     Rigidbody m_rb = m_rock.GetComponent<Rigidbody>();
                     ThrowableController m_rockScript = m_rock.GetComponent<ThrowableController>();
                     m_rockScript.slingshotScript = this;
+                    m_rockScript.audioManager = audioManager;
 
                     audioManager.Play(audioManager.slingshotRelease);
 

@@ -1,0 +1,231 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1783540828656668105
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1783540828656668111}
+  - component: {fileID: 1783540828656668110}
+  m_Layer: 0
+  m_Name: AudioManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1783540828656668111
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1783540828656668105}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1783540828656668110
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1783540828656668105}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e178dc2b2a3bb994892267490b2c141a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mixerGroups:
+    action: {fileID: 1948688527111795787, guid: b12a37322bc5b8444879a1c72e83a533,
+      type: 2}
+    beast: {fileID: 9189731060982471689, guid: b12a37322bc5b8444879a1c72e83a533, type: 2}
+    hoofsteps: {fileID: -1703600453909313434, guid: b12a37322bc5b8444879a1c72e83a533,
+      type: 2}
+    birds: {fileID: -6326619149905166048, guid: b12a37322bc5b8444879a1c72e83a533,
+      type: 2}
+    arena: {fileID: -683621483407260390, guid: b12a37322bc5b8444879a1c72e83a533, type: 2}
+    training: {fileID: 3728301513905487298, guid: b12a37322bc5b8444879a1c72e83a533,
+      type: 2}
+    environment: {fileID: 4464209829870362510, guid: b12a37322bc5b8444879a1c72e83a533,
+      type: 2}
+    fire: {fileID: -3923134402367959249, guid: b12a37322bc5b8444879a1c72e83a533, type: 2}
+    geyser: {fileID: -5728549342725470207, guid: b12a37322bc5b8444879a1c72e83a533,
+      type: 2}
+    master: {fileID: 24300002, guid: b12a37322bc5b8444879a1c72e83a533, type: 2}
+    music: {fileID: -7628262571924039332, guid: b12a37322bc5b8444879a1c72e83a533,
+      type: 2}
+    player: {fileID: -7952378368151392856, guid: b12a37322bc5b8444879a1c72e83a533,
+      type: 2}
+    rocks: {fileID: -2823458709258695230, guid: b12a37322bc5b8444879a1c72e83a533,
+      type: 2}
+    sfx: {fileID: -1957139070176323428, guid: b12a37322bc5b8444879a1c72e83a533, type: 2}
+    homebase: {fileID: 312817399248102967, guid: b12a37322bc5b8444879a1c72e83a533,
+      type: 2}
+    trees: {fileID: 20657509805438966, guid: b12a37322bc5b8444879a1c72e83a533, type: 2}
+    weapons: {fileID: 8590317676607429496, guid: b12a37322bc5b8444879a1c72e83a533,
+      type: 2}
+  snapshots:
+    homebase: {fileID: 4027853678517964899, guid: b12a37322bc5b8444879a1c72e83a533,
+      type: 2}
+    training: {fileID: 24500006, guid: b12a37322bc5b8444879a1c72e83a533, type: 2}
+    pauseArena: {fileID: 5331478804513933854, guid: b12a37322bc5b8444879a1c72e83a533,
+      type: 2}
+    pauseHomeBase: {fileID: -4565273174578477400, guid: b12a37322bc5b8444879a1c72e83a533,
+      type: 2}
+    pauseTraining: {fileID: -6523754486378997014, guid: b12a37322bc5b8444879a1c72e83a533,
+      type: 2}
+    arena: {fileID: 8252497145976169834, guid: b12a37322bc5b8444879a1c72e83a533, type: 2}
+    alleys: {fileID: 1155859526790766930, guid: b12a37322bc5b8444879a1c72e83a533,
+      type: 2}
+  sfxClips:
+    player:
+      landing:
+      - {fileID: 8300000, guid: a2db89066a1b9bd41a5996686b05b262, type: 3}
+      landingVol: 0.6
+      jumping:
+      - {fileID: 8300000, guid: 0bd124c637a512348a15e14ce4581dc6, type: 3}
+      - {fileID: 8300000, guid: 7e14fd1ce1a7cf440b3fb49fb2a97402, type: 3}
+      jumpingVol: 0.25
+      stamina:
+      - {fileID: 8300000, guid: ca73de5900e5c2946bf69e0bd1d4dad1, type: 3}
+      staminaVol: 0.2
+      walking:
+      - {fileID: 8300000, guid: 87513ba3b8b4fd24d832592899ab6853, type: 3}
+      - {fileID: 8300000, guid: 908f10149ce7b2f4a8f939f35016d4d3, type: 3}
+      - {fileID: 8300000, guid: b9ef2fcd1105e834098f1080eedc12d5, type: 3}
+      walkingVol: 0.05
+      running:
+      - {fileID: 8300000, guid: a3f4b3bad08686f40ab4be2f2b9d6772, type: 3}
+      - {fileID: 8300000, guid: 94577f808479cac488b455ec61e513e4, type: 3}
+      - {fileID: 8300000, guid: 3452ed63f1fe881498908df8ddaf303f, type: 3}
+      runningVol: 0.05
+      damage:
+      - {fileID: 8300000, guid: 915b8c427065a9b44a77de4ff74ed6ce, type: 3}
+      damageVol: 1
+      death:
+      - {fileID: 8300000, guid: 98067a162e11891468263cb81364deae, type: 3}
+      deathVol: 1
+      boulder:
+      - {fileID: 8300000, guid: 24b0d7d990fd47d409fcf00eebbdad69, type: 3}
+      boulderVol: 0.2
+      slingshotDraw:
+      - {fileID: 8300000, guid: 67fb7425e3f22475398db38cf02e6323, type: 3}
+      slingshotDrawVol: 0.4
+      slingshotRelease:
+      - {fileID: 8300000, guid: a68cb3d90f65e8146ac2454b55af0aa3, type: 3}
+      slingshotReleaseVol: 0.4
+      rock:
+      - {fileID: 8300000, guid: 76c37cbc4fecc4b4ab66f1c999bc7add, type: 3}
+      - {fileID: 8300000, guid: e06411748a135264da022b7124bdd82a, type: 3}
+      rockVol: 0.5
+      spell:
+      - {fileID: 8300000, guid: efe0aac52d12d488e8ab127aeb87b301, type: 3}
+      spellVol: 0.8
+    beast:
+      roar1:
+      - {fileID: 8300000, guid: 94aaad1912ea6fa41a1d3afbd47beb6b, type: 3}
+      roar1Vol: 1
+      roar2:
+      - {fileID: 8300000, guid: c4ba7b1503980f042a5704154c1b2042, type: 3}
+      roar2Vol: 1
+      hurt:
+      - {fileID: 8300000, guid: 8e5fb9347918aa642a7894641b0bba4c, type: 3}
+      hurtVol: 1
+      flare:
+      - {fileID: 8300000, guid: b9b86032db7fc4259a134b69080b4e17, type: 3}
+      flareVol: 1
+      hoof:
+      - {fileID: 8300000, guid: e73f55637d8d64c80872f6dd67c12efa, type: 3}
+      hoofVol: 1
+      hoofSteps:
+      - {fileID: 8300000, guid: 8660ae5d572f44c2397157ca295c24a4, type: 3}
+      - {fileID: 8300000, guid: fce51db7e10b045068be607cbb3596f3, type: 3}
+      - {fileID: 8300000, guid: b7ed6c50d29f04b33aeaa3ce2cde1f85, type: 3}
+      - {fileID: 8300000, guid: b2290ce500cde4b1a805bf2c5b219317, type: 3}
+      - {fileID: 8300000, guid: 331063e43be074383bf24ccbbdc1adc1, type: 3}
+      - {fileID: 8300000, guid: 02ea47b8ba4e64a02b129f0668c2cfbe, type: 3}
+      - {fileID: 8300000, guid: 1c31ef80688374332b161efbb0db2534, type: 3}
+      - {fileID: 8300000, guid: 69311890be39c492c97d42eeed2b872b, type: 3}
+      hoofStepsVol: 1
+      moss:
+      - {fileID: 8300000, guid: 034a8effb5561be4a9b2724db62882e1, type: 3}
+      mossVol: 1
+  musicClips:
+    strings:
+    - {fileID: 8300000, guid: a20fb40e6c0638942b72050cac004b91, type: 3}
+    stringsVol: 0.4
+    bossstrings:
+    - {fileID: 8300000, guid: 75831189a3c11429891b7cac8261b43d, type: 3}
+    - {fileID: 8300000, guid: 23e68e8634f854b3c9be027291d69455, type: 3}
+    - {fileID: 8300000, guid: d2500c59057a34618998930deaf16822, type: 3}
+    bossstringsVol: 0.7
+    bossStinger:
+    - {fileID: 8300000, guid: 3f6dc4611fa78684aa11ae26543987a5, type: 3}
+    bossStingerVol: 0.8
+    boss1:
+    - {fileID: 8300000, guid: a0e859f6d158d4f0a91b05895465f3ff, type: 3}
+    boss1Vol: 1
+    boss2:
+    - {fileID: 8300000, guid: 82e84873351040645afb6d918ea36ae5, type: 3}
+    boss2Vol: 1
+    moodboard:
+    - {fileID: 8300000, guid: 52498955191b14c318e02131c0dd13ca, type: 3}
+    moodboardVol: 0.7
+    homebase:
+    - {fileID: 8300000, guid: a121e663d284e7247b85906bc60aad6c, type: 3}
+    homebaseVol: 0.8
+  environmentClips:
+    tree:
+    - {fileID: 8300000, guid: 0e20349afaadc144f913949f31bd93b7, type: 3}
+    treeVol: 0.7
+    birds:
+    - {fileID: 8300000, guid: 9de01f3ca66d95441befef25639589d5, type: 3}
+    birdsVol: 0.3
+    fire:
+    - {fileID: 8300000, guid: 1e9cf69174eaa6f40b3ad4ce0b0c5915, type: 3}
+    fireVol: 0.6
+    geyser:
+    - {fileID: 8300000, guid: aae3f26c5fd6a6c41ae0441c6a78568c, type: 3}
+    geyserVol: 0.8
+    rockSlide:
+    - {fileID: 8300000, guid: d848df879b3aac24392be28cff5aa23d, type: 3}
+    rockSlideVol: 0.4
+  landing: {fileID: 0}
+  jumping: {fileID: 0}
+  stamina: {fileID: 0}
+  walking: {fileID: 0}
+  running: {fileID: 0}
+  slingshotDraw: {fileID: 0}
+  slingshotRelease: {fileID: 0}
+  rock: {fileID: 0}
+  spell: {fileID: 0}
+  moodboard: {fileID: 0}
+  strings: {fileID: 0}
+  bossStrings: {fileID: 0}
+  bossStinger: {fileID: 0}
+  boss1: {fileID: 0}
+  boss2: {fileID: 0}
+  homebase: {fileID: 0}
+  roar1: {fileID: 0}
+  roar2: {fileID: 0}
+  hurt: {fileID: 0}
+  flare: {fileID: 0}
+  hoof: {fileID: 0}
+  hoofSteps: {fileID: 0}
+  moss: {fileID: 0}
+  damage: {fileID: 0}
+  death: {fileID: 0}
+  tree: {fileID: 0}
+  birds: {fileID: 0}
+  fire: {fileID: 0}
+  geyser: {fileID: 0}
+  boulder: {fileID: 0}
+  rockSlide: {fileID: 0}

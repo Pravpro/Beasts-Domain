@@ -10,9 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1311964250415205059}
   - component: {fileID: 1311964250415205058}
+  - component: {fileID: 7923622919743733158}
   - component: {fileID: 1311964250415205057}
   - component: {fileID: 1311964250415205062}
-  - component: {fileID: 7923622919743733158}
   - component: {fileID: 9206296177949412577}
   - component: {fileID: 5651607225151071102}
   m_Layer: 9
@@ -64,6 +64,23 @@ MonoBehaviour:
   audioManager: {fileID: 0}
   thirdPersonCam: {fileID: 0}
   spellWaitTime: 10
+--- !u!114 &7923622919743733158
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1311964250415205063}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 70409c1e59c3948a9b605b60aa59a17e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  staminaUIFill: {fileID: 0}
+  spellUIFill: {fileID: 0}
+  healthImage: {fileID: 0}
+  monsterScript: {fileID: 0}
+  blackScreen: {fileID: 0}
 --- !u!54 &1311964250415205057
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -94,23 +111,6 @@ CapsuleCollider:
   m_Height: 0.122
   m_Direction: 1
   m_Center: {x: -2.0376139e-18, y: 0.061176453, z: 0.0010000005}
---- !u!114 &7923622919743733158
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1311964250415205063}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 70409c1e59c3948a9b605b60aa59a17e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  staminaUIFill: {fileID: 0}
-  spellUIFill: {fileID: 0}
-  healthImage: {fileID: 0}
-  monsterScript: {fileID: 0}
-  blackScreen: {fileID: 0}
 --- !u!81 &9206296177949412577
 AudioListener:
   m_ObjectHideFlags: 0
