@@ -52,12 +52,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   stamina: 120
   speeds:
-    walkSpeed: 0.1
-    runSpeed: 0.2
+    walkSpeed: 0.11
+    runSpeed: 0.21
     jumpSpeed: 9
     turnSpeed: 12
-    crouchSpeed: 0.04
-    mossSpeed: 0.05
+    crouchSpeed: 0.05
+    mossSpeed: 0.06
   hp: 2
   maxStamina: 0
   m_Animator: {fileID: 0}
@@ -122,9 +122,9 @@ CapsuleCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   m_Radius: 0.024101628
-  m_Height: 0.122
+  m_Height: 0.1244605
   m_Direction: 1
-  m_Center: {x: -2.0376139e-18, y: 0.061176453, z: 0.0010000005}
+  m_Center: {x: -2.0376139e-18, y: 0.063, z: 0.0010000005}
 --- !u!81 &9206296177949412577
 AudioListener:
   m_ObjectHideFlags: 0

@@ -30,7 +30,7 @@ public class PlayerController : MonoBehaviour
 
     // player id for reference Rewired input
     // we only have one player id will always = 0
-    private float speed;
+    private float speed, startColliderHeight;
     private int m_playerID = 0;
     private Player m_playerInput;
     private int count = 1;
@@ -39,6 +39,7 @@ public class PlayerController : MonoBehaviour
     Quaternion m_Rotation, lastRotation = Quaternion.identity;
     private bool isMoving, pushing, grounded, walking, running, crouching, inMoss = false;
     private GameObject pushingObject;
+    private CapsuleCollider collider;
 
     private bool recoverStamia = false;
 
@@ -70,9 +71,10 @@ public class PlayerController : MonoBehaviour
     {  
         // to access input using rewired
         m_playerInput = ReInput.players.GetPlayer(m_playerID);
-
+        collider = GetComponent<CapsuleCollider>();
+        startColliderHeight = collider.height;
         maxStamina = stamina;
-        
+
         // reset the input to use rewired
         CinemachineCore.GetInputAxis = ReInput.players.GetPlayer(m_playerID).GetAxis;
         rb = gameObject.GetComponent<Rigidbody>();
@@ -90,6 +92,7 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
+        //sateInfo = m_Animator.GetCurrentAnimatorStateInfo(0);
         // something is wrong with this push thing... I will investigate later...
         if (pushingObject != null) pushing = pushingObject.GetComponent<MovableController>().isPushing;
 
@@ -99,6 +102,8 @@ public class PlayerController : MonoBehaviour
         m_Animator.SetBool("IsCrouching", crouching);
         m_Animator.SetBool("IsPushing", pushing);
         m_Animator.SetBool("IsGrounded", grounded);
+
+        collider.height = startColliderHeight * m_Animator.GetFloat("ColliderHeight");
 
         if (hp <= 0)
         {
