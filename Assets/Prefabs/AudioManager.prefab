@@ -154,7 +154,7 @@ MonoBehaviour:
       - {fileID: 8300000, guid: 02ea47b8ba4e64a02b129f0668c2cfbe, type: 3}
       - {fileID: 8300000, guid: 1c31ef80688374332b161efbb0db2534, type: 3}
       - {fileID: 8300000, guid: 69311890be39c492c97d42eeed2b872b, type: 3}
-      hoofStepsVol: 1
+      hoofStepsVol: 0.6
       moss:
       - {fileID: 8300000, guid: 034a8effb5561be4a9b2724db62882e1, type: 3}
       mossVol: 1
@@ -191,7 +191,7 @@ MonoBehaviour:
     birdsVol: 0.3
     fire:
     - {fileID: 8300000, guid: 1e9cf69174eaa6f40b3ad4ce0b0c5915, type: 3}
-    fireVol: 0.6
+    fireVol: 0.75
     geyser:
     - {fileID: 8300000, guid: aae3f26c5fd6a6c41ae0441c6a78568c, type: 3}
     geyserVol: 0.8

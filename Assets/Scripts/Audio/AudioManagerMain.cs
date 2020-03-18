@@ -230,7 +230,7 @@ public class AudioManagerMain : MonoBehaviour
         // Environment sources
         tree = AddAudio(environmentClips.tree, false, environmentClips.treeVol, mixerGroups.trees);
         birds = AddAudio(environmentClips.birds, false, environmentClips.birdsVol, mixerGroups.birds);
-        fire = AddAudio(environmentClips.fire, false, environmentClips.fireVol, mixerGroups.fire);
+        fire = AddAudio(environmentClips.fire, true, environmentClips.fireVol, mixerGroups.fire);
         geyser = AddAudio(environmentClips.geyser, false, environmentClips.geyserVol, mixerGroups.geyser);
         rockSlide = AddAudio(environmentClips.rockSlide, false, environmentClips.rockSlideVol, mixerGroups.rocks);
         
@@ -306,6 +306,24 @@ public class AudioManagerMain : MonoBehaviour
         boss2.PlayDelayed(5.5f);
         bossStrings.clip = sourceClipRelation[bossStrings][Random.Range(0, sourceClipRelation[bossStrings].Length)];
         bossStrings.PlayDelayed(5.5f);
+    }
+
+    public void PlayRun()
+    {
+        if (!running.isPlaying)
+        {
+            Play(running);
+            walking.Stop();
+        }
+    }
+
+    public void PlayWalk()
+    {
+        if (!walking.isPlaying)
+        {
+            Play(walking);
+            running.Stop();
+        }
     }
 
     public void Hoofsteps()

@@ -14,21 +14,28 @@ public class PlayerController : MonoBehaviour
     public static bool tutorialFinished = false;
 #endif
 
-    // Create variable for movement speed
-    public float walkSpeed, runSpeed, jumpSpeed, turnSpeed, crouchSpeed, mossSpeed;
-    public float hp, stamina, maxStamina;
+    // Create class for movement speeds
+    [System.Serializable]
+    public class PlayerSpeeds
+    {
+        public float walkSpeed, runSpeed, jumpSpeed, turnSpeed, crouchSpeed, mossSpeed;
+    }
+    [HideInInspector] public float stamina;
+    public PlayerSpeeds speeds;
+    public float hp, maxStamina;
     public Animator m_Animator;
     public CinemachineStateDrivenCamera SDCam;
     public AudioManagerMain audioManager;
-    
+
 
     // player id for reference Rewired input
     // we only have one player id will always = 0
+    private float speed;
     private int m_playerID = 0;
     private Player m_playerInput;
     private int count = 1;
     private Rigidbody rb;
-    Vector3 m_Movement, jump, desiredForward, prevCamForward;
+    Vector3 m_Movement, moveVector, jump, desiredForward, prevCamForward;
     Quaternion m_Rotation, lastRotation = Quaternion.identity;
     private bool isMoving, pushing, grounded, walking, running, crouching, inMoss = false;
     private GameObject pushingObject;
@@ -89,7 +96,9 @@ public class PlayerController : MonoBehaviour
         // Set Animator bools
         m_Animator.SetBool("IsMoving", spellActivated ? false : isMoving);
         m_Animator.SetBool("IsRunning", recoverStamia || pushing ? false : running); // not allow running if recovering stamina
-        m_Animator.SetBool("IsCrouching", crouching); 
+        m_Animator.SetBool("IsCrouching", crouching);
+        m_Animator.SetBool("IsPushing", pushing);
+        m_Animator.SetBool("IsGrounded", grounded);
 
         if (hp <= 0)
         {
@@ -121,7 +130,7 @@ public class PlayerController : MonoBehaviour
             // Check if aim camera has rotated/moved
             if (prevCamForward != camforward)
             {
-                desiredForward = Vector3.RotateTowards(transform.forward, camforward, turnSpeed * Time.deltaTime, 0f);
+                desiredForward = Vector3.RotateTowards(transform.forward, camforward, speeds.turnSpeed * Time.deltaTime, 0f);
                 m_Rotation = Quaternion.LookRotation(desiredForward);
                 lastRotation = m_Rotation;
                 prevCamForward = camforward;
@@ -133,7 +142,7 @@ public class PlayerController : MonoBehaviour
             // Prevent Player from turning due to collisions
             if (m_Movement.magnitude != 0)
             {
-                desiredForward = Vector3.RotateTowards(transform.forward, m_Movement, turnSpeed * Time.deltaTime, 0f);
+                desiredForward = Vector3.RotateTowards(transform.forward, m_Movement, speeds.turnSpeed * Time.deltaTime, 0f);
                 m_Rotation = Quaternion.LookRotation(desiredForward);
                 lastRotation = m_Rotation;
             }
@@ -143,43 +152,31 @@ public class PlayerController : MonoBehaviour
         // Code for Running and walking
         if (isMoving && !spellActivated)
         {
-            if (inMoss)
+            if (grounded)
             {
-                rb.MovePosition(rb.position + m_Movement * mossSpeed);
-            } else
-            {
-                if (running && !recoverStamia)
-                {
-                    // hacky way of making push same speed while running and walking
-                    rb.MovePosition(rb.position + m_Movement * (pushing ? walkSpeed
-                                                                        : runSpeed));
-                    if (!audioManager.running.isPlaying && grounded)
-                    {
-                        audioManager.Play(audioManager.running);
-                        audioManager.walking.Stop();
-                    }
-                    stamina--;
-                }
-            }
+                if (crouching) speed = speeds.crouchSpeed;
+                else if (inMoss) speed = speeds.mossSpeed;
+                else if (pushing || recoverStamia) speed = speeds.walkSpeed;
+                else if (running) { speed = speeds.runSpeed; stamina--; }
+                else speed = speeds.walkSpeed;
 
-            if (crouching)
-            {
-                rb.MovePosition(rb.position + m_Movement * crouchSpeed);
+                if (speed == speeds.walkSpeed || speed == speeds.mossSpeed) audioManager.PlayWalk();
+                else if (speed == speeds.runSpeed) audioManager.PlayRun();
+                moveVector = m_Movement * speed;
+                rb.MovePosition(rb.position + moveVector);
+                rb.MoveRotation(m_Rotation);
             }
-            // Else walk
-            else
-            {
-                rb.MovePosition(rb.position + m_Movement * walkSpeed);
-                if(!audioManager.walking.isPlaying && grounded)
-                {
-                    audioManager.Play(audioManager.walking);
-                }
-            }
-
-            
+            else rb.MovePosition(rb.position + moveVector * 3 / 5);
         }
-        rb.MoveRotation(m_Rotation);
-        
+        else
+        {
+            if (grounded)
+            {
+                rb.MoveRotation(m_Rotation);
+                moveVector = new Vector3(0, 0, 0);
+            }
+        }
+
         if ((stamina < maxStamina) && !running) stamina++;
         else if (recoverStamia)                 stamina += 0.1f;
 
@@ -190,15 +187,13 @@ public class PlayerController : MonoBehaviour
         }
 
         // when stamina is fully recovered, player can run again (no need to buttonUp then buttonDown)
-        if (recoverStamia && (stamina > maxStamina / 3)) 
-        {
-            recoverStamia = false;
-        }
+        if (stamina > maxStamina / 3) recoverStamia = false;
 
 
         if (m_playerInput.GetButtonDown("Jump") && grounded)
         {
-            rb.velocity += jump * jumpSpeed;
+            m_Animator.SetTrigger("IsJumping");
+            rb.velocity += jump * speeds.jumpSpeed;
             grounded = false;
 
             audioManager.walking.Stop();

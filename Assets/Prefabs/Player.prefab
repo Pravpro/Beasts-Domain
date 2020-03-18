@@ -11,10 +11,10 @@ GameObject:
   - component: {fileID: 1311964250415205059}
   - component: {fileID: 1311964250415205058}
   - component: {fileID: 7923622919743733158}
+  - component: {fileID: 5651607225151071102}
   - component: {fileID: 1311964250415205057}
   - component: {fileID: 1311964250415205062}
   - component: {fileID: 9206296177949412577}
-  - component: {fileID: 5651607225151071102}
   m_Layer: 9
   m_Name: Player
   m_TagString: Player
@@ -50,14 +50,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f08ac684986d0247b109ba3a3beb220, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  walkSpeed: 0.09
-  runSpeed: 0.11
-  jumpSpeed: 10
-  turnSpeed: 12
-  crouchSpeed: 0.04
-  mossSpeed: -0.04
-  hp: 2
   stamina: 120
+  speeds:
+    walkSpeed: 0.1
+    runSpeed: 0.2
+    jumpSpeed: 9
+    turnSpeed: 12
+    crouchSpeed: 0.04
+    mossSpeed: 0.05
+  hp: 2
   maxStamina: 0
   m_Animator: {fileID: 0}
   SDCam: {fileID: 0}
@@ -81,6 +82,19 @@ MonoBehaviour:
   healthImage: {fileID: 0}
   monsterScript: {fileID: 0}
   blackScreen: {fileID: 0}
+--- !u!114 &5651607225151071102
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1311964250415205063}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 245820831db1b56458ac4dcac9819672, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioManager: {fileID: 0}
 --- !u!54 &1311964250415205057
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -119,19 +133,6 @@ AudioListener:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1311964250415205063}
   m_Enabled: 1
---- !u!114 &5651607225151071102
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1311964250415205063}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 245820831db1b56458ac4dcac9819672, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  audioManager: {fileID: 0}
 --- !u!95 &2447104059489779869
 Animator:
   serializedVersion: 3
@@ -141,7 +142,7 @@ Animator:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2813069113955967190}
   m_Enabled: 1
-  m_Avatar: {fileID: 0}
+  m_Avatar: {fileID: 9000000, guid: ab3d7a564573c43409625b88dd2bf7bc, type: 3}
   m_Controller: {fileID: 9100000, guid: 803d58d3da97c8c44a4804e7b8374358, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
