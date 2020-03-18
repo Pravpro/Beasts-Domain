@@ -136,11 +136,12 @@ public class PlayerController : MonoBehaviour
                 prevCamForward = camforward;
             }
             else m_Rotation = lastRotation;
+
         }
         else
         {
             // Prevent Player from turning due to collisions
-            if (m_Movement.magnitude != 0)
+            if (m_Movement.magnitude != 0 && grounded)
             {
                 desiredForward = Vector3.RotateTowards(transform.forward, m_Movement, speeds.turnSpeed * Time.deltaTime, 0f);
                 m_Rotation = Quaternion.LookRotation(desiredForward);
@@ -150,9 +151,9 @@ public class PlayerController : MonoBehaviour
         }
 
         // Code for Running and walking
-        if (isMoving && !spellActivated)
+        if (grounded)
         {
-            if (grounded)
+            if (isMoving && !spellActivated)
             {
                 if (crouching) speed = speeds.crouchSpeed;
                 else if (inMoss) speed = speeds.mossSpeed;
@@ -164,18 +165,13 @@ public class PlayerController : MonoBehaviour
                 else if (speed == speeds.runSpeed) audioManager.PlayRun();
                 moveVector = m_Movement * speed;
                 rb.MovePosition(rb.position + moveVector);
-                rb.MoveRotation(m_Rotation);
             }
-            else rb.MovePosition(rb.position + moveVector * 3 / 5);
+            else moveVector = new Vector3(0, 0, 0);
         }
-        else
-        {
-            if (grounded)
-            {
-                rb.MoveRotation(m_Rotation);
-                moveVector = new Vector3(0, 0, 0);
-            }
-        }
+        else rb.MovePosition(rb.position + moveVector * 3 / 5);
+
+        // Rotate
+        rb.MoveRotation(m_Rotation);
 
         if ((stamina < maxStamina) && !running) stamina++;
         else if (recoverStamia)                 stamina += 0.1f;
@@ -203,7 +199,7 @@ public class PlayerController : MonoBehaviour
         // Crouch and Run Logic (Cannot do both at the same time)
         if (m_playerInput.GetButtonDown("Crouch"))
         {
-            crouching = crouching ^ true;
+            crouching = !crouching;
         }
         
         if (!crouching)
@@ -258,8 +254,6 @@ public class PlayerController : MonoBehaviour
                 spellAreaEmission.enabled = true;
                 spellArea.Play();
 
-                
-
                 //audio test
                 audioManager.Play(audioManager.spell);
 
@@ -279,6 +273,7 @@ public class PlayerController : MonoBehaviour
         {
             grounded = true;
             Debug.Log("landed");
+            rb.velocity = new Vector3(rb.velocity.x, 0, rb.velocity.z);
             audioManager.Play(audioManager.landing, new float[] {0.7f, 1.3f});
         }
 

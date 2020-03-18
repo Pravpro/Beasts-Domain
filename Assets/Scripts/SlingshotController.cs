@@ -38,15 +38,18 @@ public class SlingshotController : MonoBehaviour
     {
 
         // Activate slingshot
-        if (m_playerInput.GetButtonDown("Aim"))
+        if (playerAnimator.GetBool("IsGrounded"))
         {
-            playerAnimator.SetBool("IsAiming", true);
-        }
+            if (m_playerInput.GetButtonDown("Aim"))
+            {
+                playerAnimator.SetBool("IsAiming", true);
+            }
 
-        if (m_playerInput.GetButtonUp("Aim"))
-        {
-            playerAnimator.SetBool("IsAiming", false);
-            crosshair.enabled = false;
+            if (m_playerInput.GetButtonUp("Aim"))
+            {
+                playerAnimator.SetBool("IsAiming", false);
+                crosshair.enabled = false;
+            }
         }
 
         if (CB.ActiveVirtualCamera.LiveChildOrSelf.Name == "CM_AimCam")

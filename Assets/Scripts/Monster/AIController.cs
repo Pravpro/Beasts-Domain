@@ -570,26 +570,17 @@ public class AIController : MonoBehaviour
 
     void DamagePlayer()
     {
-        if (playerScript.hp > 0 && damageCoroutine == null)
+        if (damageCoroutine == null)
         {
+            playerScript.m_Animator.SetTrigger("IsHit");
             playerScript.hp -= 1;
-            Debug.Log("Player lose health to " + playerScript.hp);
 
-            // avoid getting both hurt sound and dead sound when hp = 0
-            // check the updated hp
             if (playerScript.hp > 0)
             {
                 audioManager.Play(audioManager.damage);
-
-                // give some buffer
-                damageCoroutine = StartCoroutine(playerInvincible() );
+                damageCoroutine = StartCoroutine(playerInvincible());
             }
-        }
-
-        if (playerScript.hp <= 0)
-        {
-            Debug.Log("Player Dies");
-            audioManager.Play(audioManager.death);
+            else audioManager.Play(audioManager.death);
         }
     }
 
