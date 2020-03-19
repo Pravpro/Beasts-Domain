@@ -132,6 +132,7 @@ GameObject:
   - component: {fileID: 13337473}
   - component: {fileID: 13337472}
   - component: {fileID: 13337470}
+  - component: {fileID: 13337471}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -166,6 +167,14 @@ MonoBehaviour:
   m_CameraActivatedEvent:
     m_PersistentCalls:
       m_Calls: []
+--- !u!81 &13337471
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 13337469}
+  m_Enabled: 1
 --- !u!20 &13337472
 Camera:
   m_ObjectHideFlags: 0
@@ -216,8 +225,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 13337469}
-  m_LocalRotation: {x: 0.14813776, y: 0, z: 0, w: 0.98896676}
-  m_LocalPosition: {x: -70.3, y: 4, z: 2.6000004}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 30, y: 30, z: 30}
   m_Children: []
   m_Father: {fileID: 0}
@@ -1694,7 +1703,7 @@ MonoBehaviour:
   m_BindingMode: 4
   m_FollowOffset: {x: 0, y: 4, z: -7.5}
   m_XDamping: 1
-  m_YDamping: 1
+  m_YDamping: 2
   m_ZDamping: 1
   m_PitchDamping: 0
   m_YawDamping: 0
@@ -6644,7 +6653,7 @@ MonoBehaviour:
   m_BindingMode: 4
   m_FollowOffset: {x: 0, y: 4, z: -7.5}
   m_XDamping: 1
-  m_YDamping: 1
+  m_YDamping: 2
   m_ZDamping: 1
   m_PitchDamping: 0
   m_YawDamping: 0
@@ -6738,7 +6747,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 382882444}
-  m_LocalRotation: {x: 0.1481376, y: -0, z: -0, w: 0.9889668}
+  m_LocalRotation: {x: 0.14813694, y: -0, z: -0, w: 0.98896694}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -13696,6 +13705,10 @@ MonoBehaviour:
     m_ParentHash: 756556552
   - m_Hash: 2069122584
     m_ParentHash: 756556552
+  - m_Hash: 634293937
+    m_ParentHash: 756556552
+  - m_Hash: 1321267574
+    m_ParentHash: 756556552
   - m_Hash: -409901381
     m_ParentHash: 756556552
   - m_Hash: 1551589887
@@ -13704,6 +13717,14 @@ MonoBehaviour:
     m_ParentHash: -409901381
   - m_Hash: -1383783638
     m_ParentHash: -409901381
+  - m_Hash: -1544828284
+    m_ParentHash: -409901381
+  - m_Hash: 788460410
+    m_ParentHash: 756556552
+  - m_Hash: 455224584
+    m_ParentHash: 788460410
+  - m_Hash: 38393171
+    m_ParentHash: 788460410
 --- !u!4 &1037459152
 Transform:
   m_ObjectHideFlags: 0
@@ -13788,7 +13809,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1044896107}
-  m_LocalRotation: {x: 0.13019519, y: -0, z: -0, w: 0.9914884}
+  m_LocalRotation: {x: 0.13019554, y: -0, z: -0, w: 0.99148834}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -14366,7 +14387,7 @@ MonoBehaviour:
   m_BindingMode: 4
   m_FollowOffset: {x: 0, y: 4, z: -7.5}
   m_XDamping: 1
-  m_YDamping: 1
+  m_YDamping: 2
   m_ZDamping: 1
   m_PitchDamping: 0
   m_YawDamping: 0
