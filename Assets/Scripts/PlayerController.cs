@@ -39,7 +39,7 @@ public class PlayerController : MonoBehaviour
     Quaternion m_Rotation, lastRotation = Quaternion.identity;
     private bool isMoving, pushing, grounded, walking, running, crouching, inMoss = false;
     private GameObject pushingObject;
-    private CapsuleCollider collider;
+    private CapsuleCollider m_collider;
 
     private bool recoverStamia = false;
 
@@ -71,8 +71,8 @@ public class PlayerController : MonoBehaviour
     {  
         // to access input using rewired
         m_playerInput = ReInput.players.GetPlayer(m_playerID);
-        collider = GetComponent<CapsuleCollider>();
-        startColliderHeight = collider.height;
+        m_collider = GetComponent<CapsuleCollider>();
+        startColliderHeight = m_collider.height;
         maxStamina = stamina;
 
         // reset the input to use rewired
@@ -103,7 +103,7 @@ public class PlayerController : MonoBehaviour
         m_Animator.SetBool("IsPushing", pushing);
         m_Animator.SetBool("IsGrounded", grounded);
 
-        collider.height = startColliderHeight * m_Animator.GetFloat("ColliderHeight");
+        m_collider.height = startColliderHeight * m_Animator.GetFloat("ColliderHeight");
 
         if (hp <= 0)
         {
