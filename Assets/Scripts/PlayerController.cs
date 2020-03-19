@@ -167,7 +167,7 @@ public class PlayerController : MonoBehaviour
         {
             grounded = true;
             Debug.Log("landed");
-            rb.velocity = new Vector3(rb.velocity.x, 0, rb.velocity.z);
+            if (rb.velocity.y > 0) rb.velocity = new Vector3(rb.velocity.x, 0, rb.velocity.z);
             audioManager.Play(audioManager.landing, new float[] { 0.7f, 1.3f });
         }
     }
