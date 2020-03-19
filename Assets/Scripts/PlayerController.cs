@@ -40,7 +40,7 @@ public class PlayerController : MonoBehaviour
     // private GameObject pushingObject;
     private CapsuleCollider m_collider;
 
-    private bool recoverStamia = false;
+    private bool infStamina, recoverStamia = false;
 
     // for spell
     public CinemachineFreeLook thirdPersonCam;
@@ -49,8 +49,7 @@ public class PlayerController : MonoBehaviour
 
     public int spellWaitTime;
     
-    [HideInInspector]
-    public Coroutine WaitNextSpellCoroutine; // needed for UI 
+    [HideInInspector] public Coroutine WaitNextSpellCoroutine; // needed for UI 
     private bool spellActivated = false;
     private bool inSafeZone = false;
 
@@ -111,7 +110,7 @@ public class PlayerController : MonoBehaviour
                 if (crouching) speed = speeds.crouchSpeed;
                 else if (inMoss) speed = speeds.mossSpeed;
                 else if (pushing || recoverStamia) speed = speeds.walkSpeed;
-                else if (running) { speed = speeds.runSpeed; stamina--; }
+                else if (running) { speed = speeds.runSpeed; if(!infStamina) stamina--; }
                 else speed = speeds.walkSpeed;
 
                 if (speed == speeds.walkSpeed || speed == speeds.mossSpeed) audioManager.PlayWalk();
@@ -181,6 +180,9 @@ public class PlayerController : MonoBehaviour
         
         if (col.name == "Arena")
             tutorialFinished = true;
+
+        if (col.name == "Homebase")
+            infStamina = true;
     }
     private void OnTriggerStay(Collider col)
     {
@@ -196,6 +198,9 @@ public class PlayerController : MonoBehaviour
             inSafeZone = false;
         if (col.tag == "Moss")
             inMoss = false;
+
+        if (col.name == "Homebase")
+            infStamina = false;
     }
 
 
