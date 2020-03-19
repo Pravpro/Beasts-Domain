@@ -98,23 +98,25 @@ public class MovableController : MonoBehaviour
 
             GameObject player = col.collider.gameObject;
 
+            m_rbMovable.constraints = m_origRBConstarints;
+
+            if (!isPushing)  
+            {
+                
+            }
+
             if (m_playerInput.GetButton("Push"))
             {
                 playerScript.startPushing();
+                isPushing = true;
 
-                m_rbMovable.constraints = m_origRBConstarints;
+                m_rbMovable.constraints |= RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationZ;
+
         
 #if DEBUG_LOG
                 Debug.Log("(MovableController): trigger stay start pushing");
 #endif
-                if (!isPushing)  
-                {
-                    m_rbMovable.constraints &= ~RigidbodyConstraints.FreezeRotationX;
-                    m_rbMovable.constraints &= ~RigidbodyConstraints.FreezeRotationZ;
-                }
-                else
-                    m_rbMovable.constraints |= RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationZ;
-
+                
                 //curPos = new Vector2(transform.position.x, transform.position.z);
                 //isMoving = curPos.x != lastPos.x || curPos.y != lastPos.y;
                 //lastPos = curPos;
@@ -147,10 +149,12 @@ public class MovableController : MonoBehaviour
 
             if (m_playerInput.GetButtonUp("Push"))
             {
+                isPushing = false;
                 playerScript.stopPushing();
                 audioManager.boulder.Stop();
 
-                m_rbMovable.constraints = RigidbodyConstraints.None;
+                m_rbMovable.constraints &= ~RigidbodyConstraints.FreezeRotationX;
+                m_rbMovable.constraints &= ~RigidbodyConstraints.FreezeRotationZ;
             }
         }
     }
@@ -161,7 +165,7 @@ public class MovableController : MonoBehaviour
         if (col.collider.tag == "Monster") m_monsterCollided = false;
 
         //audioManager.boulder.Stop();
-
+        isPushing = false;
         playerScript.stopPushing();
         m_rbMovable.constraints = RigidbodyConstraints.None;
 
