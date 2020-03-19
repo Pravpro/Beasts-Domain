@@ -39,7 +39,7 @@ public class PlayerController : MonoBehaviour
     Vector3 m_Movement, moveVector, jump, desiredForward, prevCamForward;
     Quaternion m_Rotation, lastRotation = Quaternion.identity;
     private bool isMoving, pushing, grounded, walking, running, crouching, inMoss = false;
-    private GameObject pushingObject;
+    // private GameObject pushingObject;
     private CapsuleCollider m_collider;
 
     private bool recoverStamia = false;
@@ -85,17 +85,11 @@ public class PlayerController : MonoBehaviour
         AimArea = GameObject.Find("SpellArea/AimArea");
         // set to false at beginning
         AimArea.SetActive(false);
-        audioManager.Localize(spellArea.gameObject, audioManager.spell);
-
-        pushingObject = null;
-        
+        audioManager.Localize(spellArea.gameObject, audioManager.spell);        
     }
 
     private void FixedUpdate()
     {
-        // something is wrong with this push thing... I will investigate later...
-        if (pushingObject != null) pushing = pushingObject.GetComponent<MovableController>().isPushing;
-
         // Set Animator bools
         m_Animator.SetBool("IsMoving", spellActivated ? false : isMoving);
         m_Animator.SetBool("IsRunning", recoverStamia || pushing ? false : running); // not allow running if recovering stamina
@@ -180,18 +174,7 @@ public class PlayerController : MonoBehaviour
             rb.velocity = new Vector3(rb.velocity.x, 0, rb.velocity.z);
             audioManager.Play(audioManager.landing, new float[] { 0.7f, 1.3f });
         }
-
-        if (col.collider.tag == "Movable")
-        {
-            pushingObject = col.collider.gameObject;
-        }
     }
-
-    void OnCollisionExit(Collision col)
-    {
-        pushingObject = null;
-    }
-
 
     // ------------------------ Triggers ------------------------
     void OnTriggerEnter(Collider col)
@@ -355,6 +338,16 @@ public class PlayerController : MonoBehaviour
     public bool IsRunning()
     {
         return running;
+    }
+
+    public void startPushing()
+    {
+        pushing = true;
+    }
+
+    public void stopPushing()
+    {
+        pushing = false;
     }
 
     

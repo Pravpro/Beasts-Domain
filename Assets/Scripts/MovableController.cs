@@ -100,7 +100,8 @@ public class MovableController : MonoBehaviour
 
             if (m_playerInput.GetButton("Push"))
             {
-                isPushing = true;
+                playerScript.startPushing();
+
                 m_rbMovable.constraints = m_origRBConstarints;
         
 #if DEBUG_LOG
@@ -146,7 +147,7 @@ public class MovableController : MonoBehaviour
 
             if (m_playerInput.GetButtonUp("Push"))
             {
-                isPushing = false;
+                playerScript.stopPushing();
                 audioManager.boulder.Stop();
 
                 m_rbMovable.constraints = RigidbodyConstraints.None;
@@ -161,7 +162,7 @@ public class MovableController : MonoBehaviour
 
         //audioManager.boulder.Stop();
 
-        isPushing = false;
+        playerScript.stopPushing();
         m_rbMovable.constraints = RigidbodyConstraints.None;
 
 #if DEBUG_LOG
@@ -169,6 +170,7 @@ public class MovableController : MonoBehaviour
 #endif
     }
 
+#if false
     // following is for button prompt
     void OnTriggerEnter(Collider col)
     {
@@ -198,4 +200,5 @@ public class MovableController : MonoBehaviour
         yield return new WaitForSeconds(time);
         buttonPrompt.SetActive(false);
     }
+#endif
 }
