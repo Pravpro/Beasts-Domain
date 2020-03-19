@@ -57,7 +57,7 @@ public class MovableController : MonoBehaviour
 
     void OnCollisionEnter(Collision col)
     {
-        
+        isPushing = false;
         if (col.collider.tag == "Monster" || col.collider.tag == "Player")
             m_rbMovable.constraints = m_origRBConstarints;
 
@@ -77,13 +77,21 @@ public class MovableController : MonoBehaviour
 
             m_rbMovable.Sleep();     
 
-        }
-  
+        }  
+
+        if (col.collider.tag == "Player")
+            m_rbMovable.constraints = RigidbodyConstraints.FreezeAll;
     }
 
     void OnCollisionStay(Collision col)
     {
-        
+        if (playerScript.isJumping())
+        {
+            m_rbMovable.constraints = RigidbodyConstraints.FreezeAll;
+            return;
+        }  
+            
+
         // maybe check if the monster is static? if so allow pushing
         if (m_monsterCollided)
             return;
@@ -98,18 +106,16 @@ public class MovableController : MonoBehaviour
 
             GameObject player = col.collider.gameObject;
 
-            m_rbMovable.constraints = m_origRBConstarints;
+            // m_rbMovable.constraints = m_origRBConstarints;
 
-            if (!isPushing)  
-            {
-                
-            }
+            
 
             if (m_playerInput.GetButton("Push"))
             {
                 playerScript.startPushing();
                 isPushing = true;
 
+                m_rbMovable.constraints = m_origRBConstarints;
                 m_rbMovable.constraints |= RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationZ;
 
         
@@ -153,6 +159,7 @@ public class MovableController : MonoBehaviour
                 playerScript.stopPushing();
                 audioManager.boulder.Stop();
 
+                // m_rbMovable.constraints = m_origRBConstarints;
                 m_rbMovable.constraints &= ~RigidbodyConstraints.FreezeRotationX;
                 m_rbMovable.constraints &= ~RigidbodyConstraints.FreezeRotationZ;
             }
@@ -174,12 +181,16 @@ public class MovableController : MonoBehaviour
 #endif
     }
 
-#if false
+
     // following is for button prompt
     void OnTriggerEnter(Collider col)
     {
         if (col.tag == "Player")
+        {
             buttonPrompt.SetActive(true);
+            m_rbMovable.constraints = RigidbodyConstraints.FreezeAll;
+        }
+            
     
     }
 
@@ -190,6 +201,9 @@ public class MovableController : MonoBehaviour
             buttonPrompt.SetActive(false);
         // else if (col.tag == "Player")
             // StartCoroutine(disableButtonPrompt(3) );
+        
+        // if (col.collider.tag == "Player")
+            // m_rbMovable.constraints = RigidbodyConstraints.FreezeAll;
 
     }
 
@@ -204,5 +218,4 @@ public class MovableController : MonoBehaviour
         yield return new WaitForSeconds(time);
         buttonPrompt.SetActive(false);
     }
-#endif
 }

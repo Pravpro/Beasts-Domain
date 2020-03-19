@@ -350,6 +350,10 @@ public class PlayerController : MonoBehaviour
         pushing = false;
     }
 
+    public bool isJumping()
+    {
+        return !grounded;
+    }
     
     public IEnumerator waitNextDamage(float waitTime)
     {
