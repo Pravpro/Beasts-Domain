@@ -40,6 +40,7 @@ public class FieldOfView : MonoBehaviour
     public bool PlayerInSight()
     {
         Vector3 playerPos = player.transform.position;
+        playerPos.y += 1f;
         Vector3 monsterPos = monster.transform.position;
         Vector3 monsterForward = monster.transform.forward;
 
@@ -51,6 +52,7 @@ public class FieldOfView : MonoBehaviour
         RaycastHit hitInfo;
         if (Physics.Raycast(monsterPos, playerDir.normalized, out hitInfo, viewDistance))
         {
+            // Debug.Log(hitInfo.collider.tag);
             if (hitInfo.collider.tag == "Player")
             {
                 Debug.DrawLine(monsterPos, playerPos);
