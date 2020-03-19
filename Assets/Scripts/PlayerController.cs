@@ -274,7 +274,7 @@ public class PlayerController : MonoBehaviour
     void ActivateSpell()
     {
         // some distance front of player
-        Vector3 spellAreaPosition = this.transform.position + this.transform.forward * 10f;
+        Vector3 spellAreaPosition = this.transform.position + this.transform.forward * 10f + Vector3.up * 1.0f;
         spellAreaPosition.y = spellArea.transform.position.y; // update the y axis
         if (m_playerInput.GetButtonDown("Spell"))
         {
