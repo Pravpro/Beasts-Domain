@@ -8,11 +8,9 @@ using Rewired;
 
 public class PlayerController : MonoBehaviour
 {
-#if false
     // used for restarting the game by skipping the tutorial section
-    public static Vector3 respawnPlayerPosition; // TODO
-    public static bool tutorialFinished = false;
-#endif
+    public static Vector3 respawnPlayerPosition = new Vector3(-73.9f, -0.17f, 6.44f); // TODO
+    [HideInInspector] public static bool tutorialFinished = false;
 
     // Create class for movement speeds
     [System.Serializable]
@@ -61,15 +59,14 @@ public class PlayerController : MonoBehaviour
         // becauze my menu input event is written to messed up, i need to add this line here...
         Time.timeScale = 1; 
 
-#if false
         // when restart, player position should be in the arena, instead of tutorial section
         if (tutorialFinished)
             this.transform.position = respawnPlayerPosition;
-#endif
     }
     
     private void Start()
     {  
+
         // to access input using rewired
         m_playerInput = ReInput.players.GetPlayer(m_playerID);
         m_collider = GetComponent<CapsuleCollider>();
@@ -181,6 +178,9 @@ public class PlayerController : MonoBehaviour
     {
         if (col.tag == "Safezone")
             inSafeZone = true;
+        
+        if (col.name == "Arena")
+            tutorialFinished = true;
     }
     private void OnTriggerStay(Collider col)
     {
