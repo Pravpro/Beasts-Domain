@@ -131,10 +131,10 @@ MonoBehaviour:
       spellVol: 0.8
     beast:
       roar1:
-      - {fileID: 8300000, guid: 94aaad1912ea6fa41a1d3afbd47beb6b, type: 3}
+      - {fileID: 8300000, guid: c4ba7b1503980f042a5704154c1b2042, type: 3}
       roar1Vol: 1
       roar2:
-      - {fileID: 8300000, guid: c4ba7b1503980f042a5704154c1b2042, type: 3}
+      - {fileID: 8300000, guid: 94aaad1912ea6fa41a1d3afbd47beb6b, type: 3}
       roar2Vol: 1
       hurt:
       - {fileID: 8300000, guid: 8e5fb9347918aa642a7894641b0bba4c, type: 3}
