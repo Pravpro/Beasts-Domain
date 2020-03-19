@@ -163,7 +163,7 @@ public class PlayerController : MonoBehaviour
 
     void OnCollisionEnter(Collision col)
     {
-        if (col.collider.tag == "Ground" || col.collider.tag == "Movable")
+        if (col.collider.tag == "Ground" || col.collider.tag == "Movable" || col.collider.tag == "Monster")
         {
             grounded = true;
             Debug.Log("landed");
