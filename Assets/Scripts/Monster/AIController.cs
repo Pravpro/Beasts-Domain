@@ -472,7 +472,8 @@ public class AIController : MonoBehaviour
         }
         else if (col.collider.tag == "Player")
         {
-            if (IsCharging())
+            Vector3 playerPos = player.transform.position;
+            if (IsCharging() || playerPos.y > transform.position.y + 1f)
                 DamagePlayer();
         }
 
