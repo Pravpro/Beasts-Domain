@@ -20,6 +20,7 @@ public class PlayerController : MonoBehaviour
     {
         public float walkSpeed, runSpeed, jumpSpeed, turnSpeed, crouchSpeed, mossSpeed;
     }
+
     [HideInInspector] public float stamina;
     public PlayerSpeeds speeds;
     public float hp, maxStamina;
@@ -92,7 +93,6 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        //sateInfo = m_Animator.GetCurrentAnimatorStateInfo(0);
         // something is wrong with this push thing... I will investigate later...
         if (pushingObject != null) pushing = pushingObject.GetComponent<MovableController>().isPushing;
 
@@ -105,55 +105,12 @@ public class PlayerController : MonoBehaviour
 
         m_collider.height = startColliderHeight * m_Animator.GetFloat("ColliderHeight");
 
-        if (hp <= 0)
-        {
-            return;
-        }
+        if (hp <= 0) return;
 
-        // Movement according to WASD
-        float horizontal = m_playerInput.GetAxis("Horizontal");
-        float vertical   = m_playerInput.GetAxis("Vertical");
-        m_Movement.Set(horizontal, 0f, vertical);
-
-        // Get the movement to be respective to camera
-        m_Movement = Camera.main.transform.TransformDirection(m_Movement);
-        m_Movement.y = 0f;
-        m_Movement.Normalize();
-
-        // Set IsWalking bool according to movement
-        bool hasHorizontalInput = !Mathf.Approximately(horizontal, 0f);
-        bool hasVerticalInput = !Mathf.Approximately(vertical, 0f);
-        isMoving = hasHorizontalInput || hasVerticalInput;
-
-        // Conditions for Rotating
-        if (SDCam.LiveChildOrSelf.Name == "CM_AimCam")
-        {
-
-            Vector3 camforward = Camera.main.transform.forward;
-            camforward.y = 0f;
-            
-            // Check if aim camera has rotated/moved
-            if (prevCamForward != camforward)
-            {
-                desiredForward = Vector3.RotateTowards(transform.forward, camforward, speeds.turnSpeed * Time.deltaTime, 0f);
-                m_Rotation = Quaternion.LookRotation(desiredForward);
-                lastRotation = m_Rotation;
-                prevCamForward = camforward;
-            }
-            else m_Rotation = lastRotation;
-
-        }
-        else
-        {
-            // Prevent Player from turning due to collisions
-            if (m_Movement.magnitude != 0 && grounded)
-            {
-                desiredForward = Vector3.RotateTowards(transform.forward, m_Movement, speeds.turnSpeed * Time.deltaTime, 0f);
-                m_Rotation = Quaternion.LookRotation(desiredForward);
-                lastRotation = m_Rotation;
-            }
-            else m_Rotation = lastRotation;
-        }
+        
+        ImplementMovement(); // Sets m_Movement
+        ImplementRotation(); // Sets m_Rotation
+        
 
         // Code for Running and walking
         if (grounded)
@@ -202,21 +159,127 @@ public class PlayerController : MonoBehaviour
         }
 
         // Crouch and Run Logic (Cannot do both at the same time)
-        if (m_playerInput.GetButtonDown("Crouch"))
-        {
-            crouching = !crouching;
-        }
+        if (m_playerInput.GetButtonDown("Crouch")) crouching = !crouching;
         
-        if (!crouching)
-        {
-            running = m_playerInput.GetButton("Run");
-        }
+        if (!crouching) running = m_playerInput.GetButton("Run");
         else running = false;
 
         // player spell logics
-        if (WaitNextSpellCoroutine == null)
+        if (WaitNextSpellCoroutine == null) ActivateSpell();
+    }
+
+
+    // ------------------------ Collisions ------------------------
+
+    void OnCollisionEnter(Collision col)
+    {
+        if (col.collider.tag == "Ground")
         {
-            ActivateSpell();
+            grounded = true;
+            Debug.Log("landed");
+            rb.velocity = new Vector3(rb.velocity.x, 0, rb.velocity.z);
+            audioManager.Play(audioManager.landing, new float[] { 0.7f, 1.3f });
+        }
+
+        if (col.collider.tag == "Movable")
+        {
+            pushingObject = col.collider.gameObject;
+        }
+    }
+
+    void OnCollisionExit(Collision col)
+    {
+        pushingObject = null;
+    }
+
+
+    // ------------------------ Triggers ------------------------
+    void OnTriggerEnter(Collider col)
+    {
+        if (col.tag == "Safezone")
+            inSafeZone = true;
+    }
+    private void OnTriggerStay(Collider col)
+    {
+        if (col.tag == "Moss")
+        {
+            inMoss = true;
+            running = false;
+        }
+    }
+    void OnTriggerExit(Collider col)
+    {
+        if (col.tag == "Safezone")
+            inSafeZone = false;
+        if (col.tag == "Moss")
+            inMoss = false;
+    }
+
+
+
+
+    // =========================================== Helper Functions ===========================================
+
+
+    /* Summary:
+     * 1. Gets the axes for movement.
+     * 2. Sets movement vector (m_Movement) in respect to the camera.
+     * 3. Sets isMoving boolean if there is movement.
+     */
+    void ImplementMovement()
+    {
+        // Movement according to WASD
+        float horizontal = m_playerInput.GetAxis("Horizontal");
+        float vertical = m_playerInput.GetAxis("Vertical");
+        m_Movement.Set(horizontal, 0f, vertical);
+
+        // Get the movement to be respective to camera
+        m_Movement = Camera.main.transform.TransformDirection(m_Movement);
+        m_Movement.y = 0f;
+        m_Movement.Normalize();
+
+        // Set IsWalking bool according to movement
+        bool hasHorizontalInput = !Mathf.Approximately(horizontal, 0f);
+        bool hasVerticalInput = !Mathf.Approximately(vertical, 0f);
+        isMoving = hasHorizontalInput || hasVerticalInput;
+    }
+
+    /* Summary:
+     * 1. When Aiming:
+     *      - If camera forward changes, rotate (m_Rotation) with it
+     * 2. Otherwise:
+     *      - Rotate (m_Rotation) according to movement
+     */
+    void ImplementRotation()
+    {
+        // Conditions for Rotating
+        if (SDCam.LiveChildOrSelf.Name == "CM_AimCam")
+        {
+
+            Vector3 camforward = Camera.main.transform.forward;
+            camforward.y = 0f;
+
+            // Check if aim camera has rotated/moved
+            if (prevCamForward != camforward)
+            {
+                desiredForward = Vector3.RotateTowards(transform.forward, camforward, speeds.turnSpeed * Time.deltaTime, 0f);
+                m_Rotation = Quaternion.LookRotation(desiredForward);
+                lastRotation = m_Rotation;
+                prevCamForward = camforward;
+            }
+            else m_Rotation = lastRotation;
+
+        }
+        else
+        {
+            // Prevent Player from turning due to collisions
+            if (m_Movement.magnitude != 0 && grounded)
+            {
+                desiredForward = Vector3.RotateTowards(transform.forward, m_Movement, speeds.turnSpeed * Time.deltaTime, 0f);
+                m_Rotation = Quaternion.LookRotation(desiredForward);
+                lastRotation = m_Rotation;
+            }
+            else m_Rotation = lastRotation;
         }
     }
 
@@ -272,27 +335,6 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    void OnCollisionEnter(Collision col)
-    {
-        if (col.collider.tag == "Ground")
-        {
-            grounded = true;
-            Debug.Log("landed");
-            rb.velocity = new Vector3(rb.velocity.x, 0, rb.velocity.z);
-            audioManager.Play(audioManager.landing, new float[] {0.7f, 1.3f});
-        }
-
-        if (col.collider.tag == "Movable")
-        {
-            pushingObject = col.collider.gameObject;
-        }
-    }
-
-    void OnCollisionExit(Collision col)
-    {
-        pushingObject = null;
-    }
-
     IEnumerator WaitNextSpell()
     {
         yield return new WaitForSeconds(spellWaitTime);
@@ -315,28 +357,7 @@ public class PlayerController : MonoBehaviour
         return running;
     }
 
-    void OnTriggerEnter(Collider col)
-    {
-        if (col.tag == "Safezone")
-            inSafeZone = true;
-    }
-    private void OnTriggerStay(Collider col)
-    {
-        if (col.tag == "Moss")
-        {
-            inMoss = true;
-            running = false;
-        }
-    }
-    void OnTriggerExit(Collider col)
-    {
-        if (col.tag == "Safezone")
-            inSafeZone = false;
-        if (col.tag == "Moss")
-            inMoss = false;
-    }
-
-
+    
     public IEnumerator waitNextDamage(float waitTime)
     {
         Renderer[] renderers = GetComponentsInChildren<Renderer>();
