@@ -42,6 +42,8 @@ public class TriggerController : MonoBehaviour
 #endif
             if (Vector3.Distance(monsterPos, geyserPos) < triggerDistance)
             {
+                float scale = transform.localScale.y;
+                scale += 20f;
                 if (script.hp > 0)
                 {
                     audioManager.Play(audioManager.hurt);
