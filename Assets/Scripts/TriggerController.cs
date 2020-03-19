@@ -55,7 +55,9 @@ public class TriggerController : MonoBehaviour
                     Debug.Log("Monster dies!");
                 
                 // geyser is one-time activated, therefore deactivate once used by change the color
-                this.GetComponentInChildren<Renderer>().material = usedGeyserMaterial;
+                Renderer[] renderers = GetComponentsInChildren<Renderer>();
+                foreach (Renderer rend in renderers)
+                    rend.material = usedGeyserMaterial;
             }
         }
     }
