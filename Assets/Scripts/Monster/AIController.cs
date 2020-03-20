@@ -100,6 +100,8 @@ public class AIController : MonoBehaviour
     private float throwDelay = 0.33f;
     private float mossCDTime = 0f;
 
+    private float stopRestTime = 0f;
+
     private bool horned = false;
     private float nextRoarTime = 0f;
 
@@ -214,20 +216,29 @@ public class AIController : MonoBehaviour
             case State.Idle:
                 if (sensedPlayer) { ReactToPlayer(); return; }
 
+                if (Time.time > stopRestTime)
+                {
+                    MoveToRandomPos();
+                    state = State.RandomSearch;
                 // TODO: rest for a few secs?
-
-                MoveToRandomPos();
-                state = State.RandomSearch;
+                }
                 break;
             case State.RandomSearch:
                 if (sensedPlayer) { ReactToPlayer(); return; }
-
+                
                 if (ReachedWanderDest()) {
-                    if (IsPhaseOne())
+                    if (Random.Range(0f, 1f) < 0.5f)
+                    {
                         state = State.Idle;
-                    else {
-                        MoveToRandomPos();
+                        stopRestTime = Time.time + Random.Range(3f, 6f);
+                        agent.ResetPath();
+                        return;
                     }
+                    // if (IsPhaseOne())
+                    //     state = State.Idle;
+                    // else {
+                        MoveToRandomPos();
+                    // }
                 }
                 break;
             case State.Attack:
