@@ -13,6 +13,7 @@ public class TriggerController : MonoBehaviour
     private float triggerDistance;
     private AIController script;
     private GameObject monster;
+    private AudioSource geyserSound;
 
     private bool isTriggered = false;
 
@@ -22,6 +23,7 @@ public class TriggerController : MonoBehaviour
         monster = GameObject.FindGameObjectWithTag("Monster");
         script = monster.GetComponent<AIController>();
         //geyserBurst = GetComponent<ParticleSystem>();
+        geyserSound = audioManager.Localize(gameObject, audioManager.geyser);
 
         // trigger distance is the radius = localScale.z / 2
         triggerDistance = this.transform.localScale.z / 2f - 0.2f; // give some small offset for distance 
@@ -59,6 +61,8 @@ public class TriggerController : MonoBehaviour
 
                 // geyser is one-time activated, therefore deactivate once used by change the color
                 geyserBurst.Play();
+                audioManager.Play(geyserSound, 0.85f);
+
             }
         }
     }

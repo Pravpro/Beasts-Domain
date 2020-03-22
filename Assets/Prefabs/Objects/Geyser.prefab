@@ -109,7 +109,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85da55314f132aa46bc3586fec905b78, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  audioManager: {fileID: 0}
+  audioManager: {fileID: 1783540828656668110, guid: 5dc31065a823a6e4b962f9f768a562a6,
+    type: 3}
   geyserBurst: {fileID: 8586326255150560617}
 --- !u!54 &3559483679017615111
 Rigidbody:
