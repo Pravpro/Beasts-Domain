@@ -8,7 +8,7 @@ using UnityEngine;
 public class TriggerController : MonoBehaviour
 {
     public AudioManagerMain audioManager;
-    public Material usedGeyserMaterial;
+    public ParticleSystem geyserBurst;
 
     private float triggerDistance;
     private AIController script;
@@ -21,6 +21,7 @@ public class TriggerController : MonoBehaviour
     {
         monster = GameObject.FindGameObjectWithTag("Monster");
         script = monster.GetComponent<AIController>();
+        //geyserBurst = GetComponent<ParticleSystem>();
 
         // trigger distance is the radius = localScale.z / 2
         triggerDistance = this.transform.localScale.z / 2f - 0.2f; // give some small offset for distance 
@@ -55,11 +56,9 @@ public class TriggerController : MonoBehaviour
                 }
                 if (script.hp <= 0)
                     Debug.Log("Monster dies!");
-                
+
                 // geyser is one-time activated, therefore deactivate once used by change the color
-                Renderer[] renderers = GetComponentsInChildren<Renderer>();
-                foreach (Renderer rend in renderers)
-                    rend.material = usedGeyserMaterial;
+                geyserBurst.Play();
             }
         }
     }
