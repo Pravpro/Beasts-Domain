@@ -487,11 +487,6 @@ public class AIController : MonoBehaviour
             if (IsCharging() || playerPos.y > transform.position.y + 1f)
                 DamagePlayer();
         }
-
-        // not allow monster to push boulder
-        if (col.gameObject.name.Contains("Boulder") ||
-            col.gameObject.name.Contains("boulder") )
-                col.gameObject.GetComponent<Rigidbody>().isKinematic = true;
     }
 
     bool PlayerReachable()
