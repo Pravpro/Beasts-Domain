@@ -16,12 +16,9 @@ public class SpellEffect : MonoBehaviour
     private AIController monsterScript; 
     private ParticleSystem spellEffect;
     private ParticleSystem  disappearEffect;
-
-    private bool monsterTrapped = false;
+    
     private bool startDisappear = false;
     private float currAlpha;
-
-     private Coroutine waitTillLoadScene = null;
     
     
     // Start is called before the first frame update
@@ -54,18 +51,21 @@ public class SpellEffect : MonoBehaviour
 
             if (Vector3.Distance(monsterPosition, spellPosition) < 3.0f)
             {
-                monsterTrapped = true;
                 Debug.Log("monster trapped");
+
+                // set monster hp = 0 if spell succeed
+                monsterScript.hp = 0;
             }
                 
         }
 
-        if (!startDisappear && (monsterTrapped || monsterScript.hp == 0))
+        if (!startDisappear && monsterScript.hp == 0)
         {
             disappearEffect.transform.position = monster.transform.position;
             disappearEffect.Play();
 
             setTransparent();
+
             currAlpha = disappearEffect.main.duration * 25f;
             startDisappear = true;
 
@@ -73,20 +73,17 @@ public class SpellEffect : MonoBehaviour
 
         }
 
-        // if hp == 0
+        // if hp == 0, start disappear by making monster transparent
         if (startDisappear)
         {            
             Color newColor = m_renderer.material.color;
             newColor.a     = currAlpha / (disappearEffect.main.duration * 25f);
-
-            // always stick with monster
-            disappearEffect.transform.position = monster.transform.position;
             
             m_renderer.material.color = Color.Lerp(m_renderer.material.color, newColor, Time.deltaTime);
             currAlpha--;
         }
 
-        // alpha is 0
+        // alpha is 0 restart the scene
         if (m_renderer.material.color.a <= 0.0f)
         {
             monster.GetComponentInChildren<SkinnedMeshRenderer>().enabled = false;
@@ -113,11 +110,5 @@ public class SpellEffect : MonoBehaviour
         m_renderer.material.renderQueue = 3000;
 
         m_renderer.material.renderQueue = (int) UnityEngine.Rendering.RenderQueue.Transparent;
-    }
-
-    IEnumerator WaitTillLoad()
-    {
-        yield return new WaitForSeconds(1);
-        waitTillLoadScene = null;
     }
 }

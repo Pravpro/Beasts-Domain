@@ -95,7 +95,6 @@ public class MovableController : MonoBehaviour
             return;
         }  
             
-
         // maybe check if the monster is static? if so allow pushing
         if (m_monsterCollided)
             return;
@@ -111,8 +110,6 @@ public class MovableController : MonoBehaviour
             GameObject player = col.collider.gameObject;
 
             // m_rbMovable.constraints = m_origRBConstarints;
-
-            
 
             if (m_playerInput.GetButton("Push"))
             {
@@ -193,7 +190,7 @@ public class MovableController : MonoBehaviour
         {
             buttonPrompt.SetActive(true);
 
-            setButtonPromptFollow(true);
+            setButtonPromptFollow();
 
             m_rbMovable.constraints = RigidbodyConstraints.FreezeAll;
         }
@@ -240,14 +237,13 @@ public class MovableController : MonoBehaviour
     }
 
 
-    void setButtonPromptFollow(bool update = false)
+    void setButtonPromptFollow()
     {
         Vector3 offsetPos = player.transform.position; 
         offsetPos.y += 1f;
 
-        // find the left position relative to the player for UI
-        if (update || Vector3.Dot(Camera.main.transform.forward, player.transform.forward) > 0.9f)        
-            playerLeftAxis = Vector3.Cross(player.transform.forward, Vector3.up).normalized;
+        // find the left position relative to the player for UI      
+        playerLeftAxis = Vector3.Cross(Camera.main.transform.forward, Vector3.up).normalized;
 
         Vector2 screenPoint = Camera.main.WorldToScreenPoint(offsetPos + playerLeftAxis * 1.5f);
 
