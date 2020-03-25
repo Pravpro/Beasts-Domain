@@ -142,7 +142,8 @@ MonoBehaviour:
   isPushing: 0
   isMoving: 0
   buttonPrompt: {fileID: 0}
-  audioManager: {fileID: 0}
+  audioManager: {fileID: 1783540828656668110, guid: 5dc31065a823a6e4b962f9f768a562a6,
+    type: 3}
   playerScript: {fileID: 0}
 --- !u!208 &1751900603
 NavMeshObstacle:
