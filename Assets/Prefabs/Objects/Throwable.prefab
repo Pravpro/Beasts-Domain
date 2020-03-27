@@ -90,7 +90,7 @@ Halo:
   m_Enabled: 1
   m_Color:
     serializedVersion: 2
-    rgba: 4294967295
+    rgba: 4292696576
   m_Size: 0.1
 --- !u!1 &7490987963249429685
 GameObject:
@@ -155,10 +155,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slingshotScript: {fileID: 0}
+  audioManager: {fileID: 0}
   monster: {fileID: 0}
   hitEffect: {fileID: 4443174480161408764, guid: 298309f07c2318f4b9c46e2ab61b985c,
     type: 3}
-  audioManager: {fileID: 0}
 --- !u!135 &7356018154314594491
 SphereCollider:
   m_ObjectHideFlags: 0
