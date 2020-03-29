@@ -86,6 +86,8 @@ public class AudioManagerMain : MonoBehaviour
             [Range(0f, 1f)] public float roar2Vol;
             public AudioClip[] hurt;
             [Range(0f, 1f)] public float hurtVol;
+            public AudioClip[] defeat;
+            [Range(0f, 1f)] public float defeatVol;
             public AudioClip[] flare;
             [Range(0f, 1f)] public float flareVol;
             public AudioClip[] hoof;
@@ -180,6 +182,7 @@ public class AudioManagerMain : MonoBehaviour
     [HideInInspector] public AudioSource roar1;
     [HideInInspector] public AudioSource roar2;
     [HideInInspector] public AudioSource hurt;
+    [HideInInspector] public AudioSource defeat;
     [HideInInspector] public AudioSource flare;
     [HideInInspector] public AudioSource hoof;
     [HideInInspector] public AudioSource hoofSteps;
@@ -215,6 +218,7 @@ public class AudioManagerMain : MonoBehaviour
         roar1 = AddAudio(sfxClips.beast.roar1, false, sfxClips.beast.roar1Vol, mixerGroups.beast);
         roar2 = AddAudio(sfxClips.beast.roar2, false, sfxClips.beast.roar2Vol, mixerGroups.beast);
         hurt = AddAudio(sfxClips.beast.hurt, false, sfxClips.beast.hurtVol, mixerGroups.beast);
+        defeat = AddAudio(sfxClips.beast.defeat, false, sfxClips.beast.defeatVol, mixerGroups.beast);
         flare = AddAudio(sfxClips.beast.flare, false, sfxClips.beast.flareVol, mixerGroups.beast);
         hoof = AddAudio(sfxClips.beast.hoof, false, sfxClips.beast.hoofVol, mixerGroups.beast);
         hoofSteps = AddAudio(sfxClips.beast.hoofSteps, false, sfxClips.beast.hoofStepsVol, mixerGroups.hoofsteps);
