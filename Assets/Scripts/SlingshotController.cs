@@ -64,6 +64,7 @@ public class SlingshotController : MonoBehaviour
                 Debug.DrawLine(transform.position, hit.point, Color.green);
                 targetVector.Normalize();
             }
+            else targetVector = aimCam.transform.forward;
             crosshair.enabled = true;
 
             // Release Slinghot
