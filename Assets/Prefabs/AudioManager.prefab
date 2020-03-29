@@ -139,6 +139,9 @@ MonoBehaviour:
       hurt:
       - {fileID: 8300000, guid: 8e5fb9347918aa642a7894641b0bba4c, type: 3}
       hurtVol: 1
+      defeat:
+      - {fileID: 8300000, guid: 869def26e16abbb488f09d159dc43a6f, type: 3}
+      defeatVol: 1
       flare:
       - {fileID: 8300000, guid: b9b86032db7fc4259a134b69080b4e17, type: 3}
       flareVol: 1
@@ -217,6 +220,7 @@ MonoBehaviour:
   roar1: {fileID: 0}
   roar2: {fileID: 0}
   hurt: {fileID: 0}
+  defeat: {fileID: 0}
   flare: {fileID: 0}
   hoof: {fileID: 0}
   hoofSteps: {fileID: 0}

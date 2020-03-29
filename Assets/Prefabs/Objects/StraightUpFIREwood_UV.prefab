@@ -46,6 +46,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3542559121171582869}
+  - component: {fileID: 5697135739275992052}
   m_Layer: 0
   m_Name: StraightUpFIREwood_UV
   m_TagString: Untagged
@@ -71,6 +72,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: -179.99998, z: 0}
+--- !u!114 &5697135739275992052
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 536749796922654086}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5dd9eed1eb5b9a142a97a010890e92a0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioManager: {fileID: 0}
 --- !u!1 &2055967529293291893
 GameObject:
   m_ObjectHideFlags: 0
