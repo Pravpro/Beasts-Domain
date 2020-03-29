@@ -646,8 +646,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 1, y: 2.4001403, z: 1.4968545}
+  m_Center: {x: -0.000000001674147, y: -0.021738138, z: -0.24842785}
 --- !u!1 &2019759691761124441
 GameObject:
   m_ObjectHideFlags: 0
@@ -976,8 +976,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 1, y: 1.8586944, z: 1.7990173}
+  m_Center: {x: 0, y: -0.42934752, z: -0.39950898}
 --- !u!1 &3072999486020257123
 GameObject:
   m_ObjectHideFlags: 0
@@ -1351,8 +1351,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 0.9999998, y: 2.4189203, z: 1.3942019}
+  m_Center: {x: -0.0000000036036565, y: 0.09177435, z: -0.19710065}
 --- !u!1 &3670907436480496859
 GameObject:
   m_ObjectHideFlags: 0
@@ -1566,8 +1566,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 1, y: 2.425508, z: 1.2136492}
+  m_Center: {x: 0.0000000027008915, y: 0.057657845, z: -0.10682461}
 --- !u!1 &4874633390043003575
 GameObject:
   m_ObjectHideFlags: 0
@@ -1830,8 +1830,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 0.99999976, y: 2.3009613, z: 2.963694}
+  m_Center: {x: -0.000000008179881, y: -0.17450029, z: -0.98184836}
 --- !u!1 &5830203218229968617
 GameObject:
   m_ObjectHideFlags: 0
@@ -1923,8 +1923,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 1.1683795, y: 2.2654238, z: 1}
+  m_Center: {x: 0.084189594, y: 0.037578452, z: -0.00000007288926}
 --- !u!1 &5958024127195525123
 GameObject:
   m_ObjectHideFlags: 0
@@ -2016,8 +2016,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 0.9999991, y: 2.4015603, z: 1.252554}
+  m_Center: {x: 1.8631367e-11, y: 0.07569486, z: -0.12627636}
 --- !u!1 &6052418379155414745
 GameObject:
   m_ObjectHideFlags: 0
@@ -3092,20 +3092,50 @@ PrefabInstance:
       propertyPath: m_Name
       value: StraightUpFIREwood_UV
       objectReference: {fileID: 0}
+    - target: {fileID: 580987388727802538, guid: 539ac3d59e2afdf4a87b5a1b154275a0,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 580987388727802538, guid: 539ac3d59e2afdf4a87b5a1b154275a0,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 580987388727802538, guid: 539ac3d59e2afdf4a87b5a1b154275a0,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 580987388727802538, guid: 539ac3d59e2afdf4a87b5a1b154275a0,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.0041
+      objectReference: {fileID: 0}
+    - target: {fileID: 580987388727802538, guid: 539ac3d59e2afdf4a87b5a1b154275a0,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.02
+      objectReference: {fileID: 0}
+    - target: {fileID: 580987388727802538, guid: 539ac3d59e2afdf4a87b5a1b154275a0,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.01
+      objectReference: {fileID: 0}
     - target: {fileID: 3542559121171582869, guid: 539ac3d59e2afdf4a87b5a1b154275a0,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 78.645
+      value: 78.609
       objectReference: {fileID: 0}
     - target: {fileID: 3542559121171582869, guid: 539ac3d59e2afdf4a87b5a1b154275a0,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.36
+      value: -0.349
       objectReference: {fileID: 0}
     - target: {fileID: 3542559121171582869, guid: 539ac3d59e2afdf4a87b5a1b154275a0,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.4135
+      value: 0.4146
       objectReference: {fileID: 0}
     - target: {fileID: 3542559121171582869, guid: 539ac3d59e2afdf4a87b5a1b154275a0,
         type: 3}
