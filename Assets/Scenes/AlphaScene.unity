@@ -226,8 +226,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 13337469}
-  m_LocalRotation: {x: 0.19331029, y: -0.1553518, z: 0.03101541, w: 0.9682639}
-  m_LocalPosition: {x: -169.62856, y: 3.73, z: 40.02167}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 30, y: 30, z: 30}
   m_Children: []
   m_Father: {fileID: 0}
@@ -6871,7 +6871,7 @@ MonoBehaviour:
   m_BindingMode: 4
   m_FollowOffset: {x: 0, y: 4, z: -7.5}
   m_XDamping: 1
-  m_YDamping: 2
+  m_YDamping: 6
   m_ZDamping: 1
   m_PitchDamping: 0
   m_YawDamping: 0
@@ -7038,7 +7038,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 382882444}
-  m_LocalRotation: {x: 0.19331178, y: -0.15535046, z: 0.031003635, w: 0.9682642}
+  m_LocalRotation: {x: 0.1933118, y: -0.15535049, z: 0.031003637, w: 0.9682642}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -15200,7 +15200,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1044896107}
-  m_LocalRotation: {x: 0.17573543, y: -0.15588821, z: 0.028195579, w: 0.9716074}
+  m_LocalRotation: {x: 0.1757356, y: -0.15588821, z: 0.028195607, w: 0.9716074}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -15969,7 +15969,7 @@ MonoBehaviour:
   m_BindingMode: 4
   m_FollowOffset: {x: 0, y: 4, z: -7.5}
   m_XDamping: 1
-  m_YDamping: 2
+  m_YDamping: 4
   m_ZDamping: 1
   m_PitchDamping: 0
   m_YawDamping: 0
@@ -20032,7 +20032,7 @@ MonoBehaviour:
   - m_Height: 4
     m_Radius: 7.5
   - m_Height: 0
-    m_Radius: 3.5
+    m_Radius: 3
   m_LegacyHeadingBias: 3.4028235e+38
   m_Rigs:
   - {fileID: 1970806825}
@@ -20074,10 +20074,10 @@ MonoBehaviour:
   m_MinimumDistanceFromTarget: 0.1
   m_AvoidObstacles: 1
   m_DistanceLimit: 0
-  m_CameraRadius: 0.3
+  m_CameraRadius: 0.1
   m_Strategy: 0
   m_MaximumEffort: 4
-  m_Damping: 0.1
+  m_Damping: 1.5
   m_OptimalTargetDistance: 0
 --- !u!1 &1998623353
 GameObject:
