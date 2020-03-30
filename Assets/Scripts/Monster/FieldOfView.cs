@@ -42,6 +42,7 @@ public class FieldOfView : MonoBehaviour
         Vector3 playerPos = player.transform.position;
         playerPos.y += 1f;
         Vector3 monsterPos = monster.transform.position;
+        monsterPos.y = 3f;
         Vector3 monsterForward = monster.transform.forward;
 
         float angle = Vector3.Angle(monsterForward, playerPos - monsterPos);

@@ -191,6 +191,10 @@ public class AIController : MonoBehaviour
         if (targetObj)
         {
             //agent.SetDestination(targetObj.transform.position);
+            state = State.Attack;
+            subState = SubState.Charge;
+            SetChargeAreaMask();
+            SetChargeSpeed();
             SetDestination(targetObj.transform.position);
             return;
         }
