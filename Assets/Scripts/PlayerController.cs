@@ -100,7 +100,7 @@ public class PlayerController : MonoBehaviour
         
         ImplementMovement(); // Sets m_Movement
         ImplementRotation(); // Sets m_Rotation
-        
+
 
         // Code for Running and walking
         if (grounded)
@@ -110,7 +110,7 @@ public class PlayerController : MonoBehaviour
                 if (crouching) speed = speeds.crouchSpeed;
                 else if (inMoss) speed = speeds.mossSpeed;
                 else if (pushing || recoverStamia) speed = speeds.walkSpeed;
-                else if (running) { speed = speeds.runSpeed; if(!infStamina) stamina--; }
+                else if (running) { speed = speeds.runSpeed; if (!infStamina) stamina--; }
                 else speed = speeds.walkSpeed;
 
                 if (speed == speeds.walkSpeed || speed == speeds.mossSpeed) audioManager.PlayWalk();
@@ -120,7 +120,11 @@ public class PlayerController : MonoBehaviour
             }
             else moveVector = new Vector3(0, 0, 0);
         }
-        else rb.MovePosition(rb.position + moveVector * 3 / 5);
+        else
+        {
+            rb.MovePosition(rb.position + moveVector * 3 / 5);
+            if (rb.velocity.y <= 0f) rb.AddForce(Vector3.down * 100);
+        }
 
         // Rotate
         rb.MoveRotation(m_Rotation);
@@ -141,7 +145,8 @@ public class PlayerController : MonoBehaviour
         if (m_playerInput.GetButtonDown("Jump") && grounded)
         {
             m_Animator.SetTrigger("IsJumping");
-            rb.velocity += jump * speeds.jumpSpeed;
+            //rb.velocity += jump * speeds.jumpSpeed;
+            rb.AddForce(Vector3.up * speeds.jumpSpeed * 20, ForceMode.Impulse);
             grounded = false;
 
             audioManager.walking.Stop();
