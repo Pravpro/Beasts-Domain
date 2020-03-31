@@ -44,8 +44,9 @@ public class PlayerController : MonoBehaviour
 
     // for spell
     public CinemachineFreeLook thirdPersonCam;
-    ParticleSystem spellArea;
-    GameObject AimArea;
+    public GameObject spellPrefab;
+    private GameObject AimArea;
+    private ParticleSystem spellEffect;
 
     public int spellWaitTime;
     
@@ -61,6 +62,13 @@ public class PlayerController : MonoBehaviour
         // when restart, player position should be in the arena, instead of tutorial section
         if (tutorialFinished)
             this.transform.position = respawnPlayerPosition;
+
+        var newPrefab = Instantiate(spellPrefab); newPrefab.name = "SpellEffect";
+        spellEffect = newPrefab.GetComponent<ParticleSystem>();
+        AimArea     = newPrefab.transform.GetChild(0).gameObject;
+        // set to false at beginning
+        AimArea.SetActive(false);
+        audioManager.Localize(spellEffect.gameObject, audioManager.spell);     
     }
     
     private void Start()
@@ -75,13 +83,7 @@ public class PlayerController : MonoBehaviour
         // reset the input to use rewired
         CinemachineCore.GetInputAxis = ReInput.players.GetPlayer(m_playerID).GetAxis;
         rb = gameObject.GetComponent<Rigidbody>();
-        jump = new Vector3(0, 1.0f, 0);
-
-        spellArea = GameObject.Find("SpellArea").GetComponent<ParticleSystem>();
-        AimArea = GameObject.Find("SpellArea/AimArea");
-        // set to false at beginning
-        AimArea.SetActive(false);
-        audioManager.Localize(spellArea.gameObject, audioManager.spell);        
+        jump = new Vector3(0, 1.0f, 0);           
     }
 
     private void FixedUpdate()
@@ -280,25 +282,30 @@ public class PlayerController : MonoBehaviour
     {
         // some distance front of player
         Vector3 spellAreaPosition = this.transform.position + this.transform.forward * 10f + Vector3.up * 1.0f;
-        spellAreaPosition.y = spellArea.transform.position.y; // update the y axis
+        
+         
+
         if (m_playerInput.GetButtonDown("Spell"))
         {
-            spellArea.transform.position = spellAreaPosition;
+            spellEffect.transform.position = spellAreaPosition;
             AimArea.SetActive(true);
             spellActivated = true;
+
             thirdPersonCam.m_RecenterToTargetHeading.m_enabled = true;
         }
 
         // TODO: should probably only allow spell after monster get some damage
         if (m_playerInput.GetButton("Spell"))
         {
-            spellArea.transform.position = spellAreaPosition;
+            spellAreaPosition.y = spellEffect.transform.position.y; // update the y axis
+            spellEffect.transform.position = spellAreaPosition;
             // ray cast to the ground
             RaycastHit hit;
             int mask = (1 << LayerMask.NameToLayer("Ground"));
-            if (Physics.Raycast(spellAreaPosition + Vector3.up * 10f, Vector3.down, out hit, 40.0f /*max distance */, mask) )
+            if (Physics.Raycast(spellAreaPosition + Vector3.up * 10f, Vector3.down, out hit, Mathf.Infinity /*max distance */, mask) )
             {
-                spellArea.transform.position = hit.point + Vector3.up * 1.0f; /* a little above ground */
+                Debug.Log("hitted");
+                spellEffect.transform.position = hit.point + Vector3.up * 1.0f; /* a little above ground */
             }
         }
 
@@ -311,9 +318,9 @@ public class PlayerController : MonoBehaviour
             // activate the spell when monster is not charging
             if (!GameObject.FindGameObjectWithTag("Monster").GetComponent<AIController>().IsCharging())
             {
-                var spellAreaEmission = spellArea.emission;
+                var spellAreaEmission = spellEffect.emission;
                 spellAreaEmission.enabled = true;
-                spellArea.Play();
+                spellEffect.Play();
 
                 //audio test
                 audioManager.Play(audioManager.spell);

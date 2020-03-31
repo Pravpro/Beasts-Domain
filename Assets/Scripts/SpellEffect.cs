@@ -5,9 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class SpellEffect : MonoBehaviour
 {
-
-    public GameObject monster;
-    public GameObject disappearEffectObject;
+    public GameObject disappearEffectPrefab;
 
     private Renderer m_renderer;
     private Color m_color;
@@ -24,14 +22,15 @@ public class SpellEffect : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        // for now the renderer for monster is in the child object
-        m_renderer  = monster.GetComponentInChildren<SkinnedMeshRenderer>();
-        monsterScript = monster.GetComponent<AIController>();
+        // the renderer for monster is in the child object
+        m_renderer    = this.GetComponentInChildren<SkinnedMeshRenderer>();
+        monsterScript = this.GetComponent<AIController>();
 
-        spellEffect = GetComponent<ParticleSystem>();
+        spellEffect = GameObject.Find("SpellEffect").GetComponent<ParticleSystem>();
 
         // monster disappear effect
-        disappearEffect = disappearEffectObject.GetComponent<ParticleSystem>();
+        var newPrefab = Instantiate(disappearEffectPrefab); newPrefab.name = "disappearEffect";
+        disappearEffect = newPrefab.GetComponent<ParticleSystem>();
     }
 
     // Update is called once per frame
@@ -41,8 +40,8 @@ public class SpellEffect : MonoBehaviour
         // check if the monster is trapped
         if (spellEffect.isPlaying)
         {
-            Vector3 monsterPosition = monster.transform.position;
-            Vector3 spellPosition   = this.transform.position;
+            Vector3 monsterPosition = this.transform.position;
+            Vector3 spellPosition   = spellEffect.transform.position;
 
             // ignore both y axis
             monsterPosition.y = 0;
@@ -61,7 +60,7 @@ public class SpellEffect : MonoBehaviour
 
         if (!startDisappear && monsterScript.hp == 0)
         {
-            disappearEffect.transform.position = monster.transform.position;
+            disappearEffect.transform.position = spellEffect.transform.position;
             disappearEffect.Play();
 
             setTransparent();
@@ -86,9 +85,9 @@ public class SpellEffect : MonoBehaviour
         // alpha is 0 restart the scene
         if (m_renderer.material.color.a <= 0.0f)
         {
-            monster.GetComponentInChildren<SkinnedMeshRenderer>().enabled = false;
+            m_renderer.enabled = false;
         
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name); // "TitleScreen"
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
 
         }
     }
