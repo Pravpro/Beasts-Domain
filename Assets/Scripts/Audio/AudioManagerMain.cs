@@ -20,6 +20,7 @@ public class AudioManagerMain : MonoBehaviour
         public AudioMixerGroup birds;
         public AudioMixerGroup arena;
         public AudioMixerGroup training;
+        public AudioMixerGroup win;
         public AudioMixerGroup environment;
         public AudioMixerGroup fire;
         public AudioMixerGroup geyser;
@@ -43,6 +44,7 @@ public class AudioManagerMain : MonoBehaviour
         public AudioMixerSnapshot pauseTraining;
         public AudioMixerSnapshot arena;
         public AudioMixerSnapshot alleys;
+        public AudioMixerSnapshot win;
     }
 
     [System.Serializable]
@@ -119,6 +121,8 @@ public class AudioManagerMain : MonoBehaviour
         [Range(0f, 1f)] public float moodboardVol;
         public AudioClip[] homebase;
         [Range(0f, 1f)] public float homebaseVol;
+        public AudioClip[] win;
+        [Range(0f, 1f)] public float winVol;
     }
 
     [System.Serializable]
@@ -178,6 +182,7 @@ public class AudioManagerMain : MonoBehaviour
     [HideInInspector] public AudioSource boss1;
     [HideInInspector] public AudioSource boss2;
     [HideInInspector] public AudioSource homebase;
+    [HideInInspector] public AudioSource win;
 
     [HideInInspector] public AudioSource roar1;
     [HideInInspector] public AudioSource roar2;
@@ -231,6 +236,7 @@ public class AudioManagerMain : MonoBehaviour
         boss1 = AddAudio(musicClips.boss1, true, musicClips.boss1Vol, mixerGroups.arena);
         boss2 = AddAudio(musicClips.boss2, true, musicClips.boss2Vol, mixerGroups.arena);
         homebase = AddAudio(musicClips.homebase, true, musicClips.homebaseVol, mixerGroups.homebase);
+        win = AddAudio(musicClips.win, true, musicClips.winVol, mixerGroups.win);
         // Environment sources
         tree = AddAudio(environmentClips.tree, false, environmentClips.treeVol, mixerGroups.trees);
         birds = AddAudio(environmentClips.birds, false, environmentClips.birdsVol, mixerGroups.birds);

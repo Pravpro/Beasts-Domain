@@ -54,6 +54,7 @@ MonoBehaviour:
     arena: {fileID: -683621483407260390, guid: b12a37322bc5b8444879a1c72e83a533, type: 2}
     training: {fileID: 3728301513905487298, guid: b12a37322bc5b8444879a1c72e83a533,
       type: 2}
+    win: {fileID: -8562427675816675666, guid: b12a37322bc5b8444879a1c72e83a533, type: 2}
     environment: {fileID: 4464209829870362510, guid: b12a37322bc5b8444879a1c72e83a533,
       type: 2}
     fire: {fileID: -3923134402367959249, guid: b12a37322bc5b8444879a1c72e83a533, type: 2}
@@ -85,6 +86,7 @@ MonoBehaviour:
     arena: {fileID: 8252497145976169834, guid: b12a37322bc5b8444879a1c72e83a533, type: 2}
     alleys: {fileID: 1155859526790766930, guid: b12a37322bc5b8444879a1c72e83a533,
       type: 2}
+    win: {fileID: -5654413569297524223, guid: b12a37322bc5b8444879a1c72e83a533, type: 2}
   sfxClips:
     player:
       landing:
@@ -185,6 +187,9 @@ MonoBehaviour:
     homebase:
     - {fileID: 8300000, guid: a121e663d284e7247b85906bc60aad6c, type: 3}
     homebaseVol: 0.8
+    win:
+    - {fileID: 8300000, guid: c383d6bfa206e44429334124ba7cc2ff, type: 3}
+    winVol: 1
   environmentClips:
     tree:
     - {fileID: 8300000, guid: 0e20349afaadc144f913949f31bd93b7, type: 3}
@@ -217,6 +222,7 @@ MonoBehaviour:
   boss1: {fileID: 0}
   boss2: {fileID: 0}
   homebase: {fileID: 0}
+  win: {fileID: 0}
   roar1: {fileID: 0}
   roar2: {fileID: 0}
   hurt: {fileID: 0}
