@@ -91,7 +91,7 @@ MonoBehaviour:
     player:
       landing:
       - {fileID: 8300000, guid: a2db89066a1b9bd41a5996686b05b262, type: 3}
-      landingVol: 0.6
+      landingVol: 0.04
       jumping:
       - {fileID: 8300000, guid: 0bd124c637a512348a15e14ce4581dc6, type: 3}
       - {fileID: 8300000, guid: 7e14fd1ce1a7cf440b3fb49fb2a97402, type: 3}
@@ -103,12 +103,12 @@ MonoBehaviour:
       - {fileID: 8300000, guid: 87513ba3b8b4fd24d832592899ab6853, type: 3}
       - {fileID: 8300000, guid: 908f10149ce7b2f4a8f939f35016d4d3, type: 3}
       - {fileID: 8300000, guid: b9ef2fcd1105e834098f1080eedc12d5, type: 3}
-      walkingVol: 0.05
+      walkingVol: 0.03
       running:
       - {fileID: 8300000, guid: a3f4b3bad08686f40ab4be2f2b9d6772, type: 3}
       - {fileID: 8300000, guid: 94577f808479cac488b455ec61e513e4, type: 3}
       - {fileID: 8300000, guid: 3452ed63f1fe881498908df8ddaf303f, type: 3}
-      runningVol: 0.05
+      runningVol: 0.03
       damage:
       - {fileID: 8300000, guid: 915b8c427065a9b44a77de4ff74ed6ce, type: 3}
       damageVol: 1
