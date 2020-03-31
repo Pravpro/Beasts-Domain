@@ -150,7 +150,7 @@ MonoBehaviour:
       hoof:
       - {fileID: 8300000, guid: e73f55637d8d64c80872f6dd67c12efa, type: 3}
       hoofVol: 1
-      hoofSteps:
+      hoofStepsWalking:
       - {fileID: 8300000, guid: 95fb2eb6e3ce4e64495fa7c3ee7d4a5f, type: 3}
       - {fileID: 8300000, guid: c341b26c6105d564090382c514fdf94f, type: 3}
       - {fileID: 8300000, guid: 0f7041d4631e07c4288679279fbda659, type: 3}
@@ -159,7 +159,13 @@ MonoBehaviour:
       - {fileID: 8300000, guid: f441815112ea93344a8c9abe9d4f7d2b, type: 3}
       - {fileID: 8300000, guid: c7844122b6c72a3448ba5654db7a3be3, type: 3}
       - {fileID: 8300000, guid: a263d1b0943b6964888b509736d65cbd, type: 3}
-      hoofStepsVol: 0.6
+      hoofStepsWalkingVol: 1
+      hoofStepsRunning:
+      - {fileID: 8300000, guid: c5e1d84e2a672714187934f58359fe1b, type: 3}
+      - {fileID: 8300000, guid: ee36e746e4c6e504885ab5ddedd272a7, type: 3}
+      - {fileID: 8300000, guid: b1c3b30ce060f3e4e957980ced9489d9, type: 3}
+      - {fileID: 8300000, guid: 9f6c29f8876b97f4cb9138b623cffa81, type: 3}
+      hoofStepsRunningVol: 1
       moss:
       - {fileID: 8300000, guid: 034a8effb5561be4a9b2724db62882e1, type: 3}
       mossVol: 1

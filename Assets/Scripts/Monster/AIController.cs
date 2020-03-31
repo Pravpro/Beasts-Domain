@@ -45,8 +45,6 @@ public class AIController : MonoBehaviour
         }
     }
 
-    public float scenLoadTime = 0f;
-
     public GameObject targetObj;
     public GameObject mossObj;
 
@@ -132,7 +130,7 @@ public class AIController : MonoBehaviour
         //Audio
         LocalizeAudio();
 
-        audioManager.InvokeRepeating("Hoofsteps", 0.0f, 0.6f);
+        //audioManager.InvokeRepeating("Hoofsteps", 0.0f, 0.6f);
     }
 
     // void Update()
@@ -150,6 +148,8 @@ public class AIController : MonoBehaviour
     private void Update()
     {
         UpdateAnimator();
+
+        if (!animator.GetBool("IsIdle")) PlayHoofsteps();
         // float theta = Vector3.Angle(Vector3.up, transform.up) * Mathf.Deg2Rad;
         // if (theta > 0)
         // {
@@ -166,12 +166,7 @@ public class AIController : MonoBehaviour
             agent.isStopped = true;
             return;
         }
-
-        // ADRIAN LOOK HERE!!!! :)
-        if (Time.time - scenLoadTime == 25f)
-        {
-            
-        }
+        
 
         Navigate();
     }
@@ -290,6 +285,15 @@ public class AIController : MonoBehaviour
         animator.SetBool("IsAOE", isAttack && subState == SubState.AOE);
         animator.SetBool("IsHorn", isAttack && subState == SubState.Horn);
         animator.SetBool("IsWalking", state == State.RandomSearch || state == State.Interrupted);
+    }
+    
+    void PlayHoofsteps()
+    {
+        bool charge;
+        if (animator.GetBool("IsCharging")) charge = true;
+        else charge = false;
+
+        audioManager.Hoofsteps(charge);
     }
 
     void UpdateAttackSubStateMachineStates()

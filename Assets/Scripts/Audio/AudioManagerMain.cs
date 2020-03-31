@@ -94,8 +94,10 @@ public class AudioManagerMain : MonoBehaviour
             [Range(0f, 1f)] public float flareVol;
             public AudioClip[] hoof;
             [Range(0f, 1f)] public float hoofVol;
-            public AudioClip[] hoofSteps;
-            [Range(0f, 1f)] public float hoofStepsVol;
+            public AudioClip[] hoofStepsWalking;
+            [Range(0f, 1f)] public float hoofStepsWalkingVol;
+            public AudioClip[] hoofStepsRunning;
+            [Range(0f, 1f)] public float hoofStepsRunningVol;
             public AudioClip[] moss;
             [Range(0f, 1f)] public float mossVol;
         }
@@ -227,7 +229,7 @@ public class AudioManagerMain : MonoBehaviour
         defeat = AddAudio(sfxClips.beast.defeat, false, sfxClips.beast.defeatVol, mixerGroups.beast);
         flare = AddAudio(sfxClips.beast.flare, false, sfxClips.beast.flareVol, mixerGroups.beast);
         hoof = AddAudio(sfxClips.beast.hoof, false, sfxClips.beast.hoofVol, mixerGroups.beast);
-        hoofSteps = AddAudio(sfxClips.beast.hoofSteps, false, sfxClips.beast.hoofStepsVol, mixerGroups.hoofsteps);
+        hoofSteps = AddAudio(sfxClips.beast.hoofStepsWalking, false, sfxClips.beast.hoofStepsWalkingVol, mixerGroups.hoofsteps);
         moss = AddAudio(sfxClips.beast.moss, false, sfxClips.beast.mossVol, mixerGroups.beast);
         // Music sources
         moodboard = AddAudio(musicClips.moodboard, true, musicClips.moodboardVol, mixerGroups.training);
@@ -337,14 +339,23 @@ public class AudioManagerMain : MonoBehaviour
         }
     }
 
-    public void Hoofsteps()
+    //public void Hoofsteps()
+    //{
+    //    hoofSteps.spatialBlend = (1.0f);
+    //    hoofSteps.minDistance = (20.0f);
+    //    hoofSteps.maxDistance = (100.0f);
+    //    hoofSteps.clip = sourceClipRelation[hoofSteps][Random.Range(0, sourceClipRelation[hoofSteps].Length)];
+    //    hoofSteps.pitch = Random.Range(0.8f, 1.2f);
+    //    hoofSteps.Play();
+    //}
+    public void Hoofsteps(bool charge)
     {
-        hoofSteps.spatialBlend = (1.0f);
-        hoofSteps.minDistance = (20.0f);
-        hoofSteps.maxDistance = (100.0f);
-        hoofSteps.clip = sourceClipRelation[hoofSteps][Random.Range(0, sourceClipRelation[hoofSteps].Length)];
-        hoofSteps.pitch = Random.Range(0.8f, 1.2f);
-        hoofSteps.Play();
+        if (charge && sourceClipRelation[hoofSteps] != sfxClips.beast.hoofStepsRunning)
+            sourceClipRelation[hoofSteps] = sfxClips.beast.hoofStepsRunning;
+        else if (!charge && sourceClipRelation[hoofSteps] != sfxClips.beast.hoofStepsWalking)
+            sourceClipRelation[hoofSteps] = sfxClips.beast.hoofStepsWalking;
+
+        if (!hoofSteps.isPlaying) Play(hoofSteps, 0.75f);
     }
 
     public void SetVolume(SnapshotState state)
