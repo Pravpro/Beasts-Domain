@@ -2556,7 +2556,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 382882444}
-  m_LocalRotation: {x: 0.14813715, y: 0.00000076518825, z: -0.000011611294, w: 0.9889669}
+  m_LocalRotation: {x: 0.14813748, y: 0.00000076518444, z: -0.000011611288, w: 0.9889668}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -6738,7 +6738,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1044896107}
-  m_LocalRotation: {x: 0.13019548, y: -0.00000013453506, z: -0.000000031230798, w: 0.9914884}
+  m_LocalRotation: {x: 0.13019551, y: -0.00000013453537, z: -0.000000031230854, w: 0.9914884}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -14789,6 +14789,12 @@ PrefabInstance:
       propertyPath: thirdPersonCam
       value: 
       objectReference: {fileID: 1993504316}
+    - target: {fileID: 1311964250415205058, guid: 35b58b46bca88334daef10b3a5c81c42,
+        type: 3}
+      propertyPath: spellPrefab
+      value: 
+      objectReference: {fileID: 153243286220544253, guid: 1f0a0a812c9d64cf1aaa982731a409e5,
+        type: 3}
     - target: {fileID: 1311964250415205059, guid: 35b58b46bca88334daef10b3a5c81c42,
         type: 3}
       propertyPath: m_LocalPosition.x
