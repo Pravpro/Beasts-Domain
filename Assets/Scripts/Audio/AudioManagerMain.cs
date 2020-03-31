@@ -240,7 +240,7 @@ public class AudioManagerMain : MonoBehaviour
         win = AddAudio(musicClips.win, true, musicClips.winVol, mixerGroups.win);
         // Environment sources
         tree = AddAudio(environmentClips.tree, false, environmentClips.treeVol, mixerGroups.trees);
-        birds = AddAudio(environmentClips.birds, false, environmentClips.birdsVol, mixerGroups.birds);
+        birds = AddAudio(environmentClips.birds, true, environmentClips.birdsVol, mixerGroups.birds);
         fire = AddAudio(environmentClips.fire, true, environmentClips.fireVol, mixerGroups.fire);
         geyser = AddAudio(environmentClips.geyser, false, environmentClips.geyserVol, mixerGroups.geyser);
         rockSlide = AddAudio(environmentClips.rockSlide, false, environmentClips.rockSlideVol, mixerGroups.rocks);
