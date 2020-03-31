@@ -151,7 +151,8 @@ public class AudioManagerMain : MonoBehaviour
         PauseArena = 6,
         ResumeHomebase = 7,
         ResumeTraining = 8,
-        ResumeArena = 9
+        ResumeArena = 9,
+        Win = 10
     }
 
     [Space(6)]
@@ -380,6 +381,9 @@ public class AudioManagerMain : MonoBehaviour
                 break;
             case SnapshotState.ResumeArena:
                 snapshots.arena.TransitionTo(0f);
+                break;
+            case SnapshotState.Win:
+                snapshots.win.TransitionTo(2.5f);
                 break;
             
         }

@@ -130,11 +130,7 @@ public class AIController : MonoBehaviour
         UnsetChargeAreaMask();
 
         //Audio
-        audioManager.roar1 = audioManager.Localize(gameObject, audioManager.roar1);
-        audioManager.hurt = audioManager.Localize(gameObject, audioManager.hurt);
-        audioManager.flare = audioManager.Localize(gameObject, audioManager.flare);
-        audioManager.hoof = audioManager.Localize(gameObject, audioManager.hoof);
-        audioManager.hoofSteps = audioManager.Localize(gameObject, audioManager.hoofSteps);
+        LocalizeAudio();
 
         audioManager.InvokeRepeating("Hoofsteps", 0.0f, 0.6f);
     }
@@ -473,6 +469,16 @@ public class AIController : MonoBehaviour
             mossCDTime = Time.time + mossCD;
             throwedMoss = 0;
         }
+    }
+
+    void LocalizeAudio()
+    {
+        audioManager.roar1 = audioManager.Localize(gameObject, audioManager.roar1);
+        audioManager.hurt = audioManager.Localize(gameObject, audioManager.hurt);
+        audioManager.flare = audioManager.Localize(gameObject, audioManager.flare);
+        audioManager.hoof = audioManager.Localize(gameObject, audioManager.hoof);
+        audioManager.hoofSteps = audioManager.Localize(gameObject, audioManager.hoofSteps);
+        audioManager.defeat = audioManager.Localize(gameObject, audioManager.defeat);
     }
 
     void OnCollisionEnter(Collision col)
