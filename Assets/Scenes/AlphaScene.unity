@@ -24,9 +24,9 @@ RenderSettings:
   m_AmbientEquatorColor: {r: 0.4716981, g: 0.4716981, b: 0.4716981, a: 1}
   m_AmbientGroundColor: {r: 0.5377358, g: 0.103692815, b: 0.09892311, a: 1}
   m_AmbientIntensity: 1
-  m_AmbientMode: 1
+  m_AmbientMode: 0
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
-  m_SkyboxMaterial: {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  m_SkyboxMaterial: {fileID: 2100000, guid: a33ee9a854b09e441999273f3051818a, type: 2}
   m_HaloStrength: 0.5
   m_FlareStrength: 1
   m_FlareFadeSpeed: 3
@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.47912067, g: 0.28125742, b: 0.37833336, a: 1}
+  m_IndirectSpecularColor: {r: 0.4640633, g: 0.28690752, b: 0.39401746, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -226,7 +226,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 13337469}
-  m_LocalRotation: {x: 0.14813694, y: 0, z: 0, w: 0.9889669}
+  m_LocalRotation: {x: 0.14813776, y: 0, z: 0, w: 0.98896676}
   m_LocalPosition: {x: -169.02, y: 3.73, z: 43.87}
   m_LocalScale: {x: 30, y: 30, z: 30}
   m_Children: []
@@ -2556,7 +2556,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 382882444}
-  m_LocalRotation: {x: 0.14813699, y: 0.0000007651901, z: -0.0000116113, w: 0.9889669}
+  m_LocalRotation: {x: 0.14813715, y: 0.00000076518825, z: -0.000011611294, w: 0.9889669}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -6738,7 +6738,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1044896107}
-  m_LocalRotation: {x: 0.13019519, y: -0.00000013453474, z: -0.000000031230776, w: 0.9914884}
+  m_LocalRotation: {x: 0.13019548, y: -0.00000013453506, z: -0.000000031230798, w: 0.9914884}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
