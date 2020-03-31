@@ -151,14 +151,14 @@ MonoBehaviour:
       - {fileID: 8300000, guid: e73f55637d8d64c80872f6dd67c12efa, type: 3}
       hoofVol: 1
       hoofSteps:
-      - {fileID: 8300000, guid: 8660ae5d572f44c2397157ca295c24a4, type: 3}
-      - {fileID: 8300000, guid: fce51db7e10b045068be607cbb3596f3, type: 3}
-      - {fileID: 8300000, guid: b7ed6c50d29f04b33aeaa3ce2cde1f85, type: 3}
-      - {fileID: 8300000, guid: b2290ce500cde4b1a805bf2c5b219317, type: 3}
-      - {fileID: 8300000, guid: 331063e43be074383bf24ccbbdc1adc1, type: 3}
-      - {fileID: 8300000, guid: 02ea47b8ba4e64a02b129f0668c2cfbe, type: 3}
-      - {fileID: 8300000, guid: 1c31ef80688374332b161efbb0db2534, type: 3}
-      - {fileID: 8300000, guid: 69311890be39c492c97d42eeed2b872b, type: 3}
+      - {fileID: 8300000, guid: 95fb2eb6e3ce4e64495fa7c3ee7d4a5f, type: 3}
+      - {fileID: 8300000, guid: c341b26c6105d564090382c514fdf94f, type: 3}
+      - {fileID: 8300000, guid: 0f7041d4631e07c4288679279fbda659, type: 3}
+      - {fileID: 8300000, guid: 14df8addb2863eb41b9c52c1f5d0b010, type: 3}
+      - {fileID: 8300000, guid: 026fc62234e425343a188311ddfbc535, type: 3}
+      - {fileID: 8300000, guid: f441815112ea93344a8c9abe9d4f7d2b, type: 3}
+      - {fileID: 8300000, guid: c7844122b6c72a3448ba5654db7a3be3, type: 3}
+      - {fileID: 8300000, guid: a263d1b0943b6964888b509736d65cbd, type: 3}
       hoofStepsVol: 0.6
       moss:
       - {fileID: 8300000, guid: 034a8effb5561be4a9b2724db62882e1, type: 3}
