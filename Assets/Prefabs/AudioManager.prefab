@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1783540828656668111}
   - component: {fileID: 1783540828656668110}
+  - component: {fileID: 1641025013}
   m_Layer: 0
   m_Name: AudioManager
   m_TagString: Untagged
@@ -245,3 +246,17 @@ MonoBehaviour:
   geyser: {fileID: 0}
   boulder: {fileID: 0}
   rockSlide: {fileID: 0}
+--- !u!114 &1641025013
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1783540828656668105}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 245820831db1b56458ac4dcac9819672, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioManager: {fileID: 1783540828656668110}
+  musicTriggerer: {fileID: 0}
