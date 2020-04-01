@@ -26,7 +26,9 @@ public class TriggerController : MonoBehaviour
         geyserSound = audioManager.Localize(gameObject, audioManager.geyser);
 
         // trigger distance is the radius = localScale.z / 2
-        triggerDistance = this.transform.localScale.z / 2f - 0.2f; // give some small offset for distance 
+        // Note: scale is messed up -- BetaLevelScale is doubled
+        triggerDistance = this.transform.localScale.z - 0.2f;         // give some small offset for distance 
+        // triggerDistance = this.transform.localScale.z / 2f - 0.2f;
     }
 
     void OnTriggerStay(Collider col)
@@ -41,7 +43,7 @@ public class TriggerController : MonoBehaviour
             monsterPos.y = 0;
             geyserPos.y  = 0;
 #if DEBUG_LOG
-            Debug.Log("geyser distance: " + Vector3.Distance(monsterPos, geyserPos));
+            Debug.Log("geyser distance: " + Vector3.Distance(monsterPos, geyserPos) + "triggerDistance: " + triggerDistance);
 #endif
             if (Vector3.Distance(monsterPos, geyserPos) < triggerDistance)
             {
