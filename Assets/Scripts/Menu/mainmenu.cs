@@ -83,7 +83,7 @@ public class mainmenu : MonoBehaviour
 
     void startOnClick()
     {
-        SceneManager.LoadScene("Scenes/AlphaScene");
+        SceneManager.LoadScene("Scenes/FinalScene");
     }
 
     void controllerOnClick()
@@ -105,7 +105,7 @@ public class mainmenu : MonoBehaviour
 
     void RestartOnClick()
     {
-        SceneManager.LoadScene("Scenes/AlphaScene", LoadSceneMode.Single);
+        SceneManager.LoadScene("Scenes/FinalScene", LoadSceneMode.Single);
     }
 
     void triggerEvent(Button btn)
