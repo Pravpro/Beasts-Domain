@@ -2646,7 +2646,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 382882444}
-  m_LocalRotation: {x: 0.14813699, y: 0.0000007651901, z: -0.0000116105075, w: 0.9889669}
+  m_LocalRotation: {x: 0.14813715, y: 0.00000076518825, z: -0.000011610472, w: 0.9889669}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -6828,7 +6828,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1044896107}
-  m_LocalRotation: {x: 0.13019526, y: -0.00000013457453, z: -0.000000031238503, w: 0.9914884}
+  m_LocalRotation: {x: 0.13019553, y: -0.00000013457634, z: -0.000000031238816, w: 0.99148834}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -15212,6 +15212,11 @@ PrefabInstance:
       propertyPath: blackScreen
       value: 
       objectReference: {fileID: 18335160}
+    - target: {fileID: 7923622919743733158, guid: 35b58b46bca88334daef10b3a5c81c42,
+        type: 3}
+      propertyPath: monsterHpFill
+      value: 
+      objectReference: {fileID: 331539579}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 35b58b46bca88334daef10b3a5c81c42, type: 3}
 --- !u!1 &9206296177949412576 stripped

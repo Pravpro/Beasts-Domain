@@ -23,6 +23,8 @@ public class HealthSystem : MonoBehaviour
     public Image staminaUIFill;
     public Image spellUIFill;
 
+    public Slider monsterHpFill;
+
     private float hpCurrValue, hpMaxValue, staminaMaxValue;
 
     public Image healthImage;
@@ -54,6 +56,8 @@ public class HealthSystem : MonoBehaviour
 
         spellUIFill.fillAmount   = 0.5f;
         staminaUIFill.fillAmount = 0.5f;
+
+        monsterHpFill.value = 1.0f;
 
         // load all the resources for Sprite Animation
         maxHP            = Resources.LoadAll<Sprite>("Sprites/PlayerHP/maxHP"          ).OrderBy(img => img.name).ToArray();
@@ -123,6 +127,9 @@ public class HealthSystem : MonoBehaviour
 
             return;       
         }
+
+        // keep track of monster hp
+        monsterHpFill.value = (float) monsterScript.hp / monsterScript.maxHp;
 
         // keep track of player hp and update stamina and spell 
         hpCurrValue              = playerScript.hp;     
