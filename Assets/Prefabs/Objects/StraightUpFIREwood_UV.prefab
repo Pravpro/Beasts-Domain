@@ -646,9 +646,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f33d6733be3fcd444915f46629b64246, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minIntensity: 0.5
-  maxIntensity: 3
-  smoothing: 7
+  minIntensity: 0.1
+  maxIntensity: 3.2
+  smoothing: 6
 --- !u!1 &4381596623396743214
 GameObject:
   m_ObjectHideFlags: 0
@@ -1024,17 +1024,17 @@ PrefabInstance:
     - target: {fileID: 1164766196996451222, guid: 672444a84a9fb814fb62a262f29d8c69,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.021068152
+      value: 0.02
       objectReference: {fileID: 0}
     - target: {fileID: 1164766196996451222, guid: 672444a84a9fb814fb62a262f29d8c69,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.0000872306
+      value: 0.01
       objectReference: {fileID: 0}
     - target: {fileID: 1164766196996451222, guid: 672444a84a9fb814fb62a262f29d8c69,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.006383579
+      value: -0.0041
       objectReference: {fileID: 0}
     - target: {fileID: 1164766196996451222, guid: 672444a84a9fb814fb62a262f29d8c69,
         type: 3}
@@ -1109,6 +1109,21 @@ PrefabInstance:
     - target: {fileID: 4074032587715039317, guid: 672444a84a9fb814fb62a262f29d8c69,
         type: 3}
       propertyPath: m_AreaSize.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5219307920185756101, guid: 672444a84a9fb814fb62a262f29d8c69,
+        type: 3}
+      propertyPath: prewarm
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8401830164633259361, guid: 672444a84a9fb814fb62a262f29d8c69,
+        type: 3}
+      propertyPath: prewarm
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9089671707036027239, guid: 672444a84a9fb814fb62a262f29d8c69,
+        type: 3}
+      propertyPath: prewarm
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
