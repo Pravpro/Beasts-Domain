@@ -107,7 +107,9 @@ AudioMixerSnapshotController:
     75e122e99cfdd894bb5135ff60a3473b: -80
     ad20914c17df3460d92b6097bd1cca87: -80
     e716915d279d3cb4c8d8cc8c0c6466c6: -80
+    a6ed752e05185ec40b962f9a63d9a687: -80
     0e5d7f3e5c2601d4ebef0135b9264d2d: -10.34521
+    d334a65faaeacf84eac97b08c0fdf690: -80
     8d523cafe5a752a46805083ed60b1f20: -80
   m_TransitionOverrides: {}
 --- !u!243 &-6326619149905166048
@@ -213,7 +215,9 @@ AudioMixerSnapshotController:
     75e122e99cfdd894bb5135ff60a3473b: -80
     ad20914c17df3460d92b6097bd1cca87: -80
     e716915d279d3cb4c8d8cc8c0c6466c6: -80
+    a6ed752e05185ec40b962f9a63d9a687: -80
     0e5d7f3e5c2601d4ebef0135b9264d2d: -80
+    d334a65faaeacf84eac97b08c0fdf690: -80
     8d523cafe5a752a46805083ed60b1f20: -9.960263
   m_TransitionOverrides: {}
 --- !u!244 &-4550096307201634357
@@ -451,7 +455,7 @@ AudioMixerController:
     - 62c7bc1dfe53e4aa88d56a9a515c7696
     name: SFX
   m_CurrentViewIndex: 0
-  m_TargetSnapshot: {fileID: 5331478804513933854}
+  m_TargetSnapshot: {fileID: -4565273174578477400}
 --- !u!243 &24300002
 AudioMixerGroupController:
   m_ObjectHideFlags: 0
@@ -768,11 +772,14 @@ AudioMixerSnapshotController:
   m_SnapshotID: c33ef7cdd1c194341a1906de80589006
   m_FloatValues:
     33edd30272679ca43b93c5e9a64e6113: -80
+    67fe451343b134bd7b486fbe3f761f8a: -80
     a7f1cc999ecc30749adb711f79536bf6: -14.816613
     75e122e99cfdd894bb5135ff60a3473b: -80
     ad20914c17df3460d92b6097bd1cca87: -10.4748535
     e716915d279d3cb4c8d8cc8c0c6466c6: -80
+    a6ed752e05185ec40b962f9a63d9a687: -80
     0e5d7f3e5c2601d4ebef0135b9264d2d: -80
+    d334a65faaeacf84eac97b08c0fdf690: -80
     8d523cafe5a752a46805083ed60b1f20: -80
   m_TransitionOverrides: {}
 --- !u!245 &8252497145976169834
