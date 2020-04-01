@@ -6,8 +6,8 @@ using Rewired;
 public class PauseMenu : MonoBehaviour
 {
     public AudioManagerMain audioManager;
-    public MusicController musicController;
 
+    private MusicController musicController;
     private Player m_playerInput;
     private bool buttonPressed = false;
 
@@ -15,6 +15,7 @@ public class PauseMenu : MonoBehaviour
     void Start()
     {
         m_playerInput = ReInput.players.GetPlayer(0 /* playerID */);
+
     }
 
     // Update is called once per frame
@@ -39,6 +40,7 @@ public class PauseMenu : MonoBehaviour
             SceneManager.LoadScene("PauseMenu", LoadSceneMode.Additive);
             Time.timeScale = 0;
 
+            musicController = (MusicController) FindObjectOfType(typeof(MusicController));
             audioManager.SetVolume(musicController.getPauseState());
 
             StartCoroutine(waitForNextFrame() );
@@ -52,7 +54,8 @@ public class PauseMenu : MonoBehaviour
             {
                 // wait for next frame
                 SceneManager.UnloadSceneAsync("PauseMenu");
-                
+
+                musicController = (MusicController)FindObjectOfType(typeof(MusicController));
                 audioManager.SetVolume(musicController.getResumeState());
 
                 // give some buffer after the pause so that the input will not be messed up

@@ -9,6 +9,16 @@ public class MusicController : MonoBehaviour
 
     private AudioManagerMain.SnapshotState pauseState, resumeState;
 
+    private void Awake()
+    {
+        if (musicTriggerer)
+        {
+            MusicController musicManager = musicTriggerer.AddComponent<MusicController>();
+            musicManager.audioManager = this.audioManager;
+            Destroy(this);
+        }
+    }
+
     private void Start()
     {
         audioManager.Play(audioManager.homebase);
@@ -19,12 +29,6 @@ public class MusicController : MonoBehaviour
         /* Used to add this component onto the Music Area trigerrer (most likely the player).
          * This will not go through once it's added onto the object since musicTriggere will be null 
          */
-        if (musicTriggerer)
-        {
-            MusicController musicManager = musicTriggerer.AddComponent<MusicController>();
-            musicManager.audioManager = this.audioManager;
-            Destroy(this);
-        }
     }
 
     private void OnTriggerEnter(Collider other)
