@@ -49,7 +49,7 @@ public class TriggerController : MonoBehaviour
                 scale += 20f;
                 if (script.hp > 0)
                 {
-                    audioManager.Play(audioManager.hurt);
+                    audioManager.Play(audioManager.hurt, 0.8f);
                     script.TakeDamage(transform.position);
                     script.hp -= 1;
                     Debug.Log("monster lose health to " + script.hp);
@@ -57,7 +57,10 @@ public class TriggerController : MonoBehaviour
                     isTriggered = true;
                 }
                 if (script.hp <= 0)
+                {
                     Debug.Log("Monster dies!");
+                    audioManager.Play(audioManager.defeat, 0.7f);
+                }
 
                 // geyser is one-time activated, therefore deactivate once used by change the color
                 geyserBurst.Play();

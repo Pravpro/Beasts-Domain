@@ -58,7 +58,6 @@ MonoBehaviour:
   maxMeleeAngle: 30
   maxMoss: 6
   mossCD: 30
-  scenLoadTime: 0
   targetObj: {fileID: 0}
   mossObj: {fileID: 115900146386600644, guid: df62d1c786f601046aea85391f69e08b, type: 3}
 --- !u!114 &7099444785314706174
