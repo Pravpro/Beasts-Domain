@@ -227,8 +227,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 13337469}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: 0.14813776, y: 0, z: 0, w: 0.98896676}
+  m_LocalPosition: {x: -169.02, y: 3.73, z: 43.87}
   m_LocalScale: {x: 30, y: 30, z: 30}
   m_Children: []
   m_Father: {fileID: 0}
@@ -247,7 +247,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   audioManager: {fileID: 760171700}
-  musicController: {fileID: 0}
 --- !u!1 &18335158
 GameObject:
   m_ObjectHideFlags: 0
@@ -991,7 +990,7 @@ MonoBehaviour:
   m_OverrideVoxelSize: 0
   m_VoxelSize: 0.73333335
   m_BuildHeightMesh: 0
-  m_NavMeshData: {fileID: 23800000, guid: 4bd05432b2d335e4682eb10217133fec, type: 2}
+  m_NavMeshData: {fileID: 23800000, guid: 778cc0fe631538e41b21e73b3a1769b6, type: 2}
 --- !u!4 &166722049
 Transform:
   m_ObjectHideFlags: 0
@@ -2263,7 +2262,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 382882444}
-  m_LocalRotation: {x: 0.14813682, y: 0.00000076519206, z: -0.000011610352, w: 0.98896694}
+  m_LocalRotation: {x: 0.14813732, y: 0.00000076518637, z: -0.000011610351, w: 0.9889669}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -5655,7 +5654,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1044896107}
-  m_LocalRotation: {x: 0.13019535, y: -0.00000013458238, z: -0.000000031240017, w: 0.9914884}
+  m_LocalRotation: {x: 0.13019538, y: -0.00000013458244, z: -0.000000031240024, w: 0.9914884}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
