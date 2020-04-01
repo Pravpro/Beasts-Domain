@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 1311964250415205059}
   - component: {fileID: 1311964250415205058}
   - component: {fileID: 7923622919743733158}
-  - component: {fileID: 5651607225151071102}
   - component: {fileID: 1311964250415205057}
   - component: {fileID: 1311964250415205062}
   m_Layer: 9
@@ -64,6 +63,7 @@ MonoBehaviour:
   SDCam: {fileID: 0}
   audioManager: {fileID: 0}
   thirdPersonCam: {fileID: 0}
+  spellPrefab: {fileID: 0}
   spellWaitTime: 10
 --- !u!114 &7923622919743733158
 MonoBehaviour:
@@ -79,22 +79,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   staminaUIFill: {fileID: 0}
   spellUIFill: {fileID: 0}
+  monsterHpFill: {fileID: 0}
   healthImage: {fileID: 0}
   monsterScript: {fileID: 0}
   blackScreen: {fileID: 0}
---- !u!114 &5651607225151071102
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1311964250415205063}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 245820831db1b56458ac4dcac9819672, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  audioManager: {fileID: 0}
 --- !u!54 &1311964250415205057
 Rigidbody:
   m_ObjectHideFlags: 0
