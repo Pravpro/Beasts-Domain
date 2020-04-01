@@ -179,7 +179,7 @@ public class AIController : MonoBehaviour
     void Navigate()
     {
         // for debug purpose
-        if (targetObj)
+        if (targetObj && targetObj.activeInHierarchy)
         {
             //agent.SetDestination(targetObj.transform.position);
             state = State.Attack;
