@@ -122,11 +122,7 @@ public class PlayerController : MonoBehaviour
             }
             else moveVector = new Vector3(0, 0, 0);
         }
-        else
-        {
-            rb.MovePosition(rb.position + moveVector * 3 / 5);
-            if (rb.velocity.y <= 0f) rb.AddForce(Vector3.down * 100);
-        }
+        else rb.MovePosition(rb.position + moveVector * 3 / 5);
 
         // Rotate
         rb.MoveRotation(m_Rotation);
@@ -147,8 +143,8 @@ public class PlayerController : MonoBehaviour
         if (m_playerInput.GetButtonDown("Jump") && grounded)
         {
             m_Animator.SetTrigger("IsJumping");
-            //rb.velocity += jump * speeds.jumpSpeed;
-            rb.AddForce(Vector3.up * speeds.jumpSpeed * 20, ForceMode.Impulse);
+            rb.velocity += jump * speeds.jumpSpeed;
+
             grounded = false;
 
             audioManager.walking.Stop();
@@ -175,7 +171,7 @@ public class PlayerController : MonoBehaviour
             grounded = true;
             Debug.Log("landed");
             if (rb.velocity.y > 0) rb.velocity = new Vector3(rb.velocity.x, 0, rb.velocity.z);
-            audioManager.Play(audioManager.landing, new float[] { 0.7f, 1.3f });
+            if(!audioManager.landing.isPlaying) audioManager.Play(audioManager.landing, new float[] { 0.7f, 1.3f });
         }
     }
 
