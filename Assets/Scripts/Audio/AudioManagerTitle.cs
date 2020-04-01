@@ -25,7 +25,7 @@ public class AudioManagerTitle : MonoBehaviour
         music = AddAudio(true, true, 1f);
         UIToggle = AddAudio(false, false, 0.2f);
         UISelection = AddAudio(false, false, 0.3f);
-        narrator = AddAudio(false, true, 1f);
+        narrator = AddAudio(false, true, 0.6f);
         
         sourceClipRelation.Add(music, musicClips);
         sourceClipRelation.Add(UIToggle, UIToggleClips);
