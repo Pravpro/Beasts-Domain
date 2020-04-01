@@ -194,7 +194,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   minIntensity: 0.5
   maxIntensity: 3
-  smoothing: 10
+  smoothing: 7
 --- !u!1 &2055967529293291893
 GameObject:
   m_ObjectHideFlags: 0
@@ -648,7 +648,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   minIntensity: 0.5
   maxIntensity: 3
-  smoothing: 10
+  smoothing: 7
 --- !u!1 &4381596623396743214
 GameObject:
   m_ObjectHideFlags: 0
