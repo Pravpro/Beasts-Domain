@@ -43,6 +43,9 @@ public class HealthSystem : MonoBehaviour
     private Sprite[] maxHP, damagedAnimation, lessHP;
 
     private PlayerController playerScript;
+
+
+    private static bool monsterFirstSeen = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -133,12 +136,23 @@ public class HealthSystem : MonoBehaviour
             return;       
         }
 
-        // just in case
-        if (playerScript.finishedTutorial() )
+        // just in case check for if the tutorial is finished
+        if (playerScript.finishedTutorial())
         {
-            monsterHpUI.SetActive(monsterScript.GetSensedPlayer());
-            monsterHpFill.value = (float) monsterScript.hp / monsterScript.maxHp;
+            if (!monsterFirstSeen)
+            {
+                monsterFirstSeen = monsterScript.GetSensedPlayer();
+                monsterHpUI.SetActive(monsterScript.GetSensedPlayer());
+            }
+            else
+            {
+                monsterHpUI.SetActive(playerScript.IsInArena());
+            }
         }
+        
+        
+        monsterHpFill.value = (float) monsterScript.hp / monsterScript.maxHp;
+
         
 
         // keep track of player hp and update stamina and spell 
