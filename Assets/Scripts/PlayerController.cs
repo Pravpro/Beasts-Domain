@@ -56,6 +56,8 @@ public class PlayerController : MonoBehaviour
     private bool inSafeZone = false;
     private bool isInArena  = false;
 
+    private GameObject promptTriggers;
+
     private void Awake()
     {
         // becauze my menu input event is written to messed up, i need to add this line here...
@@ -71,6 +73,8 @@ public class PlayerController : MonoBehaviour
         // set to false at beginning
         AimArea.SetActive(false);
         audioManager.Localize(spellEffect.gameObject, audioManager.spell);     
+
+        promptTriggers = GameObject.Find("promptTriggers");
     }
     
     private void Start()
@@ -189,7 +193,7 @@ public class PlayerController : MonoBehaviour
             tutorialFinished = true;
             isInArena = true;
 
-            GameObject.Find("promptTriggers").SetActive(false);
+            promptTriggers.SetActive(false);
         }
         
         if (col.name == "Homebase")
