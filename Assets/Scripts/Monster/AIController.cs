@@ -68,6 +68,7 @@ public class AIController : MonoBehaviour
     private Vector3 m_targetedDir;
     private Vector3 playerPos, playerDir;
     private bool playerReachable = false;
+    private bool sensedPlayer = false;
 
     private enum State
     {
@@ -197,7 +198,7 @@ public class AIController : MonoBehaviour
             return;
         
         playerReachable = PlayerReachable();
-        bool sensedPlayer = fovScript.PlayerInSight() && playerReachable; // !playerScript.IsInSafeZone();
+        sensedPlayer = fovScript.PlayerInSight() && playerReachable; // !playerScript.IsInSafeZone();
         
         if (sensedPlayer)
         {
@@ -728,6 +729,11 @@ public class AIController : MonoBehaviour
         return //!agent.pathPending
              agent.remainingDistance <= agent.stoppingDistance + 1
              || !agent.hasPath;
+    }
+
+    public bool GetSensedPlayer()
+    {
+        return sensedPlayer;
     }
 
     private void NavigateBaby()
