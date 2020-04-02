@@ -52,6 +52,8 @@ public class SpellEffect : MonoBehaviour
             {
                 Debug.Log("monster trapped");
 
+                monsterPosition.y = spellEffect.transform.position.y;
+                spellEffect.transform.position = monsterPosition; 
                 // set monster hp = 0 if spell succeed
                 monsterScript.hp = 0;
             }
