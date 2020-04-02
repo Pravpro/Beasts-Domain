@@ -60,7 +60,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
-    - _BendRotationRandom: 0.2
+    - _BendRotationRandom: 0.206
     - _BladeCurve: 2
     - _BladeForward: 0.31
     - _BladeHeight: -0.4
