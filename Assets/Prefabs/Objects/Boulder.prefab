@@ -125,7 +125,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 2.2, y: 1, z: 2.2}
+  m_Size: {x: 2.2, y: 1.6, z: 2.2}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &3478121038751907244
 MonoBehaviour:
@@ -141,7 +141,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isPushing: 0
   isMoving: 0
-  buttonPrompt: {fileID: 0}
   audioManager: {fileID: 1783540828656668110, guid: 5dc31065a823a6e4b962f9f768a562a6,
     type: 3}
   playerScript: {fileID: 1311964250415205058, guid: 35b58b46bca88334daef10b3a5c81c42,
