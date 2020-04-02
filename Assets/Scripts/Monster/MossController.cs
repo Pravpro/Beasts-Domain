@@ -24,7 +24,7 @@ public class MossController : MonoBehaviour
         {
             // Debug.Log("moss hit: " + col.name);
             Vector3 pos = transform.position;
-            pos.y = -0.1f;
+            pos.y += 0.3f;
             GameObject mossArea = Instantiate(mossAreaObj, pos, transform.rotation);
             Destroy(mossArea, mossDisappearTime);
             Destroy(gameObject);
