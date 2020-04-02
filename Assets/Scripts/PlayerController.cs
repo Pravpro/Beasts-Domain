@@ -39,6 +39,8 @@ public class PlayerController : MonoBehaviour
     // private GameObject pushingObject;
     private CapsuleCollider m_collider;
 
+    private ButtonPrompt buttonPromptScript;
+
     private bool infStamina, recoverStamia = false;
 
     // for spell
@@ -73,6 +75,8 @@ public class PlayerController : MonoBehaviour
     
     private void Start()
     {  
+        buttonPromptScript = this.GetComponent<ButtonPrompt>();
+
         // to access input using rewired
         m_playerInput = ReInput.players.GetPlayer(m_playerID);
         m_collider = GetComponent<CapsuleCollider>();
@@ -188,6 +192,10 @@ public class PlayerController : MonoBehaviour
         
         if (col.name == "Homebase")
             infStamina = true;
+
+        // if (col.name == "jumpPrompt")
+        //     buttonPromptScript.enableActionPrompt("Jump");
+
         
     }
     private void OnTriggerStay(Collider col)

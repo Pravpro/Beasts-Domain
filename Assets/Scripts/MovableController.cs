@@ -17,19 +17,14 @@ public class MovableController : MonoBehaviour
     private bool m_monsterCollided = false;
     private RigidbodyConstraints m_origRBConstarints;
 
-    public GameObject buttonPrompt;
-
     public AudioManagerMain audioManager;
     public PlayerController playerScript;
+
+    private ButtonPrompt buttonPromptScript;
 
     private GameObject player;
     private Vector3 playerLeftAxis;
 
-    void Awake()
-    {
-        // canvas prompt
-        buttonPrompt = GameObject.Find("push");
-    }
 
     // Start is called before the first frame update
     void Start()
@@ -42,13 +37,14 @@ public class MovableController : MonoBehaviour
         m_origRBConstarints = m_rbMovable.constraints;
 
         player = GameObject.FindGameObjectWithTag("Player");
+
+        buttonPromptScript = player.GetComponent<ButtonPrompt>();
+
         // center of mass matters?
         // var centerofMass = m_rbMovable.centerOfMass;
         // centerofMass.x -= this.transform.localScale.x / 2;
         // centerofMass.z += this.transform.localScale.z / 2;
         // this.GetComponent<Rigidbody>().centerOfMass = centerofMass;
-
-        buttonPrompt.SetActive(false);
     }
 
     /** General Note here:
@@ -84,9 +80,6 @@ public class MovableController : MonoBehaviour
 #if DEBUG_LOG
             Debug.Log("(MovableController): trigger entered");
 #endif
-
-            m_rbMovable.Sleep();     
-
         }  
 
         if (col.collider.tag == "Player")
@@ -189,9 +182,7 @@ public class MovableController : MonoBehaviour
     {
         if (col.tag == "Player")
         {
-            buttonPrompt.SetActive(true);
-
-            setButtonPromptFollow();
+            buttonPromptScript.enableActionPrompt("Push");
 
             m_rbMovable.constraints = RigidbodyConstraints.FreezeAll;
         }
@@ -207,13 +198,8 @@ public class MovableController : MonoBehaviour
             Debug.Log("(MovableController): trigger stay, push enabled: " + buttonPrompt.activeSelf);
 #endif
 
-            if (buttonPrompt.activeSelf)
-            {
-                setButtonPromptFollow();
-                // when pushing no need for
-                if (isPushing)
-                    buttonPrompt.SetActive(false);
-            }
+            if (isPushing)
+                buttonPromptScript.disableActionPrompt("Push");   
         }
         
     }
@@ -226,28 +212,7 @@ public class MovableController : MonoBehaviour
             Debug.Log("(MovableController): trigger exit");
 #endif
             // remove the button prompt even if player not pushed
-            if (buttonPrompt.activeSelf)
-                buttonPrompt.SetActive(false);
+            buttonPromptScript.disableActionPrompt("Push");
         }
     }
-
-    IEnumerator disableButtonPrompt(float time)
-    {
-        yield return new WaitForSeconds(time);
-        buttonPrompt.SetActive(false);
-    }
-
-
-    void setButtonPromptFollow()
-    {
-        Vector3 offsetPos = player.transform.position; 
-        offsetPos.y += 1f;
-
-        // find the left position relative to the player for UI      
-        playerLeftAxis = Vector3.Cross(Camera.main.transform.forward, Vector3.up).normalized;
-
-        Vector2 screenPoint = Camera.main.WorldToScreenPoint(offsetPos + playerLeftAxis * 1.5f);
-
-        buttonPrompt.GetComponent<RectTransform>().position = screenPoint;
-    }  
 }

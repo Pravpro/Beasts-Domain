@@ -118,6 +118,21 @@ public class HealthSystem : MonoBehaviour
 #endif
         }
 
+        // just in case check for if the tutorial is finished
+        if (playerScript.finishedTutorial())
+        {
+            if (!monsterFirstSeen)
+            {
+                monsterFirstSeen = monsterScript.GetSensedPlayer();
+                monsterHpUI.SetActive(monsterScript.GetSensedPlayer());
+            }
+            else
+            {
+                monsterHpUI.SetActive(playerScript.IsInArena());
+            }
+        }
+        monsterHpFill.value = (float) monsterScript.hp / monsterScript.maxHp;
+
         // player Died,  avoid monster and player die at same time 
         if (hpCurrValue == 0 && (monsterScript.hp > 0))
         {
@@ -136,22 +151,7 @@ public class HealthSystem : MonoBehaviour
             return;       
         }
 
-        // just in case check for if the tutorial is finished
-        if (playerScript.finishedTutorial())
-        {
-            if (!monsterFirstSeen)
-            {
-                monsterFirstSeen = monsterScript.GetSensedPlayer();
-                monsterHpUI.SetActive(monsterScript.GetSensedPlayer());
-            }
-            else
-            {
-                monsterHpUI.SetActive(playerScript.IsInArena());
-            }
-        }
         
-        
-        monsterHpFill.value = (float) monsterScript.hp / monsterScript.maxHp;
 
         
 
