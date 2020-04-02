@@ -25,6 +25,7 @@ public class PlayerController : MonoBehaviour
     public Animator m_Animator;
     public CinemachineStateDrivenCamera SDCam;
     public AudioManagerMain audioManager;
+    public GameObject disappearEffectPrefab;
 
     // player id for reference Rewired input
     // we only have one player id will always = 0
@@ -339,6 +340,8 @@ public class PlayerController : MonoBehaviour
             audioManager.Play(audioManager.spell, 0.5f);
 
             // TODO: FIX THIS!!
+            var newPrefab   = Instantiate(disappearEffectPrefab); newPrefab.name = "disappearEffect";
+
             AIController monsterScript;
             if (!tutorialFinished)
                 monsterScript = GameObject.Find("MonsterSmol").GetComponentInChildren<AIController>();

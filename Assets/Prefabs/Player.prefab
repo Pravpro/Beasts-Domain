@@ -64,6 +64,8 @@ MonoBehaviour:
   m_Animator: {fileID: 2528292062889432409}
   SDCam: {fileID: 0}
   audioManager: {fileID: 0}
+  disappearEffectPrefab: {fileID: 1646029321640804150, guid: 66252b9ff12804d238ba09d6e24058ca,
+    type: 3}
   thirdPersonCam: {fileID: 0}
   spellPrefab: {fileID: 0}
   spellWaitTime: 10
