@@ -13,6 +13,8 @@ public class SpellEffect : MonoBehaviour
     private ParticleSystem spellEffect;
     private ParticleSystem  disappearEffect;
 
+    public GameObject disappearEffectPrefab;
+
     private bool startDisappear = false;
     private float currAlpha;
 
@@ -56,30 +58,30 @@ public class SpellEffect : MonoBehaviour
                 // set monster hp = 0 if spell succeed
                 monsterScript.hp = 0;
             }
-        }
 
-        if (GameObject.Find("disappearEffect") != null) 
-        {
-            if (!startDisappear && monsterScript.hp == 0)
+            if (GameObject.Find("disappearEffect") == null) 
             {
-                disappearEffect = GameObject.Find("disappearEffect").GetComponent<ParticleSystem>();
-                disappearEffect.transform.position = spellEffect.transform.position;
-                disappearEffect.Play();
-
-                setTransparent();
-
-                currAlpha = disappearEffect.main.duration * 25f;
-                startDisappear = true;
-
-                // music can be added heare
-                audioManager.Play(audioManager.defeat);
-
-
-
+                var newPrefab   = Instantiate(disappearEffectPrefab); 
+                newPrefab.name = "disappearEffect";
             }
+        }
+    
 
-        }   
-        
+        if (!startDisappear && monsterScript.hp == 0)
+        {
+            disappearEffect = GameObject.Find("disappearEffect").GetComponent<ParticleSystem>();
+            disappearEffect.transform.position = spellEffect.transform.position;
+            disappearEffect.Play();
+
+            setTransparent();
+
+            currAlpha = disappearEffect.main.duration * 25f;
+            startDisappear = true;
+
+            // music can be added heare
+            audioManager.Play(audioManager.defeat);
+        }
+ 
 
         // if hp == 0, start disappear by making monster transparent
         if (startDisappear)
@@ -113,10 +115,11 @@ public class SpellEffect : MonoBehaviour
             {
                 GameObject.Find("MonsterSmol").SetActive(false);
             }
+
+            if (GameObject.Find("disappearEffect") != null)
+                Destroy(GameObject.Find("disappearEffect"));
         }
 
-        if (GameObject.Find("disappearEffect") != null)
-            Destroy(GameObject.Find("disappearEffect"));
     }
 
     // online source
