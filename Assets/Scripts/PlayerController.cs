@@ -25,8 +25,7 @@ public class PlayerController : MonoBehaviour
     public Animator m_Animator;
     public CinemachineStateDrivenCamera SDCam;
     public AudioManagerMain audioManager;
-
-
+    
     // player id for reference Rewired input
     // we only have one player id will always = 0
     private float speed, startColliderHeight;
@@ -73,7 +72,6 @@ public class PlayerController : MonoBehaviour
     
     private void Start()
     {  
-
         // to access input using rewired
         m_playerInput = ReInput.players.GetPlayer(m_playerID);
         m_collider = GetComponent<CapsuleCollider>();
@@ -366,6 +364,11 @@ public class PlayerController : MonoBehaviour
     public bool isJumping()
     {
         return !grounded;
+    }
+
+    public bool finishedTutorial()
+    {
+        return tutorialFinished;
     }
     
     public IEnumerator waitNextDamage(float waitTime)

@@ -227,8 +227,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 13337469}
-  m_LocalRotation: {x: 0.15051292, y: -0.0064224615, z: 0.0009778235, w: 0.9885868}
-  m_LocalPosition: {x: -168.9568, y: 2.842601, z: 46.50598}
+  m_LocalRotation: {x: 0.14813694, y: 0, z: 0, w: 0.9889669}
+  m_LocalPosition: {x: -169.02, y: 3.73, z: 43.87}
   m_LocalScale: {x: 30, y: 30, z: 30}
   m_Children: []
   m_Father: {fileID: 0}
@@ -277,7 +277,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 260698480}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -762,6 +762,42 @@ MonoBehaviour:
   _autoNavDown: 1
   _autoNavLeft: 0
   _autoNavRight: 0
+--- !u!1 &124094196
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 124094197}
+  m_Layer: 5
+  m_Name: monsterHealth
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &124094197
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 124094196}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1468593388}
+  m_Father: {fileID: 260698480}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &138280014
 GameObject:
   m_ObjectHideFlags: 0
@@ -1395,9 +1431,9 @@ RectTransform:
   - {fileID: 918525280}
   - {fileID: 1525655820}
   - {fileID: 657578385}
-  - {fileID: 1468593388}
   - {fileID: 1703087566}
   - {fileID: 18335159}
+  - {fileID: 124094197}
   m_Father: {fileID: 926033379}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1644,7 +1680,7 @@ GameObject:
   - component: {fileID: 331539578}
   - component: {fileID: 331539579}
   m_Layer: 5
-  m_Name: MonsterHealth
+  m_Name: MonsterHealthSlider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2261,7 +2297,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 382882444}
-  m_LocalRotation: {x: 0.15051292, y: -0.0064199693, z: 0.0009658402, w: 0.9885868}
+  m_LocalRotation: {x: 0.1481371, y: -0.000000055744522, z: -0.00001159113, w: 0.9889669}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -5055,7 +5091,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 926033378}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 465d04d430e4e4d8880038a0b0b11192, type: 3}
   m_Name: 
@@ -5753,7 +5789,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1044896107}
-  m_LocalRotation: {x: 0.13257776, y: -0.006439231, z: 0.0008612986, w: 0.99115133}
+  m_LocalRotation: {x: 0.13019527, y: -0.00000041761405, z: 0.000000033072553, w: 0.9914884}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -8149,12 +8185,12 @@ RectTransform:
   m_LocalScale: {x: 2.3378, y: 2.3378, z: 1.1689}
   m_Children:
   - {fileID: 331539578}
-  m_Father: {fileID: 260698480}
-  m_RootOrder: 5
+  m_Father: {fileID: 124094197}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 143, y: -117}
+  m_AnchoredPosition: {x: -607, y: 186.78491}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1468593389
@@ -9228,7 +9264,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 260698480}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 45}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -10769,7 +10805,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1970806824}
-  m_LocalRotation: {x: 0.16844673, y: -0.006403767, z: 0.0010943649, w: 0.98568934}
+  m_LocalRotation: {x: 0.16607966, y: -0.0000026985608, z: 0.00000046481333, w: 0.98611236}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -13244,6 +13280,11 @@ PrefabInstance:
       propertyPath: monsterHpFill
       value: 
       objectReference: {fileID: 331539579}
+    - target: {fileID: 7923622919743733158, guid: 35b58b46bca88334daef10b3a5c81c42,
+        type: 3}
+      propertyPath: monsterHpUI
+      value: 
+      objectReference: {fileID: 124094196}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 35b58b46bca88334daef10b3a5c81c42, type: 3}
 --- !u!1 &9206296177949412576 stripped
