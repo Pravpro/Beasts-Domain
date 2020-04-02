@@ -59,16 +59,21 @@ public class SpellEffect : MonoBehaviour
                 monsterScript.hp = 0;
             }
 
-            if (GameObject.Find("disappearEffect") == null) 
-            {
-                var newPrefab   = Instantiate(disappearEffectPrefab); 
-                newPrefab.name = "disappearEffect";
-            }
+            //if (GameObject.Find("disappearEffect") == null) 
+            //{
+            //    var newPrefab   = Instantiate(disappearEffectPrefab); 
+            //    newPrefab.name = "disappearEffect";
+            //}
         }
     
 
         if (!startDisappear && monsterScript.hp == 0)
         {
+            if (GameObject.Find("disappearEffect") == null)
+            {
+                var newPrefab = Instantiate(disappearEffectPrefab);
+                newPrefab.name = "disappearEffect";
+            }
             disappearEffect = GameObject.Find("disappearEffect").GetComponent<ParticleSystem>();
             disappearEffect.transform.position = spellEffect.transform.position;
             disappearEffect.Play();
