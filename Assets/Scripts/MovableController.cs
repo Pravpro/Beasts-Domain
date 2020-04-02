@@ -25,6 +25,12 @@ public class MovableController : MonoBehaviour
     private GameObject player;
     private Vector3 playerLeftAxis;
 
+    void Awake()
+    {
+        // canvas prompt
+        buttonPrompt = GameObject.Find("push");
+    }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -104,20 +110,17 @@ public class MovableController : MonoBehaviour
 #if DEBUG_LOG
             Debug.Log("(MovableController): trigger staying");
 #endif
-            // avoid pushing without button pressed
-            // m_rbMovable.isKinematic = true;
+            m_rbMovable.constraints = RigidbodyConstraints.FreezeAll;
 
             GameObject player = col.collider.gameObject;
-
-            // m_rbMovable.constraints = m_origRBConstarints;
 
             if (m_playerInput.GetButton("Push"))
             {
                 playerScript.startPushing();
                 isPushing = true;
 
-                m_rbMovable.constraints = m_origRBConstarints;
-                m_rbMovable.constraints |= RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationZ;
+                m_rbMovable.constraints = m_origRBConstarints
+                                        | RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationZ;
 
         
 #if DEBUG_LOG
@@ -160,9 +163,7 @@ public class MovableController : MonoBehaviour
                 playerScript.stopPushing();
                 audioManager.boulder.Stop();
 
-                // m_rbMovable.constraints = m_origRBConstarints;
-                m_rbMovable.constraints &= ~RigidbodyConstraints.FreezeRotationX;
-                m_rbMovable.constraints &= ~RigidbodyConstraints.FreezeRotationZ;
+                m_rbMovable.constraints = m_origRBConstarints;
             }
         }
     }

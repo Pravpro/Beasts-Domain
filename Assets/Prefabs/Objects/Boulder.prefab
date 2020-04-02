@@ -144,7 +144,8 @@ MonoBehaviour:
   buttonPrompt: {fileID: 0}
   audioManager: {fileID: 1783540828656668110, guid: 5dc31065a823a6e4b962f9f768a562a6,
     type: 3}
-  playerScript: {fileID: 0}
+  playerScript: {fileID: 1311964250415205058, guid: 35b58b46bca88334daef10b3a5c81c42,
+    type: 3}
 --- !u!208 &1751900603
 NavMeshObstacle:
   m_ObjectHideFlags: 0
