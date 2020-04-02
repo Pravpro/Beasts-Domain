@@ -5,8 +5,6 @@ using UnityEngine.SceneManagement;
 
 public class SpellEffect : MonoBehaviour
 {
-    public GameObject disappearEffectPrefab;
-
     private Renderer m_renderer;
     private Color m_color;
 
@@ -31,9 +29,6 @@ public class SpellEffect : MonoBehaviour
 
         spellEffect = GameObject.Find("SpellEffect").GetComponent<ParticleSystem>();
 
-        // monster disappear effect
-        var newPrefab = Instantiate(disappearEffectPrefab); newPrefab.name = "disappearEffect";
-        disappearEffect = newPrefab.GetComponent<ParticleSystem>();
     }
 
     // Update is called once per frame
@@ -57,14 +52,15 @@ public class SpellEffect : MonoBehaviour
 
                 monsterPosition.y = spellEffect.transform.position.y;
                 spellEffect.transform.position = monsterPosition; 
+
                 // set monster hp = 0 if spell succeed
                 monsterScript.hp = 0;
             }
-
         }
 
         if (!startDisappear && monsterScript.hp == 0)
         {
+            disappearEffect = GameObject.Find("disappearEffect").GetComponent<ParticleSystem>();
             disappearEffect.transform.position = spellEffect.transform.position;
             disappearEffect.Play();
 
@@ -94,6 +90,8 @@ public class SpellEffect : MonoBehaviour
         if (m_renderer.material.color.a <= 0.0f)
         {
             m_renderer.enabled = false;
+            Destroy(GameObject.Find("disappearEffect"));
+            
             
             if (this.transform.parent.gameObject.name != "MonsterSmol" && !SceneManager.GetSceneByName("WinScreen").isLoaded)
             {
@@ -106,6 +104,11 @@ public class SpellEffect : MonoBehaviour
 
                 audioManager.Play(audioManager.win);
                 audioManager.SetVolume(AudioManagerMain.SnapshotState.Win);
+            }
+
+            if (this.transform.parent.gameObject.name == "MonsterSmol")
+            {
+                GameObject.Find("MonsterSmol").SetActive(false);
             }
         }
     }
