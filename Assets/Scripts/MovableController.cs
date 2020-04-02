@@ -1,5 +1,5 @@
 ﻿// macro for logging debug message to console
-// #define DEBUG_LOG
+#define DEBUG_LOG
 
 using System.Collections;
 using System.Collections.Generic;
@@ -71,14 +71,11 @@ public class MovableController : MonoBehaviour
         if (col.collider.tag == "Monster")
         {
             // not allow monster to push boulder
-            if (this.name.Contains("Boulder") ||
-                this.name.Contains("boulder") )
-            {
-                m_monsterCollided = true;   
-            }
+            m_monsterCollided       = true;   
+            m_rbMovable.isKinematic = true;
 
 #if DEBUG_LOG
-            Debug.Log("(MovableController): trigger entered");
+            Debug.Log("(MovableController): trigger entered :" + col.collider.gameObject.name);
 #endif
         }  
 
@@ -93,15 +90,11 @@ public class MovableController : MonoBehaviour
             m_rbMovable.constraints = RigidbodyConstraints.FreezeAll;
             return;
         }  
-            
-        // maybe check if the monster is static? if so allow pushing
-        if (m_monsterCollided)
-            return;
 
         if (col.collider.tag == "Player")
         {
 #if DEBUG_LOG
-            Debug.Log("(MovableController): trigger staying");
+            Debug.Log("(MovableController): trigger staying"+ col.collider.gameObject.name);
 #endif
             m_rbMovable.constraints = RigidbodyConstraints.FreezeAll;
 
@@ -164,15 +157,15 @@ public class MovableController : MonoBehaviour
     // void OnTriggerExit(Collider col)
     void OnCollisionExit(Collision col)
     {
-        if (col.collider.tag == "Monster") m_monsterCollided = false;
-
         //audioManager.boulder.Stop();
         isPushing = false;
         playerScript.stopPushing();
-        m_rbMovable.constraints = RigidbodyConstraints.None;
+
+        if (!m_monsterCollided)
+            m_rbMovable.constraints = RigidbodyConstraints.None;
 
 #if DEBUG_LOG
-        Debug.Log("(MovableController): collision exit");
+        Debug.Log("(MovableController): collision exit"+ col.collider.gameObject.name);
 #endif
     }
 
@@ -180,22 +173,34 @@ public class MovableController : MonoBehaviour
     // following is for button prompt
     void OnTriggerEnter(Collider col)
     {
+        if (col.tag == "Monster")
+        {
+            m_monsterCollided = true;  
+            m_rbMovable.isKinematic = true;
+            m_rbMovable.constraints = RigidbodyConstraints.FreezeAll;
+        }
+        else
         if (col.tag == "Player")
         {
             buttonPromptScript.enableActionPrompt("Push");
 
             m_rbMovable.constraints = RigidbodyConstraints.FreezeAll;
         }
-            
-    
+
+        
+              
+
     }
 
     void OnTriggerStay(Collider col)
     {
+        if (m_monsterCollided)
+            return;
+
         if (col.tag == "Player")
         {
 #if DEBUG_LOG
-            Debug.Log("(MovableController): trigger stay, push enabled: " + buttonPrompt.activeSelf);
+            Debug.Log("(MovableController): trigger stay, push enabled: ");
 #endif
 
             if (isPushing)
@@ -206,6 +211,12 @@ public class MovableController : MonoBehaviour
 
     void OnTriggerExit(Collider col)
     {
+        if (col.tag == "Monster") 
+        {
+            m_monsterCollided       = false;
+            m_rbMovable.isKinematic = false;
+        }
+            
         if (col.tag == "Player")
         {
 #if DEBUG_LOG
@@ -214,5 +225,7 @@ public class MovableController : MonoBehaviour
             // remove the button prompt even if player not pushed
             buttonPromptScript.disableActionPrompt("Push");
         }
+
+        m_rbMovable.constraints = RigidbodyConstraints.None;
     }
 }
