@@ -33,6 +33,7 @@ public class AIController : MonoBehaviour
     public float maxMeleeAngle = 30f;
     public int maxMoss = 6;
     public float mossCD = 30f;
+    public bool isBaby = false;
 
     // give some buffer time for player to get next damange
 
@@ -167,8 +168,10 @@ public class AIController : MonoBehaviour
             return;
         }
         
-
-        Navigate();
+        if (isBaby)
+            NavigateBaby();
+        else
+            Navigate();
     }
 
     public bool IsCharging()
@@ -487,6 +490,9 @@ public class AIController : MonoBehaviour
 
     void OnCollisionEnter(Collision col)
     {
+        if (isBaby)
+            return;
+
         //Debug.Log("Monster: the object " + col.collider.name + " is in the target." + col.collider.tag);
         if (col.collider.tag == "Throwable")
         {
@@ -722,5 +728,19 @@ public class AIController : MonoBehaviour
         return //!agent.pathPending
              agent.remainingDistance <= agent.stoppingDistance + 1
              || !agent.hasPath;
+    }
+
+    private void NavigateBaby()
+    {
+        if (interruptPos == null) { state = State.Idle; return; }
+
+        state = State.Interrupted;
+        Vector3 tDir = interruptPos.vector - transform.position;
+        tDir.y = 0;
+        if (ReachedWanderDest())
+        {
+            interruptPos = null;
+            state = State.Idle;
+        }
     }
 }

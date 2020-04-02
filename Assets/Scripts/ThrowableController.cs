@@ -7,7 +7,7 @@ public class ThrowableController : MonoBehaviour
 {
     [HideInInspector] public SlingshotController slingshotScript;
     [HideInInspector] public AudioManagerMain audioManager;
-    [HideInInspector] public GameObject monster;
+    [HideInInspector] public GameObject[] monsters;
     public GameObject hitEffect;
 
     private MonsterHearing hearingScript;
@@ -16,10 +16,9 @@ public class ThrowableController : MonoBehaviour
 
     private void Start()
     {
-        monster = GameObject.FindGameObjectWithTag("Monster");
+        monsters = GameObject.FindGameObjectsWithTag("Monster");
         audioManager = FindObjectOfType<AudioManagerMain>();
         rb = GetComponent<Rigidbody>();
-        hearingScript = monster.GetComponent<MonsterHearing>();
         hitSound = audioManager.Localize(gameObject, audioManager.rock);
     }
 
@@ -35,7 +34,8 @@ public class ThrowableController : MonoBehaviour
     void HandleHit(Collision col)
     {
         Instantiate(hitEffect, col.contacts[0].point, new Quaternion());
-        hearingScript.RockHit(transform.position);
+        foreach (GameObject monster in monsters)
+            monster.GetComponent<MonsterHearing>().RockHit(transform.position);
         rb.isKinematic = true;
         audioManager.Play(hitSound, 0.9f, new float[] { 0.7f, 1.2f });
 

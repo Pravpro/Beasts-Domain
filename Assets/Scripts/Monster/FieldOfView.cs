@@ -22,7 +22,7 @@ public class FieldOfView : MonoBehaviour
     {
         mesh = new Mesh();
         GetComponent<MeshFilter>().mesh = mesh;
-        monster = GameObject.FindGameObjectWithTag("Monster");
+        //monster = GameObject.FindGameObjectWithTag("Monster");
         script = monster.GetComponent<AIController>();
         player = GameObject.FindGameObjectWithTag("Player");
         playerScript = player.GetComponent<PlayerController>();

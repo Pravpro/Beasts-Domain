@@ -18,7 +18,7 @@ public class MonsterHearing : MonoBehaviour
 
     void Start()
     {
-        monster = GameObject.FindGameObjectWithTag("Monster");
+        monster = gameObject;// GameObject.FindGameObjectWithTag("Monster");
         aiScript = monster.GetComponent<AIController>();
         player = GameObject.FindGameObjectWithTag("Player");
         playerScript = player.GetComponent<PlayerController>();
@@ -28,6 +28,8 @@ public class MonsterHearing : MonoBehaviour
     void Update()
     {
         if (aiScript.hp <= 0)
+            return;
+        if (aiScript.isBaby)
             return;
         if (HearPlayer() && !playerScript.IsInSafeZone())
             aiScript.Interrupt(player.transform.position, true);
