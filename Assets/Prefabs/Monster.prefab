@@ -33,6 +33,20 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &3018854456201890335
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1272168473862010229}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c2c9521618dc5469a8c5beec0e3904b3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  disappearEffectPrefab: {fileID: 1646029321640804150, guid: 66252b9ff12804d238ba09d6e24058ca,
+    type: 3}
 --- !u!114 &7099444785314706173
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -83,6 +97,18 @@ MonoBehaviour:
   playerStandLevel: 0
   playerMoveLevel: 1
   playerRunLevel: 2
+--- !u!114 &10872305635951715
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1272168473862010229}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c64a469f594f2ea4c8749ac02eb71bd1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!195 &7099444785314706175
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -105,20 +131,6 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
---- !u!114 &3018854456201890335
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1272168473862010229}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c2c9521618dc5469a8c5beec0e3904b3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  disappearEffectPrefab: {fileID: 1646029321640804150, guid: 66252b9ff12804d238ba09d6e24058ca,
-    type: 3}
 --- !u!1 &7099444783511011938
 GameObject:
   m_ObjectHideFlags: 0

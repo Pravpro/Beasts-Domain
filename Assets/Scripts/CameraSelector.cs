@@ -28,7 +28,7 @@ public class CameraSelector : MonoBehaviour
         }
     }
 
-    void SetCamActive(int index)
+    public void SetCamActive(int index)
     {
         if (index == -1)
         {
