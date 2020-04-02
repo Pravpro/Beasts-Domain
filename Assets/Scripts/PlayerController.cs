@@ -56,6 +56,7 @@ public class PlayerController : MonoBehaviour
     private bool inSafeZone = false;
     private bool isInArena  = false;
 
+    private bool inSpellTutorial = false;
     private GameObject promptTriggers;
 
     private void Awake()
@@ -165,7 +166,8 @@ public class PlayerController : MonoBehaviour
         else running = false;
 
         // player spell logics
-        if (WaitNextSpellCoroutine == null) ActivateSpell();
+        if (tutorialFinished || inSpellTutorial)
+            if (WaitNextSpellCoroutine == null) ActivateSpell();
     }
 
 
@@ -376,7 +378,10 @@ public class PlayerController : MonoBehaviour
         else if (trigger.name == "spellPrompt")
         {
             if (!buttonPromptScript.isActivated("Slingshot"))
+            {
+                inSpellTutorial = true;
                 buttonPromptScript.enableActionPrompt("Spell");
+            }  
         }
         else if (trigger.name == "slingshotPrompt")
             buttonPromptScript.enableActionPrompt("Slingshot");
@@ -393,6 +398,7 @@ public class PlayerController : MonoBehaviour
         }
         else if (trigger.name  == "spellPrompt")
         {
+            inSpellTutorial = false;
             buttonPromptScript.disableActionPrompt("Spell"); 
         }
         else if (trigger.name == "slingshotPrompt")
