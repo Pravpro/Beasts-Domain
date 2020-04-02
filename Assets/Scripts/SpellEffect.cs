@@ -5,8 +5,6 @@ using UnityEngine.SceneManagement;
 
 public class SpellEffect : MonoBehaviour
 {
-    public GameObject disappearEffectPrefab;
-
     private Renderer m_renderer;
     private Color m_color;
 
@@ -14,23 +12,25 @@ public class SpellEffect : MonoBehaviour
     private AIController monsterScript; 
     private ParticleSystem spellEffect;
     private ParticleSystem  disappearEffect;
-    
+
+    public GameObject disappearEffectPrefab;
+
     private bool startDisappear = false;
     private float currAlpha;
-    
-    
+
+    AudioManagerMain audioManager;
+
+
     // Start is called before the first frame update
     void Start()
     {
         // the renderer for monster is in the child object
         m_renderer    = this.GetComponentInChildren<SkinnedMeshRenderer>();
         monsterScript = this.GetComponent<AIController>();
+        audioManager = (AudioManagerMain)FindObjectOfType(typeof(AudioManagerMain));
 
         spellEffect = GameObject.Find("SpellEffect").GetComponent<ParticleSystem>();
 
-        // monster disappear effect
-        var newPrefab = Instantiate(disappearEffectPrefab); newPrefab.name = "disappearEffect";
-        disappearEffect = newPrefab.GetComponent<ParticleSystem>();
     }
 
     // Update is called once per frame
@@ -52,14 +52,29 @@ public class SpellEffect : MonoBehaviour
             {
                 Debug.Log("monster trapped");
 
+                monsterPosition.y = spellEffect.transform.position.y;
+                spellEffect.transform.position = monsterPosition; 
+
                 // set monster hp = 0 if spell succeed
                 monsterScript.hp = 0;
             }
 
+            //if (GameObject.Find("disappearEffect") == null) 
+            //{
+            //    var newPrefab   = Instantiate(disappearEffectPrefab); 
+            //    newPrefab.name = "disappearEffect";
+            //}
         }
+    
 
         if (!startDisappear && monsterScript.hp == 0)
         {
+            if (GameObject.Find("disappearEffect") == null)
+            {
+                var newPrefab = Instantiate(disappearEffectPrefab);
+                newPrefab.name = "disappearEffect";
+            }
+            disappearEffect = GameObject.Find("disappearEffect").GetComponent<ParticleSystem>();
             disappearEffect.transform.position = spellEffect.transform.position;
             disappearEffect.Play();
 
@@ -69,8 +84,9 @@ public class SpellEffect : MonoBehaviour
             startDisappear = true;
 
             // music can be added heare
-
+            audioManager.Play(audioManager.defeat);
         }
+ 
 
         // if hp == 0, start disappear by making monster transparent
         if (startDisappear)
@@ -87,10 +103,28 @@ public class SpellEffect : MonoBehaviour
         {
             m_renderer.enabled = false;
             
+            if (this.transform.parent.gameObject.name != "MonsterSmol" && !SceneManager.GetSceneByName("WinScreen").isLoaded)
+            {
+                SceneManager.LoadScene("Scenes/WinScreen", LoadSceneMode.Additive);
+                Rigidbody playerRB = FindObjectOfType<PlayerController>().GetComponent<Rigidbody>();
 
-            if (this.transform.parent.gameObject.name != "MonsterSmol" )
-                SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+                playerRB.constraints = RigidbodyConstraints.FreezeAll;
+                CameraSelector camSelector = FindObjectOfType<CameraSelector>();
+                camSelector.SetCamActive(3);
+
+                audioManager.Play(audioManager.win);
+                audioManager.SetVolume(AudioManagerMain.SnapshotState.Win);
+            }
+
+            if (this.transform.parent.gameObject.name == "MonsterSmol")
+            {
+                GameObject.Find("MonsterSmol").SetActive(false);
+            }
+
+            if (GameObject.Find("disappearEffect") != null)
+                Destroy(GameObject.Find("disappearEffect"));
         }
+
     }
 
     // online source

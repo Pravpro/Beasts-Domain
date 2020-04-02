@@ -180,6 +180,9 @@ public class MovableController : MonoBehaviour
             m_rbMovable.constraints = RigidbodyConstraints.FreezeAll;
         }
         else
+        if (col.name == "spellPrompt")
+            buttonPromptScript.disableActionPrompt("Push");
+        else
         if (col.tag == "Player")
         {
             buttonPromptScript.enableActionPrompt("Push");

@@ -25,6 +25,7 @@ public class PlayerController : MonoBehaviour
     public Animator m_Animator;
     public CinemachineStateDrivenCamera SDCam;
     public AudioManagerMain audioManager;
+    public GameObject disappearEffectPrefab;
 
     // player id for reference Rewired input
     // we only have one player id will always = 0
@@ -56,6 +57,7 @@ public class PlayerController : MonoBehaviour
     private bool inSafeZone = false;
     private bool isInArena  = false;
 
+    private bool inSpellTutorial = false;
     private GameObject promptTriggers;
 
     private void Awake()
@@ -165,7 +167,8 @@ public class PlayerController : MonoBehaviour
         else running = false;
 
         // player spell logics
-        if (WaitNextSpellCoroutine == null) ActivateSpell();
+        if (tutorialFinished || inSpellTutorial)
+            if (WaitNextSpellCoroutine == null) ActivateSpell();
     }
 
 
@@ -303,8 +306,6 @@ public class PlayerController : MonoBehaviour
         // some distance front of player
         Vector3 spellAreaPosition = this.transform.position + this.transform.forward * 10f + Vector3.up * 1.0f;
         
-         
-
         if (m_playerInput.GetButtonDown("Spell"))
         {
             spellEffect.transform.position = spellAreaPosition;
@@ -319,6 +320,7 @@ public class PlayerController : MonoBehaviour
         {
             spellAreaPosition.y = spellEffect.transform.position.y; // update the y axis
             spellEffect.transform.position = spellAreaPosition;
+
             // ray cast to the ground
             RaycastHit hit;
             int mask = (1 << LayerMask.NameToLayer("Ground"));
@@ -327,6 +329,8 @@ public class PlayerController : MonoBehaviour
                 Debug.Log("hitted");
                 spellEffect.transform.position = hit.point + Vector3.up * 1.0f; /* a little above ground */
             }
+            else
+                spellEffect.transform.position = spellAreaPosition;
         }
 
         if (m_playerInput.GetButtonUp("Spell"))
@@ -336,6 +340,8 @@ public class PlayerController : MonoBehaviour
             audioManager.Play(audioManager.spell, 0.5f);
 
             // TODO: FIX THIS!!
+            var newPrefab   = Instantiate(disappearEffectPrefab); newPrefab.name = "disappearEffect";
+
             AIController monsterScript;
             if (!tutorialFinished)
                 monsterScript = GameObject.Find("MonsterSmol").GetComponentInChildren<AIController>();
@@ -375,8 +381,11 @@ public class PlayerController : MonoBehaviour
             buttonPromptScript.enableActionPrompt("Jump");
         else if (trigger.name == "spellPrompt")
         {
+            inSpellTutorial = true;
             if (!buttonPromptScript.isActivated("Slingshot"))
+            {
                 buttonPromptScript.enableActionPrompt("Spell");
+            }  
         }
         else if (trigger.name == "slingshotPrompt")
             buttonPromptScript.enableActionPrompt("Slingshot");
