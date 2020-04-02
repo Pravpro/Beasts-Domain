@@ -5196,9 +5196,7 @@ MonoBehaviour:
   m_LayerIndex: 0
   m_ShowDebugText: 1
   m_EnableAllChildCameras: 1
-  m_ChildCameras:
-  - {fileID: 1993504316}
-  - {fileID: 807353627}
+  m_ChildCameras: []
   m_Instructions:
   - m_FullHash: 1432961145
     m_VirtualCamera: {fileID: 1993504316}
@@ -5289,7 +5287,7 @@ PrefabInstance:
       objectReference: {fileID: 9206296177949412580}
     - target: {fileID: 1754664642, guid: c78b83b2353f61c46884e0e45dd5d507, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.19924688
+      value: 0.1992469
       objectReference: {fileID: 0}
     - target: {fileID: 1754664642, guid: c78b83b2353f61c46884e0e45dd5d507, type: 3}
       propertyPath: m_LocalRotation.y
@@ -5301,17 +5299,32 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1754664642, guid: c78b83b2353f61c46884e0e45dd5d507, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.74901474
+      value: 0.7490148
       objectReference: {fileID: 0}
     - target: {fileID: 897182372295028138, guid: c78b83b2353f61c46884e0e45dd5d507,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.7984582
+      value: 0.3368654
       objectReference: {fileID: 0}
     - target: {fileID: 897182372295028138, guid: c78b83b2353f61c46884e0e45dd5d507,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.11643534
+      value: 0.060001876
+      objectReference: {fileID: 0}
+    - target: {fileID: 897182372295028138, guid: c78b83b2353f61c46884e0e45dd5d507,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.92507905
+      objectReference: {fileID: 0}
+    - target: {fileID: 897182372295028138, guid: c78b83b2353f61c46884e0e45dd5d507,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0.1647735
+      objectReference: {fileID: 0}
+    - target: {fileID: 3701934243228650536, guid: c78b83b2353f61c46884e0e45dd5d507,
+        type: 3}
+      propertyPath: m_WrapMode
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7975639363406659756, guid: c78b83b2353f61c46884e0e45dd5d507,
         type: 3}
@@ -5553,7 +5566,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1044896107}
-  m_LocalRotation: {x: 0.1301954, y: -0, z: -0, w: 0.9914884}
+  m_LocalRotation: {x: 0.13019547, y: -0, z: -0, w: 0.9914884}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
