@@ -58,7 +58,12 @@ public class ButtonPrompt : MonoBehaviour
             if (prompt.activeSelf)
                 setButtonPromptFollow(prompt);
         }
-       
+
+
+        if (isActivated("Push") && getNumActivatedPrompt() > 1)
+        {
+            disableActionPrompt("Push");
+        }
 
     }
 
@@ -87,5 +92,21 @@ public class ButtonPrompt : MonoBehaviour
         prompt.SetActive(false); 
     }
 
+    public int getNumActivatedPrompt()
+    {
+        int i = 0;
+        foreach(var element in buttonPromptList)
+        {
+            if (element.Value.activeSelf) 
+                i++;
+        }
+
+        return i;
+    }
+
+    public bool isActivated(string actionName)
+    {
+        return buttonPromptList[actionName].activeSelf;
+    }
 
 }

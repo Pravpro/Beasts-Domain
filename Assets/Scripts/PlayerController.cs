@@ -188,16 +188,18 @@ public class PlayerController : MonoBehaviour
         {
             tutorialFinished = true;
             isInArena = true;
+
+            GameObject.Find("promptTriggers").SetActive(false);
         }
         
         if (col.name == "Homebase")
             infStamina = true;
 
-        // if (col.name == "jumpPrompt")
-        //     buttonPromptScript.enableActionPrompt("Jump");
-
-        
+        if (!tutorialFinished)
+            enableButtonPrompt(col.gameObject);     
+               
     }
+
     private void OnTriggerStay(Collider col)
     {
         if (col.tag == "Moss")
@@ -206,6 +208,7 @@ public class PlayerController : MonoBehaviour
             running = false;
         }
     }
+
     void OnTriggerExit(Collider col)
     {
         if (col.tag == "Safezone")
@@ -218,6 +221,9 @@ public class PlayerController : MonoBehaviour
         
         if (col.name == "Arena")
             isInArena = false;
+        
+        if (!tutorialFinished)
+            disableButtonPrompt(col.gameObject);
     }
 
 
@@ -351,7 +357,40 @@ public class PlayerController : MonoBehaviour
         WaitNextSpellCoroutine = null;
     }
 
+    // ------------------ tutorial -------------------------
+    void enableButtonPrompt(GameObject trigger)
+    {
+        if (trigger.name == "jumpPrompt")
+            buttonPromptScript.enableActionPrompt("Jump");
+        else if (trigger.name == "spellPrompt")
+            buttonPromptScript.enableActionPrompt("Spell");
+        else if (trigger.name == "slingshotPrompt")
+            buttonPromptScript.enableActionPrompt("Slingshot");
+        else if (trigger.name == "sprintPrompt")
+            buttonPromptScript.enableActionPrompt("Sprint");
 
+    }
+
+    void disableButtonPrompt(GameObject trigger)
+    {
+        if (trigger.name == "jumpPrompt")
+        {
+            buttonPromptScript.disableActionPrompt("Jump");
+        }
+        else if (trigger.name  == "spellPrompt")
+        {
+            buttonPromptScript.disableActionPrompt("Spell"); trigger.SetActive(false);
+        }
+        else if (trigger.name == "slingshotPrompt")
+            buttonPromptScript.disableActionPrompt("Slingshot");
+        else if (trigger.name == "sprintPrompt")
+            buttonPromptScript.disableActionPrompt("Sprint");
+
+
+    }
+
+
+    // ----------------- public functions ------------------
     public bool IsMoving()
     {
         return isMoving;
