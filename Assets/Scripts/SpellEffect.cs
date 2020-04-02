@@ -58,23 +58,28 @@ public class SpellEffect : MonoBehaviour
             }
         }
 
-        if (!startDisappear && monsterScript.hp == 0)
+        if (GameObject.Find("disappearEffect") != null) 
         {
-            disappearEffect = GameObject.Find("disappearEffect").GetComponent<ParticleSystem>();
-            disappearEffect.transform.position = spellEffect.transform.position;
-            disappearEffect.Play();
+            if (!startDisappear && monsterScript.hp == 0)
+            {
+                disappearEffect = GameObject.Find("disappearEffect").GetComponent<ParticleSystem>();
+                disappearEffect.transform.position = spellEffect.transform.position;
+                disappearEffect.Play();
 
-            setTransparent();
+                setTransparent();
 
-            currAlpha = disappearEffect.main.duration * 25f;
-            startDisappear = true;
+                currAlpha = disappearEffect.main.duration * 25f;
+                startDisappear = true;
 
-            // music can be added heare
-            audioManager.Play(audioManager.defeat);
+                // music can be added heare
+                audioManager.Play(audioManager.defeat);
 
 
 
-        }
+            }
+
+        }   
+        
 
         // if hp == 0, start disappear by making monster transparent
         if (startDisappear)
@@ -90,8 +95,6 @@ public class SpellEffect : MonoBehaviour
         if (m_renderer.material.color.a <= 0.0f)
         {
             m_renderer.enabled = false;
-            Destroy(GameObject.Find("disappearEffect"));
-            
             
             if (this.transform.parent.gameObject.name != "MonsterSmol" && !SceneManager.GetSceneByName("WinScreen").isLoaded)
             {
@@ -111,6 +114,9 @@ public class SpellEffect : MonoBehaviour
                 GameObject.Find("MonsterSmol").SetActive(false);
             }
         }
+
+        if (GameObject.Find("disappearEffect") != null)
+            Destroy(GameObject.Find("disappearEffect"));
     }
 
     // online source
