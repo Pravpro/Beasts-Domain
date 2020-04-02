@@ -102,7 +102,7 @@ public class SpellEffect : MonoBehaviour
 
                 playerRB.constraints = RigidbodyConstraints.FreezeAll;
                 CameraSelector camSelector = FindObjectOfType<CameraSelector>();
-                camSelector.SetCamActive(0);
+                camSelector.SetCamActive(4);
 
                 audioManager.Play(audioManager.win);
                 audioManager.SetVolume(AudioManagerMain.SnapshotState.Win);
