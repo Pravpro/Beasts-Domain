@@ -185,6 +185,9 @@ public class PlayerController : MonoBehaviour
     // ------------------------ Triggers ------------------------
     void OnTriggerEnter(Collider col)
     {
+        if (!tutorialFinished)
+            enableButtonPrompt(col.gameObject);   
+
         if (col.tag == "Safezone")
             inSafeZone = true;
         
@@ -198,10 +201,7 @@ public class PlayerController : MonoBehaviour
         
         if (col.name == "Homebase")
             infStamina = true;
-
-        if (!tutorialFinished)
-            enableButtonPrompt(col.gameObject);     
-               
+       
     }
 
     private void OnTriggerStay(Collider col)
@@ -383,12 +383,19 @@ public class PlayerController : MonoBehaviour
         }
         else if (trigger.name  == "spellPrompt")
         {
-            buttonPromptScript.disableActionPrompt("Spell"); trigger.SetActive(false);
+            buttonPromptScript.disableActionPrompt("Spell"); 
+            trigger.SetActive(false);
         }
         else if (trigger.name == "slingshotPrompt")
+        {
             buttonPromptScript.disableActionPrompt("Slingshot");
+        }   
         else if (trigger.name == "sprintPrompt")
+        {
             buttonPromptScript.disableActionPrompt("Sprint");
+            trigger.SetActive(false);
+        }
+            
 
 
     }

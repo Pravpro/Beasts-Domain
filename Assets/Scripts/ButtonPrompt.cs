@@ -70,12 +70,12 @@ public class ButtonPrompt : MonoBehaviour
     void setButtonPromptFollow(GameObject buttonPrompt)
     {
         Vector3 offsetPos = m_player.transform.position; 
-        offsetPos.y += 1f;
+        offsetPos.y += 1.3f;
 
         // find the left position relative to the player for UI      
         Vector3 playerLeftAxis = Vector3.Cross(Camera.main.transform.forward, Vector3.up).normalized;
 
-        Vector2 screenPoint = Camera.main.WorldToScreenPoint(offsetPos + playerLeftAxis * 1.5f);
+        Vector2 screenPoint = Camera.main.WorldToScreenPoint(offsetPos + playerLeftAxis * 1.2f);
 
         buttonPrompt.GetComponent<RectTransform>().position = screenPoint;
     }  
