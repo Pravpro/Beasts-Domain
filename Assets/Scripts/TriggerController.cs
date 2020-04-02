@@ -20,8 +20,7 @@ public class TriggerController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        monster = GameObject.FindGameObjectWithTag("Monster");
-        script = monster.GetComponent<AIController>();
+        script = GameObject.Find("Monster").GetComponentInChildren<AIController>();
         //geyserBurst = GetComponent<ParticleSystem>();
         geyserSound = audioManager.Localize(gameObject, audioManager.geyser);
 
