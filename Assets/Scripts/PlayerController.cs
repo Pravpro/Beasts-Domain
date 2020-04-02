@@ -25,7 +25,7 @@ public class PlayerController : MonoBehaviour
     public Animator m_Animator;
     public CinemachineStateDrivenCamera SDCam;
     public AudioManagerMain audioManager;
-    
+
     // player id for reference Rewired input
     // we only have one player id will always = 0
     private float speed, startColliderHeight;
@@ -52,6 +52,7 @@ public class PlayerController : MonoBehaviour
     [HideInInspector] public Coroutine WaitNextSpellCoroutine; // needed for UI 
     private bool spellActivated = false;
     private bool inSafeZone = false;
+    private bool isInArena  = false;
 
     private void Awake()
     {
@@ -180,10 +181,14 @@ public class PlayerController : MonoBehaviour
             inSafeZone = true;
         
         if (col.name == "Arena")
+        {
             tutorialFinished = true;
-
+            isInArena = true;
+        }
+        
         if (col.name == "Homebase")
             infStamina = true;
+        
     }
     private void OnTriggerStay(Collider col)
     {
@@ -202,6 +207,9 @@ public class PlayerController : MonoBehaviour
 
         if (col.name == "Homebase")
             infStamina = false;
+        
+        if (col.name == "Arena")
+            isInArena = false;
     }
 
 
@@ -370,7 +378,10 @@ public class PlayerController : MonoBehaviour
     {
         return tutorialFinished;
     }
-    
+    public bool IsInArena()
+    {
+        return isInArena;
+    }
     public IEnumerator waitNextDamage(float waitTime)
     {
         Renderer[] renderers = GetComponentsInChildren<Renderer>();
