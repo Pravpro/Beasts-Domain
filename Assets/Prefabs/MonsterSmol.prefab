@@ -257,6 +257,20 @@ MonoBehaviour:
   isBaby: 0
   targetObj: {fileID: 0}
   mossObj: {fileID: 115900146386600644, guid: df62d1c786f601046aea85391f69e08b, type: 3}
+--- !u!114 &5248858650561933121
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7624498517498018547}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c2c9521618dc5469a8c5beec0e3904b3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  disappearEffectPrefab: {fileID: 1646029321640804150, guid: 66252b9ff12804d238ba09d6e24058ca,
+    type: 3}
 --- !u!1001 &1940563355890181114
 PrefabInstance:
   m_ObjectHideFlags: 0

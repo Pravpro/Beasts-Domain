@@ -335,8 +335,15 @@ public class PlayerController : MonoBehaviour
             AimArea.SetActive(false);
             audioManager.Play(audioManager.spell, 0.5f);
 
+            // TODO: FIX THIS!!
+            AIController monsterScript;
+            if (!tutorialFinished)
+                monsterScript = GameObject.Find("MonsterSmol").GetComponentInChildren<AIController>();
+            else
+                monsterScript = GameObject.Find("Monster").GetComponentInChildren<AIController>();
+
             // activate the spell when monster is not charging
-            if (!GameObject.FindGameObjectWithTag("Monster").GetComponent<AIController>().IsCharging())
+            if (!monsterScript.IsCharging())
             {
                 var spellAreaEmission = spellEffect.emission;
                 spellAreaEmission.enabled = true;
@@ -367,7 +374,10 @@ public class PlayerController : MonoBehaviour
         if (trigger.name == "jumpPrompt")
             buttonPromptScript.enableActionPrompt("Jump");
         else if (trigger.name == "spellPrompt")
-            buttonPromptScript.enableActionPrompt("Spell");
+        {
+            if (!buttonPromptScript.isActivated("Slingshot"))
+                buttonPromptScript.enableActionPrompt("Spell");
+        }
         else if (trigger.name == "slingshotPrompt")
             buttonPromptScript.enableActionPrompt("Slingshot");
         else if (trigger.name == "sprintPrompt")
@@ -384,7 +394,6 @@ public class PlayerController : MonoBehaviour
         else if (trigger.name  == "spellPrompt")
         {
             buttonPromptScript.disableActionPrompt("Spell"); 
-            trigger.SetActive(false);
         }
         else if (trigger.name == "slingshotPrompt")
         {

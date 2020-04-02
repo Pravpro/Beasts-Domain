@@ -55,7 +55,7 @@ public class SpellEffect : MonoBehaviour
                 // set monster hp = 0 if spell succeed
                 monsterScript.hp = 0;
             }
-                
+
         }
 
         if (!startDisappear && monsterScript.hp == 0)
@@ -86,9 +86,10 @@ public class SpellEffect : MonoBehaviour
         if (m_renderer.material.color.a <= 0.0f)
         {
             m_renderer.enabled = false;
-        
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            
 
+            if (this.transform.parent.gameObject.name != "MonsterSmol" )
+                SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
     }
 
