@@ -20,9 +20,9 @@ RenderSettings:
   m_FogDensity: 0.005
   m_LinearFogStart: 0
   m_LinearFogEnd: 300
-  m_AmbientSkyColor: {r: 0, g: 0.0107636815, b: 0.1792453, a: 1}
+  m_AmbientSkyColor: {r: 0.12557852, g: 0.44608113, b: 0.7830189, a: 1}
   m_AmbientEquatorColor: {r: 0.013670832, g: 0, b: 0.2830189, a: 1}
-  m_AmbientGroundColor: {r: 0.030258115, g: 0, b: 0.11372549, a: 1}
+  m_AmbientGroundColor: {r: 0.33906344, g: 0.09371662, b: 0.764151, a: 1}
   m_AmbientIntensity: 1
   m_AmbientMode: 1
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
@@ -228,8 +228,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 13337469}
-  m_LocalRotation: {x: 0.14813776, y: 0, z: 0, w: 0.98896676}
-  m_LocalPosition: {x: -169.24, y: -0.19999981, z: 51.64}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 30, y: 30, z: 30}
   m_Children: []
   m_Father: {fileID: 0}
@@ -2172,7 +2172,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 382882444}
-  m_LocalRotation: {x: 0.1481376, y: -0, z: -0, w: 0.9889668}
+  m_LocalRotation: {x: 0.14813711, y: -0, z: -0, w: 0.9889669}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -2617,17 +2617,17 @@ PrefabInstance:
     - target: {fileID: 8009174385295779646, guid: b9ba0b5df8070b0469c774c0ebc1f003,
         type: 3}
       propertyPath: m_Color.r
-      value: 0.827451
+      value: 0.8658114
       objectReference: {fileID: 0}
     - target: {fileID: 8009174385295779646, guid: b9ba0b5df8070b0469c774c0ebc1f003,
         type: 3}
       propertyPath: m_Color.g
-      value: 0.9647059
+      value: 0.80286574
       objectReference: {fileID: 0}
     - target: {fileID: 8009174385295779646, guid: b9ba0b5df8070b0469c774c0ebc1f003,
         type: 3}
       propertyPath: m_Color.b
-      value: 0.99215686
+      value: 0.9150943
       objectReference: {fileID: 0}
     - target: {fileID: 8009174385295779646, guid: b9ba0b5df8070b0469c774c0ebc1f003,
         type: 3}
@@ -2638,6 +2638,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Shadows.m_NormalBias
       value: 0.66
+      objectReference: {fileID: 0}
+    - target: {fileID: 8009174385295779647, guid: b9ba0b5df8070b0469c774c0ebc1f003,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 11.23
       objectReference: {fileID: 0}
     - target: {fileID: 8009174385299576784, guid: b9ba0b5df8070b0469c774c0ebc1f003,
         type: 3}
@@ -5480,7 +5485,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1044896107}
-  m_LocalRotation: {x: 0.1301953, y: -0, z: -0, w: 0.9914884}
+  m_LocalRotation: {x: 0.13019525, y: -0, z: -0, w: 0.9914884}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -12322,6 +12327,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2709747894184431079, guid: db2d1e588e2c7e9449a5f4122889d2c2,
+        type: 3}
+      propertyPath: m_Range
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2709747894184431079, guid: db2d1e588e2c7e9449a5f4122889d2c2,
+        type: 3}
+      propertyPath: m_Color.r
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2709747894184431079, guid: db2d1e588e2c7e9449a5f4122889d2c2,
+        type: 3}
+      propertyPath: m_Color.g
+      value: 0.9585073
+      objectReference: {fileID: 0}
+    - target: {fileID: 2709747894184431079, guid: db2d1e588e2c7e9449a5f4122889d2c2,
+        type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7099444784209838874, guid: db2d1e588e2c7e9449a5f4122889d2c2,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -12397,6 +12422,11 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 9206296177949412576}
+    - target: {fileID: 8397469359895752202, guid: db2d1e588e2c7e9449a5f4122889d2c2,
+        type: 3}
+      propertyPath: m_Range
+      value: 0.5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: db2d1e588e2c7e9449a5f4122889d2c2, type: 3}
 --- !u!1001 &7923622918371968551
