@@ -210,6 +210,12 @@ MonoBehaviour:
     geyser:
     - {fileID: 8300000, guid: aae3f26c5fd6a6c41ae0441c6a78568c, type: 3}
     geyserVol: 0.8
+    geyserReady:
+    - {fileID: 8300000, guid: 27dc3d2118c40eb4e824371be1350897, type: 3}
+    geyserReadyVol: 1
+    geyserActive:
+    - {fileID: 8300000, guid: a0580a371bf4a584092a91b01cb7955d, type: 3}
+    geyserActiveVol: 0.05
     rockSlide:
     - {fileID: 8300000, guid: d848df879b3aac24392be28cff5aa23d, type: 3}
     rockSlideVol: 0.4
@@ -244,6 +250,8 @@ MonoBehaviour:
   birds: {fileID: 0}
   fire: {fileID: 0}
   geyser: {fileID: 0}
+  geyserReady: {fileID: 0}
+  geyserActive: {fileID: 0}
   boulder: {fileID: 0}
   rockSlide: {fileID: 0}
 --- !u!114 &1641025013

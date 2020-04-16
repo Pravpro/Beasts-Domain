@@ -7,13 +7,15 @@ using UnityEngine;
 
 public class TriggerController : MonoBehaviour
 {
+    // Play(geyserReady, 0.95f, 3f, 10f); use for when geyser is ready to be used again
+    // Play(geyserActive, 1f, 2f, 6f); looped with steam to show active geyser (stop when beast collides with geyser)
     public AudioManagerMain audioManager;
     public ParticleSystem geyserBurst;
 
     private float triggerDistance;
     private AIController script;
     private GameObject monster;
-    private AudioSource geyserSound;
+    private AudioSource geyserSound, geyserReady, geyserActive;
 
     private bool isTriggered = false;
 
@@ -23,7 +25,9 @@ public class TriggerController : MonoBehaviour
         script = GameObject.Find("Monster").GetComponentInChildren<AIController>();
         //geyserBurst = GetComponent<ParticleSystem>();
         geyserSound = audioManager.Localize(gameObject, audioManager.geyser);
-
+        geyserReady = audioManager.Localize(gameObject, audioManager.geyserReady);
+        geyserActive = audioManager.Localize(gameObject, audioManager.geyserActive);
+       
         // trigger distance is the radius = localScale.z / 2
         // Note: scale is messed up -- BetaLevelScale is doubled
         triggerDistance = this.transform.localScale.z - 0.2f;         // give some small offset for distance 

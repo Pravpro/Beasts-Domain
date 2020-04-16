@@ -138,6 +138,10 @@ public class AudioManagerMain : MonoBehaviour
         [Range(0f, 1f)] public float fireVol;
         public AudioClip[] geyser;
         [Range(0f, 1f)] public float geyserVol;
+        public AudioClip[] geyserReady;
+        [Range(0f, 1f)] public float geyserReadyVol;
+        public AudioClip[] geyserActive;
+        [Range(0f, 1f)] public float geyserActiveVol;
         public AudioClip[] rockSlide;
         [Range(0f, 1f)] public float rockSlideVol;
     }
@@ -202,6 +206,8 @@ public class AudioManagerMain : MonoBehaviour
     [HideInInspector] public AudioSource birds; //pitch: 0.9, 1.1
     [HideInInspector] public AudioSource fire;
     [HideInInspector] public AudioSource geyser;
+    [HideInInspector] public AudioSource geyserReady;
+    [HideInInspector] public AudioSource geyserActive;
     [HideInInspector] public AudioSource boulder;
     [HideInInspector] public AudioSource rockSlide;
 
@@ -245,6 +251,8 @@ public class AudioManagerMain : MonoBehaviour
         birds = AddAudio(environmentClips.birds, true, environmentClips.birdsVol, mixerGroups.birds);
         fire = AddAudio(environmentClips.fire, true, environmentClips.fireVol, mixerGroups.fire);
         geyser = AddAudio(environmentClips.geyser, false, environmentClips.geyserVol, mixerGroups.geyser);
+        geyserReady = AddAudio(environmentClips.geyserReady, false, environmentClips.geyserReadyVol, mixerGroups.geyser);
+        geyserActive = AddAudio(environmentClips.geyserActive, true, environmentClips.geyserActiveVol, mixerGroups.geyser);
         rockSlide = AddAudio(environmentClips.rockSlide, false, environmentClips.rockSlideVol, mixerGroups.rocks);
         
     }
@@ -279,6 +287,13 @@ public class AudioManagerMain : MonoBehaviour
     public void Play(AudioSource toPlay, float blend )
     {
         toPlay.spatialBlend = blend;
+        Play(toPlay);
+    }
+    public void Play(AudioSource toPlay, float blend, float minDistance, float maxDistance )
+    {
+        toPlay.spatialBlend = blend;
+        toPlay.minDistance = minDistance;
+        toPlay.maxDistance = maxDistance;
         Play(toPlay);
     }
 
@@ -355,7 +370,7 @@ public class AudioManagerMain : MonoBehaviour
         else if (!charge && sourceClipRelation[hoofSteps] != sfxClips.beast.hoofStepsWalking)
             sourceClipRelation[hoofSteps] = sfxClips.beast.hoofStepsWalking;
 
-        if (!hoofSteps.isPlaying) Play(hoofSteps, 0.75f);
+        if (!hoofSteps.isPlaying) Play(hoofSteps, 1f, 5f, 25f);
     }
 
     public void SetVolume(SnapshotState state)
