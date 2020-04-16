@@ -64,7 +64,7 @@ Material:
     - _BladeCurve: 2
     - _BladeForward: 0.31
     - _BladeHeight: -0.4
-    - _BladeHeightRandom: 0.003
+    - _BladeHeightRandom: 0.1
     - _BladeWidth: 0.06
     - _BladeWidthRandom: 0.002
     - _BumpScale: 1
