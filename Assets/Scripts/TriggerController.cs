@@ -8,7 +8,7 @@ using UnityEngine;
 public class TriggerController : MonoBehaviour
 {
     public AudioManagerMain audioManager;
-    public ParticleSystem geyserBurst;
+    public ParticleSystem geyserBurst, geyserSteam;
     public float cooldownTime = 30f;
 
     private float triggerDistance;
@@ -55,7 +55,7 @@ public class TriggerController : MonoBehaviour
 
                 // Particle Effects
                 geyserBurst.Play();
-                // geyserSteam.Stop(); Stop geyser steam effect
+                geyserSteam.Stop();
                 // Sounds
                 geyserActive.Stop();
                 audioManager.Play(geyserSound, 0.85f);
@@ -77,8 +77,8 @@ public class TriggerController : MonoBehaviour
     {
         isActive = true;
         audioManager.Play(geyserReady, 0.95f, 3f, 10f);
-        audioManager.Play(geyserActive, 1f, 2f, 10f, AudioRolloffMode.Linear);
-        // geyserSteam.Play();  Play geyser steam effect 
+        audioManager.Play(geyserActive, 1f, 2f, 15f, AudioRolloffMode.Linear);
+        geyserSteam.Play();
 
     }
 

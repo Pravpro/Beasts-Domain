@@ -34,6 +34,7 @@ Transform:
   m_Children:
   - {fileID: 2775404639974482965}
   - {fileID: 4446905730990640967}
+  - {fileID: 3485382965712245224}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -111,6 +112,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   audioManager: {fileID: 0}
   geyserBurst: {fileID: 8586326255150560617}
+  geyserSteam: {fileID: 8845287750756903878}
   cooldownTime: 30
 --- !u!54 &3559483679017615111
 Rigidbody:
@@ -222,6 +224,87 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -4216859302048453862, guid: a29e122cb28c31b418568dbb3f1db5f5,
     type: 3}
   m_PrefabInstance: {fileID: 7205340619655335695}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &8100733377907204278
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 3559483679017615110}
+    m_Modifications:
+    - target: {fileID: 4626612168940777822, guid: e16a52ca3e90d3243b5c167a41e31c9e,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4626612168940777822, guid: e16a52ca3e90d3243b5c167a41e31c9e,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4626612168940777822, guid: e16a52ca3e90d3243b5c167a41e31c9e,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4626612168940777822, guid: e16a52ca3e90d3243b5c167a41e31c9e,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 4626612168940777822, guid: e16a52ca3e90d3243b5c167a41e31c9e,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4626612168940777822, guid: e16a52ca3e90d3243b5c167a41e31c9e,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4626612168940777822, guid: e16a52ca3e90d3243b5c167a41e31c9e,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 4626612168940777822, guid: e16a52ca3e90d3243b5c167a41e31c9e,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4626612168940777822, guid: e16a52ca3e90d3243b5c167a41e31c9e,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -90
+      objectReference: {fileID: 0}
+    - target: {fileID: 4626612168940777822, guid: e16a52ca3e90d3243b5c167a41e31c9e,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4626612168940777822, guid: e16a52ca3e90d3243b5c167a41e31c9e,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7672844021771870984, guid: e16a52ca3e90d3243b5c167a41e31c9e,
+        type: 3}
+      propertyPath: m_Name
+      value: GeyserSteam
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: e16a52ca3e90d3243b5c167a41e31c9e, type: 3}
+--- !u!4 &3485382965712245224 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4626612168940777822, guid: e16a52ca3e90d3243b5c167a41e31c9e,
+    type: 3}
+  m_PrefabInstance: {fileID: 8100733377907204278}
+  m_PrefabAsset: {fileID: 0}
+--- !u!198 &8845287750756903878 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 768796458369780592, guid: e16a52ca3e90d3243b5c167a41e31c9e,
+    type: 3}
+  m_PrefabInstance: {fileID: 8100733377907204278}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &9044233497806274073
 PrefabInstance:
