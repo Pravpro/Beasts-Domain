@@ -7,27 +7,27 @@ using UnityEngine;
 
 public class TriggerController : MonoBehaviour
 {
-    // Play(geyserReady, 0.95f, 3f, 10f); use for when geyser is ready to be used again
-    // Play(geyserActive, 1f, 2f, 6f); looped with steam to show active geyser (stop when beast collides with geyser)
     public AudioManagerMain audioManager;
     public ParticleSystem geyserBurst;
+    public float cooldownTime = 30f;
 
     private float triggerDistance;
     private AIController script;
     private GameObject monster;
     private AudioSource geyserSound, geyserReady, geyserActive;
 
-    private bool isTriggered = false;
+    private bool isActive;
 
     // Start is called before the first frame update
     void Start()
     {
         script = GameObject.Find("Monster").GetComponentInChildren<AIController>();
-        //geyserBurst = GetComponent<ParticleSystem>();
         geyserSound = audioManager.Localize(gameObject, audioManager.geyser);
         geyserReady = audioManager.Localize(gameObject, audioManager.geyserReady);
         geyserActive = audioManager.Localize(gameObject, audioManager.geyserActive);
-       
+
+        ActivateGeyser();
+
         // trigger distance is the radius = localScale.z / 2
         // Note: scale is messed up -- BetaLevelScale is doubled
         triggerDistance = this.transform.localScale.z - 0.2f;         // give some small offset for distance 
@@ -36,7 +36,7 @@ public class TriggerController : MonoBehaviour
 
     void OnTriggerStay(Collider col)
     {
-        if (col.tag == "Monster" && !isTriggered)
+        if (col.tag == "Monster" && isActive)
         {
             // check the center of monster and geyser
             Vector3 monsterPos = col.gameObject.transform.position;
@@ -50,29 +50,48 @@ public class TriggerController : MonoBehaviour
 #endif
             if (Vector3.Distance(monsterPos, geyserPos) < triggerDistance)
             {
-                float scale = transform.localScale.y;
-                scale += 20f;
-                if (script.hp > 0)
-                {
-                    audioManager.Play(audioManager.hurt, 0.8f);
-                    script.TakeDamage(transform.position);
-                    script.hp -= 1;
-                    Debug.Log("monster lose health to " + script.hp);
+                DamageMonster();
+                isActive = false;
 
-                    isTriggered = true;
-                }
-                if (script.hp <= 0)
-                {
-                    Debug.Log("Monster dies!");
-                    audioManager.Play(audioManager.defeat, 0.7f);
-                }
-
-                // geyser is one-time activated, therefore deactivate once used by change the color
+                // Particle Effects
                 geyserBurst.Play();
+                // geyserSteam.Stop(); Stop geyser steam effect
+                // Sounds
+                geyserActive.Stop();
                 audioManager.Play(geyserSound, 0.85f);
-
+                float totalWaitTime = geyserBurst.main.duration + 30f;
+                Debug.Log(totalWaitTime);
+                Coroutine WaitNextSpellCoroutine = StartCoroutine(Cooldown(totalWaitTime));
             }
         }
+    }
+
+    private IEnumerator Cooldown(float cooldownTime)
+    {
+        yield return new WaitForSeconds(cooldownTime);
+        Debug.Log("Cooldown done");
+        ActivateGeyser();
+    }
+    
+    private void ActivateGeyser()
+    {
+        isActive = true;
+        audioManager.Play(geyserReady, 0.95f, 3f, 10f);
+        audioManager.Play(geyserActive, 1f, 2f, 10f, AudioRolloffMode.Linear);
+        // geyserSteam.Play();  Play geyser steam effect 
+
+    }
+
+    private void DamageMonster()
+    {
+        if (script.hp > 0)
+        {
+            audioManager.Play(audioManager.hurt, 0.8f);
+            script.TakeDamage(transform.position);
+            script.hp -= 1;
+        }
+        if (script.hp <= 0)
+            audioManager.Play(audioManager.defeat, 0.7f);
     }
 
 }

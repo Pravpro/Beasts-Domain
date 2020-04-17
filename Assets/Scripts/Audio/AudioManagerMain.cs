@@ -289,11 +289,12 @@ public class AudioManagerMain : MonoBehaviour
         toPlay.spatialBlend = blend;
         Play(toPlay);
     }
-    public void Play(AudioSource toPlay, float blend, float minDistance, float maxDistance )
+    public void Play(AudioSource toPlay, float blend, float minDistance, float maxDistance, AudioRolloffMode rolloff = AudioRolloffMode.Logarithmic)
     {
         toPlay.spatialBlend = blend;
         toPlay.minDistance = minDistance;
         toPlay.maxDistance = maxDistance;
+        toPlay.rolloffMode = rolloff;
         Play(toPlay);
     }
 

@@ -215,7 +215,7 @@ MonoBehaviour:
     geyserReadyVol: 1
     geyserActive:
     - {fileID: 8300000, guid: a0580a371bf4a584092a91b01cb7955d, type: 3}
-    geyserActiveVol: 0.05
+    geyserActiveVol: 0.03
     rockSlide:
     - {fileID: 8300000, guid: d848df879b3aac24392be28cff5aa23d, type: 3}
     rockSlideVol: 0.4
