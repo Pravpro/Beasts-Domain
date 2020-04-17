@@ -34,7 +34,7 @@ public class PlayerController : MonoBehaviour
     private Player m_playerInput;
     private int count = 1;
     private Rigidbody rb;
-    Vector3 m_Movement, moveVector, jump, desiredForward, prevCamForward;
+    Vector3 m_Movement, moveVector, desiredForward, prevCamForward;
     Quaternion m_Rotation, lastRotation = Quaternion.identity;
     private bool isMoving, pushing, grounded, walking, running, crouching, inMoss = false;
     // private GameObject pushingObject;
@@ -77,22 +77,20 @@ public class PlayerController : MonoBehaviour
         audioManager.Localize(spellEffect.gameObject, audioManager.spell);     
 
         promptTriggers = GameObject.Find("promptTriggers");
+        m_collider = GetComponent<CapsuleCollider>();
+        buttonPromptScript = this.GetComponent<ButtonPrompt>();
+        rb = gameObject.GetComponent<Rigidbody>();
     }
     
     private void Start()
     {  
-        buttonPromptScript = this.GetComponent<ButtonPrompt>();
-
         // to access input using rewired
         m_playerInput = ReInput.players.GetPlayer(m_playerID);
-        m_collider = GetComponent<CapsuleCollider>();
-        startColliderHeight = m_collider.height;
         maxStamina = stamina;
+        startColliderHeight = m_collider.height;
 
         // reset the input to use rewired
         CinemachineCore.GetInputAxis = ReInput.players.GetPlayer(m_playerID).GetAxis;
-        rb = gameObject.GetComponent<Rigidbody>();
-        jump = new Vector3(0, 1.0f, 0);           
     }
 
     private void FixedUpdate()
@@ -148,18 +146,6 @@ public class PlayerController : MonoBehaviour
         // when stamina is fully recovered, player can run again (no need to buttonUp then buttonDown)
         if (stamina > maxStamina / 3) recoverStamia = false;
 
-
-        if (m_playerInput.GetButtonDown("Jump") && grounded)
-        {
-            m_Animator.SetTrigger("IsJumping");
-            rb.velocity += jump * speeds.jumpSpeed;
-
-            grounded = false;
-
-            audioManager.walking.Stop();
-            audioManager.Play(audioManager.jumping, new float[] {1f, 1.1f});
-        }
-
         // Crouch and Run Logic (Cannot do both at the same time)
         if (m_playerInput.GetButtonDown("Crouch")) crouching = !crouching;
         
@@ -174,16 +160,6 @@ public class PlayerController : MonoBehaviour
 
     // ------------------------ Collisions ------------------------
 
-    void OnCollisionEnter(Collision col)
-    {
-        if (col.collider.tag == "Ground" || col.collider.tag == "Movable" || col.collider.tag == "Monster")
-        {
-            grounded = true;
-            Debug.Log("landed");
-            if (rb.velocity.y > 0) rb.velocity = new Vector3(rb.velocity.x, 0, rb.velocity.z);
-            if(!audioManager.landing.isPlaying) audioManager.Play(audioManager.landing, new float[] { 0.7f, 1.3f });
-        }
-    }
 
     // ------------------------ Triggers ------------------------
     void OnTriggerEnter(Collider col)
@@ -457,6 +433,14 @@ public class PlayerController : MonoBehaviour
     public bool IsInArena()
     {
         return isInArena;
+    }
+    public bool GetGrounded()
+    {
+        return this.grounded;
+    }
+    public void SetGrounded(bool grounded)
+    {
+        this.grounded = grounded;
     }
     public IEnumerator waitNextDamage(float waitTime)
     {
