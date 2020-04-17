@@ -76,7 +76,7 @@ MonoBehaviour:
   animator: {fileID: 7099444785314706172}
   turningSpeed: 1
   movingSpeed: 5.5
-  maxHp: 2
+  maxHp: 5
   hp: 2
   maxChargeDistance: 50
   maxAoeDistance: 20

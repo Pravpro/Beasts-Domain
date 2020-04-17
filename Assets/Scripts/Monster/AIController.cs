@@ -25,8 +25,8 @@ public class AIController : MonoBehaviour
     public Animator animator;
     public float turningSpeed = 60.0f;
     public float movingSpeed  = 1.0f;
-    public int maxHp = 2;
-    public int hp = 2;
+    public int maxHp = 5;
+    [HideInInspector] public int hp;
     public float maxChargeDistance = 50.0f;
     public float maxAoeDistance = 20.0f;
     public float maxMeleeDistance = 7.0f;
@@ -109,6 +109,7 @@ public class AIController : MonoBehaviour
 
     void Start()
     {
+        hp = maxHp;
         rb = gameObject.GetComponent<Rigidbody>();
         // Debug.Log("Monster size:" + GetComponent<MeshRenderer>().bounds.size);
         agent = GetComponent<UnityEngine.AI.NavMeshAgent>();
