@@ -303,19 +303,18 @@ public class PlayerController : MonoBehaviour
             else
             {
                 spellAreaPosition.y = spellEffect.transform.position.y; // update the y axis
-                spellEffect.transform.position = spellAreaPosition;
+
                 // ray cast to the ground
                 RaycastHit hit;
                 if (Physics.Raycast(spellAreaPosition + Vector3.up * 10f, Vector3.down, out hit, 100f /*max distance */, -1, QueryTriggerInteraction.Ignore) )
                 {
                     Debug.Log("hitted");
-                    spellEffect.transform.position = hit.point + Vector3.up * 1.0f; /* a little above ground */
+                    if (hit.transform.tag == "Ground")
+                        spellEffect.transform.position = hit.point + Vector3.up * 1.0f; /* a little above ground */
                 }
                 else
                     spellEffect.transform.position = spellAreaPosition;
             }
-
-
             
         }
 
