@@ -70,9 +70,12 @@ public class MovableController : MonoBehaviour
 
         if (col.collider.tag == "Monster")
         {
-            // not allow monster to push boulder
-            m_monsterCollided       = true;   
-            m_rbMovable.isKinematic = true;
+            if (!col.collider.GetComponent<AIController>().IsBaby())
+            {
+                // not allow monster to push boulder
+                m_monsterCollided       = true;   
+                m_rbMovable.isKinematic = true;
+            }
 
 #if DEBUG_LOG
             Debug.Log("(MovableController): trigger entered :" + col.collider.gameObject.name);
@@ -189,9 +192,6 @@ public class MovableController : MonoBehaviour
 
             m_rbMovable.constraints = RigidbodyConstraints.FreezeAll;
         }
-
-        
-              
 
     }
 

@@ -41,7 +41,7 @@ public class ButtonPrompt : MonoBehaviour
     }
 
     // Update is called once per frame
-    void FixedUpdate()
+    void Update()
     {
         // TODO: check for pause as well
         

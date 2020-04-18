@@ -750,4 +750,6 @@ public class AIController : MonoBehaviour
             state = State.Idle;
         }
     }
+
+    public bool IsBaby() { return isBaby; }
 }
