@@ -103,7 +103,7 @@ public class SpellEffect : MonoBehaviour
         {
             m_renderer.enabled = false;
             
-            if (this.transform.parent.gameObject.name != "MonsterSmol" && !SceneManager.GetSceneByName("WinScreen").isLoaded)
+            if (!monsterScript.IsBaby() && !SceneManager.GetSceneByName("WinScreen").isLoaded)
             {
                 SceneManager.LoadScene("Scenes/WinScreen", LoadSceneMode.Additive);
                 Rigidbody playerRB = FindObjectOfType<PlayerController>().GetComponent<Rigidbody>();
@@ -116,7 +116,7 @@ public class SpellEffect : MonoBehaviour
                 audioManager.SetVolume(AudioManagerMain.SnapshotState.Win);
             }
 
-            if (this.transform.parent.gameObject.name == "MonsterSmol")
+            if (monsterScript.IsBaby())
             {
                 GameObject.Find("MonsterSmol").SetActive(false);
             }
