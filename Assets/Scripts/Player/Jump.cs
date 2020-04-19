@@ -49,8 +49,8 @@ public class Jump : MonoBehaviour
         if (m_playerInput.GetButtonDown("Jump") && playerScript.GetGrounded())
         {
             // Must not send jump request if text is playing
-            if (textManager != null) if (!textManager.TextIsPlaying()) { Debug.Log("NOOOOO"); jumpRequest = true; }
-                else jumpRequest = true;
+            if (textManager != null) if (!textManager.TextIsPlaying()) jumpRequest = true;
+            //else jumpRequest = true;
         }
     }
 
@@ -79,8 +79,6 @@ public class Jump : MonoBehaviour
         if (col.collider.tag == "Ground" || col.collider.tag == "Movable" || col.collider.tag == "Monster")
         {
             playerScript.SetGrounded(true);
-            Debug.Log("landed");
-            //if (rb.velocity.y > 0) rb.velocity = new Vector3(rb.velocity.x, 0, rb.velocity.z);
             if (!audioManager.landing.isPlaying) audioManager.Play(audioManager.landing, new float[] { 0.7f, 1.3f });
         }
     }

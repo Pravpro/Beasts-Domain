@@ -14,17 +14,29 @@ public class TextTriggerController : MonoBehaviour
         public string text;
         public CinemachineVirtualCamera OptionalVcam;
     }
+    public enum TriggerOn
+    {
+        onTriggerEnter = 1,
+        onTriggerStay = 2,
+        onTriggerExit = 3
+    }
 
+    [Space]
     [Tooltip("The object that the trigger will detect.")]
     public GameObject target;
-    [Tooltip("Time in seconds after which the textbox will display.")]
+    [Tooltip("Select what event to start text dialogue on.")]
+    public TriggerOn startOn = TriggerOn.onTriggerEnter;
+    [Tooltip("Delay in seconds, after which the text dialogue will display. " +
+        "For On Trigger Stay event, Delay is the duration of time Target must stay in trigger for text to start.")]
     public float delay = 0f;
     [Tooltip("Whether this trigger is one-time use or multi-time use.")]
     public bool destroyOnUse = false;
     [Tooltip("Whether to freeze game while textbox plays.")]
     public bool freezeGame = false;
 
+    [Space]
     [Header("UI Stuff")]
+    [Space]
     [Tooltip("The Canvas where the Text Box will be displayed.")]
     public Canvas canvas;
     [Tooltip("Image Object must have a child object with a Text UI Component.")]
@@ -32,7 +44,9 @@ public class TextTriggerController : MonoBehaviour
     [Tooltip("The text blocks that will be displayed in order.")]
     public TextBlock[] textBlocks;
 
+    [Space]
     [Header("Optional")]
+    [Space]
     [Tooltip("If not freezing the game, can alternatively freeze rigidbody constraints of objects.")]
     public Rigidbody[] freezeObjects = new Rigidbody[0];
 
@@ -40,7 +54,9 @@ public class TextTriggerController : MonoBehaviour
     private Text textComp;
     private int textIndex;
     private bool isPlaying = false;
-    Image textBoxInstance;
+    private Image textBoxInstance;
+    private CameraSelector camSelector;
+    private float stayTime = Mathf.Infinity;
 
     private int m_playerID = 0;
     private Player m_playerInput;
@@ -56,6 +72,7 @@ public class TextTriggerController : MonoBehaviour
         for (int i = 0; i < freezeObjects.Length; i++) constraints[i] = freezeObjects[i].GetComponent<Rigidbody>().constraints;
 
         m_playerInput = ReInput.players.GetPlayer(m_playerID);
+        camSelector = FindObjectOfType<CameraSelector>();
     }
 
     private void Update()
@@ -64,7 +81,7 @@ public class TextTriggerController : MonoBehaviour
         {
             textIndex++;
             if (textIndex >= textBlocks.Length) { Coroutine WaitForFrame = StartCoroutine(EndText()); }
-            else textComp.text = textBlocks[textIndex].text;
+            else SetTextBlock();
 
         }
     }
@@ -73,11 +90,38 @@ public class TextTriggerController : MonoBehaviour
     {
         if (other.gameObject == target)
         {
-            Coroutine WaitForText = StartCoroutine(PlayText());
+            if (startOn == TriggerOn.onTriggerEnter)
+            {
+                Coroutine delayStartText = StartCoroutine(PlayText(delay));
+            }
+
+            if (startOn == TriggerOn.onTriggerStay) stayTime = Time.time + delay;
         }
     }
 
-    IEnumerator PlayText()
+    private void OnTriggerStay(Collider other)
+    {
+        if (startOn == TriggerOn.onTriggerStay && other.gameObject == target && stayTime <= Time.time)
+        {
+            stayTime = Mathf.Infinity;
+            Coroutine delayStartText = StartCoroutine(PlayText(0));
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject == target)
+        {
+            if (startOn == TriggerOn.onTriggerExit)
+            {
+                Coroutine delayStartText = StartCoroutine(PlayText(delay));
+            }
+            if (startOn == TriggerOn.onTriggerStay) stayTime = Mathf.Infinity;
+        }
+
+    }
+    
+    IEnumerator PlayText(float delay)
     {
         yield return new WaitForSeconds(delay);
 
@@ -89,24 +133,52 @@ public class TextTriggerController : MonoBehaviour
         textBoxInstance = Instantiate(textBox, canvas.gameObject.transform);
         textComp = textBoxInstance.gameObject.GetComponentInChildren<Text>();
 
-        if(textBlocks.Length > textIndex) textComp.text = textBlocks[textIndex].text;
+        SetTextBlock();
     }
 
     IEnumerator EndText()
     {
         yield return new WaitForEndOfFrame();
         isPlaying = false;
-        // Unfreeze Stuff
-        if (freezeGame) Time.timeScale = 1;
-        for (int i = 0; i < freezeObjects.Length; i++) freezeObjects[i].constraints = constraints[i];
+
+        // Reset cam
+        camSelector.SetCamActive(-1);
 
         textIndex = 0;
         Destroy(textBoxInstance.gameObject);
+
+        // Unfreeze Stuff
+        for (int i = 0; i < freezeObjects.Length; i++) freezeObjects[i].constraints = constraints[i];
+        if (freezeGame) Time.timeScale = 1;
+
         if (destroyOnUse) Destroy(gameObject);
+    }
+
+    private void SetTextBlock()
+    {
+        if (textBlocks.Length > textIndex)
+        {
+            textComp.text = textBlocks[textIndex].text;
+            if (camSelector != null)
+            {
+                CinemachineVirtualCamera vcam = textBlocks[textIndex].OptionalVcam;
+                if (vcam != null)
+                {
+                    int newCamIndex = camSelector.vcams.Length;
+                    CinemachineVirtualCamera[] newVcams = new CinemachineVirtualCamera[newCamIndex + 1];
+                    camSelector.vcams.CopyTo(newVcams, 0);
+                    newVcams[newCamIndex] = vcam;
+                    camSelector.vcams = newVcams;
+                    camSelector.SetCamActive(newCamIndex);
+                }
+                else camSelector.SetCamActive(-1);
+            }
+        }
     }
 
     public bool GetIsPlaying()
     {
         return isPlaying;
     }
+
 }
