@@ -48,7 +48,12 @@ public class mainmenu : MonoBehaviour
 
     void Update()
     {
-        float vertical = m_playerInput.GetAxis("Vertical");
+        // title not using this script
+        if (isLoaded("TitleScreen"))
+            return;
+
+        float axis = (Mathf.Abs(offset.y) > Mathf.Abs(offset.x)) ? m_playerInput.GetAxis("Vertical") 
+                                                                 : m_playerInput.GetAxis("Horizontal");
         
         // PLSSS look into event system!! STOP WRITING THIS SHITTY CODE!!
         if (m_playerInput.GetButtonDown("Submit"))
@@ -66,12 +71,12 @@ public class mainmenu : MonoBehaviour
         }
 
         // move the arrow accordingly
-        if (vertical < 0.0f && Vector3.Distance(arrowTrans.position, startPos) < 0.3f)
+        if (axis < 0.0f && Vector3.Distance(arrowTrans.position, startPos) < 0.3f)
         {
             arrowTrans.position = startPos + offset;
             audioManager.Play(audioManager.UIToggle);
         }
-        else if (vertical > 0.0f && Vector3.Distance(arrowTrans.position, startPos + offset) < 0.3f)
+        else if (axis > 0.0f && Vector3.Distance(arrowTrans.position, startPos + offset) < 0.3f)
         {
             
             arrowTrans.position = startPos;
