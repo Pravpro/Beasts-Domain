@@ -23,6 +23,7 @@ public class Jump : MonoBehaviour
     private AudioManagerMain audioManager;
     private Rigidbody rb;
     private CapsuleCollider m_collider;
+    private TextManager textManager;
 
     private Vector3 jump = Vector3.up;
     private bool jumpRequest;
@@ -38,13 +39,19 @@ public class Jump : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         playerScript = GetComponent<PlayerController>();
         m_collider = GetComponent<CapsuleCollider>();
+        textManager = FindObjectOfType<TextManager>();
 
     }
 
     private void Update()
     {
+
         if (m_playerInput.GetButtonDown("Jump") && playerScript.GetGrounded())
-            jumpRequest = true;
+        {
+            // Must not send jump request if text is playing
+            if (textManager != null) if (!textManager.TextIsPlaying()) { Debug.Log("NOOOOO"); jumpRequest = true; }
+                else jumpRequest = true;
+        }
     }
 
     // Update is called once per frame
@@ -60,19 +67,6 @@ public class Jump : MonoBehaviour
             audioManager.walking.Stop();
             audioManager.Play(audioManager.jumping, new float[] { 1f, 1.1f });
         }
-        //else
-        //{
-        //    // Weird code but, idea is raycast starts below player
-        //    float scale = transform.localScale.y;
-        //    Vector3 rayStart = transform.position + m_collider.center * scale + new Vector3(0,0.02f,0) + Vector3.down * m_collider.height * 0.5f * scale;
-        //    Debug.DrawRay(rayStart, Vector3.down*groundedSkin, Color.cyan);
-        //    RaycastHit hit;
-        //    bool hitSomething = Physics.Raycast(rayStart, Vector3.down, out hit, groundedSkin, mask, QueryTriggerInteraction.Ignore);
-        //    Debug.Log(hitSomething);
-        //    if (hitSomething) Debug.Log(hit.collider.name);
-        //    playerScript.SetGrounded(hitSomething);
-
-        //}
 
         if (rb.velocity.y < 0)
             ModifyVelocity(fallMultiplier);
