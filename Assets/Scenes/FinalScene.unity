@@ -228,7 +228,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 13337469}
-  m_LocalRotation: {x: 0.14813776, y: 0, z: 0, w: 0.98896676}
+  m_LocalRotation: {x: 0.14813694, y: 0, z: 0, w: 0.9889669}
   m_LocalPosition: {x: -169.24, y: 0.99, z: 51.64}
   m_LocalScale: {x: 30, y: 30, z: 30}
   m_Children: []
@@ -513,6 +513,73 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 45e653bab7fb20e499bda25e1b646fea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &67931567
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 67931568}
+  - component: {fileID: 67931570}
+  - component: {fileID: 67931569}
+  m_Layer: 0
+  m_Name: BabyLeaveTrapTrig
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &67931568
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 67931567}
+  m_LocalRotation: {x: 0, y: 0.3420201, z: 0, w: 0.9396927}
+  m_LocalPosition: {x: 50.34, y: 0.5, z: 4.9}
+  m_LocalScale: {x: 5.187, y: 2.223, z: 5.187}
+  m_Children: []
+  m_Father: {fileID: 833453359}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 40, z: 0}
+--- !u!114 &67931569
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 67931567}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b4be3c8069c2f6542a9716aa97691f40, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {fileID: 1521315808}
+  delay: 0
+  destroyOnUse: 1
+  freezeGame: 0
+  canvas: {fileID: 260698479}
+  textBox: {fileID: 3587509096756675625, guid: d05be54c73f51ce4c9a8a17202a1d722, type: 3}
+  textBlocks:
+  - text: looks like it needs to stay in one spot before you can send it home.
+    OptionalVcam: {fileID: 0}
+  freezeObjects: []
+--- !u!65 &67931570
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 67931567}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &70255241
 GameObject:
   m_ObjectHideFlags: 0
@@ -2172,7 +2239,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 382882444}
-  m_LocalRotation: {x: 0.14813738, y: -0.00000003482329, z: 0.000000015460124, w: 0.9889669}
+  m_LocalRotation: {x: 0.14813705, y: -0.00000003482153, z: 0.000000015461879, w: 0.9889669}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -2301,6 +2368,21 @@ PrefabInstance:
       propertyPath: audioManager
       value: 
       objectReference: {fileID: 760171700}
+    - target: {fileID: 2207403949193090604, guid: b9ba0b5df8070b0469c774c0ebc1f003,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 5.187
+      objectReference: {fileID: 0}
+    - target: {fileID: 2207403949193090604, guid: b9ba0b5df8070b0469c774c0ebc1f003,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 2.223
+      objectReference: {fileID: 0}
+    - target: {fileID: 2207403949193090604, guid: b9ba0b5df8070b0469c774c0ebc1f003,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 5.187
+      objectReference: {fileID: 0}
     - target: {fileID: 2844354022890465596, guid: b9ba0b5df8070b0469c774c0ebc1f003,
         type: 3}
       propertyPath: audioManager
@@ -2323,8 +2405,39 @@ PrefabInstance:
       objectReference: {fileID: 760171700}
     - target: {fileID: 4831434089291825932, guid: b9ba0b5df8070b0469c774c0ebc1f003,
         type: 3}
+      propertyPath: textBlocks.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4831434089291825932, guid: b9ba0b5df8070b0469c774c0ebc1f003,
+        type: 3}
       propertyPath: m_Enabled
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4831434089291825932, guid: b9ba0b5df8070b0469c774c0ebc1f003,
+        type: 3}
+      propertyPath: textBlocks.Array.data[0].text
+      value: there! time to send it back to its home.
+      objectReference: {fileID: 0}
+    - target: {fileID: 4831434089291825932, guid: b9ba0b5df8070b0469c774c0ebc1f003,
+        type: 3}
+      propertyPath: textBox
+      value: 
+      objectReference: {fileID: 3587509096756675625, guid: d05be54c73f51ce4c9a8a17202a1d722,
+        type: 3}
+    - target: {fileID: 4831434089291825932, guid: b9ba0b5df8070b0469c774c0ebc1f003,
+        type: 3}
+      propertyPath: canvas
+      value: 
+      objectReference: {fileID: 260698479}
+    - target: {fileID: 4831434089291825932, guid: b9ba0b5df8070b0469c774c0ebc1f003,
+        type: 3}
+      propertyPath: target
+      value: 
+      objectReference: {fileID: 1521315808}
+    - target: {fileID: 4831434089291825932, guid: b9ba0b5df8070b0469c774c0ebc1f003,
+        type: 3}
+      propertyPath: destroyOnUse
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5237568642691051935, guid: b9ba0b5df8070b0469c774c0ebc1f003,
         type: 3}
@@ -2433,9 +2546,41 @@ PrefabInstance:
       objectReference: {fileID: 9206296177949412583}
     - target: {fileID: 6953174490421510986, guid: b9ba0b5df8070b0469c774c0ebc1f003,
         type: 3}
+      propertyPath: textBlocks.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6953174490421510986, guid: b9ba0b5df8070b0469c774c0ebc1f003,
+        type: 3}
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6953174490421510986, guid: b9ba0b5df8070b0469c774c0ebc1f003,
+        type: 3}
+      propertyPath: textBox
+      value: 
+      objectReference: {fileID: 3587509096756675625, guid: d05be54c73f51ce4c9a8a17202a1d722,
+        type: 3}
+    - target: {fileID: 6953174490421510986, guid: b9ba0b5df8070b0469c774c0ebc1f003,
+        type: 3}
+      propertyPath: textBlocks.Array.data[0].text
+      value: careful young one! you're light enough, but those geysers look almost
+        ready to burst!
+      objectReference: {fileID: 0}
+    - target: {fileID: 6953174490421510986, guid: b9ba0b5df8070b0469c774c0ebc1f003,
+        type: 3}
+      propertyPath: destroyOnUse
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6953174490421510986, guid: b9ba0b5df8070b0469c774c0ebc1f003,
+        type: 3}
+      propertyPath: target
+      value: 
+      objectReference: {fileID: 9206296177949412576}
+    - target: {fileID: 6953174490421510986, guid: b9ba0b5df8070b0469c774c0ebc1f003,
+        type: 3}
+      propertyPath: canvas
+      value: 
+      objectReference: {fileID: 260698479}
     - target: {fileID: 7539279283827351156, guid: b9ba0b5df8070b0469c774c0ebc1f003,
         type: 3}
       propertyPath: freezeObjects.Array.size
@@ -2451,6 +2596,11 @@ PrefabInstance:
       propertyPath: canvas
       value: 
       objectReference: {fileID: 260698479}
+    - target: {fileID: 7539279283827351156, guid: b9ba0b5df8070b0469c774c0ebc1f003,
+        type: 3}
+      propertyPath: textBlocks.Array.data[1].text
+      value: try to get its attention and make it go over there!
+      objectReference: {fileID: 0}
     - target: {fileID: 8009174385299576784, guid: b9ba0b5df8070b0469c774c0ebc1f003,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -4002,6 +4152,12 @@ Animator:
     type: 3}
   m_PrefabInstance: {fileID: 7923622918371968551}
   m_PrefabAsset: {fileID: 0}
+--- !u!4 &833453359 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5123407174300579210, guid: b9ba0b5df8070b0469c774c0ebc1f003,
+    type: 3}
+  m_PrefabInstance: {fileID: 448365198}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &834522430
 GameObject:
   m_ObjectHideFlags: 0
@@ -5282,7 +5438,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1044896107}
-  m_LocalRotation: {x: 0.1301955, y: -0.00000008718331, z: -0.0000000010785938, w: 0.9914884}
+  m_LocalRotation: {x: 0.13019547, y: -0.00000008718899, z: -0.0000000010801045, w: 0.9914884}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -5598,6 +5754,74 @@ RectTransform:
   m_AnchoredPosition: {x: 5, y: 0}
   m_SizeDelta: {x: -10, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &1081851991
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1081851992}
+  - component: {fileID: 1081851994}
+  - component: {fileID: 1081851993}
+  m_Layer: 0
+  m_Name: StayAtWallTrig
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1081851992
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1081851991}
+  m_LocalRotation: {x: -0, y: 0.12407572, z: -0, w: 0.99227273}
+  m_LocalPosition: {x: 49.29, y: 0.71, z: 16.87}
+  m_LocalScale: {x: 3.0134256, y: 2.223, z: 5.496145}
+  m_Children: []
+  m_Father: {fileID: 833453359}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 14.255001, z: 0}
+--- !u!114 &1081851993
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1081851991}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b4be3c8069c2f6542a9716aa97691f40, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {fileID: 9206296177949412576}
+  delay: 30
+  destroyOnUse: 1
+  freezeGame: 0
+  canvas: {fileID: 260698479}
+  textBox: {fileID: 3587509096756675625, guid: d05be54c73f51ce4c9a8a17202a1d722, type: 3}
+  textBlocks:
+  - text: looks like this wall won't budge...maybe that littl'in has something to
+      do with it...gee if only you had a way to make it disappear
+    OptionalVcam: {fileID: 0}
+  freezeObjects: []
+--- !u!65 &1081851994
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1081851991}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1085991554
 GameObject:
   m_ObjectHideFlags: 0
@@ -7645,6 +7869,12 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1516017080}
   m_CullTransparentMesh: 0
+--- !u!1 &1521315808 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1752021267671845817, guid: b9ba0b5df8070b0469c774c0ebc1f003,
+    type: 3}
+  m_PrefabInstance: {fileID: 448365198}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1523672446
 GameObject:
   m_ObjectHideFlags: 0
