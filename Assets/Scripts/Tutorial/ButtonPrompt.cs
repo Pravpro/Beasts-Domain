@@ -8,6 +8,7 @@ public class ButtonPrompt : MonoBehaviour
     private GameObject m_buttonPromptCanvas;
     private Player m_playerInput;
     private GameObject m_player;
+    private AudioManagerMain audioManager;
 
 
     // list of button prmpt UI
@@ -16,9 +17,10 @@ public class ButtonPrompt : MonoBehaviour
     void Awake()
     {
         m_buttonPromptCanvas = GameObject.Find("ButtonPromptCanvas");
-        
+        audioManager = FindObjectOfType<AudioManagerMain>();
+
         // m_slingshotUI = m_buttonPromptCanvas.transform.Find("slingshot").gameObject;
-        
+
         buttonPromptList.Add("Jump",  m_buttonPromptCanvas.transform.Find("jump").gameObject);
         buttonPromptList.Add("Push",  m_buttonPromptCanvas.transform.Find("push").gameObject);
         buttonPromptList.Add("Spell", m_buttonPromptCanvas.transform.Find("spell").gameObject);
@@ -81,7 +83,8 @@ public class ButtonPrompt : MonoBehaviour
     }  
 
     public void enableActionPrompt(string actionName) 
-    {   
+    {
+        audioManager.Play(audioManager.UISelection);
         GameObject prompt = buttonPromptList[actionName];
         prompt.SetActive(true); 
     }

@@ -170,6 +170,10 @@ MonoBehaviour:
       moss:
       - {fileID: 8300000, guid: 034a8effb5561be4a9b2724db62882e1, type: 3}
       mossVol: 1
+    other:
+      UISelection:
+      - {fileID: 8300000, guid: 197460ba8afe95145bcf07adc30ae1bf, type: 3}
+      UISelectionVol: 0.1
   musicClips:
     strings:
     - {fileID: 8300000, guid: a20fb40e6c0638942b72050cac004b91, type: 3}
@@ -236,6 +240,7 @@ MonoBehaviour:
   boss2: {fileID: 0}
   homebase: {fileID: 0}
   win: {fileID: 0}
+  UISelection: {fileID: 0}
   roar1: {fileID: 0}
   roar2: {fileID: 0}
   hurt: {fileID: 0}

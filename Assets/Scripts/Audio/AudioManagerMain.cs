@@ -102,8 +102,16 @@ public class AudioManagerMain : MonoBehaviour
             [Range(0f, 1f)] public float mossVol;
         }
 
+        [System.Serializable]
+        public class Other
+        {
+            public AudioClip[] UISelection;
+            [Range(0f, 1f)] public float UISelectionVol;
+        }
+
         public PlayerClips player;
         public BeastClips beast;
+        public Other other;
     }
 
     [System.Serializable]
@@ -191,6 +199,8 @@ public class AudioManagerMain : MonoBehaviour
     [HideInInspector] public AudioSource homebase;
     [HideInInspector] public AudioSource win;
 
+    [HideInInspector] public AudioSource UISelection;
+
     [HideInInspector] public AudioSource roar1;
     [HideInInspector] public AudioSource roar2;
     [HideInInspector] public AudioSource hurt;
@@ -237,6 +247,8 @@ public class AudioManagerMain : MonoBehaviour
         hoof = AddAudio(sfxClips.beast.hoof, false, sfxClips.beast.hoofVol, mixerGroups.beast);
         hoofSteps = AddAudio(sfxClips.beast.hoofStepsWalking, false, sfxClips.beast.hoofStepsWalkingVol, mixerGroups.hoofsteps);
         moss = AddAudio(sfxClips.beast.moss, false, sfxClips.beast.mossVol, mixerGroups.beast);
+        // SFX: Other sources
+        UISelection = AddAudio(sfxClips.other.UISelection, false, sfxClips.other.UISelectionVol, mixerGroups.action);
         // Music sources
         moodboard = AddAudio(musicClips.moodboard, true, musicClips.moodboardVol, mixerGroups.training);
         strings = AddAudio(musicClips.strings, true, musicClips.stringsVol, mixerGroups.arena);
