@@ -105,13 +105,17 @@ public class SpellEffect : MonoBehaviour
             
             if (!monsterScript.IsBaby() && !SceneManager.GetSceneByName("WinScreen").isLoaded)
             {
+                // Set Canvases inactive before loading Victory Scene
+                Canvas[] canvases = FindObjectsOfType<Canvas>();
+                for (int i = 0; i < canvases.Length; i++) canvases[i].gameObject.SetActive(false);
+
                 SceneManager.LoadScene("Scenes/WinScreen", LoadSceneMode.Additive);
                 Rigidbody playerRB = FindObjectOfType<PlayerController>().GetComponent<Rigidbody>();
-
-                playerRB.constraints = RigidbodyConstraints.FreezeAll;
                 CameraSelector camSelector = FindObjectOfType<CameraSelector>();
-                camSelector.SetCamActive(3);
 
+                
+                playerRB.constraints = RigidbodyConstraints.FreezeAll;
+                camSelector.SetCamActive(3);
                 audioManager.Play(audioManager.win);
                 audioManager.SetVolume(AudioManagerMain.SnapshotState.Win);
             }
