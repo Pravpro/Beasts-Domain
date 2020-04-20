@@ -58,8 +58,8 @@ public class StateCamController : MonoBehaviour
     IEnumerator ResetCam()
     {
         thirdPerson.m_RecenterToTargetHeading.m_enabled = true;
-
-        float waitTime = thirdPerson.m_RecenterToTargetHeading.m_RecenteringTime + thirdPerson.m_RecenterToTargetHeading.m_RecenterWaitTime;
+        
+        float waitTime = thirdPerson.m_RecenterToTargetHeading.m_RecenteringTime + thirdPerson.m_RecenterToTargetHeading.m_WaitTime;
         yield return new WaitForSeconds(waitTime);
 
         thirdPerson.m_RecenterToTargetHeading.m_enabled = false;

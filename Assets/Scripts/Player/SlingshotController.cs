@@ -10,10 +10,9 @@ public class SlingshotController : MonoBehaviour
 {
     public GameObject throwObject, player;
     public int throwVelocity;
-    public CinemachineBrain CB;
-    public Camera aimCam;
     public Image crosshair;
     public float throwDelay;
+    public CinemachineStateDrivenCamera playerStateCam;
 
     public AudioManagerMain audioManager;
 
@@ -21,10 +20,16 @@ public class SlingshotController : MonoBehaviour
     Animator playerAnimator;
     Vector3 targetVector;
     float nextThrowTime = 0f;
+    private Camera cam;
 
     // Rewired Input for throwing slingshot
     private int m_playerID = 0;
     private Player m_playerInput;
+
+    private void Awake()
+    {
+        cam = FindObjectOfType<CinemachineBrain>().gameObject.GetComponent<Camera>();
+    }
 
     private void Start()
     {
@@ -51,20 +56,20 @@ public class SlingshotController : MonoBehaviour
                 crosshair.enabled = false;
             }
         }
-
-        if (CB.ActiveVirtualCamera.LiveChildOrSelf.Name == "CM_AimCam")
+        
+        if (playerStateCam.isActiveAndEnabled && playerStateCam.LiveChild.Name == "CM_AimCam")
         {
             // Raycast from aimcam
             RaycastHit hit;
-            Debug.DrawRay(aimCam.transform.position, aimCam.transform.forward * 80, Color.red);
-            Debug.Log(Physics.Raycast(aimCam.transform.position, aimCam.transform.forward));
-            if (Physics.Raycast(aimCam.transform.position, aimCam.transform.forward, out hit))
+            Debug.DrawRay(cam.transform.position, cam.transform.forward * 80, Color.red);
+            Debug.Log(Physics.Raycast(cam.transform.position, cam.transform.forward));
+            if (Physics.Raycast(cam.transform.position, cam.transform.forward, out hit))
             {
                 targetVector = hit.point - transform.position;
                 Debug.DrawLine(transform.position, hit.point, Color.green);
                 targetVector.Normalize();
             }
-            else targetVector = aimCam.transform.forward;
+            else targetVector = cam.transform.forward;
             crosshair.enabled = true;
 
             // Release Slinghot

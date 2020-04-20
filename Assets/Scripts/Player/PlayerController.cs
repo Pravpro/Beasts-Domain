@@ -247,7 +247,7 @@ public class PlayerController : MonoBehaviour
     void ImplementRotation()
     {
         // Conditions for Rotating
-        if (SDCam.LiveChildOrSelf.Name == "CM_AimCam")
+        if (SDCam.isActiveAndEnabled && SDCam.LiveChild.Name == "CM_AimCam")
         {
 
             Vector3 camforward = Camera.main.transform.forward;
