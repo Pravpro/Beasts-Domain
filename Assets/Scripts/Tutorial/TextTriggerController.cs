@@ -59,6 +59,7 @@ public class TextTriggerController : MonoBehaviour
     private Image textBoxInstance;
     private CameraSelector camSelector;
     private float stayTime = Mathf.Infinity;
+    private AudioManagerMain audioManager;
 
     private int m_playerID = 0;
     private Player m_playerInput;
@@ -81,6 +82,7 @@ public class TextTriggerController : MonoBehaviour
 
         m_playerInput = ReInput.players.GetPlayer(m_playerID);
         camSelector = FindObjectOfType<CameraSelector>();
+        audioManager = FindObjectOfType<AudioManagerMain>();
     }
 
     private void Update()
@@ -168,6 +170,7 @@ public class TextTriggerController : MonoBehaviour
     {
         if (textBlocks.Length > textIndex)
         {
+            audioManager.Play(audioManager.UISelection);
             textComp.text = textBlocks[textIndex].text;
             if (camSelector != null)
             {
