@@ -6,6 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/Cutscene.unity
+    guid: e5e83d8c1d802254e91da73f9ad21e01
+  - enabled: 1
     path: Assets/Scenes/TitleScreen.unity
     guid: 5733602be3064314898c285b90d94528
   - enabled: 1
@@ -23,4 +26,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/WinScreen.unity
     guid: d8114925634a72140b50ae43d7dbe13f
+  - enabled: 1
+    path: Assets/Scenes/ControlsDesc2.unity
+    guid: a5a65f3302192d0499b452e6cb19472a
   m_configObjects: {}

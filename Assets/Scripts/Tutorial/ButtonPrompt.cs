@@ -16,9 +16,9 @@ public class ButtonPrompt : MonoBehaviour
     void Awake()
     {
         m_buttonPromptCanvas = GameObject.Find("ButtonPromptCanvas");
-        
+
         // m_slingshotUI = m_buttonPromptCanvas.transform.Find("slingshot").gameObject;
-        
+
         buttonPromptList.Add("Jump",  m_buttonPromptCanvas.transform.Find("jump").gameObject);
         buttonPromptList.Add("Push",  m_buttonPromptCanvas.transform.Find("push").gameObject);
         buttonPromptList.Add("Spell", m_buttonPromptCanvas.transform.Find("spell").gameObject);
@@ -81,7 +81,7 @@ public class ButtonPrompt : MonoBehaviour
     }  
 
     public void enableActionPrompt(string actionName) 
-    {   
+    {
         GameObject prompt = buttonPromptList[actionName];
         prompt.SetActive(true); 
     }

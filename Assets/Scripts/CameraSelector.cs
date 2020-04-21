@@ -45,4 +45,16 @@ public class CameraSelector : MonoBehaviour
             }
         }
     }
+
+    public int AddCamera(CinemachineVirtualCamera vcam)
+    {
+        int newCamIndex = vcams.Length;
+        CinemachineVirtualCamera[] newVcams = new CinemachineVirtualCamera[newCamIndex + 1];
+
+        vcams.CopyTo(newVcams, 0);
+        newVcams[newCamIndex] = vcam;
+        vcams = newVcams;
+
+        return newCamIndex;
+    }
 }

@@ -49,20 +49,29 @@ public class TextTriggerController : MonoBehaviour
     [Space]
     [Tooltip("If not freezing the game, can alternatively freeze rigidbody constraints of objects.")]
     public Rigidbody[] freezeObjects = new Rigidbody[0];
+    [Tooltip("If target does not have a Rigidbody, select this option.")]
+    public bool addRigidbody = false;
 
     private RigidbodyConstraints[] constraints;
     private Text textComp;
     private int textIndex;
-    private bool isPlaying = false;
+    private bool isPlaying, detected = false;
     private Image textBoxInstance;
     private CameraSelector camSelector;
     private float stayTime = Mathf.Infinity;
+    private AudioManagerMain audioManager;
 
     private int m_playerID = 0;
     private Player m_playerInput;
 
     private void Start()
     {
+        if (addRigidbody)
+        {
+            Rigidbody rb = gameObject.AddComponent<Rigidbody>();
+            rb.useGravity = false;
+        }
+
         Text textCompCheck = textBox.gameObject.GetComponentInChildren<Text>();
         Debug.Assert(textCompCheck != null, "Image Object does not have a child object with a Text UI Component. YOU MESSED UP!");
         if (textCompCheck == null) Destroy(this);
@@ -73,6 +82,7 @@ public class TextTriggerController : MonoBehaviour
 
         m_playerInput = ReInput.players.GetPlayer(m_playerID);
         camSelector = FindObjectOfType<CameraSelector>();
+        audioManager = FindObjectOfType<AudioManagerMain>();
     }
 
     private void Update()
@@ -90,7 +100,7 @@ public class TextTriggerController : MonoBehaviour
     {
         if (other.gameObject == target)
         {
-            if (startOn == TriggerOn.onTriggerEnter)
+            if (startOn == TriggerOn.onTriggerEnter && !detected)
             {
                 Coroutine delayStartText = StartCoroutine(PlayText(delay));
             }
@@ -101,7 +111,7 @@ public class TextTriggerController : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
-        if (startOn == TriggerOn.onTriggerStay && other.gameObject == target && stayTime <= Time.time)
+        if (startOn == TriggerOn.onTriggerStay && other.gameObject == target && stayTime <= Time.time && !detected)
         {
             stayTime = Mathf.Infinity;
             Coroutine delayStartText = StartCoroutine(PlayText(0));
@@ -112,7 +122,7 @@ public class TextTriggerController : MonoBehaviour
     {
         if (other.gameObject == target)
         {
-            if (startOn == TriggerOn.onTriggerExit)
+            if (startOn == TriggerOn.onTriggerExit && !detected)
             {
                 Coroutine delayStartText = StartCoroutine(PlayText(delay));
             }
@@ -123,6 +133,7 @@ public class TextTriggerController : MonoBehaviour
     
     IEnumerator PlayText(float delay)
     {
+        detected = true;
         yield return new WaitForSeconds(delay);
 
         isPlaying = true;
@@ -140,6 +151,7 @@ public class TextTriggerController : MonoBehaviour
     {
         yield return new WaitForEndOfFrame();
         isPlaying = false;
+        detected = false;
 
         // Reset cam
         camSelector.SetCamActive(-1);
@@ -158,17 +170,14 @@ public class TextTriggerController : MonoBehaviour
     {
         if (textBlocks.Length > textIndex)
         {
+            audioManager.Play(audioManager.UISelection);
             textComp.text = textBlocks[textIndex].text;
             if (camSelector != null)
             {
                 CinemachineVirtualCamera vcam = textBlocks[textIndex].OptionalVcam;
                 if (vcam != null)
                 {
-                    int newCamIndex = camSelector.vcams.Length;
-                    CinemachineVirtualCamera[] newVcams = new CinemachineVirtualCamera[newCamIndex + 1];
-                    camSelector.vcams.CopyTo(newVcams, 0);
-                    newVcams[newCamIndex] = vcam;
-                    camSelector.vcams = newVcams;
+                    int newCamIndex = camSelector.AddCamera(vcam);
                     camSelector.SetCamActive(newCamIndex);
                 }
                 else camSelector.SetCamActive(-1);

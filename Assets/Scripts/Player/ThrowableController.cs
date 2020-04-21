@@ -14,6 +14,8 @@ public class ThrowableController : MonoBehaviour
     Rigidbody rb;
     AudioSource hitSound;
 
+    private bool hit = false;
+
     private void Start()
     {
         monsters = GameObject.FindGameObjectsWithTag("Monster");
@@ -33,12 +35,15 @@ public class ThrowableController : MonoBehaviour
 
     void HandleHit(Collision col)
     {
+        if (hit)
+            return;
+
         Instantiate(hitEffect, col.contacts[0].point, new Quaternion());
         foreach (GameObject monster in monsters)
             monster.GetComponent<MonsterHearing>().RockHit(transform.position);
         rb.isKinematic = true;
         audioManager.Play(hitSound, 0.9f, new float[] { 0.7f, 1.2f });
-
+        hit = true;
         StartCoroutine(DestroyObject());
     }
 

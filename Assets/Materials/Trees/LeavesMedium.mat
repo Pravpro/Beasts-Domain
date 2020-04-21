@@ -9,8 +9,8 @@ Material:
   m_PrefabAsset: {fileID: 0}
   m_Name: LeavesMedium
   m_Shader: {fileID: 4800000, guid: 9332359f7978ae04abae028773f73bb1, type: 3}
-  m_ShaderKeywords: _ALPHABLEND_ON
-  m_LightmapFlags: 4
+  m_ShaderKeywords: _ALPHABLEND_ON _EMISSION
+  m_LightmapFlags: 1
   m_EnableInstancingVariants: 1
   m_DoubleSidedGI: 1
   m_CustomRenderQueue: 3000
@@ -75,4 +75,4 @@ Material:
     - _ZWrite: 0
     m_Colors:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
-    - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
+    - _EmissionColor: {r: 0.122641504, g: 0, b: 0, a: 1}
