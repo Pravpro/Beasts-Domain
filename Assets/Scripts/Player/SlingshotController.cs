@@ -57,7 +57,7 @@ public class SlingshotController : MonoBehaviour
             }
         }
         
-        if (playerStateCam.isActiveAndEnabled && playerStateCam.LiveChild.Name == "CM_AimCam")
+        if (playerStateCam.isActiveAndEnabled && playerStateCam.LiveChild != null && playerStateCam.LiveChild.Name == "CM_AimCam")
         {
             // Raycast from aimcam
             RaycastHit hit;
